@@ -17,19 +17,19 @@ import javax.swing.JTextField;
 public class CharacterCreation extends JFrame implements ActionListener{
     
     JPanel namePanel = new JPanel();
-	JTextField nameTextfield;
-
     JPanel classPanel = new JPanel();
+    JPanel appearancePanel = new JPanel();
     JButton knightClassButton, heraldClassButton, thiefClassButton, sorcererClassButton, clericClassButton;
 
 	ArrayList<JPanel> subPanelsArrayList = new ArrayList<JPanel>();
     
-	ArrayList<JButton> charButtons = new ArrayList<JButton>();
+	ArrayList<JButton> mainButtons = new ArrayList<JButton>();
 
     ArrayList<JButton> classesButtons =  new ArrayList<JButton>();
     
+    ArrayList<JButton> appearenceButtons =  new ArrayList<JButton>();
 
-	JButton charNameButton, charGenderButton, charClassButton, charFacesButton, charBuildButton;
+	JButton charNameButton, charGenderButton, charClassButton, charAppearenceButton, charBuildButton;
     
     
 
@@ -62,20 +62,20 @@ public class CharacterCreation extends JFrame implements ActionListener{
         charNameButton = new JButton("Name");
         charClassButton = new JButton("Class");
         charGenderButton = new JButton("Gender");
-        charFacesButton = new JButton("Faces Presets");
+        charAppearenceButton = new JButton("Appearence");
         charBuildButton = new JButton("Build");
         
-        charButtons.add(charNameButton);
-        charButtons.add(charGenderButton);
-        charButtons.add(charClassButton);
-        charButtons.add(charFacesButton);
+        mainButtons.add(charNameButton);
+        mainButtons.add(charGenderButton);
+        mainButtons.add(charClassButton);
+        mainButtons.add(charAppearenceButton);
         
-        for(int i = 0; i < charButtons.size(); i++)
+        for(int i = 0; i < mainButtons.size(); i++)
         {
-            charButtons.get(i).setBounds(50,0 + (i*60),200,50);
+            mainButtons.get(i).setBounds(50,0 + (i*60),200,50);
         }
 
-        for (JButton jButton : charButtons) {
+        for (JButton jButton : mainButtons) {
             jButton.addActionListener(this);
 			jButton.setFont(new Font("Jet Brains Mono", Font.PLAIN, 15));
 			jButton.setFocusable(false);
@@ -87,22 +87,27 @@ public class CharacterCreation extends JFrame implements ActionListener{
 
         namePanelHandler();
         classPanelHandler();
+        appearencePanelHandler();
         
         
-        for(int i = 0; i < charButtons.size(); i++)
+        for(int i = 0; i < mainButtons.size(); i++)
         {
-            buttonsPanel.add(charButtons.get(i));
+            buttonsPanel.add(mainButtons.get(i));
         }
 
         subPanelsArrayList.add(namePanel);
         subPanelsArrayList.add(classPanel);
+        subPanelsArrayList.add(appearancePanel);
         
         this.add(helmImage);
         this.add(swordImage);
         this.add(charImage);
+
         this.add(buttonsPanel);
         this.add(namePanel);
         this.add(classPanel);
+        this.add(appearancePanel);
+
 		this.setVisible(true);
     }
 
@@ -122,6 +127,16 @@ public class CharacterCreation extends JFrame implements ActionListener{
         {
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == classPanel)
+                {
+                    panel.setVisible(true);
+                }
+                else panel.setVisible(false);
+            }
+        }
+        else if(e.getSource() == charAppearenceButton)
+        {
+            for (JPanel panel : subPanelsArrayList) {
+                if(panel == appearancePanel)
                 {
                     panel.setVisible(true);
                 }
@@ -162,7 +177,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
     public void namePanelHandler()
     {
 
-        nameTextfield = new JTextField();
+        JTextField nameTextfield = new JTextField();
         nameTextfield.setBounds(25,10,250,40);
         nameTextfield.setFont(new Font("Jet Brains Mono", Font.PLAIN, 30));
         nameTextfield.setHorizontalAlignment(JTextField.CENTER);
@@ -182,5 +197,13 @@ public class CharacterCreation extends JFrame implements ActionListener{
         namePanel.add(nameTextfield);
         namePanel.setVisible(false);
 
+    }
+    public void appearencePanelHandler()
+    {
+        appearancePanel = new JPanel();
+		appearancePanel.setBounds(400, 150, 300, 500);
+        appearancePanel.setBackground(Color.GREEN);
+        appearancePanel.setLayout(null);
+        appearancePanel.setVisible(false);
     }
 }
