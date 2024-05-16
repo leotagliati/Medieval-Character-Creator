@@ -1,3 +1,4 @@
+package Panels;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -10,7 +11,7 @@ public class NamePanel{
 
     private JTextField nameTextField;
     private JPanel namePanel;
-    NamePanel()
+    public NamePanel()
     {
         this.nameTextField = new JTextField();
         this.nameTextField.setBounds(25,10,250,40);

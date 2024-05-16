@@ -12,7 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.w3c.dom.events.MouseEvent;
 
 public class PanelsHandler extends JFrame implements ChangeListener{
     JPanel namePanel = new JPanel();

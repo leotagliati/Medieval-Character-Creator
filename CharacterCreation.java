@@ -17,6 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
+import Panels.ClassPanel;
+import Panels.NamePanel;
+
 public class CharacterCreation extends JFrame implements ActionListener{
     
     
@@ -29,6 +32,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
 	JButton charNameButton, charGenderButton, charClassButton, charAppearenceButton, charBuildButton;
     
     NamePanel namePanel = new NamePanel();
+    ClassPanel classPanel = new ClassPanel();
     
 
     CharacterCreation()
@@ -91,7 +95,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
         }
 
         subPanelsArrayList.add(namePanel.getPanel());
-        // subPanelsArrayList.add(classPanel);
+        subPanelsArrayList.add(classPanel.getPanel());
         // subPanelsArrayList.add(appearancePanel);
         
         this.add(helmImage);
@@ -100,7 +104,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
 
         this.add(buttonsPanel);
         this.add(namePanel.getPanel());
-        // this.add(classPanel);
+        this.add(classPanel.getPanel());
         // this.add(appearancePanel);
 
 		this.setVisible(true);
@@ -120,13 +124,13 @@ public class CharacterCreation extends JFrame implements ActionListener{
         }
         else if(e.getSource() == charClassButton)
         {
-            // for (JPanel panel : subPanelsArrayList) {
-            //     if(panel == classPanel)
-            //     {
-            //         panel.setVisible(true);
-            //     }
-            //     else panel.setVisible(false);
-            // }
+            for (JPanel panel : subPanelsArrayList) {
+                if(panel == classPanel.getPanel())
+                {
+                    panel.setVisible(true);
+                }
+                else panel.setVisible(false);
+            }
         }
         else if(e.getSource() == charAppearenceButton)
         {
