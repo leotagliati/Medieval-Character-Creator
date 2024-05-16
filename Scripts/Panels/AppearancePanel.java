@@ -1,4 +1,4 @@
-package Panels;
+package Scripts.Panels;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import Panels.AppearanceBodypart.BodyPart;
+import Scripts.Panels.AppearanceBodypart.BodyPart;
 
 public class AppearancePanel {
     private JPanel appearancePanel;

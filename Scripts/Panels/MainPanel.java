@@ -1,4 +1,4 @@
-package Panels;
+package Scripts.Panels;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,7 +15,7 @@ public class MainPanel {
     
     public MainPanel()
     {
-        //Inicializa os Botoes
+        // Inicializa os Botoes
         this.charNameButton = new JButton("Name");
         this.charClassButton = new JButton("Class");
         this.charGenderButton = new JButton("Gender");
@@ -31,7 +31,7 @@ public class MainPanel {
         // Set Posicao dos botoes
         for(int i = 0; i < this.mainButtons.size(); i++)
         {
-            mainButtons.get(i).setBounds(50,0 + (i*60),200,50);
+            mainButtons.get(i).setBounds(50,20 + (i*60),200,50);
         }
         
         // Set design dos botoes

@@ -1,4 +1,4 @@
-package Panels.AppearanceBodypart;
+package Scripts.Panels.AppearanceBodypart;
 
 import java.awt.Font;
 

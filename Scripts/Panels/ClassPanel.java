@@ -1,4 +1,4 @@
-package Panels;
+package Scripts.Panels;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -36,13 +36,13 @@ public class ClassPanel {
         
         for(int i = 0; i < this.classesButtons.size(); i++)
         {
-            this.classesButtons.get(i).setBounds(50,100 + (i*60),200,50);
+            this.classesButtons.get(i).setBounds(50,200 + (i*60),200,50);
         }
     }
     public JPanel getPanel() {
         return classPanel;
     }
-    public ArrayList<JButton> getClassesButtons() {
+    public ArrayList<JButton> getButtonsArray() {
         return classesButtons;
     }
 }

@@ -9,10 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Panels.AppearancePanel;
-import Panels.ClassPanel;
-import Panels.MainPanel;
-import Panels.NamePanel;
+import Scripts.Panels.AppearancePanel;
+import Scripts.Panels.ClassPanel;
+import Scripts.Panels.GenderPanel;
+import Scripts.Panels.MainPanel;
+import Scripts.Panels.NamePanel;
 
 public class CharacterCreation extends JFrame implements ActionListener{
     
@@ -22,6 +23,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
     
     MainPanel mainPanel = new MainPanel();
     NamePanel namePanel = new NamePanel();
+    GenderPanel genderPanel = new GenderPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
     
@@ -60,12 +62,15 @@ public class CharacterCreation extends JFrame implements ActionListener{
         subPanelsArrayList.add(namePanel.getPanel());
         subPanelsArrayList.add(classPanel.getPanel());
         subPanelsArrayList.add(appearancePanel.getPanel());
+        subPanelsArrayList.add(genderPanel.getPanel());
         
         this.add(helmImage);
         this.add(swordImage);
         this.add(charImage);
 
         this.add(mainPanel.getButtonsPanel());
+        this.add(namePanel.getPanel());
+        this.add(genderPanel.getPanel());
         this.add(namePanel.getPanel());
         this.add(classPanel.getPanel());
         this.add(appearancePanel.getPanel());
@@ -79,6 +84,16 @@ public class CharacterCreation extends JFrame implements ActionListener{
         {
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == namePanel.getPanel())
+                {
+                    panel.setVisible(true);
+                }
+                else panel.setVisible(false);
+            }
+        }
+        else if(e.getSource() == mainPanel.charGenderButton)
+        {
+            for (JPanel panel : subPanelsArrayList) {
+                if(panel == genderPanel.getPanel())
                 {
                     panel.setVisible(true);
                 }
