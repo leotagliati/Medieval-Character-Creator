@@ -2,8 +2,6 @@ package Panels;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -36,6 +34,7 @@ public class MainPanel {
             mainButtons.get(i).setBounds(50,0 + (i*60),200,50);
         }
         
+        // Set design dos botoes
         for (JButton jButton : this.mainButtons) {
             jButton.setFont(new Font("Jet Brains Mono", Font.PLAIN, 15));
 			jButton.setFocusable(false);

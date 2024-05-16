@@ -1,22 +1,15 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.JTextField;
 
+import Panels.AppearancePanel;
 import Panels.ClassPanel;
 import Panels.MainPanel;
 import Panels.NamePanel;
@@ -30,6 +23,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
     MainPanel mainPanel = new MainPanel();
     NamePanel namePanel = new NamePanel();
     ClassPanel classPanel = new ClassPanel();
+    AppearancePanel appearancePanel = new AppearancePanel();
     
 
     CharacterCreation()
@@ -63,11 +57,9 @@ public class CharacterCreation extends JFrame implements ActionListener{
             jButton.addActionListener(this);
         }
 
-        
-
         subPanelsArrayList.add(namePanel.getPanel());
         subPanelsArrayList.add(classPanel.getPanel());
-        // subPanelsArrayList.add(appearancePanel);
+        subPanelsArrayList.add(appearancePanel.getPanel());
         
         this.add(helmImage);
         this.add(swordImage);
@@ -76,7 +68,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
         this.add(mainPanel.getButtonsPanel());
         this.add(namePanel.getPanel());
         this.add(classPanel.getPanel());
-        // this.add(appearancePanel);
+        this.add(appearancePanel.getPanel());
 
 		this.setVisible(true);
     }
@@ -105,13 +97,13 @@ public class CharacterCreation extends JFrame implements ActionListener{
         }
         else if(e.getSource() == mainPanel.charAppearenceButton)
         {
-            // for (JPanel panel : subPanelsArrayList) {
-            //     if(panel == appearancePanel)
-            //     {
-            //         panel.setVisible(true);
-            //     }
-            //     else panel.setVisible(false);
-            // }
+            for (JPanel panel : subPanelsArrayList) {
+                if(panel == appearancePanel.getPanel())
+                {
+                    panel.setVisible(true);
+                }
+                else panel.setVisible(false);
+            }
         }
     }
     

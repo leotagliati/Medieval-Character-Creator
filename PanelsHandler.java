@@ -60,29 +60,10 @@ public class PanelsHandler extends JFrame implements ChangeListener{
     }
     public void appearencePanelHandler()
     {
-        appearancePanel = new JPanel();
-		appearancePanel.setBounds(400, 150, 300, 500);
-        appearancePanel.setBackground(Color.GREEN);
-        appearancePanel.setLayout(null);
-        appearancePanel.setVisible(false);
 
-        JTextField headText = new JTextField("Head");
-        headText.setBounds(25,10,250,40);
-        headText.setFont(new Font("Jet Brains Mono", Font.PLAIN, 25));
-        headText.setHorizontalAlignment(JTextField.CENTER);
-        headText.setOpaque(false);
-        headText.setBorder(BorderFactory.createEmptyBorder());
-        headText.setEditable(false);
-
-        JSlider headSlider = new JSlider(0,100,50);
-        headSlider.setBounds(25,50,250,40);
-        headSlider.setOpaque(false);
-        headSlider.setBorder(BorderFactory.createEmptyBorder());
-        headSlider.addChangeListener(this);
+        
 
 
-        appearancePanel.add(headText);
-        appearancePanel.add(headSlider);
     }
     @Override
     public void stateChanged(ChangeEvent e) {
