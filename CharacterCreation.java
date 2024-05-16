@@ -38,19 +38,19 @@ public class CharacterCreation extends JFrame implements ActionListener{
         JLabel charImage = new JLabel();
         charImage.setLayout(new FlowLayout());
         charImage.setBounds(1000, -100, 1000, 1000);
-        charImage.setIcon(new ImageIcon("charImage.png"));
+        charImage.setIcon(new ImageIcon("Images\\charImage.png"));
         charImage.setVisible(true);
         
         JLabel helmImage = new JLabel();
         helmImage.setLayout(new FlowLayout());
         helmImage.setBounds(1004, -196, 1000, 1000);
-        helmImage.setIcon(new ImageIcon("helmImage.png"));
+        helmImage.setIcon(new ImageIcon("Images\\helmImage.png"));
         helmImage.setVisible(true);
 
         JLabel swordImage = new JLabel();
         swordImage.setLayout(null);
         swordImage.setBounds(856, 140, 500, 500);
-        swordImage.setIcon(new ImageIcon("swordImage.png"));
+        swordImage.setIcon(new ImageIcon("Images\\swordImage.png"));
         swordImage.setVisible(true);
 
         for (JButton jButton : mainPanel.getMainButtons()) {
