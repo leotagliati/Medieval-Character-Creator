@@ -18,6 +18,7 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 
 import Panels.ClassPanel;
+import Panels.MainPanel;
 import Panels.NamePanel;
 
 public class CharacterCreation extends JFrame implements ActionListener{
@@ -25,12 +26,8 @@ public class CharacterCreation extends JFrame implements ActionListener{
     
     ArrayList<JPanel> subPanelsArrayList = new ArrayList<JPanel>();
     
-	ArrayList<JButton> mainButtons = new ArrayList<JButton>();
     
-    
-    
-	JButton charNameButton, charGenderButton, charClassButton, charAppearenceButton, charBuildButton;
-    
+    MainPanel mainPanel = new MainPanel();
     NamePanel namePanel = new NamePanel();
     ClassPanel classPanel = new ClassPanel();
     
@@ -62,37 +59,11 @@ public class CharacterCreation extends JFrame implements ActionListener{
         swordImage.setIcon(new ImageIcon("swordImage.png"));
         swordImage.setVisible(true);
 
-        charNameButton = new JButton("Name");
-        charClassButton = new JButton("Class");
-        charGenderButton = new JButton("Gender");
-        charAppearenceButton = new JButton("Appearence");
-        charBuildButton = new JButton("Build");
-        
-        mainButtons.add(charNameButton);
-        mainButtons.add(charGenderButton);
-        mainButtons.add(charClassButton);
-        mainButtons.add(charAppearenceButton);
-        
-        for(int i = 0; i < mainButtons.size(); i++)
-        {
-            mainButtons.get(i).setBounds(50,0 + (i*60),200,50);
-        }
-
-        for (JButton jButton : mainButtons) {
+        for (JButton jButton : mainPanel.getMainButtons()) {
             jButton.addActionListener(this);
-			jButton.setFont(new Font("Jet Brains Mono", Font.PLAIN, 15));
-			jButton.setFocusable(false);
         }
-        JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBounds(50, 150, 300, 500);
-        buttonsPanel.setBackground(Color.BLACK);
-		buttonsPanel.setLayout(null);
 
         
-        for(int i = 0; i < mainButtons.size(); i++)
-        {
-            buttonsPanel.add(mainButtons.get(i));
-        }
 
         subPanelsArrayList.add(namePanel.getPanel());
         subPanelsArrayList.add(classPanel.getPanel());
@@ -102,7 +73,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
         this.add(swordImage);
         this.add(charImage);
 
-        this.add(buttonsPanel);
+        this.add(mainPanel.getButtonsPanel());
         this.add(namePanel.getPanel());
         this.add(classPanel.getPanel());
         // this.add(appearancePanel);
@@ -112,7 +83,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == charNameButton)
+        if(e.getSource() == mainPanel.charNameButton)
         {
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == namePanel.getPanel())
@@ -122,7 +93,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
                 else panel.setVisible(false);
             }
         }
-        else if(e.getSource() == charClassButton)
+        else if(e.getSource() == mainPanel.charClassButton)
         {
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == classPanel.getPanel())
@@ -132,7 +103,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
                 else panel.setVisible(false);
             }
         }
-        else if(e.getSource() == charAppearenceButton)
+        else if(e.getSource() == mainPanel.charAppearenceButton)
         {
             // for (JPanel panel : subPanelsArrayList) {
             //     if(panel == appearancePanel)
