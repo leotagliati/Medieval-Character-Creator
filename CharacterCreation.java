@@ -37,7 +37,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
 
 	JButton charNameButton, charGenderButton, charClassButton, charFacesButton, charBuildButton;
     
-
+    
 
     CharacterCreation()
     {
@@ -46,6 +46,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
 		this.setSize(1280, 720);
 		this.setLayout(null);
 
+        // Image Setter
         JLabel charImage = new JLabel();
         charImage.setLayout(new FlowLayout());
         charImage.setBounds(1000, -100, 1000, 1000);
@@ -64,6 +65,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
         swordImage.setIcon(new ImageIcon("swordImage.png"));
         swordImage.setVisible(true);
 
+
         nameTextfield = new JTextField();
         nameTextfield.setBounds(25,10,250,40);
         nameTextfield.setFont(new Font("Jet Brains Mono", Font.PLAIN, 30));
@@ -76,18 +78,8 @@ public class CharacterCreation extends JFrame implements ActionListener{
             }});
         nameTextfield.setVisible(true);
 
-        knightClassButton = new JButton("Knight");
-        heraldClassButton = new JButton("Herald");
-        thiefClassButton = new JButton("Thief");
-        sorcererClassButton = new JButton("Sorcerer");
-        clericClassButton = new JButton("Cleric");
-
-
-        classesButtons.add(knightClassButton);
-        classesButtons.add(heraldClassButton);
-        classesButtons.add(thiefClassButton);
-        classesButtons.add(sorcererClassButton);
-        classesButtons.add(clericClassButton);
+        // Class Handler
+        
 
         
         charNameButton = new JButton("Name");
@@ -111,6 +103,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
 			jButton.setFont(new Font("Jet Brains Mono", Font.PLAIN, 15));
 			jButton.setFocusable(false);
         }
+        classHandler();
         
         JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setBounds(50, 150, 300, 500);
@@ -127,20 +120,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
         namePanel.setVisible(false);
 
         // Painel gerado pela ActionListener do classButton
-        classPanel = new JPanel();
-		classPanel.setBounds(400, 150, 300, 500);
-        classPanel.setBackground(Color.BLUE);
-        classPanel.setLayout(null);
-
-        for (JButton jButton : classesButtons) {
-            classPanel.add(jButton);
-        }
-        classPanel.setVisible(false);
         
-        for(int i = 0; i < classesButtons.size(); i++)
-        {
-            classesButtons.get(i).setBounds(50,100 + (i*60),200,50);
-        }
         for(int i = 0; i < charButtons.size(); i++)
         {
             buttonsPanel.add(charButtons.get(i));
@@ -179,6 +159,36 @@ public class CharacterCreation extends JFrame implements ActionListener{
                 }
                 else panel.setVisible(false);
             }
+        }
+    }
+    public void classHandler()
+    {
+        knightClassButton = new JButton("Knight");
+        heraldClassButton = new JButton("Herald");
+        thiefClassButton = new JButton("Thief");
+        sorcererClassButton = new JButton("Sorcerer");
+        clericClassButton = new JButton("Cleric");
+
+
+        classesButtons.add(knightClassButton);
+        classesButtons.add(heraldClassButton);
+        classesButtons.add(thiefClassButton);
+        classesButtons.add(sorcererClassButton);
+        classesButtons.add(clericClassButton);
+        
+        classPanel = new JPanel();
+		classPanel.setBounds(400, 150, 300, 500);
+        classPanel.setBackground(Color.BLUE);
+        classPanel.setLayout(null);
+
+        for (JButton jButton : classesButtons) {
+            classPanel.add(jButton);
+        }
+        classPanel.setVisible(false);
+        
+        for(int i = 0; i < classesButtons.size(); i++)
+        {
+            classesButtons.get(i).setBounds(50,100 + (i*60),200,50);
         }
     }
 }
