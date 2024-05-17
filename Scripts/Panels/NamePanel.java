@@ -1,6 +1,8 @@
 package Scripts.Panels;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
@@ -23,6 +25,16 @@ public class NamePanel{
             public void mouseClicked(MouseEvent e) {
                 nameTextField.setEditable(true);
             }
+        });
+        this.nameTextField.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e){
+            if(e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_ESCAPE)
+            {
+                nameTextField.setEditable(false);
+            }
+        }
+            
         });
         this.nameTextField.setVisible(true);
         
