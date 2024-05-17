@@ -39,12 +39,12 @@ public class MainPanel {
         {
             mainButtons.get(i).setBounds(30,20 + (i*100),239,70);
 
-            JLabel label = new JLabel();
-            label.setLayout(new GridLayout(mainButtons.size(), 1));
-            label.setBounds(31, 10 + (i*100),1000,100);
-            label.setIcon(new ImageIcon("Images\\button.png"));
-            label.setVisible(true);
-            buttonsImageLabel.add(label);
+            JLabel backgButtonLabel = new JLabel();
+            backgButtonLabel.setLayout(new GridLayout(mainButtons.size(), 1));
+            backgButtonLabel.setBounds(31, 10 + (i*100),1000,100);
+            backgButtonLabel.setIcon(new ImageIcon("Images\\button.png"));
+            backgButtonLabel.setVisible(true);
+            buttonsImageLabel.add(backgButtonLabel);
         }
         
         // Set design dos botoes
