@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,6 +36,11 @@ public class CharacterCreation extends JFrame implements ActionListener{
 		this.setSize(1280, 720);
 		this.setLayout(null);
 
+        JLabel UIimage = new JLabel();
+        UIimage.setLayout(new FlowLayout());
+        UIimage.setBounds(800, -100, 500, 1000);
+        UIimage.setIcon(new ImageIcon("Images\\hud1.png"));
+        UIimage.setVisible(true);
 
         // Image Setter
         JLabel charImage = new JLabel();
@@ -64,6 +70,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
         subPanelsArrayList.add(appearancePanel.getPanel());
         subPanelsArrayList.add(genderPanel.getPanel());
         
+        this.add(UIimage);
         this.add(helmImage);
         this.add(swordImage);
         this.add(charImage);
@@ -74,6 +81,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
         this.add(namePanel.getPanel());
         this.add(classPanel.getPanel());
         this.add(appearancePanel.getPanel());
+
 
 		this.setVisible(true);
     }
