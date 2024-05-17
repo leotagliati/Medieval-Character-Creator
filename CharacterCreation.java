@@ -34,6 +34,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
         super("Character Creation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1280, 720);
+        this.getContentPane().setBackground(Color.BLACK);
 		this.setLayout(null);
 
         JLabel UIimage = new JLabel();
