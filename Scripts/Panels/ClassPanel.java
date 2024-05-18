@@ -47,6 +47,7 @@ public class ClassPanel {
                     for (JButton jButton : classesButtons) {
                         if (e.getSource() == jButton) {
                             classChosen = jButton.getText();
+                            classPanel.setVisible(false);
                             // JOptionPane.showMessageDialog(jButton, classChosen);
                         }
                     }
