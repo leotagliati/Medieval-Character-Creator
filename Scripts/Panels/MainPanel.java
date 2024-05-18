@@ -34,11 +34,11 @@ public class MainPanel {
         // Set Posicao dos botoes
         for(int i = 0; i < this.mainButtons.size(); i++)
         {
-            mainButtons.get(i).setBounds(30,20 + (i*100),239,70);
+            mainButtons.get(i).setBounds(30, 20 + (i*100),239,40);
 
             JLabel backgButtonLabel = new JLabel();
             backgButtonLabel.setLayout(new GridLayout(mainButtons.size(), 1));
-            backgButtonLabel.setBounds(31, 10 + (i*100),1000,100);
+            backgButtonLabel.setBounds(65, 0 + (i*100),300,100);
             backgButtonLabel.setIcon(new ImageIcon("Images\\button.png"));
             backgButtonLabel.setVisible(true);
             buttonsImageLabel.add(backgButtonLabel);
@@ -48,8 +48,8 @@ public class MainPanel {
         for (JButton jButton : this.mainButtons) {
             jButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
             jButton.setForeground(Color.WHITE);
-            jButton.setOpaque(false);
-            jButton.setContentAreaFilled(false);
+            jButton.setOpaque(true);
+            jButton.setContentAreaFilled(true);
             jButton.setBorderPainted(false);
             jButton.setFocusable(false);
         }
