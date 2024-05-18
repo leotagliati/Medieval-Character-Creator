@@ -29,8 +29,6 @@ public class CharacterCreation extends JFrame implements ActionListener{
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
 
-    ChosenAttPanel chosenAttPanel = new ChosenAttPanel();
-    
 
     CharacterCreation()
     {
@@ -39,6 +37,8 @@ public class CharacterCreation extends JFrame implements ActionListener{
 		this.setSize(1280, 720);
         this.getContentPane().setBackground(Color.BLACK);
 		this.setLayout(null);
+        
+        ChosenAttPanel.setupPanel();
 
         JLabel UIimage = new JLabel();
         UIimage.setLayout(new FlowLayout());
@@ -83,22 +83,20 @@ public class CharacterCreation extends JFrame implements ActionListener{
         this.add(genderPanel.getPanel());
         this.add(classPanel.getPanel());
         this.add(appearancePanel.getPanel());
-        this.add(chosenAttPanel.getPanel());
-
+        this.add(ChosenAttPanel.getPanel());
 
 		this.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("a");
         if(e.getSource() == mainPanel.charNameButton)
         {
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == namePanel.getPanel())
                 {
                     panel.setVisible(true);
-                    chosenAttPanel.getPanel().setVisible(false);
+                    ChosenAttPanel.getPanel().setVisible(false);
                     panel.setEnabled(true);
                 }
                 else panel.setVisible(false);
@@ -110,7 +108,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
                 if(panel == genderPanel.getPanel())
                 {
                     panel.setVisible(true);
-                    chosenAttPanel.getPanel().setVisible(false);
+                    ChosenAttPanel.getPanel().setVisible(false);
 
                 }
                 else panel.setVisible(false);
@@ -122,7 +120,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
                 if(panel == classPanel.getPanel())
                 {
                     panel.setVisible(true);
-                    chosenAttPanel.getPanel().setVisible(false);
+                    ChosenAttPanel.getPanel().setVisible(false);
 
                 }
                 else panel.setVisible(false);
@@ -134,7 +132,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
                 if(panel == appearancePanel.getPanel())
                 {
                     panel.setVisible(true);
-                    chosenAttPanel.getPanel().setVisible(false);
+                    ChosenAttPanel.getPanel().setVisible(false);
 
                 }
                 else panel.setVisible(false);

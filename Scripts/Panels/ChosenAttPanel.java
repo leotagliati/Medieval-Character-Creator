@@ -6,37 +6,35 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public final class ChosenAttPanel {
-    public JTextField chosenNameField, chosenClassField, chosenGenderField;
-    private ArrayList<JTextField> chosenTexts = new ArrayList<JTextField>();
-    private JPanel chosenPanel = new JPanel();
+public class ChosenAttPanel {
+    public static JTextField chosenNameField, chosenClassField, chosenGenderField;
+    private static ArrayList<JTextField> chosenTexts = new ArrayList<JTextField>();
+    private static JPanel chosenPanel = new JPanel();
 
-    
-    private ChosenAttPanel()
+    public static void setupPanel()
     {
-        this.chosenNameField = new JTextField();
-        this.chosenGenderField = new JTextField();
-        this.chosenClassField = new JTextField();
+        chosenNameField = new JTextField();
+        chosenGenderField = new JTextField();
+        chosenClassField = new JTextField();
+        chosenPanel.setBounds(400, 150, 300, 500);
+        chosenPanel.setBackground(Color.BLUE);
+        chosenPanel.setLayout(null);
         
-        this.chosenPanel.setBounds(400, 150, 300, 500);
-        this.chosenPanel.setBackground(Color.BLUE);
-        this.chosenPanel.setLayout(null);
+        chosenTexts.add(chosenNameField);
+        chosenTexts.add(chosenGenderField);
+        chosenTexts.add(chosenClassField);
         
-        this.chosenTexts.add(chosenNameField);
-        this.chosenTexts.add(chosenGenderField);
-        this.chosenTexts.add(chosenClassField);
-        
-        for (JTextField text : this.chosenTexts) {
-            this.chosenPanel.add(text);
+        for (JTextField text : chosenTexts) {
+            chosenPanel.add(text);
         }
-        this.chosenPanel.setVisible(true);
+        chosenPanel.setVisible(true);
         
-        for (int i = 0; i < this.chosenTexts.size(); i++) {
-            this.chosenTexts.get(i).setBounds(50, 200 + (i * 60), 200, 50);
+        for (int i = 0; i < chosenTexts.size(); i++) {
+            chosenTexts.get(i).setBounds(50, 200 + (i * 60), 200, 50);
         }
     }
-    
-    public JPanel getPanel() {
+    public static JPanel getPanel() {
         return chosenPanel;
     }
+    
 }

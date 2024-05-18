@@ -45,6 +45,8 @@ public class NamePanel{
                     nameTextField.setText("Entry incomplete");
                 }
                 nameTextField.setEditable(false);
+                namePanel.setVisible(false);
+                ChosenAttPanel.getPanel().setVisible(true);
             }
         }
             

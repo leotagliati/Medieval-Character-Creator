@@ -14,7 +14,6 @@ public class ClassPanel {
     public JButton knightClassButton, heraldClassButton, sorcererClassButton, clericClassButton;
     private JPanel classPanel = new JPanel();
     private ArrayList<JButton> classesButtons = new ArrayList<JButton>();
-
     private String classChosen;
 
     public ClassPanel() {
@@ -48,6 +47,7 @@ public class ClassPanel {
                         if (e.getSource() == jButton) {
                             classChosen = jButton.getText();
                             classPanel.setVisible(false);
+                            ChosenAttPanel.getPanel().setVisible(true);
                             // JOptionPane.showMessageDialog(jButton, classChosen);
                         }
                     }

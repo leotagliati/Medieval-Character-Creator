@@ -48,6 +48,7 @@ public class GenderPanel {
                         if (e.getSource() == jButton) {
                             genderChosen = jButton.getText();
                             genderPanel.setVisible(false);
+                            ChosenAttPanel.getPanel().setVisible(true);
                             // JOptionPane.showMessageDialog(jButton, genderChosen);
                         }
                     }
