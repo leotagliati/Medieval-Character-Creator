@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Scripts.Panels.AppearancePanel;
+import Scripts.Panels.ChosenAttPanel;
 import Scripts.Panels.ClassPanel;
 import Scripts.Panels.GenderPanel;
 import Scripts.Panels.MainPanel;
@@ -26,15 +28,23 @@ public class CharacterCreation extends JFrame implements ActionListener{
     GenderPanel genderPanel = new GenderPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
-    
+
 
     CharacterCreation()
     {
         super("Character Creation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1280, 720);
+        this.getContentPane().setBackground(Color.BLACK);
 		this.setLayout(null);
+        
+        ChosenAttPanel.setupPanel();
 
+        JLabel UIimage = new JLabel();
+        UIimage.setLayout(new FlowLayout());
+        UIimage.setBounds(800, -100, 500, 1000);
+        UIimage.setIcon(new ImageIcon("Images\\hud1.png"));
+        UIimage.setVisible(true);
 
         // Image Setter
         JLabel charImage = new JLabel();
@@ -58,22 +68,23 @@ public class CharacterCreation extends JFrame implements ActionListener{
         for (JButton jButton : mainPanel.getMainButtons()) {
             jButton.addActionListener(this);
         }
-
         subPanelsArrayList.add(namePanel.getPanel());
         subPanelsArrayList.add(classPanel.getPanel());
         subPanelsArrayList.add(appearancePanel.getPanel());
         subPanelsArrayList.add(genderPanel.getPanel());
         
+        this.add(UIimage);
         this.add(helmImage);
         this.add(swordImage);
         this.add(charImage);
 
         this.add(mainPanel.getButtonsPanel());
+        this.add(mainPanel.getBackgJPanel());
         this.add(namePanel.getPanel());
         this.add(genderPanel.getPanel());
-        this.add(namePanel.getPanel());
         this.add(classPanel.getPanel());
         this.add(appearancePanel.getPanel());
+        this.add(ChosenAttPanel.getPanel());
 
 		this.setVisible(true);
     }
@@ -82,40 +93,64 @@ public class CharacterCreation extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mainPanel.charNameButton)
         {
+            mainPanel.getButtonsImageLabel().get(0).setIcon(new ImageIcon("Images\\buttonClicked.png"));
+            mainPanel.getButtonsImageLabel().get(1).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == namePanel.getPanel())
                 {
                     panel.setVisible(true);
+                    ChosenAttPanel.getPanel().setVisible(false);
+                    panel.setEnabled(true);
                 }
                 else panel.setVisible(false);
             }
         }
         else if(e.getSource() == mainPanel.charGenderButton)
         {
+            mainPanel.getButtonsImageLabel().get(0).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(1).setIcon(new ImageIcon("Images\\buttonClicked.png"));
+            mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == genderPanel.getPanel())
                 {
                     panel.setVisible(true);
+                    ChosenAttPanel.getPanel().setVisible(false);
+
                 }
                 else panel.setVisible(false);
             }
         }
         else if(e.getSource() == mainPanel.charClassButton)
         {
+            mainPanel.getButtonsImageLabel().get(0).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(1).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\buttonClicked.png"));
+            mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == classPanel.getPanel())
                 {
                     panel.setVisible(true);
+                    ChosenAttPanel.getPanel().setVisible(false);
+
                 }
                 else panel.setVisible(false);
             }
         }
         else if(e.getSource() == mainPanel.charAppearenceButton)
         {
+            mainPanel.getButtonsImageLabel().get(0).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(1).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\buttonClicked.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == appearancePanel.getPanel())
                 {
                     panel.setVisible(true);
+                    ChosenAttPanel.getPanel().setVisible(false);
+
                 }
                 else panel.setVisible(false);
             }

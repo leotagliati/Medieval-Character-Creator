@@ -1,6 +1,8 @@
 package Scripts.Panels;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
@@ -13,16 +15,41 @@ public class NamePanel{
     private JPanel namePanel;
     public NamePanel()
     {
-        this.nameTextField = new JTextField();
-        this.nameTextField.setBounds(25,10,250,40);
-        this.nameTextField.setFont(new Font("Jet Brains Mono", Font.PLAIN, 30));
+        this.nameTextField = new JTextField("Entry incomplete");
+        this.nameTextField.setBounds(25,20,250,40);
+        this.nameTextField.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
         this.nameTextField.setHorizontalAlignment(JTextField.CENTER);
+        this.nameTextField.setOpaque(false);
+        this.nameTextField.setBorder(null);
+        this.nameTextField.setForeground(Color.RED);
         this.nameTextField.setEditable(false);
         this.nameTextField.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 nameTextField.setEditable(true);
+                if(nameTextField.getText().equals("Entry incomplete"))
+                {
+                    nameTextField.setText("");
+                }
+                nameTextField.setForeground(Color.WHITE);
             }
+        });
+        this.nameTextField.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e){
+            if(e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_ESCAPE)
+            {
+                if(nameTextField.getText().equals(""))
+                {
+                    nameTextField.setForeground(Color.RED);
+                    nameTextField.setText("Entry incomplete");
+                }
+                nameTextField.setEditable(false);
+                namePanel.setVisible(false);
+                ChosenAttPanel.getPanel().setVisible(true);
+            }
+        }
+            
         });
         this.nameTextField.setVisible(true);
         

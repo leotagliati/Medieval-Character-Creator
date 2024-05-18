@@ -2,16 +2,23 @@ package Scripts.Panels;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.GroupLayout.Alignment;
 
 public class MainPanel {
     public JButton charNameButton, charGenderButton, charClassButton, charAppearenceButton, charBuildButton;
-	private ArrayList<JButton> mainButtons = new ArrayList<JButton>();
+	private ArrayList<JLabel> buttonsImageLabel = new ArrayList<JLabel>();
+    private ArrayList<JButton> mainButtons = new ArrayList<JButton>();
     private JPanel buttonsPanel;
-
+    private JPanel backgJPanel;
+    
     
     public MainPanel()
     {
@@ -28,27 +35,52 @@ public class MainPanel {
         this.mainButtons.add(charClassButton);
         this.mainButtons.add(charAppearenceButton);
         
-        // Set Posicao dos botoes
+        GridLayout buttonsLayout = new GridLayout();
+        buttonsLayout.setColumns(1);
+        buttonsLayout.setRows(this.mainButtons.size());
+        buttonsLayout.setVgap(20);
+        
         for(int i = 0; i < this.mainButtons.size(); i++)
         {
-            mainButtons.get(i).setBounds(50,20 + (i*60),200,50);
+            JLabel backgButtonLabel = new JLabel();
+            backgButtonLabel.setLayout(null);
+            backgButtonLabel.setBounds(0, 0 + (i*130),300,100);
+            backgButtonLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            backgButtonLabel.setVerticalAlignment(SwingConstants.CENTER);
+            backgButtonLabel.setIcon(new ImageIcon("Images\\button.png"));
+            backgButtonLabel.setVisible(true);
+            buttonsImageLabel.add(backgButtonLabel);
         }
         
         // Set design dos botoes
         for (JButton jButton : this.mainButtons) {
-            jButton.setFont(new Font("Jet Brains Mono", Font.PLAIN, 15));
-			jButton.setFocusable(false);
+            jButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
+            jButton.setForeground(Color.WHITE);
+            jButton.setOpaque(true);
+            jButton.setContentAreaFilled(false);
+            jButton.setBorderPainted(false);
+            jButton.setFocusable(false);
         }
         
+        this.backgJPanel = new JPanel();
+        this.backgJPanel.setLayout(null);
+		this.backgJPanel.setBounds(50, 150, 300, 500);
+        this.backgJPanel.setOpaque(false);
+        this.backgJPanel.setBackground(Color.GREEN);
+        
         this.buttonsPanel = new JPanel();
-		this.buttonsPanel.setBounds(50, 150, 300, 500);
-        this.buttonsPanel.setBackground(Color.BLACK);
-		this.buttonsPanel.setLayout(null);
+        this.buttonsPanel.setLayout(buttonsLayout);
+		this.buttonsPanel.setBounds(75, 150, 250, 500);
+        this.buttonsPanel.setOpaque(false);
+        this.buttonsPanel.setBackground(Color.RED);
         
         
         for(int i = 0; i < mainButtons.size(); i++)
         {
             buttonsPanel.add(mainButtons.get(i));
+        }
+        for (JLabel jLabel : buttonsImageLabel) {
+            backgJPanel.add(jLabel);
         }
     }
     public ArrayList<JButton> getMainButtons() {
@@ -56,5 +88,11 @@ public class MainPanel {
     }
     public JPanel getButtonsPanel() {
         return buttonsPanel;
+    }
+    public JPanel getBackgJPanel() {
+        return backgJPanel;
+    }
+    public ArrayList<JLabel> getButtonsImageLabel() {
+        return buttonsImageLabel;
     }
 }
