@@ -31,6 +31,7 @@ public class ChosenAttPanel {
         
         for (int i = 0; i < chosenTexts.size(); i++) {
             chosenTexts.get(i).setBounds(50, 20+ (i * 60), 200, 50);
+            chosenTexts.get(i).setEditable(false);
         }
     }
     public static JPanel getPanel() {
