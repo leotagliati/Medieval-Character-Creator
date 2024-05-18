@@ -20,6 +20,7 @@ public class NamePanel{
         this.nameTextField.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
         this.nameTextField.setHorizontalAlignment(JTextField.CENTER);
         this.nameTextField.setOpaque(false);
+        this.nameTextField.setBorder(null);
         this.nameTextField.setForeground(Color.RED);
         this.nameTextField.setEditable(false);
         this.nameTextField.addMouseListener(new MouseAdapter() {
