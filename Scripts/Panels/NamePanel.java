@@ -12,8 +12,11 @@ import javax.swing.JTextField;
 public class NamePanel extends JPanel {
 
     private JTextField nameTextField;
+    public static String nameChosen;
 
+    
     public NamePanel() {
+        
         super();
         this.nameTextField = new JTextField("Entry incomplete");
         this.nameTextField.setBounds(25, 20, 250, 40);
@@ -41,15 +44,20 @@ public class NamePanel extends JPanel {
                         nameTextField.setForeground(Color.RED);
                         nameTextField.setText("Entry incomplete");
                     }
-                    nameTextField.setEditable(false);
+                    else
+                    {
+                        nameTextField.setEditable(false);
+                        nameChosen = nameTextField.getText();
+                        ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), GenderPanel.getGenderChosen(), ClassPanel.getClassChosen());
+                    }
                     setVisible(false);
                     ChosenAttPanel.getPanel().setVisible(true);
                 }
             }
-
+            
         });
         this.nameTextField.setVisible(true);
-
+        
         this.setBounds(400, 150, 300, 500);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
@@ -63,5 +71,8 @@ public class NamePanel extends JPanel {
     public void setNameTextField(JTextField nameTextField) {
         this.nameTextField = nameTextField;
     }
-
+    public static String getNameChosen() {
+        return nameChosen;
+    }
+    
 }

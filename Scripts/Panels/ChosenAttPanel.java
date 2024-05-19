@@ -16,7 +16,7 @@ public class ChosenAttPanel{
         chosenNameField = new JTextField();
         chosenGenderField = new JTextField();
         chosenClassField = new JTextField();
-        chosenPanel.setBounds(400, 150, 300, 500);
+        chosenPanel.setBounds(400, 150, 350, 500);
         chosenPanel.setBackground(Color.BLUE);
         chosenPanel.setLayout(null);
         
@@ -30,12 +30,18 @@ public class ChosenAttPanel{
         chosenPanel.setVisible(true);
         
         for (int i = 0; i < chosenTexts.size(); i++) {
-            chosenTexts.get(i).setBounds(50, 20+ (i * 60), 200, 50);
+            chosenTexts.get(i).setBounds(120, 20+ (i * 60), 200, 50);
             chosenTexts.get(i).setEditable(false);
         }
     }
     public static JPanel getPanel() {
         return chosenPanel;
+    }
+    public static void updatePanel(String nameChosen, String genderChosen, String classChosen)
+    {
+        chosenNameField.setText(nameChosen);
+        chosenGenderField.setText(genderChosen);
+        chosenClassField.setText(classChosen);
     }
     
 }
