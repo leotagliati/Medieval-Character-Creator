@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.GroupLayout.Alignment;
 
 public class MainPanel extends JPanel{
     public JButton charNameButton, charGenderButton, charClassButton, charAppearenceButton, charBuildButton;
