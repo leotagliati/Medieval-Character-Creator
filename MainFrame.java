@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import Scripts.ImageCreate;
 import Scripts.Panels.AppearancePanel;
 import Scripts.Panels.ChosenAttPanel;
 import Scripts.Panels.ClassPanel;
@@ -18,7 +19,7 @@ import Scripts.Panels.GenderPanel;
 import Scripts.Panels.MainPanel;
 import Scripts.Panels.NamePanel;
 
-public class CharacterCreation extends JFrame implements ActionListener{
+public class MainFrame extends JFrame implements ActionListener{
     
     
     ArrayList<JPanel> subPanelsArrayList = new ArrayList<JPanel>();
@@ -31,7 +32,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
     AppearancePanel appearancePanel = new AppearancePanel();
 
 
-    CharacterCreation()
+    MainFrame()
     {
         super("Character Creation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,41 +42,27 @@ public class CharacterCreation extends JFrame implements ActionListener{
         
         ChosenAttPanel.setupPanel();
 
-        JLabel UIimage = new JLabel();
-        UIimage.setLayout(new FlowLayout());
-        UIimage.setBounds(1080, 0, 500, 750);
-        UIimage.setIcon(new ImageIcon("Images\\hud1.png"));
-        UIimage.setHorizontalAlignment(JLabel.CENTER);
-        UIimage.setVerticalAlignment(JLabel.CENTER);
-        UIimage.setForeground(Color.RED);
-        // UIimage.setOpaque(true);
-        UIimage.setVisible(true);
-
         // Image Setter
-        JLabel charImage = new JLabel();
-        charImage.setLayout(null);
-        charImage.setIcon(new ImageIcon("Images\\charImage.png"));
-        charImage.setVisible(true);
-        charImage.setHorizontalAlignment(JLabel.CENTER);
-        charImage.setVerticalAlignment(JLabel.CENTER);
-        charImage.setBounds(UIimage.getLocation().x, UIimage.getLocation().y, 500, 800);
-        // charImage.setOpaque(true);
-        
-        JLabel helmImage = new JLabel();
-        helmImage.setLayout(null);
-        helmImage.setIcon(new ImageIcon("Images\\helmImage.png"));
-        helmImage.setHorizontalAlignment(JLabel.CENTER);
-        helmImage.setVerticalAlignment(JLabel.CENTER);
-        helmImage.setBounds(UIimage.getLocation().x, UIimage.getLocation().y, 500, 800);
-        helmImage.setVisible(true);
+        ImageCreate UIimage = new ImageCreate(1080, 0, 500, 750);
+        UIimage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        UIimage.setIconFile("Images\\hud1.png");
+        UIimage.imageSetter();
 
-        JLabel swordImage = new JLabel();
-        swordImage.setLayout(null);
-        swordImage.setIcon(new ImageIcon("Images\\torsoImage.png"));
-        swordImage.setHorizontalAlignment(JLabel.CENTER);
-        swordImage.setVerticalAlignment(JLabel.CENTER);
-        swordImage.setBounds(UIimage.getLocation().x, UIimage.getLocation().y, 500, 800);
-        swordImage.setVisible(true);
+        ImageCreate charImage = new ImageCreate(1080, 0, 500, 750);
+        charImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        charImage.setIconFile("Images\\charImage.png");
+        charImage.imageSetter();
+        
+        ImageCreate helmImage = new ImageCreate(1080, 0, 500, 750);
+        helmImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        helmImage.setIconFile("Images\\helmImage.png");
+        helmImage.imageSetter();
+
+        ImageCreate swordImage = new ImageCreate(1080, 0, 500, 750);
+        swordImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        swordImage.setIconFile("Images\\torsoImage.png");
+        swordImage.imageSetter();
+
 
         for (JButton jButton : mainPanel.getMainButtons()) {
             jButton.addActionListener(this);

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class teste {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         Scanner scanner = new Scanner(System.in);
-        CharacterCreation c1 = new CharacterCreation();
+        MainFrame c1 = new MainFrame();
         File file  = new File("Music\\12.wav");
         AudioInputStream backGroundMusic = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
