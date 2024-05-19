@@ -45,14 +45,14 @@ public class ClassPanel extends JPanel {
         
         // Inicializa as molduras dos botoes
         for (int i = 0; i < this.classButtons.size(); i++) {
-            ImageCreate backgroundImage = new ImageCreate(0, 0 + (i * 130), 300, 100);
+            ImageCreate backgroundImage = new ImageCreate(0, 0, 350, 100);
             backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
             backgroundImage.setIconFile("Images\\underName.png");
             backgroundImage.imageSetter();
             buttonsImage.add(backgroundImage);
         }
         for (JButton jButton : this.classButtons) {
-            jButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
+            jButton.setFont(new Font("Adobe Garamond Pro", Font.ITALIC, 25));
             jButton.setForeground(Color.WHITE);
             jButton.setOpaque(true);
             jButton.setContentAreaFilled(false);
@@ -61,14 +61,14 @@ public class ClassPanel extends JPanel {
         }
         
         this.backgJPanel = new JPanel();
-        this.backgJPanel.setLayout(null);
-        this.backgJPanel.setBounds(400, 150, 300, 500);
+        this.backgJPanel.setLayout(buttonsLayout);
+        this.backgJPanel.setBounds(500, 200, 350, 400);
         this.backgJPanel.setOpaque(false);
         this.backgJPanel.setBackground(Color.GREEN);
         this.backgJPanel.setVisible(false);
         
         this.setLayout(buttonsLayout);
-        this.setBounds(400, 150, 300, 500);
+        this.setBounds(500, 200, 350, 400);
         this.setOpaque(false);
         this.setBackground(Color.BLUE);
         
@@ -79,6 +79,7 @@ public class ClassPanel extends JPanel {
             backgJPanel.add(jLabel);
         }
         
+        this.backgJPanel.setVisible(false);
         this.setVisible(false);
         
         for (JButton jButton : classButtons) {

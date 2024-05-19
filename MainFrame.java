@@ -68,6 +68,7 @@ public class MainFrame extends JFrame implements ActionListener{
             jButton.addActionListener(this);
         }
         subPanelsArrayList.add(namePanel);
+        subPanelsArrayList.add(classPanel.getBackgJPanel());
         subPanelsArrayList.add(classPanel);
         subPanelsArrayList.add(appearancePanel);
         subPanelsArrayList.add(genderPanel);
