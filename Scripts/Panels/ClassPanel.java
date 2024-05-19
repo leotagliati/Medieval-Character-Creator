@@ -91,6 +91,7 @@ public class ClassPanel extends JPanel {
                         if (e.getSource() == jButton) {
                             classChosen = jButton.getText();
                             setVisible(false);
+                            backgJPanel.setVisible(false);
                             ChosenAttPanel.getPanel().setVisible(true);
                             ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), GenderPanel.getGenderChosen(),
                             classChosen);

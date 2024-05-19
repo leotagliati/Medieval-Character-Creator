@@ -18,6 +18,7 @@ import Scripts.Panels.ClassPanel;
 import Scripts.Panels.GenderPanel;
 import Scripts.Panels.MainPanel;
 import Scripts.Panels.NamePanel;
+import Scripts.Panels.VesturePanel;
 
 public class MainFrame extends JFrame implements ActionListener{
     
@@ -27,6 +28,7 @@ public class MainFrame extends JFrame implements ActionListener{
     
     MainPanel mainPanel = new MainPanel();
     NamePanel namePanel = new NamePanel();
+    VesturePanel vesturePanel = new VesturePanel();
     GenderPanel genderPanel = new GenderPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
@@ -71,7 +73,7 @@ public class MainFrame extends JFrame implements ActionListener{
         subPanelsArrayList.add(classPanel.getBackgJPanel());
         subPanelsArrayList.add(classPanel);
         subPanelsArrayList.add(appearancePanel);
-        subPanelsArrayList.add(genderPanel);
+        subPanelsArrayList.add(vesturePanel);
         
         this.add(UIimage);
         this.add(helmImage);
@@ -81,7 +83,7 @@ public class MainFrame extends JFrame implements ActionListener{
         this.add(mainPanel);
         this.add(mainPanel.getBackgJPanel());
         this.add(namePanel);
-        this.add(genderPanel);
+        this.add(vesturePanel);
         this.add(classPanel);
         this.add(classPanel.getBackgJPanel());
         this.add(appearancePanel);
@@ -108,14 +110,14 @@ public class MainFrame extends JFrame implements ActionListener{
                 else panel.setVisible(false);
             }
         }
-        else if(e.getSource() == mainPanel.charGenderButton)
+        else if(e.getSource() == mainPanel.charVestureButton)
         {
             mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\button.png"));
             mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\buttonClicked.png"));
             mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\button.png"));
             mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
-                if(panel == genderPanel)
+                if(panel == vesturePanel)
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
