@@ -11,45 +11,42 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class MainPanel extends JPanel{
+import Scripts.ImageCreate;
+
+public class MainPanel extends JPanel {
     public JButton charNameButton, charGenderButton, charClassButton, charAppearenceButton, charBuildButton;
-	private ArrayList<JLabel> buttonsImageLabel = new ArrayList<JLabel>();
+    private ArrayList<JLabel> buttonsImage = new ArrayList<JLabel>();
     private ArrayList<JButton> mainButtons = new ArrayList<JButton>();
     private JPanel backgJPanel;
-    
-    
-    public MainPanel()
-    {
+
+    public MainPanel() {
+        super();
         // Inicializa os Botoes
         this.charNameButton = new JButton("Name");
         this.charClassButton = new JButton("Class");
         this.charGenderButton = new JButton("Gender");
         this.charAppearenceButton = new JButton("Appearence");
         this.charBuildButton = new JButton("Build");
-        
+
         // Add os botoes no arrayList
         this.mainButtons.add(charNameButton);
         this.mainButtons.add(charGenderButton);
         this.mainButtons.add(charClassButton);
         this.mainButtons.add(charAppearenceButton);
-        
+
         GridLayout buttonsLayout = new GridLayout();
         buttonsLayout.setColumns(1);
         buttonsLayout.setRows(this.mainButtons.size());
         buttonsLayout.setVgap(20);
-        
-        for(int i = 0; i < this.mainButtons.size(); i++)
-        {
-            JLabel backgButtonLabel = new JLabel();
-            backgButtonLabel.setLayout(null);
-            backgButtonLabel.setBounds(0, 0 + (i*130),300,100);
-            backgButtonLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            backgButtonLabel.setVerticalAlignment(SwingConstants.CENTER);
-            backgButtonLabel.setIcon(new ImageIcon("Images\\button.png"));
-            backgButtonLabel.setVisible(true);
-            buttonsImageLabel.add(backgButtonLabel);
+
+        for (int i = 0; i < this.mainButtons.size(); i++) {
+            ImageCreate backgroundImage = new ImageCreate(0, 0 + (i * 130), 300, 100);
+            backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+            backgroundImage.setIconFile("Images\\button.png");
+            backgroundImage.imageSetter();
+            buttonsImage.add(backgroundImage);
         }
-        
+
         // Set design dos botoes
         for (JButton jButton : this.mainButtons) {
             jButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
@@ -59,34 +56,35 @@ public class MainPanel extends JPanel{
             jButton.setBorderPainted(false);
             jButton.setFocusable(false);
         }
-        
+
         this.backgJPanel = new JPanel();
         this.backgJPanel.setLayout(null);
-		this.backgJPanel.setBounds(50, 150, 300, 500);
+        this.backgJPanel.setBounds(50, 150, 300, 500);
         this.backgJPanel.setOpaque(false);
         this.backgJPanel.setBackground(Color.GREEN);
-        
+
         this.setLayout(buttonsLayout);
-		this.setBounds(75, 150, 250, 500);
+        this.setBounds(75, 150, 250, 500);
         this.setOpaque(false);
         this.setBackground(Color.RED);
-        
-        
-        for(int i = 0; i < mainButtons.size(); i++)
-        {
-            this.add(mainButtons.get(i));
+
+        for (JButton jButton : this.mainButtons) {
+            this.add(jButton);
         }
-        for (JLabel jLabel : buttonsImageLabel) {
+        for (JLabel jLabel : buttonsImage) {
             backgJPanel.add(jLabel);
         }
     }
+
     public ArrayList<JButton> getMainButtons() {
         return mainButtons;
     }
+
     public JPanel getBackgJPanel() {
         return backgJPanel;
     }
-    public ArrayList<JLabel> getButtonsImageLabel() {
-        return buttonsImageLabel;
+
+    public ArrayList<JLabel> getButtonsImage() {
+        return buttonsImage;
     }
 }

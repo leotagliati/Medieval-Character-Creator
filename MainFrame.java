@@ -82,6 +82,7 @@ public class MainFrame extends JFrame implements ActionListener{
         this.add(namePanel);
         this.add(genderPanel);
         this.add(classPanel);
+        this.add(classPanel.getBackgJPanel());
         this.add(appearancePanel);
         this.add(ChosenAttPanel.getPanel());
 
@@ -92,10 +93,10 @@ public class MainFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mainPanel.charNameButton)
         {
-            mainPanel.getButtonsImageLabel().get(0).setIcon(new ImageIcon("Images\\buttonClicked.png"));
-            mainPanel.getButtonsImageLabel().get(1).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\buttonClicked.png"));
+            mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == namePanel)
                 {
@@ -108,10 +109,10 @@ public class MainFrame extends JFrame implements ActionListener{
         }
         else if(e.getSource() == mainPanel.charGenderButton)
         {
-            mainPanel.getButtonsImageLabel().get(0).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(1).setIcon(new ImageIcon("Images\\buttonClicked.png"));
-            mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\buttonClicked.png"));
+            mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == genderPanel)
                 {
@@ -124,14 +125,15 @@ public class MainFrame extends JFrame implements ActionListener{
         }
         else if(e.getSource() == mainPanel.charClassButton)
         {
-            mainPanel.getButtonsImageLabel().get(0).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(1).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\buttonClicked.png"));
-            mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\buttonClicked.png"));
+            mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == classPanel)
                 {
                     panel.setVisible(true);
+                    classPanel.getBackgJPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
 
                 }
@@ -140,10 +142,10 @@ public class MainFrame extends JFrame implements ActionListener{
         }
         else if(e.getSource() == mainPanel.charAppearenceButton)
         {
-            mainPanel.getButtonsImageLabel().get(0).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(1).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\buttonClicked.png"));
+            mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\button.png"));
+            mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\buttonClicked.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == appearancePanel)
                 {

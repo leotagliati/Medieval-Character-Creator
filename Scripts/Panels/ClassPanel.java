@@ -1,79 +1,116 @@
 package Scripts.Panels;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Scripts.ImageCreate;
+
 public class ClassPanel extends JPanel {
     public JButton knightClassButton, heraldClassButton, sorcererClassButton, clericClassButton;
-    private ArrayList<JButton> classesButtons = new ArrayList<JButton>();
+    private ArrayList<JButton> classButtons = new ArrayList<JButton>();
+    private ArrayList<JLabel> buttonsImage = new ArrayList<JLabel>();
+    private JPanel backgJPanel;
 
+
+    
     private static String classChosen;
-
     
     public ClassPanel() {
         super();
-        
+        // Inicializa os Botoes
         this.knightClassButton = new JButton("Knight");
         this.heraldClassButton = new JButton("Herald");
         this.sorcererClassButton = new JButton("Sorcerer");
         this.clericClassButton = new JButton("Cleric");
         
-        this.classesButtons.add(knightClassButton);
-        this.classesButtons.add(heraldClassButton);
-        this.classesButtons.add(sorcererClassButton);
-        this.classesButtons.add(clericClassButton);
+        // Add os botoes no arrayList
+        this.classButtons.add(knightClassButton);
+        this.classButtons.add(heraldClassButton);
+        this.classButtons.add(sorcererClassButton);
+        this.classButtons.add(clericClassButton);
         
         GridLayout buttonsLayout = new GridLayout();
         buttonsLayout.setColumns(1);
-        buttonsLayout.setRows(this.classesButtons.size());
+        buttonsLayout.setRows(this.classButtons.size());
         buttonsLayout.setVgap(30);
         
-        this.setBounds(450, 250, 250, 400);
-        this.setBackground(Color.BLUE);
-        this.setLayout(buttonsLayout);
+        // Inicializa as molduras dos botoes
+        for (int i = 0; i < this.classButtons.size(); i++) {
+            ImageCreate backgroundImage = new ImageCreate(0, 0 + (i * 130), 300, 100);
+            backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+            backgroundImage.setIconFile("Images\\underName.png");
+            backgroundImage.imageSetter();
+            buttonsImage.add(backgroundImage);
+        }
+        for (JButton jButton : this.classButtons) {
+            jButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
+            jButton.setForeground(Color.WHITE);
+            jButton.setOpaque(true);
+            jButton.setContentAreaFilled(false);
+            jButton.setBorderPainted(false);
+            jButton.setFocusable(false);
+        }
         
-        for (JButton jButton : this.classesButtons) {
+        this.backgJPanel = new JPanel();
+        this.backgJPanel.setLayout(null);
+        this.backgJPanel.setBounds(400, 150, 300, 500);
+        this.backgJPanel.setOpaque(false);
+        this.backgJPanel.setBackground(Color.GREEN);
+        this.backgJPanel.setVisible(false);
+        
+        this.setLayout(buttonsLayout);
+        this.setBounds(400, 150, 300, 500);
+        this.setOpaque(false);
+        this.setBackground(Color.BLUE);
+        
+        for (JButton jButton : this.classButtons) {
             this.add(jButton);
+        }
+        for (JLabel jLabel : buttonsImage) {
+            backgJPanel.add(jLabel);
         }
         
         this.setVisible(false);
         
-        for (JButton jButton : classesButtons) {
+        for (JButton jButton : classButtons) {
             
-            // for (int i = 0; i < this.classesButtons.size(); i++) {
-                // this.classesButtons.get(i).setBounds(50, 200 + (i * 60), 200, 50);
-                jButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        for (JButton jButton : classesButtons) {
-                            if (e.getSource() == jButton) {
-                                classChosen = jButton.getText();
-                                setVisible(false);
-                                ChosenAttPanel.getPanel().setVisible(true);
-                                ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), GenderPanel.getGenderChosen(), classChosen);
-                                // JOptionPane.showMessageDialog(jButton, classChosen);
-                            }
+            jButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    for (JButton jButton : classButtons) {
+                        if (e.getSource() == jButton) {
+                            classChosen = jButton.getText();
+                            setVisible(false);
+                            ChosenAttPanel.getPanel().setVisible(true);
+                            ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), GenderPanel.getGenderChosen(),
+                            classChosen);
+                            // JOptionPane.showMessageDialog(jButton, classChosen);
                         }
                     }
-                    
-                });
+                }
                 
-            }
-            
+            });
         }
         
-        public ArrayList<JButton> getButtonsArray() {
-            return classesButtons;
-        }
-        public static String getClassChosen() {
-            return classChosen;
-        }
     }
     
+    public ArrayList<JButton> getButtonsArray() {
+        return classButtons;
+    }
+    
+    public static String getClassChosen() {
+        return classChosen;
+    }
+    public JPanel getBackgJPanel() {
+        return backgJPanel;
+    }
+}
