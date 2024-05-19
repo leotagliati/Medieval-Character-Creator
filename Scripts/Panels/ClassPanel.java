@@ -10,13 +10,15 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class ClassPanel {
+public class ClassPanel extends JPanel{
     public JButton knightClassButton, heraldClassButton, sorcererClassButton, clericClassButton;
-    private JPanel classPanel = new JPanel();
+    // private JPanel classPanel = new JPanel();
     private ArrayList<JButton> classesButtons = new ArrayList<JButton>();
     private String classChosen;
 
     public ClassPanel() {
+        super();
+
         this.knightClassButton = new JButton("Knight");
         this.heraldClassButton = new JButton("Herald");
         this.sorcererClassButton = new JButton("Sorcerer");
@@ -27,15 +29,14 @@ public class ClassPanel {
         this.classesButtons.add(sorcererClassButton);
         this.classesButtons.add(clericClassButton);
 
-        this.classPanel = new JPanel();
-        this.classPanel.setBounds(400, 150, 300, 500);
-        this.classPanel.setBackground(Color.BLUE);
-        this.classPanel.setLayout(null);
+        this.setBounds(400, 150, 300, 500);
+        this.setBackground(Color.BLUE);
+        this.setLayout(null);
 
         for (JButton jButton : this.classesButtons) {
-            this.classPanel.add(jButton);
+            this.add(jButton);
         }
-        this.classPanel.setVisible(false);
+        this.setVisible(false);
 
         for (int i = 0; i < this.classesButtons.size(); i++) {
             this.classesButtons.get(i).setBounds(50, 200 + (i * 60), 200, 50);
@@ -46,7 +47,7 @@ public class ClassPanel {
                     for (JButton jButton : classesButtons) {
                         if (e.getSource() == jButton) {
                             classChosen = jButton.getText();
-                            classPanel.setVisible(false);
+                            setVisible(false);
                             ChosenAttPanel.getPanel().setVisible(true);
                             // JOptionPane.showMessageDialog(jButton, classChosen);
                         }
@@ -56,10 +57,6 @@ public class ClassPanel {
             });
         }
 
-    }
-
-    public JPanel getPanel() {
-        return classPanel;
     }
 
     public ArrayList<JButton> getButtonsArray() {

@@ -68,22 +68,22 @@ public class CharacterCreation extends JFrame implements ActionListener{
         for (JButton jButton : mainPanel.getMainButtons()) {
             jButton.addActionListener(this);
         }
-        subPanelsArrayList.add(namePanel.getPanel());
-        subPanelsArrayList.add(classPanel.getPanel());
-        subPanelsArrayList.add(appearancePanel.getPanel());
-        subPanelsArrayList.add(genderPanel.getPanel());
+        subPanelsArrayList.add(namePanel);
+        subPanelsArrayList.add(classPanel);
+        subPanelsArrayList.add(appearancePanel);
+        subPanelsArrayList.add(genderPanel);
         
         this.add(UIimage);
         this.add(helmImage);
         this.add(swordImage);
         this.add(charImage);
 
-        this.add(mainPanel.getButtonsPanel());
+        this.add(mainPanel);
         this.add(mainPanel.getBackgJPanel());
-        this.add(namePanel.getPanel());
-        this.add(genderPanel.getPanel());
-        this.add(classPanel.getPanel());
-        this.add(appearancePanel.getPanel());
+        this.add(namePanel);
+        this.add(genderPanel);
+        this.add(classPanel);
+        this.add(appearancePanel);
         this.add(ChosenAttPanel.getPanel());
 
 		this.setVisible(true);
@@ -98,7 +98,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
             mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
             mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
-                if(panel == namePanel.getPanel())
+                if(panel == namePanel)
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
@@ -114,7 +114,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
             mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
             mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
-                if(panel == genderPanel.getPanel())
+                if(panel == genderPanel)
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
@@ -130,7 +130,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
             mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\buttonClicked.png"));
             mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\button.png"));
             for (JPanel panel : subPanelsArrayList) {
-                if(panel == classPanel.getPanel())
+                if(panel == classPanel)
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
@@ -146,7 +146,7 @@ public class CharacterCreation extends JFrame implements ActionListener{
             mainPanel.getButtonsImageLabel().get(2).setIcon(new ImageIcon("Images\\button.png"));
             mainPanel.getButtonsImageLabel().get(3).setIcon(new ImageIcon("Images\\buttonClicked.png"));
             for (JPanel panel : subPanelsArrayList) {
-                if(panel == appearancePanel.getPanel())
+                if(panel == appearancePanel)
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);

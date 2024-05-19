@@ -6,18 +6,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class GenderPanel {
+public class GenderPanel extends JPanel{
     public JButton maleButton, femaleButton;
-    private JPanel genderPanel;
     private ArrayList<JButton> gendersButtonArrayList = new ArrayList<>();
 
     private String genderChosen;
 
     public GenderPanel()
     {
+        super();
         // Inicializa os Botoes
         this.maleButton = new JButton("Male");
         this.femaleButton = new JButton("Female");
@@ -27,15 +26,14 @@ public class GenderPanel {
         this.gendersButtonArrayList.add(maleButton);
 
         // Inicializa o painel
-        this.genderPanel = new JPanel();
-        this.genderPanel.setBounds(400, 150, 300, 500);
-        this.genderPanel.setBackground(Color.RED);
-        this.genderPanel.setLayout(null);
+        this.setBounds(400, 150, 300, 500);
+        this.setBackground(Color.RED);
+        this.setLayout(null);
 
         for (JButton jButton : this.gendersButtonArrayList) {
-            this.genderPanel.add(jButton);
+            this.add(jButton);
         }
-        this.genderPanel.setVisible(false);
+        this.setVisible(false);
         
         for(int i = 0; i < this.gendersButtonArrayList.size(); i++)
         {
@@ -47,7 +45,7 @@ public class GenderPanel {
                     for (JButton jButton : gendersButtonArrayList) {
                         if (e.getSource() == jButton) {
                             genderChosen = jButton.getText();
-                            genderPanel.setVisible(false);
+                            setVisible(false);
                             ChosenAttPanel.getPanel().setVisible(true);
                             // JOptionPane.showMessageDialog(jButton, genderChosen);
                         }
@@ -57,9 +55,6 @@ public class GenderPanel {
             });
         }
         
-    }
-    public JPanel getPanel() {
-        return genderPanel;
     }
     public ArrayList<JButton> getButtonsArray() {
         return gendersButtonArrayList;

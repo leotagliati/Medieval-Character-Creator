@@ -12,11 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout.Alignment;
 
-public class MainPanel {
+public class MainPanel extends JPanel{
     public JButton charNameButton, charGenderButton, charClassButton, charAppearenceButton, charBuildButton;
 	private ArrayList<JLabel> buttonsImageLabel = new ArrayList<JLabel>();
     private ArrayList<JButton> mainButtons = new ArrayList<JButton>();
-    private JPanel buttonsPanel;
     private JPanel backgJPanel;
     
     
@@ -68,16 +67,15 @@ public class MainPanel {
         this.backgJPanel.setOpaque(false);
         this.backgJPanel.setBackground(Color.GREEN);
         
-        this.buttonsPanel = new JPanel();
-        this.buttonsPanel.setLayout(buttonsLayout);
-		this.buttonsPanel.setBounds(75, 150, 250, 500);
-        this.buttonsPanel.setOpaque(false);
-        this.buttonsPanel.setBackground(Color.RED);
+        this.setLayout(buttonsLayout);
+		this.setBounds(75, 150, 250, 500);
+        this.setOpaque(false);
+        this.setBackground(Color.RED);
         
         
         for(int i = 0; i < mainButtons.size(); i++)
         {
-            buttonsPanel.add(mainButtons.get(i));
+            this.add(mainButtons.get(i));
         }
         for (JLabel jLabel : buttonsImageLabel) {
             backgJPanel.add(jLabel);
@@ -85,9 +83,6 @@ public class MainPanel {
     }
     public ArrayList<JButton> getMainButtons() {
         return mainButtons;
-    }
-    public JPanel getButtonsPanel() {
-        return buttonsPanel;
     }
     public JPanel getBackgJPanel() {
         return backgJPanel;
