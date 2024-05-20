@@ -18,9 +18,9 @@ import Scripts.ImageCreate;
 import Scripts.Panels.Bodypart.BodyPart;
 
 public class VesturePanel extends JPanel{
-    public BodyPart helmet = new BodyPart("Helm", 3);
-    public BodyPart chest = new BodyPart("Chest", 3);
-    public BodyPart legs = new BodyPart("Leggings", 3);
+    public BodyPart helmet = new BodyPart("Capacete", 3);
+    public BodyPart chest = new BodyPart("Peitoral", 3);
+    public BodyPart legs = new BodyPart("Calça", 3);
     private JPanel backgJPanel;
     
     private JButton confirmButton;
@@ -59,7 +59,7 @@ public class VesturePanel extends JPanel{
         backgroundImage.setIconFile("Images\\button.png");
         backgroundImage.imageSetter();
 
-        confirmButton = new JButton("Confirm");
+        confirmButton = new JButton("Confirmar");
         confirmButton.setBounds(50, 400, 260, 100);
         confirmButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
         confirmButton.setForeground(Color.WHITE);
@@ -91,9 +91,9 @@ public class VesturePanel extends JPanel{
                     chestID = chest.getBodyPartSliderValue().getText();
                     legsID = legs.getBodyPartSliderValue().getText();
                     setVisible(false);
+                    ChosenAttPanel.getBackgPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(true);
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), GenderPanel.getGenderChosen(),
-                    ClassPanel.getClassChosen());
+                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
             }
             

@@ -6,20 +6,34 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Scripts.AudioHandler;
+import Scripts.ImageCreate;
+
 public class NamePanel extends JPanel {
 
+    private JTextField titleTextField;
     private JTextField nameTextField;
     public static String nameChosen;
 
-    
     public NamePanel() {
-        
+
         super();
-        this.nameTextField = new JTextField("Entry incomplete");
-        this.nameTextField.setBounds(50, 20, 250, 40);
+        this.titleTextField = new JTextField("Insira seu nome");
+        this.titleTextField.setBounds(40, 20, 270, 50);
+        this.titleTextField.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 40));
+        this.titleTextField.setHorizontalAlignment(JTextField.CENTER);
+        this.titleTextField.setOpaque(false);
+        this.titleTextField.setBorder(null);
+        this.titleTextField.setForeground(Color.WHITE);
+        this.titleTextField.setEditable(false);
+
+        this.nameTextField = new JTextField("Entrada incompleta");
+        this.nameTextField.setBounds(50, 100, 250, 70);
         this.nameTextField.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
         this.nameTextField.setHorizontalAlignment(JTextField.CENTER);
         this.nameTextField.setOpaque(false);
@@ -30,10 +44,9 @@ public class NamePanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 nameTextField.setEditable(true);
-                if (nameTextField.getText().equals("Entry incomplete")) {
+                if (nameTextField.getText().equals("Entrada incompleta")) {
                     nameTextField.setText("");
                 }
-                System.out.println("aaa");
                 nameTextField.setForeground(Color.WHITE);
             }
         });
@@ -41,39 +54,48 @@ public class NamePanel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                     if (nameTextField.getText().equals("")) {
-                        nameTextField.setForeground(Color.RED);
-                        nameTextField.setText("Entry incomplete");
+                        nameTextField.setText("Entrada incompleta");
                     }
-                    else
-                    {
-                        nameTextField.setEditable(false);
-                        nameChosen = nameTextField.getText();
-                        ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), GenderPanel.getGenderChosen(), ClassPanel.getClassChosen());
-                    }
+                    nameTextField.setEditable(false);
+                    nameChosen = nameTextField.getText();
+                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                     setVisible(false);
                     ChosenAttPanel.getPanel().setVisible(true);
+                    ChosenAttPanel.getBackgPanel().setVisible(true);
                 }
             }
-            
+
         });
         this.nameTextField.setVisible(true);
-        
+        this.titleTextField.setVisible(true);
+
+        ImageCreate backgroundImage = new ImageCreate(0, 80, 350, 100);
+        backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        backgroundImage.setIconFile("Images\\namePanelUnder.png");
+        backgroundImage.imageSetter();
+
         this.setBounds(500, 150, 350, 500);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
         this.add(this.nameTextField);
+        this.add(this.titleTextField);
+        this.add(backgroundImage);
+        this.setOpaque(false);
         this.setVisible(false);
     }
 
     public JTextField getNameTextField() {
         return nameTextField;
     }
+
     public void setNameTextField(JTextField nameTextField) {
         this.nameTextField = nameTextField;
     }
+
     public static String getNameChosen() {
         return nameChosen;
     }
-    
+
 }

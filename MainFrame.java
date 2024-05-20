@@ -21,7 +21,6 @@ import Scripts.ImageCreate;
 import Scripts.Panels.AppearancePanel;
 import Scripts.Panels.ChosenAttPanel;
 import Scripts.Panels.ClassPanel;
-import Scripts.Panels.GenderPanel;
 import Scripts.Panels.MainPanel;
 import Scripts.Panels.NamePanel;
 import Scripts.Panels.VesturePanel;
@@ -35,7 +34,6 @@ public class MainFrame extends JFrame implements ActionListener{
     MainPanel mainPanel = new MainPanel();
     NamePanel namePanel = new NamePanel();
     VesturePanel vesturePanel = new VesturePanel();
-    GenderPanel genderPanel = new GenderPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
 
@@ -44,7 +42,7 @@ public class MainFrame extends JFrame implements ActionListener{
     {
         super("Character Creation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(2560, 1080);
+		this.setSize(1920, 1080);
         this.getContentPane().setBackground(Color.BLACK);
 		this.setLayout(null);
         
@@ -117,6 +115,7 @@ public class MainFrame extends JFrame implements ActionListener{
         this.add(classPanel.getBackgJPanel());
         this.add(appearancePanel);
         this.add(ChosenAttPanel.getPanel());
+        this.add(ChosenAttPanel.getBackgPanel());
 
 		this.setVisible(true);
     }
@@ -131,6 +130,7 @@ public class MainFrame extends JFrame implements ActionListener{
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
+                    ChosenAttPanel.getBackgPanel().setVisible(false);
                     panel.setEnabled(true);
                 }
                 else panel.setVisible(false);
@@ -144,6 +144,7 @@ public class MainFrame extends JFrame implements ActionListener{
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
+                    ChosenAttPanel.getBackgPanel().setVisible(false);
 
                 }
                 else panel.setVisible(false);
@@ -158,6 +159,7 @@ public class MainFrame extends JFrame implements ActionListener{
                     panel.setVisible(true);
                     classPanel.getBackgJPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
+                    ChosenAttPanel.getBackgPanel().setVisible(false);
 
                 }
                 else panel.setVisible(false);
@@ -170,6 +172,7 @@ public class MainFrame extends JFrame implements ActionListener{
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
+                    ChosenAttPanel.getBackgPanel().setVisible(false);
 
                 }
                 else panel.setVisible(false);

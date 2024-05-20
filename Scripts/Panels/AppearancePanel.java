@@ -97,8 +97,7 @@ public class AppearancePanel extends JPanel {
                     physicID = physic.getBodyPartSliderValue().getText();
                     setVisible(false);
                     ChosenAttPanel.getPanel().setVisible(true);
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), GenderPanel.getGenderChosen(),
-                    ClassPanel.getClassChosen());
+                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
             }
             

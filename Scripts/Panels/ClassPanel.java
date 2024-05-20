@@ -31,10 +31,10 @@ public class ClassPanel extends JPanel {
     public ClassPanel() {
         super();
         // Inicializa os Botoes
-        this.knightClassButton = new JButton("Knight");
-        this.heraldClassButton = new JButton("Herald");
-        this.sorcererClassButton = new JButton("Sorcerer");
-        this.clericClassButton = new JButton("Cleric");
+        this.knightClassButton = new JButton("Cavaleiro");
+        this.heraldClassButton = new JButton("Arauto");
+        this.sorcererClassButton = new JButton("Feiticeiro");
+        this.clericClassButton = new JButton("Clérigo");
         
         // Add os botoes no arrayList
         this.classButtons.add(knightClassButton);
@@ -117,8 +117,7 @@ public class ClassPanel extends JPanel {
                             setVisible(false);
                             backgJPanel.setVisible(false);
                             ChosenAttPanel.getPanel().setVisible(true);
-                            ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), GenderPanel.getGenderChosen(),
-                            classChosen);
+                            ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), classChosen);
                             // JOptionPane.showMessageDialog(jButton, classChosen);
                         }
                     }

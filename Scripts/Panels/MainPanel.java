@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import Scripts.ImageCreate;
 
 public class MainPanel extends JPanel {
-    public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton, charBuildButton;
+    public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton;
     private ArrayList<JLabel> buttonsImage = new ArrayList<JLabel>();
     private ArrayList<JButton> mainButtons = new ArrayList<JButton>();
     private JPanel backgJPanel;
@@ -22,11 +22,10 @@ public class MainPanel extends JPanel {
     public MainPanel() {
         super();
         // Inicializa os Botoes
-        this.charNameButton = new JButton("Name");
-        this.charClassButton = new JButton("Class");
-        this.charVestureButton = new JButton("Vesture");
-        this.charAppearenceButton = new JButton("Appearence");
-        this.charBuildButton = new JButton("Build");
+        this.charNameButton = new JButton("Nome");
+        this.charClassButton = new JButton("Classe");
+        this.charVestureButton = new JButton("Vestimenta");
+        this.charAppearenceButton = new JButton("Aparência");
 
         // Add os botoes no arrayList
         this.mainButtons.add(charNameButton);
