@@ -1,4 +1,4 @@
-package Scripts.Panels.AppearanceBodypart;
+package Scripts.Panels.Bodypart;
 
 import java.awt.Color;
 import java.awt.Font;
