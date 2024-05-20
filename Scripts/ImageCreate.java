@@ -26,8 +26,8 @@ public class ImageCreate extends JLabel{
         this.setHorizontalAlignment(this.iconAlignment[0]);
         this.setVerticalAlignment(this.iconAlignment[1]);
         this.setIcon(new ImageIcon(this.iconFileString));
-        this.setForeground(Color.RED);
-        // this.setOpaque(true);
+        this.setBackground(Color.RED);
+        this.setOpaque(false);
         this.setVisible(true);
     }
     public void imageSetter()

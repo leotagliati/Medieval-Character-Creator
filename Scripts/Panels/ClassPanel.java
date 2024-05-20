@@ -5,8 +5,11 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -58,6 +61,25 @@ public class ClassPanel extends JPanel {
             jButton.setContentAreaFilled(false);
             jButton.setBorderPainted(false);
             jButton.setFocusable(false);
+            jButton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e){
+                    if(e.getSource() == jButton)
+                    {
+                        buttonsImage.get(classButtons.indexOf(jButton)).setIcon(new ImageIcon("Images\\underNameEntered.png"));;
+                    }
+
+                }
+                @Override
+                public void mouseExited(MouseEvent e){
+                    if(e.getSource() == jButton)
+                    {
+                        buttonsImage.get(classButtons.indexOf(jButton)).setIcon(new ImageIcon("Images\\underName.png"));;
+                    }
+
+                }
+            });
+            
         }
         
         this.backgJPanel = new JPanel();

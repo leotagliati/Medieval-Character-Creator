@@ -19,7 +19,7 @@ public class NamePanel extends JPanel {
         
         super();
         this.nameTextField = new JTextField("Entry incomplete");
-        this.nameTextField.setBounds(25, 20, 250, 40);
+        this.nameTextField.setBounds(50, 20, 250, 40);
         this.nameTextField.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
         this.nameTextField.setHorizontalAlignment(JTextField.CENTER);
         this.nameTextField.setOpaque(false);
@@ -33,6 +33,7 @@ public class NamePanel extends JPanel {
                 if (nameTextField.getText().equals("Entry incomplete")) {
                     nameTextField.setText("");
                 }
+                System.out.println("aaa");
                 nameTextField.setForeground(Color.WHITE);
             }
         });
@@ -58,7 +59,7 @@ public class NamePanel extends JPanel {
         });
         this.nameTextField.setVisible(true);
         
-        this.setBounds(400, 150, 300, 500);
+        this.setBounds(500, 150, 350, 500);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
         this.add(this.nameTextField);

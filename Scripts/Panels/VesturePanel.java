@@ -10,7 +10,6 @@ public class VesturePanel extends JPanel{
     public BodyPart helmet = new BodyPart("Helm", 3);
     public BodyPart chest = new BodyPart("Chest", 3);
     public BodyPart legs = new BodyPart("Leggings", 3);
-    public BodyPart arms = new BodyPart("Gauntlets", 3);
     private JPanel backgJPanel;
     
     
@@ -20,11 +19,11 @@ public class VesturePanel extends JPanel{
         helmet.setup(0);
         chest.setup(1);
         legs.setup(2);
-        arms.setup(3);
         
-        this.setBounds(400, 150, 300, 500);
+        this.setBounds(500, 150, 350, 500);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
+        this.setOpaque(false);
         this.setVisible(false);
         
         this.add(this.helmet.getBodyPartText());
@@ -39,10 +38,6 @@ public class VesturePanel extends JPanel{
         this.add(this.legs.getBodyPartSlider());
         this.add(this.legs.getBodyPartSliderValue());
 
-        this.add(this.arms.getBodyPartText());
-        this.add(this.arms.getBodyPartSlider());
-        this.add(this.arms.getBodyPartSliderValue());
-        
         
     }
     public JPanel getBackgJPanel() {

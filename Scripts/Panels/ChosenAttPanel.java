@@ -16,7 +16,7 @@ public class ChosenAttPanel{
         chosenNameField = new JTextField();
         chosenGenderField = new JTextField();
         chosenClassField = new JTextField();
-        chosenPanel.setBounds(400, 150, 350, 500);
+        chosenPanel.setBounds(500, 150, 350, 500);
         chosenPanel.setBackground(Color.BLUE);
         chosenPanel.setLayout(null);
         

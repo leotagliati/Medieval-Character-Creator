@@ -44,6 +44,11 @@ public class MainFrame extends JFrame implements ActionListener{
         
         ChosenAttPanel.setupPanel();
 
+        ImageCreate backgroundImage = new ImageCreate(425, 50, 500, 700);
+        backgroundImage.setAlignment(JLabel.ABORT, JLabel.ABORT);
+        backgroundImage.setIconFile("Images\\subpanelBackground.png");
+        backgroundImage.imageSetter();
+
         // Image Setter
         ImageCreate UIimage = new ImageCreate(1080, 0, 500, 750);
         UIimage.setAlignment(JLabel.CENTER, JLabel.CENTER);
@@ -75,11 +80,12 @@ public class MainFrame extends JFrame implements ActionListener{
         subPanelsArrayList.add(appearancePanel);
         subPanelsArrayList.add(vesturePanel);
         
+        this.add(backgroundImage);
         this.add(UIimage);
         this.add(helmImage);
         this.add(swordImage);
         this.add(charImage);
-
+        
         this.add(mainPanel);
         this.add(mainPanel.getBackgJPanel());
         this.add(namePanel);
