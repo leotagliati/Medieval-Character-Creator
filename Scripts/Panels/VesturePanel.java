@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
 import Scripts.ImageCreate;
-import Scripts.Panels.AppearanceBodypart.BodyPart;
+import Scripts.Panels.Bodypart.BodyPart;
 
 public class VesturePanel extends JPanel{
     public BodyPart helmet = new BodyPart("Helm", 3);

@@ -18,7 +18,7 @@ import java.awt.event.MouseEvent;
 
 import Scripts.AudioHandler;
 import Scripts.ImageCreate;
-import Scripts.Panels.AppearanceBodypart.BodyPart;
+import Scripts.Panels.Bodypart.BodyPart;
 
 public class AppearancePanel extends JPanel {
 
