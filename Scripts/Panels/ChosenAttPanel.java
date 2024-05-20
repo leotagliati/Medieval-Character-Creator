@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ChosenAttPanel{
-    public static JTextField chosenNameField, chosenClassField, chosenGenderField;
+    public static JTextField chosenNameField, chosenClassField, chosenGenderField, chosenEyes, chosenSkin, chosenPhysic;
     private static ArrayList<JTextField> chosenTexts = new ArrayList<JTextField>();
     private static JPanel chosenPanel = new JPanel();
 

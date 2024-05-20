@@ -51,6 +51,7 @@ public class BodyPart {
         this.bodyPartSliderValue.setFont(new Font("Jet Brains Mono", Font.PLAIN, 15));
         this.bodyPartSliderValue.setHorizontalAlignment(JTextField.CENTER);
         this.bodyPartSliderValue.setOpaque(false);
+        this.bodyPartSliderValue.setForeground(Color.WHITE);
         this.bodyPartSliderValue.setBorder(BorderFactory.createEmptyBorder());
         this.bodyPartSliderValue.setEditable(false);
     }

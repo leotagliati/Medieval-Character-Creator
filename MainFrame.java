@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -73,6 +75,23 @@ public class MainFrame extends JFrame implements ActionListener{
 
         for (JButton jButton : mainPanel.getMainButtons()) {
             jButton.addActionListener(this);
+            jButton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e)
+                {
+                    if(e.getSource() == jButton)
+                    {
+                        mainPanel.getButtonsImage().get(mainPanel.getMainButtons().indexOf(jButton)).setIcon(new ImageIcon("Images\\buttonClicked.png"));
+                    }
+                }
+                @Override
+                public void mouseExited(MouseEvent e){
+                    if(e.getSource() == jButton)
+                    {
+                        mainPanel.getButtonsImage().get(mainPanel.getMainButtons().indexOf(jButton)).setIcon(new ImageIcon("Images\\button.png"));
+                    }
+                }
+            });
         }
         subPanelsArrayList.add(namePanel);
         subPanelsArrayList.add(classPanel.getBackgJPanel());
@@ -102,10 +121,7 @@ public class MainFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mainPanel.charNameButton)
         {
-            mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\buttonClicked.png"));
-            mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\button.png"));
+            
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == namePanel)
                 {
@@ -118,10 +134,7 @@ public class MainFrame extends JFrame implements ActionListener{
         }
         else if(e.getSource() == mainPanel.charVestureButton)
         {
-            mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\buttonClicked.png"));
-            mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\button.png"));
+            
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == vesturePanel)
                 {
@@ -134,10 +147,7 @@ public class MainFrame extends JFrame implements ActionListener{
         }
         else if(e.getSource() == mainPanel.charClassButton)
         {
-            mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\buttonClicked.png"));
-            mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\button.png"));
+            
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == classPanel)
                 {
@@ -151,10 +161,6 @@ public class MainFrame extends JFrame implements ActionListener{
         }
         else if(e.getSource() == mainPanel.charAppearenceButton)
         {
-            mainPanel.getButtonsImage().get(0).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(1).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(2).setIcon(new ImageIcon("Images\\button.png"));
-            mainPanel.getButtonsImage().get(3).setIcon(new ImageIcon("Images\\buttonClicked.png"));
             for (JPanel panel : subPanelsArrayList) {
                 if(panel == appearancePanel)
                 {
