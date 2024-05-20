@@ -38,6 +38,10 @@ public class VesturePanel extends JPanel{
         this.add(this.legs.getBodyPartText());
         this.add(this.legs.getBodyPartSlider());
         this.add(this.legs.getBodyPartSliderValue());
+
+        this.add(this.arms.getBodyPartText());
+        this.add(this.arms.getBodyPartSlider());
+        this.add(this.arms.getBodyPartSliderValue());
         
         
     }

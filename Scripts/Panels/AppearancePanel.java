@@ -8,9 +8,9 @@ import Scripts.Panels.AppearanceBodypart.BodyPart;
 
 public class AppearancePanel extends JPanel{
     
-    private BodyPart eyes = new BodyPart("Eyes", 2);
+    private BodyPart eyes = new BodyPart("Eyes", 3);
     private BodyPart skin = new BodyPart("Skin",3);
-    private BodyPart physic = new BodyPart("Physic", 1);
+    private BodyPart physic = new BodyPart("Physic", 2);
 
     public AppearancePanel()
     {

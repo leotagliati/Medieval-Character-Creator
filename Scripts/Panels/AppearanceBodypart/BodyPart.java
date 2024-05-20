@@ -12,12 +12,12 @@ public class BodyPart {
     private JTextField bodyPartText;
     private JSlider bodyPartSlider;
     private JTextField bodyPartSliderValue;
-    private int visualOffset = 90;
+    private int visualOffset = 120;
     
     public BodyPart(String name, int sliderMaxValue)
     {
         this.bodyPartText = new JTextField(name);
-        this.bodyPartSlider = new JSlider(0, sliderMaxValue,sliderMaxValue/2);
+        this.bodyPartSlider = new JSlider(1, sliderMaxValue,sliderMaxValue/2);
         this.bodyPartSliderValue = new JTextField("" + this.bodyPartSlider.getValue());
     }
     public void setup(int sliderOrder)
