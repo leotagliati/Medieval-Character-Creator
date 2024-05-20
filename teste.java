@@ -13,7 +13,7 @@ public class teste {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         Scanner scanner = new Scanner(System.in);
         MainFrame c1 = new MainFrame();
-        File file  = new File("Music\\12.wav");
+        File file  = new File("Music\\mainMenuOST.wav");
         AudioInputStream backGroundMusic = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(backGroundMusic);
