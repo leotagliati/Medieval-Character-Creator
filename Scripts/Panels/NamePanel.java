@@ -18,7 +18,7 @@ public class NamePanel extends JPanel {
 
     private JTextField titleTextField;
     private JTextField nameTextField;
-    public static String nameChosen;
+    public static String nameChosen = "Entrada incompleta";
 
     public NamePanel() {
 
@@ -57,17 +57,19 @@ public class NamePanel extends JPanel {
                     AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                     if (nameTextField.getText().equals("")) {
                         nameTextField.setText("Entrada incompleta");
+                        nameTextField.setForeground(Color.RED);
                     }
                     nameTextField.setEditable(false);
                     nameChosen = nameTextField.getText();
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                     setVisible(false);
-                    ChosenAttPanel.getPanel().setVisible(true);
                     ChosenAttPanel.getBackgPanel().setVisible(true);
+                    ChosenAttPanel.getPanel().setVisible(true);
+                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
             }
 
         });
+        nameChosen.equals(nameTextField.getText());
         this.nameTextField.setVisible(true);
         this.titleTextField.setVisible(true);
 

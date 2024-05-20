@@ -17,7 +17,7 @@ import Scripts.AudioHandler;
 import Scripts.ImageCreate;
 import Scripts.Panels.Bodypart.BodyPart;
 
-public class VesturePanel extends JPanel{
+public class GarmentsPanel extends JPanel{
     public BodyPart helmet = new BodyPart("Capacete", 3);
     public BodyPart chest = new BodyPart("Peitoral", 3);
     public BodyPart legs = new BodyPart("Calça", 3);
@@ -29,7 +29,7 @@ public class VesturePanel extends JPanel{
     private String chestID;
     private String legsID;
     
-    public VesturePanel()
+    public GarmentsPanel()
     {
         super();
         helmet.setup(0);

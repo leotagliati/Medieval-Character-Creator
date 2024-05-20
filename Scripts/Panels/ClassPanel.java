@@ -26,7 +26,7 @@ public class ClassPanel extends JPanel {
 
 
     
-    private static String classChosen;
+    private static String classChosen = "Entrada incompleta";
     
     public ClassPanel() {
         super();
@@ -117,8 +117,8 @@ public class ClassPanel extends JPanel {
                             setVisible(false);
                             backgJPanel.setVisible(false);
                             ChosenAttPanel.getPanel().setVisible(true);
+                            ChosenAttPanel.getBackgPanel().setVisible(true);
                             ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), classChosen);
-                            // JOptionPane.showMessageDialog(jButton, classChosen);
                         }
                     }
                 }

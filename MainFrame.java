@@ -23,7 +23,7 @@ import Scripts.Panels.ChosenAttPanel;
 import Scripts.Panels.ClassPanel;
 import Scripts.Panels.MainPanel;
 import Scripts.Panels.NamePanel;
-import Scripts.Panels.VesturePanel;
+import Scripts.Panels.GarmentsPanel;
 
 public class MainFrame extends JFrame implements ActionListener{
     
@@ -33,7 +33,7 @@ public class MainFrame extends JFrame implements ActionListener{
     
     MainPanel mainPanel = new MainPanel();
     NamePanel namePanel = new NamePanel();
-    VesturePanel vesturePanel = new VesturePanel();
+    GarmentsPanel vesturePanel = new GarmentsPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
 

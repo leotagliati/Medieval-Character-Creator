@@ -16,13 +16,12 @@ public class ChosenAttPanel {
     private static JPanel chosenPanel = new JPanel();
     private static JPanel backgPanel = new JPanel();
 
-    
     public static void setupPanel() {
         chosenNameField = new JTextField("Entrada incompleta");
-        chosenClassField = new JTextField("Cavaleiro");
+        chosenClassField = new JTextField("Entrada incompleta");
         titleName = new JTextField("Nome: ");
         titleClass = new JTextField("Classe: ");
-        
+
         GridLayout textLayout = new GridLayout();
         textLayout.setColumns(1);
         textLayout.setRows(2);
@@ -32,23 +31,23 @@ public class ChosenAttPanel {
         titleLayout.setColumns(1);
         titleLayout.setRows(2);
         titleLayout.setVgap(20);
-        
+
         chosenPanel.setBounds(630, 200, 300, 200);
         chosenPanel.setBackground(Color.BLUE);
         chosenPanel.setOpaque(false);
         chosenPanel.setLayout(textLayout);
-        
-        backgPanel.setBounds (400, 200, 300, 200);
+
+        backgPanel.setBounds(400, 200, 300, 200);
         backgPanel.setBackground(Color.GREEN);
         backgPanel.setOpaque(false);
         backgPanel.setLayout(titleLayout);
-        
+
         chosenTexts.add(chosenNameField);
         chosenTexts.add(chosenClassField);
-        
+
         backgPanel.add(titleName);
         backgPanel.add(titleClass);
-        
+
         for (JTextField text : chosenTexts) {
             chosenPanel.add(text);
         }
@@ -73,25 +72,42 @@ public class ChosenAttPanel {
             chosenTexts.get(i).setBorder(null);
         }
         chosenNameField.setForeground(Color.RED);
-        chosenClassField.setForeground(Color.WHITE);
+        chosenClassField.setForeground(Color.RED);
     }
-    
+
     public static JPanel getPanel() {
         return chosenPanel;
     }
-    
+
     public static JPanel getBackgPanel() {
         return backgPanel;
     }
+
     public static void updatePanel(String nameChosen, String classChosen) {
-        if (!nameChosen.equals("") && !nameChosen.equals("Entrada incompleta")) {
-            // System.out.println("name:" + nameChosen);
+        // System.out.println("name:" + nameChosen);
+        // System.out.println("class:" + classChosen);
+        if (classChosen.equals("Entrada incompleta")) {
+            if (nameChosen.equals("Entrada incompleta") || nameChosen.equals(null)) {
+                chosenNameField.setText("Entrada incompleta");
+                chosenNameField.setForeground(Color.RED);
+
+            } else {
+                chosenNameField.setText(nameChosen);
+                chosenNameField.setForeground(Color.WHITE);
+            }
             chosenClassField.setText(classChosen);
-            chosenNameField.setText(nameChosen);
-            chosenNameField.setForeground(Color.WHITE);
-        } else if(nameChosen.equals("Entrada incompleta")){
+            chosenClassField.setForeground(Color.RED);
+        } else {
+            if (nameChosen.equals("Entrada incompleta") || nameChosen.equals(null)) {
+                chosenNameField.setText("Entrada incompleta");
+                chosenNameField.setForeground(Color.RED);
+
+            } else {
+                chosenNameField.setText(nameChosen);
+                chosenNameField.setForeground(Color.WHITE);
+            }
             chosenClassField.setText(classChosen);
-            chosenNameField.setForeground(Color.RED);
+            chosenClassField.setForeground(Color.WHITE);
         }
     }
 

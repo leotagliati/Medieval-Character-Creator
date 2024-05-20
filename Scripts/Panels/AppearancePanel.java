@@ -96,6 +96,7 @@ public class AppearancePanel extends JPanel {
                     skinID = skin.getBodyPartSliderValue().getText();
                     physicID = physic.getBodyPartSliderValue().getText();
                     setVisible(false);
+                    ChosenAttPanel.getBackgPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(true);
                     ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
