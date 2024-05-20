@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Scripts.AudioHandler;
 import Scripts.ImageCreate;
 
 public class ClassPanel extends JPanel {
@@ -109,6 +110,7 @@ public class ClassPanel extends JPanel {
             jButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                     for (JButton jButton : classButtons) {
                         if (e.getSource() == jButton) {
                             classChosen = jButton.getText();

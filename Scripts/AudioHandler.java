@@ -10,7 +10,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 public class AudioHandler {
 
-    public static void tocamusica(String file){
+    public static void audioPlay(String file){
         try {
             String filePath = file;
             AudioInputStream aui = AudioSystem.getAudioInputStream(new File(filePath));

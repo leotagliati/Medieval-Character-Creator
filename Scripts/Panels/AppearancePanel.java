@@ -16,6 +16,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import Scripts.AudioHandler;
 import Scripts.ImageCreate;
 import Scripts.Panels.AppearanceBodypart.BodyPart;
 
@@ -88,6 +89,7 @@ public class AppearancePanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 if(e.getSource() == confirmButton)
                 {
                     eyeID = eyes.getBodyPartSliderValue().getText();

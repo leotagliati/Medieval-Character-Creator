@@ -14,6 +14,6 @@ import Scripts.AudioHandler;
 public class teste {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         MainFrame c1 = new MainFrame();
-        AudioHandler.tocamusica("Music\\mainMenuOST.wav");
+        AudioHandler.audioPlay("Music\\mainMenuOST.wav");
     }
 }

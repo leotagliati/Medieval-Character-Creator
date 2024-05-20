@@ -123,7 +123,7 @@ public class MainFrame extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        AudioHandler.tocamusica("Music\\buttonClicked.wav");
+        AudioHandler.audioPlay("Music\\buttonClicked.wav");
         if(e.getSource() == mainPanel.charNameButton)
         {
             for (JPanel panel : subPanelsArrayList) {

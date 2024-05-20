@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Scripts.AudioHandler;
 import Scripts.ImageCreate;
 import Scripts.Panels.AppearanceBodypart.BodyPart;
 
@@ -83,7 +84,7 @@ public class VesturePanel extends JPanel{
         confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 if(e.getSource() == confirmButton)
                 {
                     helmetID = helmet.getBodyPartSliderValue().getText();
