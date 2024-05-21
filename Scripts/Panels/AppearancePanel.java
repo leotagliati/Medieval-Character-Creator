@@ -22,9 +22,9 @@ import Scripts.Panels.Bodypart.BodyPart;
 
 public class AppearancePanel extends JPanel {
 
-    private BodyPart eyes = new BodyPart("Eyes", 3);
-    private BodyPart skin = new BodyPart("Skin", 3);
-    private BodyPart physic = new BodyPart("Physic", 2);
+    private BodyPart eyes = new BodyPart("Olhos", 3);
+    private BodyPart skin = new BodyPart("Cor de pele", 3);
+    private BodyPart physic = new BodyPart("Físico", 2);
     
     private String eyeID;
     private String skinID;
