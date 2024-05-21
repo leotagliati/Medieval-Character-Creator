@@ -105,4 +105,17 @@ public class GarmentsPanel extends JPanel{
     public JPanel getBackgJPanel() {
         return backgJPanel;
     }
+
+    public String getHelmetID() {
+        return helmetID;
+    }
+
+    public String getChestID() {
+        return chestID;
+    }
+
+    public String getLegsID() {
+        return legsID;
+    }
+    
 }
