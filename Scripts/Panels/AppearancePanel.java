@@ -26,9 +26,9 @@ public class AppearancePanel extends JPanel {
     private BodyPart skin = new BodyPart("Skin", 3);
     private BodyPart physic = new BodyPart("Physic", 2);
     
-    private String eyeID;
-    private String skinID;
-    private String physicID;
+    private static String eyeID;
+    private static String skinID;
+    private static String physicID;
     
     private JButton confirmButton;
 
@@ -108,4 +108,14 @@ public class AppearancePanel extends JPanel {
         this.add(backgroundImage);
 
     }
+    public static String getEyeID(){
+        return eyeID;
+    }
+    public static String getSkinID(){
+        return skinID;
+    }
+    public static String getPhysicID(){
+        return physicID;
+    }
+
 }

@@ -25,9 +25,9 @@ public class GarmentsPanel extends JPanel{
     
     private JButton confirmButton;
 
-    private String helmetID;
-    private String chestID;
-    private String legsID;
+    private static String helmetID;
+    private static String chestID;
+    private static String legsID;
     
     public GarmentsPanel()
     {
@@ -106,15 +106,15 @@ public class GarmentsPanel extends JPanel{
         return backgJPanel;
     }
 
-    public String getHelmetID() {
+    public static String getHelmetID() {
         return helmetID;
     }
 
-    public String getChestID() {
+    public static String getChestID() {
         return chestID;
     }
 
-    public String getLegsID() {
+    public static String getLegsID() {
         return legsID;
     }
     
