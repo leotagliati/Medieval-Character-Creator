@@ -38,7 +38,7 @@ public class MainPanel extends JPanel
         GridLayout buttonsLayout = new GridLayout();
         buttonsLayout.setColumns(1);
         buttonsLayout.setRows(this.mainButtons.size());
-        buttonsLayout.setVgap(40);
+        buttonsLayout.setVgap(20);
 
         for (int i = 0; i < this.mainButtons.size(); i++) {
             ImageCreate backgroundImage = new ImageCreate(0, 0, 300, 100);
@@ -60,12 +60,12 @@ public class MainPanel extends JPanel
 
         this.backgJPanel = new JPanel();
         this.backgJPanel.setLayout(buttonsLayout);
-        this.backgJPanel.setBounds(50, 150, 300, 500);
+        this.backgJPanel.setBounds(50, 150, 300, 600);
         this.backgJPanel.setOpaque(false);
         this.backgJPanel.setBackground(Color.GREEN);
 
         this.setLayout(buttonsLayout);
-        this.setBounds(75, 150, 250, 500);
+        this.setBounds(75, 150, 250, 600);
         this.setOpaque(false);
         this.setBackground(Color.RED);
 
