@@ -88,7 +88,7 @@ public class MainFrame extends JFrame implements ActionListener{
             });
         }
         subPanelsArrayList.add(namePanel);
-        subPanelsArrayList.add(classPanel.getBackgJPanel());
+        subPanelsArrayList.add(classPanel.getBackGNDPanel());
         subPanelsArrayList.add(classPanel);
         subPanelsArrayList.add(appearancePanel);
         subPanelsArrayList.add(vesturePanel);
@@ -104,7 +104,7 @@ public class MainFrame extends JFrame implements ActionListener{
         this.add(namePanel);
         this.add(vesturePanel);
         this.add(classPanel);
-        this.add(classPanel.getBackgJPanel());
+        this.add(classPanel.getBackGNDPanel());
         this.add(appearancePanel);
         this.add(ChosenAttPanel.getPanel());
         this.add(ChosenAttPanel.getBackGNDPanel());
@@ -149,7 +149,7 @@ public class MainFrame extends JFrame implements ActionListener{
                 if(panel == classPanel)
                 {
                     panel.setVisible(true);
-                    classPanel.getBackgJPanel().setVisible(true);
+                    classPanel.getBackGNDPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
                     ChosenAttPanel.getBackGNDPanel().setVisible(false);
 

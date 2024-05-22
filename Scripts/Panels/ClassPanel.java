@@ -22,7 +22,7 @@ public class ClassPanel extends JPanel {
     public JButton knightClassButton, heraldClassButton, sorcererClassButton, clericClassButton;
     private ArrayList<JButton> classButtons = new ArrayList<JButton>();
     private ArrayList<JLabel> buttonsImage = new ArrayList<JLabel>();
-    private JPanel backgJPanel;
+    private JPanel backGNDPanel;
 
 
     
@@ -83,12 +83,12 @@ public class ClassPanel extends JPanel {
             
         }
         
-        this.backgJPanel = new JPanel();
-        this.backgJPanel.setLayout(buttonsLayout);
-        this.backgJPanel.setBounds(500, 200, 350, 400);
-        this.backgJPanel.setOpaque(false);
-        this.backgJPanel.setBackground(Color.GREEN);
-        this.backgJPanel.setVisible(false);
+        this.backGNDPanel = new JPanel();
+        this.backGNDPanel.setLayout(buttonsLayout);
+        this.backGNDPanel.setBounds(500, 200, 350, 400);
+        this.backGNDPanel.setOpaque(false);
+        this.backGNDPanel.setBackground(Color.GREEN);
+        this.backGNDPanel.setVisible(false);
         
         this.setLayout(buttonsLayout);
         this.setBounds(500, 200, 350, 400);
@@ -99,10 +99,10 @@ public class ClassPanel extends JPanel {
             this.add(jButton);
         }
         for (JLabel jLabel : buttonsImage) {
-            backgJPanel.add(jLabel);
+            backGNDPanel.add(jLabel);
         }
         
-        this.backgJPanel.setVisible(false);
+        this.backGNDPanel.setVisible(false);
         this.setVisible(false);
         
         for (JButton jButton : classButtons) {
@@ -115,7 +115,7 @@ public class ClassPanel extends JPanel {
                         if (e.getSource() == jButton) {
                             classChosen = jButton.getText();
                             setVisible(false);
-                            backgJPanel.setVisible(false);
+                            backGNDPanel.setVisible(false);
                             ChosenAttPanel.getPanel().setVisible(true);
                             ChosenAttPanel.getBackGNDPanel().setVisible(true);
                             ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), classChosen);
@@ -135,7 +135,7 @@ public class ClassPanel extends JPanel {
     public static String getClassChosen() {
         return classChosen;
     }
-    public JPanel getBackgJPanel() {
-        return backgJPanel;
+    public JPanel getBackGNDPanel() {
+        return backGNDPanel;
     }
 }
