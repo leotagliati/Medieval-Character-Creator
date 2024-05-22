@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
-import Scripts.ImageCreate;
+import Scripts.ImagesConversion.ImageCreate;
 import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class GarmentsPanel extends JPanel{

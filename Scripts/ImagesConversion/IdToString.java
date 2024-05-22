@@ -1,8 +1,8 @@
 package Scripts.ImagesConversion;
 
-import Scripts.Panels.AppearancePanel;
-import Scripts.Panels.ClassPanel;
-import Scripts.Panels.GarmentsPanel;
+import Scripts.Panels.CharacterCreation.AppearancePanel;
+import Scripts.Panels.CharacterCreation.ClassPanel;
+import Scripts.Panels.CharacterCreation.GarmentsPanel;
 
 public class IdToString {
 

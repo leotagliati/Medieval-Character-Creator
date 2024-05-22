@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
-import Scripts.ImageCreate;
+import Scripts.ImagesConversion.ImageCreate;
 import Scripts.Panels.CharacterCreation.AppearancePanel;
 import Scripts.Panels.CharacterCreation.ChosenAttPanel;
 import Scripts.Panels.CharacterCreation.ClassPanel;
