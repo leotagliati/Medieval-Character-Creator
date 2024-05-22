@@ -1,4 +1,4 @@
-package Scripts.Panels;
+package Scripts.Panels.CharacterCreation;
 
 import java.awt.Color;
 import java.awt.Font;

@@ -1,4 +1,6 @@
-import java.awt.Color;
+package Scripts.Screens;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -7,36 +9,33 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
-import Scripts.ImagesConversion.ImageCreate;
-import Scripts.Panels.AppearancePanel;
-import Scripts.Panels.ChosenAttPanel;
-import Scripts.Panels.ClassPanel;
-import Scripts.Panels.MainPanel;
-import Scripts.Panels.NamePanel;
-import Scripts.Panels.GarmentsPanel;
+import Scripts.ImageCreate;
+import Scripts.Panels.CharacterCreation.AppearancePanel;
+import Scripts.Panels.CharacterCreation.ChosenAttPanel;
+import Scripts.Panels.CharacterCreation.ClassPanel;
+import Scripts.Panels.CharacterCreation.MainPanel;
+import Scripts.Panels.CharacterCreation.NamePanel;
+import Scripts.Panels.CharacterCreation.GarmentsPanel;
 
-public class MainFrame extends JFrame implements ActionListener{
-    
-    MainPanel mainPanel = new MainPanel();
-    NamePanel namePanel = new NamePanel();
-    GarmentsPanel vesturePanel = new GarmentsPanel();
-    ClassPanel classPanel = new ClassPanel();
-    AppearancePanel appearancePanel = new AppearancePanel();
-    
+public class CharacterCreation extends JPanel implements ActionListener
+{
     ArrayList<JPanel> subPanelsArrayList = new ArrayList<JPanel>();
 
-    MainFrame()
+    MainPanel mainPanel = new MainPanel();
+    NamePanel namePanel = new NamePanel();
+    GarmentsPanel garmentsPanel = new GarmentsPanel();
+    ClassPanel classPanel = new ClassPanel();
+    AppearancePanel appearancePanel = new AppearancePanel();
+
+    public CharacterCreation()
     {
-        super("Character Creation");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(1920, 1080);
-        this.getContentPane().setBackground(Color.BLACK);
+        super();
 		this.setLayout(null);
+        this.setBackground(Color.BLACK);
         
         ChosenAttPanel.setupPanel();
 
@@ -69,7 +68,8 @@ public class MainFrame extends JFrame implements ActionListener{
 
         for (JButton jButton : mainPanel.getButtonsArray()) {
             jButton.addActionListener(this);
-            jButton.addMouseListener(new MouseAdapter() {
+            jButton.addMouseListener(new MouseAdapter()
+            {
                 @Override
                 public void mouseEntered(MouseEvent e)
                 {
@@ -87,11 +87,12 @@ public class MainFrame extends JFrame implements ActionListener{
                 }
             });
         }
+
         subPanelsArrayList.add(namePanel);
         subPanelsArrayList.add(classPanel.getBackGNDPanel());
         subPanelsArrayList.add(classPanel);
         subPanelsArrayList.add(appearancePanel);
-        subPanelsArrayList.add(vesturePanel);
+        subPanelsArrayList.add(garmentsPanel);
         
         this.add(backgroundImage);
         this.add(UIimage);
@@ -102,22 +103,32 @@ public class MainFrame extends JFrame implements ActionListener{
         this.add(mainPanel);
         this.add(mainPanel.getBackPanel());
         this.add(namePanel);
-        this.add(vesturePanel);
+        this.add(garmentsPanel);
         this.add(classPanel);
         this.add(classPanel.getBackGNDPanel());
         this.add(appearancePanel);
         this.add(ChosenAttPanel.getPanel());
         this.add(ChosenAttPanel.getBackGNDPanel());
 
-		this.setVisible(true);
+        mainPanel.returnButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent ae)
+            {
+                CardLayout cardLayout = (CardLayout) getParent().getLayout();
+                cardLayout.first(getParent());
+            }
+        });
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)
+    {
         AudioHandler.audioPlay("Music\\buttonClicked.wav");
+
         if(e.getSource() == mainPanel.charNameButton)
         {
-            for (JPanel panel : subPanelsArrayList) {
+            for (JPanel panel : subPanelsArrayList)
+            {
                 if(panel == namePanel)
                 {
                     panel.setVisible(true);
@@ -128,11 +139,12 @@ public class MainFrame extends JFrame implements ActionListener{
                 else panel.setVisible(false);
             }
         }
+
         else if(e.getSource() == mainPanel.charVestureButton)
         {
-            
-            for (JPanel panel : subPanelsArrayList) {
-                if(panel == vesturePanel)
+            for (JPanel panel : subPanelsArrayList)
+            {
+                if(panel == garmentsPanel)
                 {
                     panel.setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(false);
@@ -142,10 +154,11 @@ public class MainFrame extends JFrame implements ActionListener{
                 else panel.setVisible(false);
             }
         }
+
         else if(e.getSource() == mainPanel.charClassButton)
         {
-            
-            for (JPanel panel : subPanelsArrayList) {
+            for (JPanel panel : subPanelsArrayList)
+            {
                 if(panel == classPanel)
                 {
                     panel.setVisible(true);
@@ -157,9 +170,11 @@ public class MainFrame extends JFrame implements ActionListener{
                 else panel.setVisible(false);
             }
         }
+
         else if(e.getSource() == mainPanel.charAppearenceButton)
         {
-            for (JPanel panel : subPanelsArrayList) {
+            for (JPanel panel : subPanelsArrayList)
+            {
                 if(panel == appearancePanel)
                 {
                     panel.setVisible(true);
@@ -171,5 +186,4 @@ public class MainFrame extends JFrame implements ActionListener{
             }
         }
     }
-    
 }

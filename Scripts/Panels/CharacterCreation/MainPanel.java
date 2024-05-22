@@ -1,42 +1,43 @@
-package Scripts.Panels;
+package Scripts.Panels.CharacterCreation;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import Scripts.ImagesConversion.ImageCreate;
 
 public class MainPanel extends JPanel {
-    public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton;
+    public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton, returnButton;
     private ArrayList<JLabel> buttonsDesignArray = new ArrayList<JLabel>();
     private ArrayList<JButton> buttonsArray = new ArrayList<JButton>();
     private JPanel backGNDPanel;
 
-    public MainPanel() {
+    public MainPanel()
+    {
         super();
         // Inicializa os Botoes
         this.charNameButton = new JButton("Nome");
         this.charClassButton = new JButton("Classe");
         this.charVestureButton = new JButton("Vestimenta");
         this.charAppearenceButton = new JButton("Aparência");
+        this.returnButton = new JButton("Voltar");
 
         // Add os botoes no arrayList
         this.buttonsArray.add(charNameButton);
         this.buttonsArray.add(charVestureButton);
         this.buttonsArray.add(charClassButton);
         this.buttonsArray.add(charAppearenceButton);
+        this.buttonsArray.add(returnButton);
 
         GridLayout buttonsLayout = new GridLayout();
         buttonsLayout.setColumns(1);
         buttonsLayout.setRows(this.buttonsArray.size());
-        buttonsLayout.setVgap(40);
+        buttonsLayout.setVgap(20);
 
         for (int i = 0; i < this.buttonsArray.size(); i++) {
             ImageCreate backgroundImage = new ImageCreate(0, 0, 300, 100);
@@ -65,7 +66,7 @@ public class MainPanel extends JPanel {
 
         // Set propriedades do objeto
         this.setLayout(buttonsLayout);
-        this.setBounds(75, 150, 250, 500);
+        this.setBounds(75, 150, 250, 600);
         this.setOpaque(false);
         this.setBackground(Color.RED);
 

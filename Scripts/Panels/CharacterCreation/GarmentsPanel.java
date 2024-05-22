@@ -1,4 +1,4 @@
-package Scripts.Panels;
+package Scripts.Panels.CharacterCreation;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
-import Scripts.ImagesConversion.ImageCreate;
-import Scripts.Panels.Bodypart.BodyPart;
+import Scripts.ImageCreate;
+import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class GarmentsPanel extends JPanel{
     public BodyPart helmet = new BodyPart("Capacete", 3);

@@ -1,4 +1,4 @@
-package Scripts.Panels;
+package Scripts.Panels.CharacterCreation;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -22,8 +22,8 @@ public class NamePanel extends JPanel {
 
     public static String nameChosen = "Entrada incompleta";
 
-    public NamePanel() {
-
+    public NamePanel()
+    {
         super();
         // Set propriedade do titleText
         this.titleText.setBounds(40, 20, 270, 50);
