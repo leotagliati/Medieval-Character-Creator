@@ -37,21 +37,21 @@ public class IdToString {
     public void StringSetup(){
         switch (this.helmetID) {
             case "1":
-                this.helmetID = "Capacete";
+                this.helmetID = "helm1";
                 break;
             case "2":
-                this.helmetID = "Coroa";
+                this.helmetID = "helm1";
                 break;
             case "3":
-                this.helmetID = "Elmo";
+                this.helmetID = "helm1";
                 break;
             default:
-                this.helmetID = "Capacete";
+                this.helmetID = "helm1";
                 break;
         }
         switch (this.chestID) {
             case "1":
-                this.chestID = "Armadura";
+                this.chestID = "helm1";
                 break;
             case "2":
                 this.chestID = "Blusa";
