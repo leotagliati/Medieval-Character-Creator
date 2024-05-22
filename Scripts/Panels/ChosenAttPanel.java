@@ -9,54 +9,59 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ChosenAttPanel {
-    public static JTextField chosenNameField, chosenClassField, chosenEyes, chosenSkin, chosenPhysic;
-    private static JTextField titleName, titleClass;
-    private static ArrayList<JTextField> chosenTexts = new ArrayList<JTextField>();
-    private static ArrayList<JTextField> titles = new ArrayList<JTextField>();
+    public static JTextField nameInput, classInput, chosenEyes, chosenSkin, chosenPhysic;
+    private static JTextField nameTitle, classTitle;
+    private static ArrayList<JTextField> chosenAttArray = new ArrayList<JTextField>();
+    private static ArrayList<JTextField> titlesTextArray = new ArrayList<JTextField>();
     private static JPanel chosenPanel = new JPanel();
-    private static JPanel backgPanel = new JPanel();
+    private static JPanel backGNDPanel = new JPanel();
 
     public static void setupPanel() {
-        chosenNameField = new JTextField("Entrada incompleta");
-        chosenClassField = new JTextField("Entrada incompleta");
-        titleName = new JTextField("Nome: ");
-        titleClass = new JTextField("Classe: ");
+        // Inicializa os Textos
+        nameTitle = new JTextField("Nome: ");
+        nameInput = new JTextField("Entrada incompleta");
+        classTitle = new JTextField("Classe: ");
+        classInput = new JTextField("Entrada incompleta");
 
-        GridLayout textLayout = new GridLayout();
-        textLayout.setColumns(1);
-        textLayout.setRows(2);
-        textLayout.setVgap(20);
+        GridLayout inputTextLayout = new GridLayout();
+        inputTextLayout.setColumns(1);
+        inputTextLayout.setRows(2);
+        inputTextLayout.setVgap(20);
 
         GridLayout titleLayout = new GridLayout();
         titleLayout.setColumns(1);
         titleLayout.setRows(2);
         titleLayout.setVgap(20);
 
+        // Set propriedade do painel dos inputs
         chosenPanel.setBounds(630, 200, 300, 200);
         chosenPanel.setBackground(Color.BLUE);
         chosenPanel.setOpaque(false);
-        chosenPanel.setLayout(textLayout);
+        chosenPanel.setLayout(inputTextLayout);
 
-        backgPanel.setBounds(400, 200, 300, 200);
-        backgPanel.setBackground(Color.GREEN);
-        backgPanel.setOpaque(false);
-        backgPanel.setLayout(titleLayout);
+        // Set propriedade do painel de fundo
+        backGNDPanel.setBounds(400, 200, 300, 200);
+        backGNDPanel.setBackground(Color.GREEN);
+        backGNDPanel.setOpaque(false);
+        backGNDPanel.setLayout(titleLayout);
 
-        chosenTexts.add(chosenNameField);
-        chosenTexts.add(chosenClassField);
+        chosenAttArray.add(nameInput);
+        chosenAttArray.add(classInput);
 
-        backgPanel.add(titleName);
-        backgPanel.add(titleClass);
+        backGNDPanel.add(nameTitle);
+        backGNDPanel.add(classTitle);
 
-        for (JTextField text : chosenTexts) {
+        for (JTextField text : chosenAttArray) {
             chosenPanel.add(text);
         }
-        backgPanel.setVisible(true);
+        backGNDPanel.setVisible(true);
         chosenPanel.setVisible(true);
 
-        titles.add(titleName);
-        titles.add(titleClass);
-        for (JTextField titles : titles) {
+        titlesTextArray.add(nameTitle);
+        titlesTextArray.add(classTitle);
+
+        // Set propriedade dos titulos
+        for (JTextField titles : titlesTextArray) {
             titles.setEditable(false);
             titles.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 40));
             titles.setHorizontalAlignment(JTextField.CENTER);
@@ -64,23 +69,26 @@ public class ChosenAttPanel {
             titles.setForeground(Color.WHITE);
             titles.setBorder(null);
         }
-        for (int i = 0; i < chosenTexts.size(); i++) {
-            chosenTexts.get(i).setEditable(false);
-            chosenTexts.get(i).setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
-            chosenTexts.get(i).setHorizontalAlignment(JTextField.LEFT);
-            chosenTexts.get(i).setOpaque(false);
-            chosenTexts.get(i).setBorder(null);
+
+        // Set propriedade dos inputs
+        for (int i = 0; i < chosenAttArray.size(); i++) {
+            chosenAttArray.get(i).setEditable(false);
+            chosenAttArray.get(i).setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
+            chosenAttArray.get(i).setHorizontalAlignment(JTextField.LEFT);
+            chosenAttArray.get(i).setOpaque(false);
+            chosenAttArray.get(i).setBorder(null);
         }
-        chosenNameField.setForeground(Color.RED);
-        chosenClassField.setForeground(Color.RED);
+        
+        nameInput.setForeground(Color.RED);
+        classInput.setForeground(Color.RED);
     }
 
     public static JPanel getPanel() {
         return chosenPanel;
     }
 
-    public static JPanel getBackgPanel() {
-        return backgPanel;
+    public static JPanel getBackGNDPanel() {
+        return backGNDPanel;
     }
 
     public static void updatePanel(String nameChosen, String classChosen) {
@@ -88,26 +96,26 @@ public class ChosenAttPanel {
         // System.out.println("class:" + classChosen);
         if (classChosen.equals("Entrada incompleta")) {
             if (nameChosen.equals("Entrada incompleta") || nameChosen.equals(null)) {
-                chosenNameField.setText("Entrada incompleta");
-                chosenNameField.setForeground(Color.RED);
+                nameInput.setText("Entrada incompleta");
+                nameInput.setForeground(Color.RED);
 
             } else {
-                chosenNameField.setText(nameChosen);
-                chosenNameField.setForeground(Color.WHITE);
+                nameInput.setText(nameChosen);
+                nameInput.setForeground(Color.WHITE);
             }
-            chosenClassField.setText(classChosen);
-            chosenClassField.setForeground(Color.RED);
+            classInput.setText(classChosen);
+            classInput.setForeground(Color.RED);
         } else {
             if (nameChosen.equals("Entrada incompleta") || nameChosen.equals(null)) {
-                chosenNameField.setText("Entrada incompleta");
-                chosenNameField.setForeground(Color.RED);
+                nameInput.setText("Entrada incompleta");
+                nameInput.setForeground(Color.RED);
 
             } else {
-                chosenNameField.setText(nameChosen);
-                chosenNameField.setForeground(Color.WHITE);
+                nameInput.setText(nameChosen);
+                nameInput.setForeground(Color.WHITE);
             }
-            chosenClassField.setText(classChosen);
-            chosenClassField.setForeground(Color.WHITE);
+            classInput.setText(classChosen);
+            classInput.setForeground(Color.WHITE);
         }
     }
 

@@ -11,19 +11,19 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
-import Scripts.ImageCreate;
+import Scripts.ImagesConversion.ImageCreate;
 import Scripts.Panels.Bodypart.BodyPart;
 
 public class GarmentsPanel extends JPanel{
     public BodyPart helmet = new BodyPart("Capacete", 3);
     public BodyPart chest = new BodyPart("Peitoral", 3);
     public BodyPart legs = new BodyPart("Calça", 3);
-    private JPanel backgJPanel;
     
-    private JButton confirmButton;
+    private JButton confirmButton = new JButton("Confirmar");
 
     private static String helmetID;
     private static String chestID;
@@ -36,6 +36,7 @@ public class GarmentsPanel extends JPanel{
         chest.setup(1);
         legs.setup(2);
         
+        // Set propriedades do objeto
         this.setBounds(500, 150, 350, 500);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
@@ -54,12 +55,12 @@ public class GarmentsPanel extends JPanel{
         this.add(this.legs.getBodyPartSlider());
         this.add(this.legs.getBodyPartSliderValue());
 
-        ImageCreate backgroundImage = new ImageCreate(5, 400, 350, 100);
-        backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
-        backgroundImage.setIconFile("Images\\button.png");
-        backgroundImage.imageSetter();
+        ImageCreate buttonImage = new ImageCreate(5, 400, 350, 100);
+        buttonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        buttonImage.setIconFile("Images\\button.png");
+        buttonImage.imageSetter();
 
-        confirmButton = new JButton("Confirmar");
+        // Set propriedades do botao
         confirmButton.setBounds(50, 400, 260, 100);
         confirmButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
         confirmButton.setForeground(Color.WHITE);
@@ -71,13 +72,13 @@ public class GarmentsPanel extends JPanel{
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (e.getSource() == confirmButton) {
-                    backgroundImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
+                    buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
             }
             @Override
             public void mouseExited(MouseEvent e){
                 if (e.getSource() == confirmButton) {
-                    backgroundImage.setIcon(new ImageIcon("Images\\button.png"));
+                    buttonImage.setIcon(new ImageIcon("Images\\button.png"));
                 }
             }
         });
@@ -90,8 +91,11 @@ public class GarmentsPanel extends JPanel{
                     helmetID = helmet.getBodyPartSliderValue().getText();
                     chestID = chest.getBodyPartSliderValue().getText();
                     legsID = legs.getBodyPartSliderValue().getText();
+                    // JOptionPane.showMessageDialog(null, helmetID);
+                    // JOptionPane.showMessageDialog(null, chestID);
+                    // JOptionPane.showMessageDialog(null, legsID);
                     setVisible(false);
-                    ChosenAttPanel.getBackgPanel().setVisible(true);
+                    ChosenAttPanel.getBackGNDPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(true);
                     ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
@@ -99,13 +103,9 @@ public class GarmentsPanel extends JPanel{
             
         });
 
+        this.add(buttonImage);
         this.add(confirmButton);
-        this.add(backgroundImage);
     }
-    public JPanel getBackgJPanel() {
-        return backgJPanel;
-    }
-
     public static String getHelmetID() {
         return helmetID;
     }

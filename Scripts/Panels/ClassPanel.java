@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
-import Scripts.ImageCreate;
+import Scripts.ImagesConversion.ImageCreate;
 
 public class ClassPanel extends JPanel {
     public JButton knightClassButton, heraldClassButton, sorcererClassButton, clericClassButton;
@@ -117,7 +117,7 @@ public class ClassPanel extends JPanel {
                             setVisible(false);
                             backgJPanel.setVisible(false);
                             ChosenAttPanel.getPanel().setVisible(true);
-                            ChosenAttPanel.getBackgPanel().setVisible(true);
+                            ChosenAttPanel.getBackGNDPanel().setVisible(true);
                             ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), classChosen);
                         }
                     }
