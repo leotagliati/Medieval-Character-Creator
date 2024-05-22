@@ -1,6 +1,5 @@
-package Scripts;
+package Scripts.ImagesConversion;
 
-import java.io.File;
 import javax.swing.*;
 import java.awt.*;
 

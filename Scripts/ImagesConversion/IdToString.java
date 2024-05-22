@@ -1,4 +1,4 @@
-package Scripts.AddAppearancePanel;
+package Scripts.ImagesConversion;
 
 import Scripts.Panels.AppearancePanel;
 import Scripts.Panels.ClassPanel;

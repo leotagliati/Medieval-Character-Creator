@@ -1,4 +1,4 @@
-package Scripts.AddAppearancePanel;
+package Scripts.ImagesConversion;
 
 public class StringToPath{
     public String convertPng(String s){

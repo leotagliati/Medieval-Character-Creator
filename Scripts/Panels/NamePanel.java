@@ -8,92 +8,96 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Scripts.AudioHandler;
-import Scripts.ImageCreate;
+import Scripts.ImagesConversion.ImageCreate;
 
 public class NamePanel extends JPanel {
 
-    private JTextField titleTextField;
-    private JTextField nameTextField;
+    private JTextField titleText = new JTextField("Insira seu nome");
+    private JTextField nameInput = new JTextField("Entrada incompleta");
+
     public static String nameChosen = "Entrada incompleta";
 
     public NamePanel() {
 
         super();
-        this.titleTextField = new JTextField("Insira seu nome");
-        this.titleTextField.setBounds(40, 20, 270, 50);
-        this.titleTextField.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 40));
-        this.titleTextField.setHorizontalAlignment(JTextField.CENTER);
-        this.titleTextField.setOpaque(false);
-        this.titleTextField.setBorder(null);
-        this.titleTextField.setForeground(Color.WHITE);
-        this.titleTextField.setEditable(false);
-
-        this.nameTextField = new JTextField("Entrada incompleta");
-        this.nameTextField.setBounds(50, 100, 250, 70);
-        this.nameTextField.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
-        this.nameTextField.setHorizontalAlignment(JTextField.CENTER);
-        this.nameTextField.setOpaque(false);
-        this.nameTextField.setBorder(null);
-        this.nameTextField.setForeground(Color.RED);
-        this.nameTextField.setEditable(false);
-        this.nameTextField.addMouseListener(new MouseAdapter() {
+        // Set propriedade do titleText
+        this.titleText.setBounds(40, 20, 270, 50);
+        this.titleText.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 40));
+        this.titleText.setHorizontalAlignment(JTextField.CENTER);
+        this.titleText.setOpaque(false);
+        this.titleText.setBorder(null);
+        this.titleText.setForeground(Color.WHITE);
+        this.titleText.setEditable(false);
+        this.titleText.setVisible(true);
+        
+        // Set propriedade do nameInput
+        this.nameInput.setBounds(50, 100, 250, 70);
+        this.nameInput.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
+        this.nameInput.setHorizontalAlignment(JTextField.CENTER);
+        this.nameInput.setOpaque(false);
+        this.nameInput.setBorder(null);
+        this.nameInput.setForeground(Color.RED);
+        this.nameInput.setEditable(false);
+        this.nameInput.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                nameTextField.setEditable(true);
-                if (nameTextField.getText().equals("Entrada incompleta")) {
-                    nameTextField.setText("");
+                nameInput.setEditable(true);
+                if (nameInput.getText().equals("Entrada incompleta")) {
+                    nameInput.setText("");
                 }
-                nameTextField.setForeground(Color.WHITE);
+                nameInput.setForeground(Color.WHITE);
             }
         });
-        this.nameTextField.addKeyListener(new KeyAdapter() {
+        this.nameInput.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     AudioHandler.audioPlay("Music\\buttonClicked2.wav");
-                    if (nameTextField.getText().equals("")) {
-                        nameTextField.setText("Entrada incompleta");
-                        nameTextField.setForeground(Color.RED);
+                    if (nameInput.getText().equals("")) {
+                        nameInput.setText("Entrada incompleta");
+                        nameInput.setForeground(Color.RED);
                     }
-                    nameTextField.setEditable(false);
-                    nameChosen = nameTextField.getText();
+
+                    nameInput.setEditable(false);
+                    nameChosen = nameInput.getText();
+                    // JOptionPane.showMessageDialog(null, nameChosen);
                     setVisible(false);
-                    ChosenAttPanel.getBackgPanel().setVisible(true);
+                    ChosenAttPanel.getBackGNDPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(true);
                     ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
             }
 
         });
-        nameChosen.equals(nameTextField.getText());
-        this.nameTextField.setVisible(true);
-        this.titleTextField.setVisible(true);
+        this.nameInput.setVisible(true);
 
         ImageCreate backgroundImage = new ImageCreate(0, 80, 350, 100);
         backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
         backgroundImage.setIconFile("Images\\namePanelUnder.png");
         backgroundImage.imageSetter();
 
+        // Set propriedades do objeto
         this.setBounds(500, 150, 350, 500);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
-        this.add(this.nameTextField);
-        this.add(this.titleTextField);
+        this.add(this.titleText);
+        this.add(this.nameInput);
         this.add(backgroundImage);
         this.setOpaque(false);
         this.setVisible(false);
     }
 
-    public JTextField getNameTextField() {
-        return nameTextField;
+    public JTextField getNameInput() {
+        return nameInput;
     }
 
-    public void setNameTextField(JTextField nameTextField) {
-        this.nameTextField = nameTextField;
+    public void setNameInput(JTextField nameTextField) {
+        this.nameInput = nameTextField;
     }
 
     public static String getNameChosen() {

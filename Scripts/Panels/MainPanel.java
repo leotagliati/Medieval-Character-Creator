@@ -11,13 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import Scripts.ImageCreate;
+import Scripts.ImagesConversion.ImageCreate;
 
 public class MainPanel extends JPanel {
     public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton;
-    private ArrayList<JLabel> buttonsImage = new ArrayList<JLabel>();
-    private ArrayList<JButton> mainButtons = new ArrayList<JButton>();
-    private JPanel backgJPanel;
+    private ArrayList<JLabel> buttonsDesignArray = new ArrayList<JLabel>();
+    private ArrayList<JButton> buttonsArray = new ArrayList<JButton>();
+    private JPanel backGNDPanel;
 
     public MainPanel() {
         super();
@@ -28,62 +28,64 @@ public class MainPanel extends JPanel {
         this.charAppearenceButton = new JButton("Aparência");
 
         // Add os botoes no arrayList
-        this.mainButtons.add(charNameButton);
-        this.mainButtons.add(charVestureButton);
-        this.mainButtons.add(charClassButton);
-        this.mainButtons.add(charAppearenceButton);
+        this.buttonsArray.add(charNameButton);
+        this.buttonsArray.add(charVestureButton);
+        this.buttonsArray.add(charClassButton);
+        this.buttonsArray.add(charAppearenceButton);
 
         GridLayout buttonsLayout = new GridLayout();
         buttonsLayout.setColumns(1);
-        buttonsLayout.setRows(this.mainButtons.size());
+        buttonsLayout.setRows(this.buttonsArray.size());
         buttonsLayout.setVgap(40);
 
-        for (int i = 0; i < this.mainButtons.size(); i++) {
+        for (int i = 0; i < this.buttonsArray.size(); i++) {
             ImageCreate backgroundImage = new ImageCreate(0, 0, 300, 100);
             backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
             backgroundImage.setIconFile("Images\\button.png");
             backgroundImage.imageSetter();
-            buttonsImage.add(backgroundImage);
+            buttonsDesignArray.add(backgroundImage);
         }
 
-        // Set design dos botoes
-        for (JButton jButton : this.mainButtons) {
-            jButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
-            jButton.setForeground(Color.WHITE);
-            jButton.setOpaque(true);
-            jButton.setContentAreaFilled(false);
-            jButton.setBorderPainted(false);
-            jButton.setFocusable(false);
+        // Set propriedade dos botoes
+        for (JButton button : this.buttonsArray) {
+            button.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
+            button.setForeground(Color.WHITE);
+            button.setOpaque(true);
+            button.setContentAreaFilled(false);
+            button.setBorderPainted(false);
+            button.setFocusable(false);
         }
 
-        this.backgJPanel = new JPanel();
-        this.backgJPanel.setLayout(buttonsLayout);
-        this.backgJPanel.setBounds(50, 150, 300, 500);
-        this.backgJPanel.setOpaque(false);
-        this.backgJPanel.setBackground(Color.GREEN);
+        // Set painel das imagens de fundo
+        this.backGNDPanel = new JPanel();
+        this.backGNDPanel.setLayout(buttonsLayout);
+        this.backGNDPanel.setBounds(50, 150, 300, 500);
+        this.backGNDPanel.setOpaque(false);
+        this.backGNDPanel.setBackground(Color.GREEN);
 
+        // Set propriedades do objeto
         this.setLayout(buttonsLayout);
         this.setBounds(75, 150, 250, 500);
         this.setOpaque(false);
         this.setBackground(Color.RED);
 
-        for (JButton jButton : this.mainButtons) {
-            this.add(jButton);
+        for (JButton button : this.buttonsArray) {
+            this.add(button);
         }
-        for (JLabel jLabel : buttonsImage) {
-            backgJPanel.add(jLabel);
+        for (JLabel buttonImage : buttonsDesignArray) {
+            backGNDPanel.add(buttonImage);
         }
     }
 
-    public ArrayList<JButton> getMainButtons() {
-        return mainButtons;
+    public ArrayList<JButton> getButtonsArray() {
+        return buttonsArray;
     }
 
-    public JPanel getBackgJPanel() {
-        return backgJPanel;
+    public JPanel getBackPanel() {
+        return backGNDPanel;
     }
 
-    public ArrayList<JLabel> getButtonsImage() {
-        return buttonsImage;
+    public ArrayList<JLabel> getButtonsDesignArray() {
+        return buttonsDesignArray;
     }
 }

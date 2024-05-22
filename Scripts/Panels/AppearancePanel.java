@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -17,7 +18,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Scripts.AudioHandler;
-import Scripts.ImageCreate;
+import Scripts.ImagesConversion.ImageCreate;
 import Scripts.Panels.Bodypart.BodyPart;
 
 public class AppearancePanel extends JPanel {
@@ -26,13 +27,13 @@ public class AppearancePanel extends JPanel {
     private BodyPart skin = new BodyPart("Cor de pele", 3);
     private BodyPart physic = new BodyPart("Físico", 2);
     
+    private JButton confirmButton = new JButton("Confirmar");
+    
     private static String eyeID;
     private static String skinID;
     private static String physicID;
     
-    private JButton confirmButton;
 
-    private JPanel backgJPanel;
 
     public AppearancePanel() {
         super();
@@ -40,6 +41,7 @@ public class AppearancePanel extends JPanel {
         skin.setup(1);
         physic.setup(2);
 
+        // Set propriedades do objeto
         this.setBounds(500, 150, 350, 500);
         this.setLayout(null);
         this.setBackground(Color.RED);
@@ -58,11 +60,12 @@ public class AppearancePanel extends JPanel {
         this.add(this.physic.getBodyPartSlider());
         this.add(this.physic.getBodyPartSliderValue());
 
-        ImageCreate backgroundImage = new ImageCreate(5, 400, 350, 100);
-        backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
-        backgroundImage.setIconFile("Images\\button.png");
-        backgroundImage.imageSetter();
+        ImageCreate buttonImage = new ImageCreate(5, 400, 350, 100);
+        buttonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        buttonImage.setIconFile("Images\\button.png");
+        buttonImage.imageSetter();
 
+        // Set propriedades do botao
         confirmButton = new JButton("Confirm");
         confirmButton.setBounds(50, 400, 260, 100);
         confirmButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
@@ -75,13 +78,13 @@ public class AppearancePanel extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (e.getSource() == confirmButton) {
-                    backgroundImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
+                    buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
             }
             @Override
             public void mouseExited(MouseEvent e){
                 if (e.getSource() == confirmButton) {
-                    backgroundImage.setIcon(new ImageIcon("Images\\button.png"));
+                    buttonImage.setIcon(new ImageIcon("Images\\button.png"));
                 }
             }
         });
@@ -96,7 +99,10 @@ public class AppearancePanel extends JPanel {
                     skinID = skin.getBodyPartSliderValue().getText();
                     physicID = physic.getBodyPartSliderValue().getText();
                     setVisible(false);
-                    ChosenAttPanel.getBackgPanel().setVisible(true);
+                    // JOptionPane.showMessageDialog(null, eyeID);
+                    // JOptionPane.showMessageDialog(null, skinID);
+                    // JOptionPane.showMessageDialog(null, physicID);
+                    ChosenAttPanel.getBackGNDPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(true);
                     ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
@@ -105,7 +111,7 @@ public class AppearancePanel extends JPanel {
         });
 
         this.add(confirmButton);
-        this.add(backgroundImage);
+        this.add(buttonImage);
 
     }
     public static String getEyeID(){
