@@ -1,4 +1,4 @@
-package Scripts.Panels;
+package Scripts.Panels.CharacterCreation;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ChosenAttPanel {
+public class ChosenAttPanel
+{
     public static JTextField chosenNameField, chosenClassField, chosenEyes, chosenSkin, chosenPhysic;
     private static JTextField titleName, titleClass;
     private static ArrayList<JTextField> chosenTexts = new ArrayList<JTextField>();
@@ -16,7 +17,8 @@ public class ChosenAttPanel {
     private static JPanel chosenPanel = new JPanel();
     private static JPanel backgPanel = new JPanel();
 
-    public static void setupPanel() {
+    public static void setupPanel()
+    {
         chosenNameField = new JTextField("Entrada incompleta");
         chosenClassField = new JTextField("Entrada incompleta");
         titleName = new JTextField("Nome: ");

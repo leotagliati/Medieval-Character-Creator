@@ -1,37 +1,39 @@
-package Scripts.Panels;
+package Scripts.Panels.CharacterCreation;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import Scripts.ImageCreate;
 
-public class MainPanel extends JPanel {
-    public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton;
+public class MainPanel extends JPanel
+{
+    public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton, returnButton;
     private ArrayList<JLabel> buttonsImage = new ArrayList<JLabel>();
     private ArrayList<JButton> mainButtons = new ArrayList<JButton>();
     private JPanel backgJPanel;
 
-    public MainPanel() {
+    public MainPanel()
+    {
         super();
         // Inicializa os Botoes
         this.charNameButton = new JButton("Nome");
         this.charClassButton = new JButton("Classe");
         this.charVestureButton = new JButton("Vestimenta");
         this.charAppearenceButton = new JButton("Aparência");
+        this.returnButton = new JButton("Voltar");
 
         // Add os botoes no arrayList
         this.mainButtons.add(charNameButton);
         this.mainButtons.add(charVestureButton);
         this.mainButtons.add(charClassButton);
         this.mainButtons.add(charAppearenceButton);
+        this.mainButtons.add(returnButton);
 
         GridLayout buttonsLayout = new GridLayout();
         buttonsLayout.setColumns(1);

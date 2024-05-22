@@ -1,4 +1,4 @@
-package Scripts.Panels;
+package Scripts.Panels.CharacterCreation;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,14 +14,14 @@ import javax.swing.JTextField;
 import Scripts.AudioHandler;
 import Scripts.ImageCreate;
 
-public class NamePanel extends JPanel {
-
+public class NamePanel extends JPanel
+{
     private JTextField titleTextField;
     private JTextField nameTextField;
     public static String nameChosen = "Entrada incompleta";
 
-    public NamePanel() {
-
+    public NamePanel()
+    {
         super();
         this.titleTextField = new JTextField("Insira seu nome");
         this.titleTextField.setBounds(40, 20, 270, 50);

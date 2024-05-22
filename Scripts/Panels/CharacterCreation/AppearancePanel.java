@@ -1,4 +1,4 @@
-package Scripts.Panels;
+package Scripts.Panels.CharacterCreation;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,15 +10,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Scripts.AudioHandler;
 import Scripts.ImageCreate;
-import Scripts.Panels.Bodypart.BodyPart;
+import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class AppearancePanel extends JPanel {
 

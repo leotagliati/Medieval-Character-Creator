@@ -1,4 +1,4 @@
-package Scripts.Panels.Bodypart;
+package Scripts.Panels.CharacterCreation.Bodypart;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -9,7 +9,8 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class BodyPart {
+public class BodyPart
+{
     private JTextField bodyPartText;
     private JSlider bodyPartSlider;
     private JTextField bodyPartSliderValue;
@@ -21,6 +22,7 @@ public class BodyPart {
         this.bodyPartSlider = new JSlider(1, sliderMaxValue,2);
         this.bodyPartSliderValue = new JTextField("" + this.bodyPartSlider.getValue());
     }
+
     public void setup(int sliderOrder)
     {
         this.bodyPartText.setBounds(50, 10 + (sliderOrder * visualOffset),250,40);
@@ -36,7 +38,7 @@ public class BodyPart {
         this.bodyPartSlider.setOpaque(false);
         this.bodyPartSlider.setBorder(BorderFactory.createEmptyBorder());
         this.bodyPartSlider.addChangeListener(new ChangeListener() {
-            
+
             @Override
             public void stateChanged(ChangeEvent e) {
                 if(e.getSource() == bodyPartSlider)
@@ -44,7 +46,6 @@ public class BodyPart {
                     bodyPartSliderValue.setText("" + bodyPartSlider.getValue());
                 }
             }
-            
         });
         
         this.bodyPartSliderValue.setBounds(50,50 + (sliderOrder * visualOffset),250,20);
