@@ -40,10 +40,10 @@ public class IdToString {
                 this.helmetID = "helm1";
                 break;
             case "2":
-                this.helmetID = "helm1";
+                this.helmetID = "helm2";
                 break;
             case "3":
-                this.helmetID = "helm1";
+                this.helmetID = "helm3";
                 break;
             default:
                 this.helmetID = "helm1";
@@ -51,90 +51,87 @@ public class IdToString {
         }
         switch (this.chestID) {
             case "1":
-                this.chestID = "helm1";
+                this.chestID = "chest1";
                 break;
             case "2":
-                this.chestID = "Blusa";
+                this.chestID = "chest2";
                 break;
             case "3":
-                this.chestID = "Camisa";
+                this.chestID = "chest3";
                 break;
             default:
-                this.chestID = "Armadura";
+                this.chestID = "chest1";
                 break;
         }
         switch (this.legsID) {
             case "1":
-                this.legsID = "Calça";
+                this.legsID = "legs1";
                 break;
             case "2":
-                this.legsID = "Calção";
+                this.legsID = "legs2";
                 break;
             case "3":
-                this.legsID = "Saia";
+                this.legsID = "legs3";
                 break;
 
             default:
-                this.legsID = "Calça";
+                this.legsID = "legs1";
                 break;
         }
         switch (this.classID) {
-            case "1":
-                this.classID = "Cavaleiro";
+            case "Cavaleiro":
+                this.classID = "sword";
                 break;
-            case "2":
-                this.classID = "Arauto";
+            case "Arauto":
+                this.classID = "spear";
                 break;
-            case "3":
-                this.classID = "Feiticeiro";
+            case "Feiticeiro":
+                this.classID = "staff";
                 break;
-            case "4":
-                this.classID = "Clérigo";
+            case "Clérigo":
+                this.classID = "grimoire";
                 break;
             default:
-                this.classID = "Cavaleiro";
+                this.classID = "sword";
                 break;
         }
         switch (this.eyeID) {
             case "1":
-                this.eyeID = "Olho1";
+                this.eyeID = "eyes1";
                 break;
             case "2":
-                this.eyeID = "Olho2";
+                this.eyeID = "eyes2";
                 break;
             case "3":
-                this.eyeID = "Olho3";
+                this.eyeID = "eyes3";
                 break;
             default:
-                this.eyeID = "Olho1";
+                this.eyeID = "eyes1";
                 break;
         }
         switch (this.skinID) {
             case "1":
-                this.skinID = "Pele1";
+                this.skinID = "skin1";
                 break;
             case "2":
-                this.skinID = "Pele2";
+                this.skinID = "skin2";
                 break;
             case "3":
-                this.skinID = "Pele3";
+                this.skinID = "skin3";
                 break;
             default:
-                this.skinID = "Pele1";
+                this.skinID = "skin1";
                 break;
         }
         switch (this.physicID) {
             case "1":
-                this.physicID = "Fisico1";
+                this.physicID = "weakChar";
                 break;
             case "2":
-                this.physicID = "Fisico2";
-                break;
-            case "3":
-                this.physicID = "Fisico3";
+                this.physicID = "strongChar";
                 break;
             default:
-                this.physicID = "Fisico1";
+                this.physicID = "weakChar";
                 break;
         }
       
