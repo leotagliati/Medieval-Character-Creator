@@ -25,7 +25,7 @@ public class ClassPanel extends JPanel {
 
 
     
-    private static String classChosen = "Entrada incompleta";
+    private static String classChosen = "Cavaleiro";
     
     public ClassPanel() {
         super();

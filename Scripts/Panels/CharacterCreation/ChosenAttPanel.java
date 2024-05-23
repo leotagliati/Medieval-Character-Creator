@@ -21,7 +21,7 @@ public class ChosenAttPanel {
         nameTitle = new JTextField("Nome: ");
         nameInput = new JTextField("Entrada incompleta");
         classTitle = new JTextField("Classe: ");
-        classInput = new JTextField("Entrada incompleta");
+        classInput = new JTextField("Cavaleiro");
 
         GridLayout inputTextLayout = new GridLayout();
         inputTextLayout.setColumns(1);
@@ -80,7 +80,7 @@ public class ChosenAttPanel {
         }
         
         nameInput.setForeground(Color.RED);
-        classInput.setForeground(Color.RED);
+        classInput.setForeground(Color.WHITE);
     }
 
     public static JPanel getPanel() {
@@ -92,8 +92,8 @@ public class ChosenAttPanel {
     }
 
     public static void updatePanel(String nameChosen, String classChosen) {
-        // System.out.println("name:" + nameChosen);
-        // System.out.println("class:" + classChosen);
+        System.out.println("name:" + nameChosen);
+        System.out.println("class:" + classChosen);
         if (classChosen.equals("Entrada incompleta")) {
             if (nameChosen.equals("Entrada incompleta") || nameChosen.equals(null)) {
                 nameInput.setText("Entrada incompleta");
