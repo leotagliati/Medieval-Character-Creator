@@ -7,59 +7,97 @@ import Scripts.ImagesConversion.ImageCreate;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import Scripts.AudioHandler;
 
 
 public class MainMenu extends JPanel
 {
     GridBagConstraints gbc = new GridBagConstraints();
+    ArrayList<JButton> buttonsArray = new ArrayList<JButton>();
+    ArrayList<JLabel> buttonsDesignArray = new ArrayList<JLabel>();
 
+    JButton characterCreationButton = new JButton("Criar Personagem");
+    JButton searchCharacterButton = new JButton("Buscar Personagem");
+    JButton deleteCharacterButton = new JButton("Deletar Personagem");
+    JButton exitButton = new JButton("Sair");
+    
+    JPanel backGNDPanel;
+    
     public MainMenu()
     {
         super();
         this.setLayout(null);
         this.setBackground(Color.GRAY);
-
-        JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setBounds(1420,500,500,500);
-        buttonsPanel.setVisible(true);
-        buttonsPanel.setBackground(Color.GREEN);
-        buttonsPanel.setLayout(new GridBagLayout());
-
+        
         ImageCreate backGNDScenario = new ImageCreate(0, 0, 1920, 1080);
         backGNDScenario.setIconFile("Images\\scenario.gif");
         backGNDScenario.imageSetter();
+
+        GridLayout buttonsLayout = new GridLayout();
+        buttonsLayout.setColumns(1);
+        buttonsLayout.setRows(this.buttonsArray.size());
+        buttonsLayout.setVgap(20);
         
-        gbc.insets = new Insets(10, 0, 10, 0);
-        gbc.gridwidth = 0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setBounds(1520,600,400,400);
+        buttonsPanel.setVisible(true);
+        buttonsPanel.setOpaque(false);
+        buttonsPanel.setBackground(Color.GREEN);
+        buttonsPanel.setLayout(buttonsLayout);
         
-        JLabel title = new JLabel("Menu");
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        buttonsPanel.add(title, gbc);
+        // Add os botoes no arrayList
+        buttonsArray.add(characterCreationButton);
+        buttonsArray.add(searchCharacterButton);
+        buttonsArray.add(deleteCharacterButton);
+        buttonsArray.add(exitButton);
         
-        JButton characterCreationButton = new JButton("Criar Personagem");
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        buttonsPanel.add(characterCreationButton, gbc);
-        
-        JButton searchCharacterButton = new JButton("Buscar Personagem");
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        buttonsPanel.add(searchCharacterButton, gbc);
-        
-        JButton deleteCharacterButton = new JButton("Deletar Personagem");
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        buttonsPanel.add(deleteCharacterButton, gbc);
-        
-        JButton exitButton = new JButton("Sair");
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        buttonsPanel.add(exitButton, gbc);
-        
+        // Inicializa as molduras dos botoes
+        for (int i = 0; i < this.buttonsArray.size(); i++) {
+            ImageCreate backgroundImage = new ImageCreate(0, 0, 300, 100);
+            backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+            backgroundImage.setIconFile("Images\\button3.png");
+            backgroundImage.imageSetter();
+            buttonsDesignArray.add(backgroundImage);
+        }
+
+        for (JButton button : buttonsArray) {
+            button.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 34));
+            button.setForeground(Color.WHITE);
+            button.setOpaque(true);
+            button.setContentAreaFilled(false);
+            button.setBorderPainted(false);
+            button.setFocusable(false);
+            buttonsPanel.add(button);
+            button.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e)
+                {
+                    buttonsDesignArray.get(buttonsArray.indexOf(button)).setIcon(new ImageIcon("Images\\button3Clicked.png"));;
+                }
+                @Override
+                public void mouseExited(MouseEvent e)
+                {
+                    buttonsDesignArray.get(buttonsArray.indexOf(button)).setIcon(new ImageIcon("Images\\button3.png"));;
+                }
+            });
+        }
+
+        this.backGNDPanel = new JPanel();
+        this.backGNDPanel.setLayout(buttonsLayout);
+        this.backGNDPanel.setBounds(1520, 600, 400, 400);
+        this.backGNDPanel.setOpaque(false);
+        this.backGNDPanel.setBackground(Color.GREEN);
+
+        for (JLabel buttonImage : buttonsDesignArray) {
+            backGNDPanel.add(buttonImage);
+        }
+
         this.add(buttonsPanel);
+        this.add(backGNDPanel);
         this.add(backGNDScenario);
         
         // ---------- Navegação pelas telas -----------
