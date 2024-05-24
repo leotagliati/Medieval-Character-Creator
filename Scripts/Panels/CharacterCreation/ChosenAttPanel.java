@@ -1,20 +1,36 @@
 package Scripts.Panels.CharacterCreation;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import Scripts.AudioHandler;
+import Scripts.ImagesConversion.ImageCreate;
 
 public class ChosenAttPanel {
     public static JTextField nameInput, classInput, chosenEyes, chosenSkin, chosenPhysic;
     private static JTextField nameTitle, classTitle;
     private static ArrayList<JTextField> chosenAttArray = new ArrayList<JTextField>();
     private static ArrayList<JTextField> titlesTextArray = new ArrayList<JTextField>();
+
+    private static JButton saveButton = new JButton("Salvar");
+
     private static JPanel chosenPanel = new JPanel();
-    private static JPanel backGNDPanel = new JPanel();
+    private static JPanel titlesPanel = new JPanel();
+    private static JPanel savePanel = new JPanel();
+    private static JPanel saveBackGNDPanel = new JPanel();
 
     public static void setupPanel() {
         // Inicializa os Textos
@@ -22,6 +38,56 @@ public class ChosenAttPanel {
         nameInput = new JTextField("Entrada incompleta");
         classTitle = new JTextField("Classe: ");
         classInput = new JTextField("Cavaleiro");
+
+        ImageCreate buttonImage = new ImageCreate(450, 500, 300, 100);
+        buttonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        buttonImage.setIconFile("Images\\button.png");
+        buttonImage.imageSetter();
+
+        saveButton.setBounds(450, 500, 300, 100);
+        saveButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 34));
+        saveButton.setForeground(Color.WHITE);
+        saveButton.setOpaque(true);
+        saveButton.setContentAreaFilled(false);
+        saveButton.setBorderPainted(false);
+        saveButton.setFocusable(false);
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // System.out.println("name:" + nameInput.getText());
+                // System.out.println("class:" + classInput.getText());
+                if (!nameInput.getText().equals("Entrada incompleta")) {
+                    AudioHandler.audioPlay("Music\\charSaved.wav");
+                    saveButton.setText("Salvo!");
+                    buttonImage.setIconFile("Images\\charSavedButton.png");
+                    buttonImage.imageSetter();
+                    // funcao de salvar no banco de dados
+                } else {
+                    AudioHandler.audioPlay("Music\\charNotSaved.wav");
+                    saveButton.setText("Insira seu nome!");
+                    buttonImage.setIconFile("Images\\charNotSavedButton.png");
+                    buttonImage.imageSetter();
+
+                }
+
+            }
+        });
+        saveButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                if (e.getSource() == saveButton) {
+                    buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
+                }
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                if (e.getSource() == saveButton) {
+                    saveButton.setText("Salvar");
+                    buttonImage.setIcon(new ImageIcon("Images\\button.png"));
+                }
+            }
+        });
 
         GridLayout inputTextLayout = new GridLayout();
         inputTextLayout.setColumns(1);
@@ -40,22 +106,36 @@ public class ChosenAttPanel {
         chosenPanel.setLayout(inputTextLayout);
 
         // Set propriedade do painel de fundo
-        backGNDPanel.setBounds(400, 200, 300, 200);
-        backGNDPanel.setBackground(Color.GREEN);
-        backGNDPanel.setOpaque(false);
-        backGNDPanel.setLayout(titleLayout);
+        titlesPanel.setBounds(400, 200, 300, 200);
+        titlesPanel.setBackground(Color.GREEN);
+        titlesPanel.setOpaque(false);
+        titlesPanel.setLayout(titleLayout);
+
+        savePanel.setBounds(530, 500, 300, 300);
+        savePanel.setBackground(Color.YELLOW);
+        savePanel.setOpaque(false);
+        savePanel.setLayout(titleLayout);
+
+        saveBackGNDPanel.setBounds(530, 500, 300, 300);
+        saveBackGNDPanel.setBackground(Color.YELLOW);
+        saveBackGNDPanel.setOpaque(false);
+        saveBackGNDPanel.setLayout(titleLayout);
 
         chosenAttArray.add(nameInput);
         chosenAttArray.add(classInput);
 
-        backGNDPanel.add(nameTitle);
-        backGNDPanel.add(classTitle);
+        titlesPanel.add(nameTitle);
+        titlesPanel.add(classTitle);
+
+        saveBackGNDPanel.add(buttonImage);
+        savePanel.add(saveButton);
 
         for (JTextField text : chosenAttArray) {
             chosenPanel.add(text);
         }
-        backGNDPanel.setVisible(true);
+        titlesPanel.setVisible(true);
         chosenPanel.setVisible(true);
+        saveButton.setVisible(true);
 
         titlesTextArray.add(nameTitle);
         titlesTextArray.add(classTitle);
@@ -78,17 +158,26 @@ public class ChosenAttPanel {
             chosenAttArray.get(i).setOpaque(false);
             chosenAttArray.get(i).setBorder(null);
         }
-        
+
         nameInput.setForeground(Color.RED);
         classInput.setForeground(Color.WHITE);
+
     }
 
     public static JPanel getPanel() {
         return chosenPanel;
     }
 
-    public static JPanel getBackGNDPanel() {
-        return backGNDPanel;
+    public static JPanel getTitlesPanel() {
+        return titlesPanel;
+    }
+
+    public static JPanel getSavePanel() {
+        return savePanel;
+    }
+
+    public static JPanel getSaveBackGNDPanel() {
+        return saveBackGNDPanel;
     }
 
     public static void updatePanel(String nameChosen, String classChosen) {

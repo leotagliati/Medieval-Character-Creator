@@ -95,8 +95,10 @@ public class GarmentsPanel extends JPanel{
                     // JOptionPane.showMessageDialog(null, chestID);
                     // JOptionPane.showMessageDialog(null, legsID);
                     setVisible(false);
-                    ChosenAttPanel.getBackGNDPanel().setVisible(true);
+                    ChosenAttPanel.getTitlesPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(true);
+                    ChosenAttPanel.getSavePanel().setVisible(true);
+                    ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
                     ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
             }
