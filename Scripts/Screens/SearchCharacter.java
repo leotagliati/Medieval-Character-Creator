@@ -22,6 +22,9 @@ public class SearchCharacter extends JPanel {
     ArrayList<JTextField> charClassesArray = new ArrayList<>();
     ArrayList<JLabel> nameLabelArray = new ArrayList<>();
 
+    private JTextField titleText = new JTextField("Characters Created");
+
+
     JTextField nameText = new JTextField("Seu cenoura");
     JTextField nameText2 = new JTextField("Seu chamego");
     JTextField classText = new JTextField("hortalicas");
@@ -41,25 +44,35 @@ public class SearchCharacter extends JPanel {
         insidePanel.setOpaque(false);
         insidePanel.setBackground(Color.BLUE);
 
+        // Set propriedade do titleText
+        this.titleText.setBounds(50, 50, 460, 70);
+        this.titleText.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 60));
+        this.titleText.setHorizontalAlignment(JTextField.CENTER);
+        this.titleText.setOpaque(false);
+        this.titleText.setBorder(null);
+        this.titleText.setForeground(Color.WHITE);
+        this.titleText.setEditable(false);
+        this.titleText.setVisible(true);
+
         // Configura o JScrollPane e adiciona o painel dentro dele
         charDataPanel = new JScrollPane(insidePanel);
-        charDataPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        charDataPanel.setViewportBorder(new LineBorder(new Color(0, 0, 0), 2));
-        charDataPanel.setBounds(50, 140, 474, 600);
-        charDataPanel.setOpaque(false);
+        this.charDataPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        this.charDataPanel.setViewportBorder(new LineBorder(new Color(0, 0, 0), 2));
+        this.charDataPanel.setBounds(50, 140, 500, 600);
+        this.charDataPanel.setOpaque(false);
 
         // Adiciona o JScrollPane ao JPanel principal
         this.add(charDataPanel);
 
-        ImageCreate UIimage = new ImageCreate(1080, 0, 500, 750);
+        ImageCreate UIimage = new ImageCreate(1080, 40, 500, 750);
         UIimage.setIconFile("Images\\hud1.png");
         UIimage.imageSetter();
-
-        ImageCreate charImage = new ImageCreate(1080, 0, 500, 750);
-        charImage.setIconFile("Images\\charImage.png");
-        charImage.imageSetter();
         this.add(UIimage);
-        this.add(charImage);
+
+        // ImageCreate charImage = new ImageCreate(1080, 0, 500, 750);
+        // charImage.setIconFile("Images\\charImage.png");
+        // charImage.imageSetter();
+        // this.add(charImage);
 
         // charNamesArray.add(nameText);
         // charNamesArray.add(nameText2);
@@ -125,6 +138,7 @@ public class SearchCharacter extends JPanel {
         buttonImage.setIconFile("Images\\button.png");
         buttonImage.imageSetter();
 
+        this.add(titleText);
         this.add(returnButton);
         this.add(buttonImage);
         this.add(charDataPanel);
