@@ -20,7 +20,7 @@ public class SearchCharacter extends JPanel {
     ArrayList<JTextField> charClassesArray = new ArrayList<>();
     ArrayList<JLabel> nameLabelArray = new ArrayList<>();
 
-    private JTextField titleText = new JTextField("Characters Created");
+    private JTextField titleText = new JTextField("Personagens Criados");
 
 
     JTextField nameText = new JTextField("Seu cenoura");
@@ -99,16 +99,15 @@ public class SearchCharacter extends JPanel {
                 public void mouseClicked(MouseEvent e) {
                     System.out.println(e.getSource());
                     for (JLabel nameLabel : nameLabelArray) {
+                        nameLabel.setForeground(Color.WHITE);
 
                         if (e.getSource() != nameLabel) {
-                            nameLabel.setForeground(Color.WHITE);
                             nameLabel.setBackground(Color.darkGray);
 
                         } else {
 
-                            nameLabel.setForeground(Color.RED);
                             // Chamar a funcao de updateCharacter
-                            nameLabel.setBackground(Color.yellow);
+                            nameLabel.setBackground(new Color(215, 135, 49));
                         }
                     }
                 }

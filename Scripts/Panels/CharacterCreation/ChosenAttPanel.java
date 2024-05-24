@@ -51,6 +51,7 @@ public class ChosenAttPanel {
         saveButton.setContentAreaFilled(false);
         saveButton.setBorderPainted(false);
         saveButton.setFocusable(false);
+        saveButton.setVisible(true);
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,22 +105,28 @@ public class ChosenAttPanel {
         chosenPanel.setBackground(Color.BLUE);
         chosenPanel.setOpaque(false);
         chosenPanel.setLayout(inputTextLayout);
+        chosenPanel.setVisible(true);
 
         // Set propriedade do painel de fundo
         titlesPanel.setBounds(400, 200, 300, 200);
         titlesPanel.setBackground(Color.GREEN);
         titlesPanel.setOpaque(false);
         titlesPanel.setLayout(titleLayout);
+        titlesPanel.setVisible(true);
+
 
         savePanel.setBounds(530, 500, 300, 300);
         savePanel.setBackground(Color.YELLOW);
         savePanel.setOpaque(false);
         savePanel.setLayout(titleLayout);
+        savePanel.setVisible(true);
+
 
         saveBackGNDPanel.setBounds(530, 500, 300, 300);
         saveBackGNDPanel.setBackground(Color.YELLOW);
         saveBackGNDPanel.setOpaque(false);
         saveBackGNDPanel.setLayout(titleLayout);
+        saveBackGNDPanel.setVisible(true);
 
         chosenAttArray.add(nameInput);
         chosenAttArray.add(classInput);
@@ -133,9 +140,6 @@ public class ChosenAttPanel {
         for (JTextField text : chosenAttArray) {
             chosenPanel.add(text);
         }
-        titlesPanel.setVisible(true);
-        chosenPanel.setVisible(true);
-        saveButton.setVisible(true);
 
         titlesTextArray.add(nameTitle);
         titlesTextArray.add(classTitle);
