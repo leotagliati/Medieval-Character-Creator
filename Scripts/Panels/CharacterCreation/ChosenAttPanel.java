@@ -45,7 +45,7 @@ public class ChosenAttPanel {
         buttonImage.imageSetter();
 
         saveButton.setBounds(450, 500, 300, 100);
-        saveButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
+        saveButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 34));
         saveButton.setForeground(Color.WHITE);
         saveButton.setOpaque(true);
         saveButton.setContentAreaFilled(false);
@@ -58,11 +58,13 @@ public class ChosenAttPanel {
                 // System.out.println("class:" + classInput.getText());
                 if (!nameInput.getText().equals("Entrada incompleta")) {
                     AudioHandler.audioPlay("Music\\charSaved.wav");
+                    saveButton.setText("Salvo!");
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
                     // funcao de salvar no banco de dados
                 } else {
                     AudioHandler.audioPlay("Music\\charNotSaved.wav");
+                    saveButton.setText("Insira seu nome!");
                     buttonImage.setIconFile("Images\\charNotSavedButton.png");
                     buttonImage.imageSetter();
 
@@ -81,6 +83,7 @@ public class ChosenAttPanel {
             @Override
             public void mouseExited(MouseEvent e) {
                 if (e.getSource() == saveButton) {
+                    saveButton.setText("Salvar");
                     buttonImage.setIcon(new ImageIcon("Images\\button.png"));
                 }
             }
