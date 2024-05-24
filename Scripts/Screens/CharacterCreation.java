@@ -99,25 +99,30 @@ public class CharacterCreation extends JPanel implements ActionListener {
         this.add(classPanel.getBackGNDPanel());
         this.add(appearancePanel);
         this.add(ChosenAttPanel.getPanel());
-        this.add(ChosenAttPanel.getBackGNDPanel());
+        this.add(ChosenAttPanel.getTitlesPanel());
+        this.add(ChosenAttPanel.getSavePanel());
+        this.add(ChosenAttPanel.getSaveBackGNDPanel());
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ChosenAttPanel.getPanel().setVisible(false);
+        ChosenAttPanel.getTitlesPanel().setVisible(false);
+        ChosenAttPanel.getSavePanel().setVisible(false);
+        ChosenAttPanel.getSaveBackGNDPanel().setVisible(false);
+
         if (e.getSource() == mainPanel.returnButton) {
             AudioHandler.audioPlay("Music\\buttonClicked2.wav");
             CardLayout cardLayout = (CardLayout) getParent().getLayout();
             cardLayout.first(getParent());
-        } 
-        else AudioHandler.audioPlay("Music\\buttonClicked.wav");
+        } else
+            AudioHandler.audioPlay("Music\\buttonClicked.wav");
 
         if (e.getSource() == mainPanel.charNameButton) {
             for (JPanel panel : subPanelsArrayList) {
                 if (panel == namePanel) {
                     panel.setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(false);
-                    ChosenAttPanel.getBackGNDPanel().setVisible(false);
                     panel.setEnabled(true);
                 } else
                     panel.setVisible(false);
@@ -128,8 +133,6 @@ public class CharacterCreation extends JPanel implements ActionListener {
             for (JPanel panel : subPanelsArrayList) {
                 if (panel == garmentsPanel) {
                     panel.setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(false);
-                    ChosenAttPanel.getBackGNDPanel().setVisible(false);
 
                 } else
                     panel.setVisible(false);
@@ -141,8 +144,6 @@ public class CharacterCreation extends JPanel implements ActionListener {
                 if (panel == classPanel) {
                     panel.setVisible(true);
                     classPanel.getBackGNDPanel().setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(false);
-                    ChosenAttPanel.getBackGNDPanel().setVisible(false);
 
                 } else
                     panel.setVisible(false);
@@ -153,8 +154,6 @@ public class CharacterCreation extends JPanel implements ActionListener {
             for (JPanel panel : subPanelsArrayList) {
                 if (panel == appearancePanel) {
                     panel.setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(false);
-                    ChosenAttPanel.getBackGNDPanel().setVisible(false);
 
                 } else
                     panel.setVisible(false);
