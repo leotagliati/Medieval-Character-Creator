@@ -19,6 +19,7 @@ import Scripts.Panels.CharacterCreation.ChosenAttPanel;
 import Scripts.Panels.CharacterCreation.ClassPanel;
 import Scripts.Panels.CharacterCreation.MainPanel;
 import Scripts.Panels.CharacterCreation.NamePanel;
+import Scripts.Panels.CharacterCreation.SingletonPanel;
 import Scripts.Panels.CharacterCreation.GarmentsPanel;
 
 public class CharacterCreation extends JPanel implements ActionListener {
@@ -29,13 +30,14 @@ public class CharacterCreation extends JPanel implements ActionListener {
     GarmentsPanel garmentsPanel = new GarmentsPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
+    SingletonPanel singlePanel = SingletonPanel.getInstance();
 
     public CharacterCreation() {
         super();
         this.setLayout(null);
         this.setBackground(Color.BLACK);
 
-        ChosenAttPanel.setupPanel();
+        // ChosenAttPanel.setupPanel();
 
         // Image Setter
         ImageCreate backgroundImage = new ImageCreate(425, 50, 500, 700);
@@ -98,10 +100,11 @@ public class CharacterCreation extends JPanel implements ActionListener {
         this.add(classPanel);
         this.add(classPanel.getBackGNDPanel());
         this.add(appearancePanel);
-        this.add(ChosenAttPanel.getPanel());
-        this.add(ChosenAttPanel.getTitlesPanel());
-        this.add(ChosenAttPanel.getSavePanel());
-        this.add(ChosenAttPanel.getSaveBackGNDPanel());
+        // this.add(ChosenAttPanel.getPanel());
+        // this.add(ChosenAttPanel.getTitlesPanel());
+        // this.add(ChosenAttPanel.getSavePanel());
+        // this.add(ChosenAttPanel.getSaveBackGNDPanel());
+        this.add(singlePanel);
 
     }
 
