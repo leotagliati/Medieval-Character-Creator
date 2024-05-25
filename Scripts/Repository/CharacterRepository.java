@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 import Scripts.Database.ConnFactory;
-import Scripts.Model.Character;
+import Scripts.Model.GameCharacter;
 
 /**
  * CharacterRepository
@@ -20,13 +20,33 @@ public class CharacterRepository {
     public CharacterRepository() {
         this.conn = ConnFactory.getConn();
     }
+    public void addCharacter(GameCharacter character)
+    {
+        String command = "INSERT INTO tb_character(name, class, eye_color, skin_color, physic_type) VALUES(?,?,?,?,?)";
+        PreparedStatement stmt = null;
+        try
+        {
+            
+            stmt = conn.prepareStatement(command);
+            stmt.setString(1, character.getName());
+            stmt.setString(2, character.getSkillClass());
+            stmt.setString(3, character.getEyeColor());
+            stmt.setString(4, character.getSkinColor());
+            stmt.setString(5, character.getPhysicType());
+            stmt.executeUpdate();
+        }
+        catch(SQLException e)
+        {   
+             System.out.println("Erro ao incluir os dados");
+        }
+    }
 
-    public ArrayList<Scripts.Model.Character> GetAllCharcters() {
+    public ArrayList<GameCharacter> GetAllCharcters() {
         String command = "SELECT * FROM tb_character";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
 
-        ArrayList<Scripts.Model.Character> characters = new ArrayList<Scripts.Model.Character>();
+        ArrayList<GameCharacter> characters = new ArrayList<GameCharacter>();
         try {
             stmt = conn.prepareStatement(command);
             ResultSet result = stmt.executeQuery();
@@ -39,11 +59,11 @@ public class CharacterRepository {
         return characters;
     }
 
-    private ArrayList<Scripts.Model.Character> getValues(ResultSet resultSet) {
-        ArrayList<Scripts.Model.Character> values = new ArrayList<Scripts.Model.Character>();
+    private ArrayList<GameCharacter> getValues(ResultSet resultSet) {
+        ArrayList<GameCharacter> values = new ArrayList<GameCharacter>();
         try {
             while (resultSet.next()) {
-                Scripts.Model.Character character = new Character();
+                GameCharacter character = new GameCharacter();
                 character.setId(resultSet.getInt(1));
                 character.setName(resultSet.getString(2));
                 character.setSkillClass(resultSet.getString(3));

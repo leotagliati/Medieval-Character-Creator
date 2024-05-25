@@ -3,7 +3,7 @@ package Scripts.Model;
 /**
  * Character
  */
-public class Character {
+public class GameCharacter {
 
     private int id;
     private String name;
@@ -12,7 +12,7 @@ public class Character {
     private String skinColor;
     private String physicType;
 
-    public Character() {
+    public GameCharacter() {
     }
 
     public int getId() {

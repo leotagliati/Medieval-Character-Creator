@@ -10,6 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import Scripts.Database.ConnFactory;
+import Scripts.Model.GameCharacter;
 import Scripts.Repository.CharacterRepository;
 
 public class RunApp
@@ -24,8 +25,15 @@ public class RunApp
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setVisible(true);
 
-        CharacterRepository repo = new CharacterRepository();
-        ArrayList<Scripts.Model.Character> values = repo.GetAllCharcters();
+        // GameCharacter character = new GameCharacter();
+        // character.setName("calvetti");
+        // character.setSkillClass("programador");
+        // character.setEyeColor("1");
+        // character.setSkinColor("3");
+        // character.setPhysicType("1");
+        // CharacterRepository repo = new CharacterRepository();
+        // repo.addCharacter(character);
+        // ArrayList<GameCharacter> values = repo.GetAllCharcters();
         // System.out.println(values);
     }
 }
