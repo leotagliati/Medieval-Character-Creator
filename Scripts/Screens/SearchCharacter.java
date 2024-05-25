@@ -6,17 +6,21 @@ import javax.swing.border.LineBorder;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.Model.GameCharacter;
+import Scripts.Repository.CharacterRepository;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class SearchCharacter extends JPanel {
+    ArrayList<GameCharacter> charArray = new ArrayList<>();
     ArrayList<JButton> buttonsArray = new ArrayList<>();
-    ArrayList<JTextField> charNamesArray = new ArrayList<>();
+    ArrayList<String> charNamesArray = new ArrayList<>();
     ArrayList<JTextField> charClassesArray = new ArrayList<>();
     ArrayList<JLabel> nameLabelArray = new ArrayList<>();
 
@@ -36,6 +40,12 @@ public class SearchCharacter extends JPanel {
         super();
         this.setLayout(null);
         this.setBackground(Color.black);
+
+        CharacterRepository repo = new CharacterRepository();
+        charArray = repo.GetAllCharcters();
+        for (GameCharacter character : charArray) {
+            charNamesArray.add(character.getName());
+        }
 
         GridLayout buttonsLayout = new GridLayout(charNamesArray.size(), 1, 0, 20);
         insidePanel.setLayout(buttonsLayout);
@@ -72,15 +82,12 @@ public class SearchCharacter extends JPanel {
         // charImage.imageSetter();
         // this.add(charImage);
 
-        charNamesArray.add(nameText);
-        charNamesArray.add(nameText2);
-
         // charClassesArray.add(classText);
         // charClassesArray.add(classText2);
 
         // Adiciona os nomes como JLabels ao painel
         for (int i = 0; i < charNamesArray.size(); i++) {
-            JLabel nameLabel = new JLabel(charNamesArray.get(i).getText());
+            JLabel nameLabel = new JLabel(charNamesArray.get(i));
             nameLabel.setIcon(new ImageIcon("Images\\user.png"));
             nameLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
             nameLabel.setHorizontalAlignment(JLabel.LEFT);
@@ -97,7 +104,7 @@ public class SearchCharacter extends JPanel {
             nameLabel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println(e.getSource());
+                    // System.out.println(e.getSource());
                     for (JLabel nameLabel : nameLabelArray) {
                         nameLabel.setForeground(Color.WHITE);
 
@@ -114,8 +121,8 @@ public class SearchCharacter extends JPanel {
             });
         }
 
-        for (JTextField nameData : charNamesArray) {
-            charDataPanel.add(nameData);
+        for (String nameData : charNamesArray) {
+            charDataPanel.add(new JTextField(nameData));
             for (JTextField classData : charClassesArray) {
                 charDataPanel.add(classData);
             }
