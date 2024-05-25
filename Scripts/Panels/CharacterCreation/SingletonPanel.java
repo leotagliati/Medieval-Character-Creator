@@ -23,11 +23,10 @@ import Scripts.Repository.CharacterRepository;
 public class SingletonPanel extends JPanel {
     private static SingletonPanel instance;
 
-    public JTextField nameInput, classInput;
+    public JLabel nameInput, classInput;
     public String eyesInput, skinInput, physicInput, helmInput, chestInput, legsInput;
     private JLabel nameTitle, classTitle;
-    private ArrayList<JTextField> chosenAttArray = new ArrayList<JTextField>();
-    private ArrayList<JTextField> titlesTextArray = new ArrayList<JTextField>();
+    private ArrayList<JLabel> textArray = new ArrayList<JLabel>();
 
     private JButton saveButton = new JButton("Salvar");
 
@@ -36,7 +35,7 @@ public class SingletonPanel extends JPanel {
     private JPanel saveBackGNDPanel = new JPanel();
 
     private SingletonPanel() {
-        
+
     }
 
     public static SingletonPanel getInstance() {
@@ -50,13 +49,20 @@ public class SingletonPanel extends JPanel {
 
         CharacterRepository repo = new CharacterRepository();
 
+        // Set propriedade do objeto
+        this.setBounds(425, 50, 500, 700);
+        this.setBackground(Color.BLUE);
+        this.setOpaque(true);
+        this.setLayout(null);
+        this.setVisible(true);
+
         // Inicializa os Textos
         nameTitle = new JLabel("Nome: ");
         classTitle = new JLabel("Classe: ");
 
         // Inicialize os atributos
-        nameInput = new JTextField(character.getName());
-        classInput = new JTextField(character.getSkillClass());
+        nameInput = new JLabel(character.getName());
+        classInput = new JLabel(character.getSkillClass());
         eyesInput = character.getEyeColor();
         skinInput = character.getSkinColor();
         physicInput = character.getPhysicType();
@@ -64,18 +70,24 @@ public class SingletonPanel extends JPanel {
         // chestInput = character.charChest;
         // legsInput =character. charLegs;
 
+        // Add os textos ao array
+        textArray.add(nameInput);
+        textArray.add(classInput);
+        textArray.add(nameTitle);
+        textArray.add(classTitle);
+
         // Cria o design do botao
-        ImageCreate buttonImage = new ImageCreate(450, 500, 300, 100);
+        ImageCreate buttonImage = new ImageCreate(100, 500, 300, 100);
         buttonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
         buttonImage.setIconFile("Images\\button.png");
         buttonImage.imageSetter();
 
         // Inicializa o botao SALVAR
-        saveButton.setBounds(450, 500, 300, 100);
+        saveButton.setBounds(100, 500, 300, 100);
         saveButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 34));
         saveButton.setForeground(Color.WHITE);
         saveButton.setOpaque(true);
-        saveButton.setContentAreaFilled(false);
+        saveButton.setContentAreaFilled(true);
         saveButton.setBorderPainted(false);
         saveButton.setFocusable(false);
         saveButton.setVisible(true);
@@ -117,24 +129,41 @@ public class SingletonPanel extends JPanel {
                 }
             }
         });
-    
+
         GridLayout layout = new GridLayout();
         layout.setColumns(2);
         layout.setRows(2);
         layout.setVgap(20);
 
+        for (int i = 0; i < textArray.size(); i++) {
+            textArray.get(i).setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
+            textArray.get(i).setOpaque(false);
+            textArray.get(i).setForeground(Color.WHITE);
+            textArray.get(i).setBorder(null);
+            if (i == 1 || i == 4) {
+                textArray.get(i).setHorizontalAlignment(JLabel.LEFT);
+            }
+            else textArray.get(i).setHorizontalAlignment(JLabel.RIGHT);
+        }
+
         // Set propriedade do painel de fundo
-        titlesPanel.setBounds(400, 200, 300, 200);
+        titlesPanel.setBounds(-50, 150, 500, 100);
         titlesPanel.setBackground(Color.GREEN);
         titlesPanel.setOpaque(false);
         titlesPanel.setLayout(layout);
         titlesPanel.setVisible(true);
+        titlesPanel.add(nameTitle);
+        titlesPanel.add(nameInput);
+        titlesPanel.add(classTitle);
+        titlesPanel.add(classInput);
 
-        // Set propriedade do objeto
-        this.setBounds(425, 50, 500, 700);
-        this.setBackground(Color.BLUE);
-        this.setOpaque(true);
-        this.setLayout(null);
-        this.setVisible(true);
+        // Add componentes ao objeto
+        this.add(titlesPanel);
+        this.add(saveButton);
+        this.add(buttonImage);
+    }
+    public void updatePanel()
+    {
+        
     }
 }
