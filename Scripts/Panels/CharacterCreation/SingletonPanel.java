@@ -46,8 +46,7 @@ public class SingletonPanel extends JPanel {
         return instance;
     }
 
-    public void initPanel(String charName, String charClass, String charEyes, String charSkin, String charPhysic,
-    String charHelm, String charChest, String charLegs) {
+    public void initPanel(GameCharacter character) {
 
         CharacterRepository repo = new CharacterRepository();
 
@@ -56,14 +55,14 @@ public class SingletonPanel extends JPanel {
         classTitle = new JLabel("Classe: ");
 
         // Inicialize os atributos
-        nameInput = new JTextField(charName);
-        classInput = new JTextField(charClass);
-        eyesInput = charEyes;
-        skinInput = charSkin;
-        physicInput = charPhysic;
-        helmInput = charHelm;
-        chestInput = charChest;
-        legsInput = charLegs;
+        nameInput = new JTextField(character.getName());
+        classInput = new JTextField(character.getSkillClass());
+        eyesInput = character.getEyeColor();
+        skinInput = character.getSkinColor();
+        physicInput = character.getPhysicType();
+        // helmInput = character.charHelm;
+        // chestInput = character.charChest;
+        // legsInput =character. charLegs;
 
         // Cria o design do botao
         ImageCreate buttonImage = new ImageCreate(450, 500, 300, 100);

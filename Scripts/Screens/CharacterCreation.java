@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.Model.GameCharacter;
 import Scripts.Panels.CharacterCreation.AppearancePanel;
 import Scripts.Panels.CharacterCreation.ChosenAttPanel;
 import Scripts.Panels.CharacterCreation.ClassPanel;
@@ -32,12 +33,15 @@ public class CharacterCreation extends JPanel implements ActionListener {
     AppearancePanel appearancePanel = new AppearancePanel();
     SingletonPanel singlePanel = SingletonPanel.getInstance();
 
+    GameCharacter char1 = new GameCharacter(namePanel.getNameInput().getText(),classPanel.getClassChosen(),appearancePanel.eyesType.toString(),appearancePanel.physicType.toString(),appearancePanel.skinType.toString());
+
     public CharacterCreation() {
         super();
         this.setLayout(null);
         this.setBackground(Color.BLACK);
 
         // ChosenAttPanel.setupPanel();
+        singlePanel.initPanel(char1);
 
         // Image Setter
         ImageCreate backgroundImage = new ImageCreate(425, 50, 500, 700);

@@ -29,9 +29,9 @@ public class AppearancePanel extends JPanel {
 
     private JButton confirmButton = new JButton("Confirmar");
 
-    public EyeColorTypes eyesType;
-    public SkinColorTypes skinType;
-    public PhysicTypes physicType;
+    public EyeColorTypes eyesType  = EyeColorTypes.values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText()) - 1];;
+    public SkinColorTypes skinType  = SkinColorTypes.values()[Integer.parseInt(skin.getBodyPartSliderValue().getText()) - 1];;
+    public PhysicTypes physicType =  PhysicTypes.values()[Integer.parseInt(physic.getBodyPartSliderValue().getText()) - 1];;
 
     public AppearancePanel() {
         super();
