@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,41 +15,46 @@ import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.ImagesConversion.Enums.ChestTypes;
+import Scripts.ImagesConversion.Enums.HelmetTypes;
+import Scripts.ImagesConversion.Enums.LegsTypes;
 import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
-public class GarmentsPanel extends JPanel{
+public class GarmentsPanel extends JPanel {
     public BodyPart helmet = new BodyPart("Capacete", 3);
     public BodyPart chest = new BodyPart("Peitoral", 3);
     public BodyPart legs = new BodyPart("Calça", 3);
-    
+
     private JButton confirmButton = new JButton("Confirmar");
 
-    private static String helmetID;
-    private static String chestID;
-    private static String legsID;
-    
-    public GarmentsPanel()
-    {
+    // private static String helmetID;
+    // private static String chestID;
+    // private static String legsID;
+    public HelmetTypes helmetType;
+    public ChestTypes chestType;
+    public LegsTypes legsType;
+
+    public GarmentsPanel() {
         super();
         helmet.setup(0);
         chest.setup(1);
         legs.setup(2);
-        
+
         // Set propriedades do objeto
         this.setBounds(500, 150, 350, 500);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
         this.setOpaque(false);
         this.setVisible(false);
-        
+
         this.add(this.helmet.getBodyPartText());
         this.add(this.helmet.getBodyPartSlider());
         this.add(this.helmet.getBodyPartSliderValue());
-        
+
         this.add(this.chest.getBodyPartText());
         this.add(this.chest.getBodyPartSlider());
         this.add(this.chest.getBodyPartSliderValue());
-        
+
         this.add(this.legs.getBodyPartText());
         this.add(this.legs.getBodyPartSlider());
         this.add(this.legs.getBodyPartSliderValue());
@@ -75,8 +79,9 @@ public class GarmentsPanel extends JPanel{
                     buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
             }
+
             @Override
-            public void mouseExited(MouseEvent e){
+            public void mouseExited(MouseEvent e) {
                 if (e.getSource() == confirmButton) {
                     buttonImage.setIcon(new ImageIcon("Images\\button.png"));
                 }
@@ -86,14 +91,15 @@ public class GarmentsPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
-                if(e.getSource() == confirmButton)
-                {
-                    helmetID = helmet.getBodyPartSliderValue().getText();
-                    chestID = chest.getBodyPartSliderValue().getText();
-                    legsID = legs.getBodyPartSliderValue().getText();
-                    // JOptionPane.showMessageDialog(null, helmetID);
-                    // JOptionPane.showMessageDialog(null, chestID);
-                    // JOptionPane.showMessageDialog(null, legsID);
+                if (e.getSource() == confirmButton) {
+                    helmetType = HelmetTypes.values()[Integer.parseInt(helmet.getBodyPartSliderValue().getText()) - 1];
+                    chestType = ChestTypes.values()[Integer.parseInt(chest.getBodyPartSliderValue().getText()) - 1];
+                    legsType = LegsTypes.values()[Integer.parseInt(legs.getBodyPartSliderValue().getText()) - 1];
+
+                    // JOptionPane.showMessageDialog(null, helmetType);
+                    // JOptionPane.showMessageDialog(null, chestType);
+                    // JOptionPane.showMessageDialog(null, legsType);
+                    
                     setVisible(false);
                     ChosenAttPanel.getTitlesPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(true);
@@ -102,22 +108,10 @@ public class GarmentsPanel extends JPanel{
                     ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
             }
-            
+
         });
 
         this.add(buttonImage);
         this.add(confirmButton);
     }
-    public static String getHelmetID() {
-        return helmetID;
-    }
-
-    public static String getChestID() {
-        return chestID;
-    }
-
-    public static String getLegsID() {
-        return legsID;
-    }
-    
 }
