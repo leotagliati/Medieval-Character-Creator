@@ -72,8 +72,8 @@ public class SearchCharacter extends JPanel {
         // charImage.imageSetter();
         // this.add(charImage);
 
-        // charNamesArray.add(nameText);
-        // charNamesArray.add(nameText2);
+        charNamesArray.add(nameText);
+        charNamesArray.add(nameText2);
 
         // charClassesArray.add(classText);
         // charClassesArray.add(classText2);

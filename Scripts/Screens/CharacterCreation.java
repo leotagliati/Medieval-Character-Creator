@@ -37,11 +37,11 @@ public class CharacterCreation extends JPanel implements ActionListener {
 
         ChosenAttPanel.setupPanel();
 
+        // Image Setter
         ImageCreate backgroundImage = new ImageCreate(425, 50, 500, 700);
         backgroundImage.setIconFile("Images\\subpanelBackground.png");
         backgroundImage.imageSetter();
 
-        // Image Setter
         ImageCreate UIimage = new ImageCreate(1080, 0, 500, 750);
         UIimage.setIconFile("Images\\hud1.png");
         UIimage.imageSetter();
@@ -107,56 +107,57 @@ public class CharacterCreation extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ChosenAttPanel.getPanel().setVisible(false);
-        ChosenAttPanel.getTitlesPanel().setVisible(false);
-        ChosenAttPanel.getSavePanel().setVisible(false);
-        ChosenAttPanel.getSaveBackGNDPanel().setVisible(false);
 
         if (e.getSource() == mainPanel.returnButton) {
             AudioHandler.audioPlay("Music\\buttonClicked2.wav");
             CardLayout cardLayout = (CardLayout) getParent().getLayout();
             cardLayout.first(getParent());
-        } else
+        } else {
             AudioHandler.audioPlay("Music\\buttonClicked.wav");
+            ChosenAttPanel.getPanel().setVisible(false);
+            ChosenAttPanel.getTitlesPanel().setVisible(false);
+            ChosenAttPanel.getSavePanel().setVisible(false);
+            ChosenAttPanel.getSaveBackGNDPanel().setVisible(false);
 
-        if (e.getSource() == mainPanel.charNameButton) {
-            for (JPanel panel : subPanelsArrayList) {
-                if (panel == namePanel) {
-                    panel.setVisible(true);
-                    panel.setEnabled(true);
-                } else
-                    panel.setVisible(false);
+            if (e.getSource() == mainPanel.charNameButton) {
+                for (JPanel panel : subPanelsArrayList) {
+                    if (panel == namePanel) {
+                        panel.setVisible(true);
+                        panel.setEnabled(true);
+                    } else
+                        panel.setVisible(false);
+                }
             }
-        }
 
-        else if (e.getSource() == mainPanel.charVestureButton) {
-            for (JPanel panel : subPanelsArrayList) {
-                if (panel == garmentsPanel) {
-                    panel.setVisible(true);
+            else if (e.getSource() == mainPanel.charVestureButton) {
+                for (JPanel panel : subPanelsArrayList) {
+                    if (panel == garmentsPanel) {
+                        panel.setVisible(true);
 
-                } else
-                    panel.setVisible(false);
+                    } else
+                        panel.setVisible(false);
+                }
             }
-        }
 
-        else if (e.getSource() == mainPanel.charClassButton) {
-            for (JPanel panel : subPanelsArrayList) {
-                if (panel == classPanel) {
-                    panel.setVisible(true);
-                    classPanel.getBackGNDPanel().setVisible(true);
+            else if (e.getSource() == mainPanel.charClassButton) {
+                for (JPanel panel : subPanelsArrayList) {
+                    if (panel == classPanel) {
+                        panel.setVisible(true);
+                        classPanel.getBackGNDPanel().setVisible(true);
 
-                } else
-                    panel.setVisible(false);
+                    } else
+                        panel.setVisible(false);
+                }
             }
-        }
 
-        else if (e.getSource() == mainPanel.charAppearenceButton) {
-            for (JPanel panel : subPanelsArrayList) {
-                if (panel == appearancePanel) {
-                    panel.setVisible(true);
+            else if (e.getSource() == mainPanel.charAppearenceButton) {
+                for (JPanel panel : subPanelsArrayList) {
+                    if (panel == appearancePanel) {
+                        panel.setVisible(true);
 
-                } else
-                    panel.setVisible(false);
+                    } else
+                        panel.setVisible(false);
+                }
             }
         }
     }
