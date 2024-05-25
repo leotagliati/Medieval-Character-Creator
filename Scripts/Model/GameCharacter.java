@@ -12,7 +12,16 @@ public class GameCharacter {
     private String skinColor;
     private String physicType;
 
+    public GameCharacter(String name, String skillClass, String eyeColor, String skinColor, String physicType) {
+        this.name = name;
+        this.skillClass = skillClass;
+        this.eyeColor = eyeColor;
+        this.skinColor = skinColor;
+        this.physicType = physicType;
+    }
+
     public GameCharacter() {
+        
     }
 
     public int getId() {

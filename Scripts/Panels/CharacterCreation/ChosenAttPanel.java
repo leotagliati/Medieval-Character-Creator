@@ -18,9 +18,11 @@ import javax.swing.JTextField;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.Model.GameCharacter;
+import Scripts.Repository.CharacterRepository;
 
 public class ChosenAttPanel {
-    public static JTextField nameInput, classInput, chosenEyes, chosenSkin, chosenPhysic;
+    public static JTextField nameInput, classInput, eyesInput, skinInput, physicInput;
     private static JTextField nameTitle, classTitle;
     private static ArrayList<JTextField> chosenAttArray = new ArrayList<JTextField>();
     private static ArrayList<JTextField> titlesTextArray = new ArrayList<JTextField>();
@@ -33,6 +35,9 @@ public class ChosenAttPanel {
     private static JPanel saveBackGNDPanel = new JPanel();
 
     public static void setupPanel() {
+
+        CharacterRepository repo = new CharacterRepository();
+
         // Inicializa os Textos
         nameTitle = new JTextField("Nome: ");
         nameInput = new JTextField("Entrada incompleta");
@@ -62,6 +67,8 @@ public class ChosenAttPanel {
                     saveButton.setText("Salvo!");
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
+                    repo.addCharacter(new GameCharacter(nameInput.getText(), classInput.getText(), eyesInput.getText(),
+                            skinInput.getText(), physicInput.getText()));
                     // funcao de salvar no banco de dados
                 } else {
                     AudioHandler.audioPlay("Music\\charNotSaved.wav");
@@ -114,13 +121,11 @@ public class ChosenAttPanel {
         titlesPanel.setLayout(titleLayout);
         titlesPanel.setVisible(true);
 
-
         savePanel.setBounds(530, 500, 300, 300);
         savePanel.setBackground(Color.YELLOW);
         savePanel.setOpaque(false);
         savePanel.setLayout(titleLayout);
         savePanel.setVisible(true);
-
 
         saveBackGNDPanel.setBounds(530, 500, 300, 300);
         saveBackGNDPanel.setBackground(Color.YELLOW);
@@ -196,8 +201,6 @@ public class ChosenAttPanel {
                 nameInput.setText(nameChosen);
                 nameInput.setForeground(Color.WHITE);
             }
-            classInput.setText(classChosen);
-            classInput.setForeground(Color.RED);
         } else {
             if (nameChosen.equals("Entrada incompleta") || nameChosen.equals(null)) {
                 nameInput.setText("Entrada incompleta");

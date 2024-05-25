@@ -30,9 +30,9 @@ public class GarmentsPanel extends JPanel {
     // private static String helmetID;
     // private static String chestID;
     // private static String legsID;
-    public HelmetTypes helmetType;
-    public ChestTypes chestType;
-    public LegsTypes legsType;
+    public HelmetTypes helmetType = HelmetTypes.values()[Integer.parseInt(helmet.getBodyPartSliderValue().getText()) - 1];
+    public ChestTypes chestType = ChestTypes.values()[Integer.parseInt(chest.getBodyPartSliderValue().getText()) - 1];
+    public LegsTypes legsType = LegsTypes.values()[Integer.parseInt(legs.getBodyPartSliderValue().getText()) - 1];
 
     public GarmentsPanel() {
         super();
