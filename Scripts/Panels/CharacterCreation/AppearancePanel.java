@@ -16,21 +16,22 @@ import java.awt.event.MouseEvent;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.ImagesConversion.Enums.PhysicTypes;
+import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class AppearancePanel extends JPanel {
 
     private BodyPart eyes = new BodyPart("Olhos", 3);
-    private BodyPart skin = new BodyPart("Cor de pele", 3);
+    private BodyPart skin = new BodyPart("Cor de pele", 4);
     private BodyPart physic = new BodyPart("Físico", 2);
-    
-    private JButton confirmButton = new JButton("Confirmar");
-    
-    private static String eyeID;
-    private static String skinID;
-    private static String physicID;
-    
 
+    private JButton confirmButton = new JButton("Confirmar");
+
+    public EyeColorTypes eyesType;
+    public SkinColorTypes skinType;
+    public PhysicTypes physicType;
 
     public AppearancePanel() {
         super();
@@ -78,8 +79,9 @@ public class AppearancePanel extends JPanel {
                     buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
             }
+
             @Override
-            public void mouseExited(MouseEvent e){
+            public void mouseExited(MouseEvent e) {
                 if (e.getSource() == confirmButton) {
                     buttonImage.setIcon(new ImageIcon("Images\\button.png"));
                 }
@@ -90,15 +92,15 @@ public class AppearancePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
-                if(e.getSource() == confirmButton)
-                {
-                    eyeID = eyes.getBodyPartSliderValue().getText();
-                    skinID = skin.getBodyPartSliderValue().getText();
-                    physicID = physic.getBodyPartSliderValue().getText();
+                if (e.getSource() == confirmButton) {
+                    eyesType = EyeColorTypes.values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText()) - 1];
+                    skinType = SkinColorTypes.values()[Integer.parseInt(skin.getBodyPartSliderValue().getText()) - 1];
+                    physicType = PhysicTypes.values()[Integer.parseInt(physic.getBodyPartSliderValue().getText()) - 1];
+
                     setVisible(false);
-                    // JOptionPane.showMessageDialog(null, eyeID);
-                    // JOptionPane.showMessageDialog(null, skinID);
-                    // JOptionPane.showMessageDialog(null, physicID);
+                    // JOptionPane.showMessageDialog(null, eyesType.toString());
+                    // JOptionPane.showMessageDialog(null, skinType.toString());
+                    // JOptionPane.showMessageDialog(null, physicType.toString());
                     ChosenAttPanel.getTitlesPanel().setVisible(true);
                     ChosenAttPanel.getPanel().setVisible(true);
                     ChosenAttPanel.getSavePanel().setVisible(true);
@@ -106,21 +108,11 @@ public class AppearancePanel extends JPanel {
                     ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                 }
             }
-            
+
         });
 
         this.add(confirmButton);
         this.add(buttonImage);
 
     }
-    public static String getEyeID(){
-        return eyeID;
-    }
-    public static String getSkinID(){
-        return skinID;
-    }
-    public static String getPhysicID(){
-        return physicID;
-    }
-
 }
