@@ -21,6 +21,8 @@ import Scripts.ImagesConversion.Enums.LegsTypes;
 import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class GarmentsPanel extends JPanel {
+    SingletonPanel singlePanel = SingletonPanel.getInstance();
+
     public BodyPart helmet = new BodyPart("Capacete", 3);
     public BodyPart chest = new BodyPart("Peitoral", 3);
     public BodyPart legs = new BodyPart("Calça", 3);
@@ -101,11 +103,13 @@ public class GarmentsPanel extends JPanel {
                     // JOptionPane.showMessageDialog(null, legsType);
                     
                     setVisible(false);
-                    ChosenAttPanel.getTitlesPanel().setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(true);
-                    ChosenAttPanel.getSavePanel().setVisible(true);
-                    ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    
+                    // ChosenAttPanel.getTitlesPanel().setVisible(true);
+                    // ChosenAttPanel.getPanel().setVisible(true);
+                    // ChosenAttPanel.getSavePanel().setVisible(true);
+                    // ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
+                    // ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    singlePanel.setVisible(true);
                 }
             }
 

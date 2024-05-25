@@ -18,11 +18,11 @@ public class GameCharacter {
         this.eyeColor = eyeColor;
         this.skinColor = skinColor;
         this.physicType = physicType;
-        System.out.println(name);
-        System.out.println(skillClass);
-        System.out.println(eyeColor);
-        System.out.println(skinColor);
-        System.out.println(physicType);
+        // System.out.println(name);
+        // System.out.println(skillClass);
+        // System.out.println(eyeColor);
+        // System.out.println(skinColor);
+        // System.out.println(physicType);
     }
 
     public GameCharacter() {

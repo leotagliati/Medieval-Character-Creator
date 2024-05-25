@@ -17,6 +17,8 @@ import Scripts.ImagesConversion.ImageCreate;
 
 public class NamePanel extends JPanel {
 
+    SingletonPanel singlePanel = SingletonPanel.getInstance();
+
     private JTextField titleText = new JTextField("Insira seu nome");
     private JTextField nameInput = new JTextField("Entrada incompleta");
 
@@ -67,11 +69,12 @@ public class NamePanel extends JPanel {
                     nameChosen = nameInput.getText();
                     // JOptionPane.showMessageDialog(null, nameChosen);
                     setVisible(false);
-                    ChosenAttPanel.getTitlesPanel().setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(true);
-                    ChosenAttPanel.getSavePanel().setVisible(true);
-                    ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    // ChosenAttPanel.getTitlesPanel().setVisible(true);
+                    // ChosenAttPanel.getPanel().setVisible(true);
+                    // ChosenAttPanel.getSavePanel().setVisible(true);
+                    // ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
+                    // ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    singlePanel.setVisible(true);
                 }
             }
 

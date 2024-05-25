@@ -22,6 +22,7 @@ import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class AppearancePanel extends JPanel {
+    SingletonPanel singlePanel = SingletonPanel.getInstance();
 
     private BodyPart eyes = new BodyPart("Olhos", 3);
     private BodyPart skin = new BodyPart("Cor de pele", 4);
@@ -101,11 +102,13 @@ public class AppearancePanel extends JPanel {
                     // JOptionPane.showMessageDialog(null, eyesType.toString());
                     // JOptionPane.showMessageDialog(null, skinType.toString());
                     // JOptionPane.showMessageDialog(null, physicType.toString());
-                    ChosenAttPanel.getTitlesPanel().setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(true);
-                    ChosenAttPanel.getSavePanel().setVisible(true);
-                    ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    
+                    // ChosenAttPanel.getTitlesPanel().setVisible(true);
+                    // ChosenAttPanel.getPanel().setVisible(true);
+                    // ChosenAttPanel.getSavePanel().setVisible(true);
+                    // ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
+                    // ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    singlePanel.setVisible(true);
                 }
             }
 

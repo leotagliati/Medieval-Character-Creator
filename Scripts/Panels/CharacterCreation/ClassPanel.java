@@ -18,6 +18,8 @@ import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
 
 public class ClassPanel extends JPanel {
+    SingletonPanel singlePanel = SingletonPanel.getInstance();
+
     public JButton knightClassButton, heraldClassButton, sorcererClassButton, clericClassButton;
     private ArrayList<JButton> classButtons = new ArrayList<JButton>();
     private ArrayList<JLabel> buttonsImage = new ArrayList<JLabel>();
@@ -115,11 +117,12 @@ public class ClassPanel extends JPanel {
                             classChosen = jButton.getText();
                             setVisible(false);
                             backGNDPanel.setVisible(false);
-                            ChosenAttPanel.getPanel().setVisible(true);
-                            ChosenAttPanel.getTitlesPanel().setVisible(true);
-                            ChosenAttPanel.getSavePanel().setVisible(true);
-                            ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                            ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), classChosen);
+                            // ChosenAttPanel.getPanel().setVisible(true);
+                            // ChosenAttPanel.getTitlesPanel().setVisible(true);
+                            // ChosenAttPanel.getSavePanel().setVisible(true);
+                            // ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
+                            // ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), classChosen);
+                            singlePanel.setVisible(true);
                         }
                     }
                 }

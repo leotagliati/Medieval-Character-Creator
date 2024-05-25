@@ -131,7 +131,7 @@ public class SingletonPanel extends JPanel {
         titlesPanel.setVisible(true);
 
         // Set propriedade do objeto
-        this.setBounds(630, 200, 300, 200);
+        this.setBounds(425, 50, 500, 700);
         this.setBackground(Color.BLUE);
         this.setOpaque(true);
         this.setLayout(null);

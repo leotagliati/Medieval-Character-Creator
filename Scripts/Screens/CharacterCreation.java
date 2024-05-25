@@ -121,11 +121,11 @@ public class CharacterCreation extends JPanel implements ActionListener {
             cardLayout.first(getParent());
         } else {
             AudioHandler.audioPlay("Music\\buttonClicked.wav");
-            ChosenAttPanel.getPanel().setVisible(false);
-            ChosenAttPanel.getTitlesPanel().setVisible(false);
-            ChosenAttPanel.getSavePanel().setVisible(false);
-            ChosenAttPanel.getSaveBackGNDPanel().setVisible(false);
-
+            // ChosenAttPanel.getPanel().setVisible(false);
+            // ChosenAttPanel.getTitlesPanel().setVisible(false);
+            // ChosenAttPanel.getSavePanel().setVisible(false);
+            // ChosenAttPanel.getSaveBackGNDPanel().setVisible(false);
+            singlePanel.setVisible(false);
             if (e.getSource() == mainPanel.charNameButton) {
                 for (JPanel panel : subPanelsArrayList) {
                     if (panel == namePanel) {
