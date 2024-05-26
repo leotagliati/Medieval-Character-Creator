@@ -1,5 +1,9 @@
 package Scripts.Model;
 
+import Scripts.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.ImagesConversion.Enums.PhysicTypes;
+import Scripts.ImagesConversion.Enums.SkinColorTypes;
+
 /**
  * Character
  */
@@ -8,11 +12,11 @@ public class GameCharacter {
     private int id;
     private String name;
     private String skillClass;
-    private String eyeColor;
-    private String skinColor;
-    private String physicType;
+    private EyeColorTypes eyeColor;
+    private SkinColorTypes skinColor;
+    private PhysicTypes physicType;
 
-    public GameCharacter(String name, String skillClass, String eyeColor, String skinColor, String physicType) {
+    public GameCharacter(String name, String skillClass, EyeColorTypes eyeColor, SkinColorTypes skinColor, PhysicTypes physicType) {
         this.name = name;
         this.skillClass = skillClass;
         this.eyeColor = eyeColor;
@@ -53,27 +57,27 @@ public class GameCharacter {
         this.skillClass = skillClass;
     }
 
-    public String getEyeColor() {
+    public EyeColorTypes getEyeColor() {
         return eyeColor;
     }
 
-    public void setEyeColor(String eyeColor) {
+    public void setEyeColor(EyeColorTypes eyeColor) {
         this.eyeColor = eyeColor;
     }
 
-    public String getSkinColor() {
+    public SkinColorTypes getSkinColor() {
         return skinColor;
     }
 
-    public void setSkinColor(String skinColor) {
+    public void setSkinColor(SkinColorTypes skinColor) {
         this.skinColor = skinColor;
     }
 
-    public String getPhysicType() {
+    public PhysicTypes getPhysicType() {
         return physicType;
     }
 
-    public void setPhysicType(String physicType) {
+    public void setPhysicType(PhysicTypes physicType) {
         this.physicType = physicType;
     }
 }

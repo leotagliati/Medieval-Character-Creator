@@ -117,12 +117,10 @@ public class ClassPanel extends JPanel {
                             classChosen = jButton.getText();
                             setVisible(false);
                             backGNDPanel.setVisible(false);
-                            // ChosenAttPanel.getPanel().setVisible(true);
-                            // ChosenAttPanel.getTitlesPanel().setVisible(true);
-                            // ChosenAttPanel.getSavePanel().setVisible(true);
-                            // ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                            // ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), classChosen);
+
                             singlePanel.setVisible(true);
+                            singlePanel.getCharInstance().setSkillClass(classChosen);
+                            singlePanel.updatePanel(singlePanel.getCharInstance());
                         }
                     }
                 }

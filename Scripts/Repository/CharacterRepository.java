@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 
 import Scripts.Database.ConnFactory;
+import Scripts.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.ImagesConversion.Enums.PhysicTypes;
+import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Model.GameCharacter;
 
 /**
@@ -30,9 +33,9 @@ public class CharacterRepository {
             stmt = conn.prepareStatement(command);
             stmt.setString(1, character.getName());
             stmt.setString(2, character.getSkillClass());
-            stmt.setString(3, character.getEyeColor());
-            stmt.setString(4, character.getSkinColor());
-            stmt.setString(5, character.getPhysicType());
+            stmt.setInt(3, character.getEyeColor().ordinal());
+            stmt.setInt(4, character.getSkinColor().ordinal());
+            stmt.setInt(5, character.getPhysicType().ordinal());
             stmt.executeUpdate();
         }
         catch(SQLException e)
@@ -67,9 +70,9 @@ public class CharacterRepository {
                 character.setId(resultSet.getInt(1));
                 character.setName(resultSet.getString(2));
                 character.setSkillClass(resultSet.getString(3));
-                character.setEyeColor(resultSet.getString(4));
-                character.setSkinColor(resultSet.getString(5));
-                character.setPhysicType(resultSet.getString(6));
+                character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4)-1]);
+                character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5)-1]);
+                character.setPhysicType(PhysicTypes.values()[resultSet.getInt(6)-1]);
 
                 values.add(character);
             }

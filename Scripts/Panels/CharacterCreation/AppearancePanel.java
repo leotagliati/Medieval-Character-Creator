@@ -103,12 +103,11 @@ public class AppearancePanel extends JPanel {
                     // JOptionPane.showMessageDialog(null, skinType.toString());
                     // JOptionPane.showMessageDialog(null, physicType.toString());
                     
-                    // ChosenAttPanel.getTitlesPanel().setVisible(true);
-                    // ChosenAttPanel.getPanel().setVisible(true);
-                    // ChosenAttPanel.getSavePanel().setVisible(true);
-                    // ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                    // ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
                     singlePanel.setVisible(true);
+                    singlePanel.getCharInstance().setEyeColor(eyesType);
+                    singlePanel.getCharInstance().setSkinColor(skinType);
+                    singlePanel.getCharInstance().setPhysicType(physicType);
+                    singlePanel.updatePanel(singlePanel.getCharInstance());
                 }
             }
 

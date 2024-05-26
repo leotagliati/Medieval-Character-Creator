@@ -69,12 +69,10 @@ public class NamePanel extends JPanel {
                     nameChosen = nameInput.getText();
                     // JOptionPane.showMessageDialog(null, nameChosen);
                     setVisible(false);
-                    // ChosenAttPanel.getTitlesPanel().setVisible(true);
-                    // ChosenAttPanel.getPanel().setVisible(true);
-                    // ChosenAttPanel.getSavePanel().setVisible(true);
-                    // ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                    // ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+
                     singlePanel.setVisible(true);
+                    singlePanel.getCharInstance().setName(nameChosen);
+                    singlePanel.updatePanel(singlePanel.getCharInstance());
                 }
             }
 
