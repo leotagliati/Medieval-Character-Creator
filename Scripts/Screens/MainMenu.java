@@ -3,7 +3,6 @@ package Scripts.Screens;
 import javax.swing.*;
 
 import Scripts.ImagesConversion.ImageCreate;
-import Scripts.Panels.CharacterCreation.ChosenAttPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -120,6 +119,7 @@ public class MainMenu extends JPanel
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 CardLayout cardLayout = (CardLayout) getParent().getLayout();
                 cardLayout.show(getParent(), "Buscar Personagem");
+                SearchCharacter.labels();
             }
         });
 

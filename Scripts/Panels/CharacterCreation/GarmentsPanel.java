@@ -21,6 +21,8 @@ import Scripts.ImagesConversion.Enums.LegsTypes;
 import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class GarmentsPanel extends JPanel {
+    SavePanel singlePanel = SavePanel.getInstance();
+
     public BodyPart helmet = new BodyPart("Capacete", 3);
     public BodyPart chest = new BodyPart("Peitoral", 3);
     public BodyPart legs = new BodyPart("Calça", 3);
@@ -30,9 +32,9 @@ public class GarmentsPanel extends JPanel {
     // private static String helmetID;
     // private static String chestID;
     // private static String legsID;
-    public HelmetTypes helmetType;
-    public ChestTypes chestType;
-    public LegsTypes legsType;
+    public HelmetTypes helmetType = HelmetTypes.values()[Integer.parseInt(helmet.getBodyPartSliderValue().getText()) - 1];
+    public ChestTypes chestType = ChestTypes.values()[Integer.parseInt(chest.getBodyPartSliderValue().getText()) - 1];
+    public LegsTypes legsType = LegsTypes.values()[Integer.parseInt(legs.getBodyPartSliderValue().getText()) - 1];
 
     public GarmentsPanel() {
         super();
@@ -101,11 +103,13 @@ public class GarmentsPanel extends JPanel {
                     // JOptionPane.showMessageDialog(null, legsType);
                     
                     setVisible(false);
-                    ChosenAttPanel.getTitlesPanel().setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(true);
-                    ChosenAttPanel.getSavePanel().setVisible(true);
-                    ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    
+                    // ChosenAttPanel.getTitlesPanel().setVisible(true);
+                    // ChosenAttPanel.getPanel().setVisible(true);
+                    // ChosenAttPanel.getSavePanel().setVisible(true);
+                    // ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
+                    // ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    singlePanel.setVisible(true);
                 }
             }
 

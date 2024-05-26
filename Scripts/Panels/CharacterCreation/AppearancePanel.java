@@ -22,6 +22,7 @@ import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class AppearancePanel extends JPanel {
+    SavePanel singlePanel = SavePanel.getInstance();
 
     private BodyPart eyes = new BodyPart("Olhos", 3);
     private BodyPart skin = new BodyPart("Cor de pele", 4);
@@ -29,9 +30,9 @@ public class AppearancePanel extends JPanel {
 
     private JButton confirmButton = new JButton("Confirmar");
 
-    public EyeColorTypes eyesType;
-    public SkinColorTypes skinType;
-    public PhysicTypes physicType;
+    public EyeColorTypes eyesType  = EyeColorTypes.values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText()) - 1];;
+    public SkinColorTypes skinType  = SkinColorTypes.values()[Integer.parseInt(skin.getBodyPartSliderValue().getText()) - 1];;
+    public PhysicTypes physicType =  PhysicTypes.values()[Integer.parseInt(physic.getBodyPartSliderValue().getText()) - 1];;
 
     public AppearancePanel() {
         super();
@@ -101,11 +102,12 @@ public class AppearancePanel extends JPanel {
                     // JOptionPane.showMessageDialog(null, eyesType.toString());
                     // JOptionPane.showMessageDialog(null, skinType.toString());
                     // JOptionPane.showMessageDialog(null, physicType.toString());
-                    ChosenAttPanel.getTitlesPanel().setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(true);
-                    ChosenAttPanel.getSavePanel().setVisible(true);
-                    ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+                    
+                    singlePanel.setVisible(true);
+                    singlePanel.getCharInstance().setEyeColor(eyesType);
+                    singlePanel.getCharInstance().setSkinColor(skinType);
+                    singlePanel.getCharInstance().setPhysicType(physicType);
+                    singlePanel.updatePanel(singlePanel.getCharInstance());
                 }
             }
 

@@ -17,13 +17,14 @@ import Scripts.ImagesConversion.ImageCreate;
 
 public class NamePanel extends JPanel {
 
+    SavePanel singlePanel = SavePanel.getInstance();
+
     private JTextField titleText = new JTextField("Insira seu nome");
     private JTextField nameInput = new JTextField("Entrada incompleta");
 
     public static String nameChosen = "Entrada incompleta";
 
-    public NamePanel()
-    {
+    public NamePanel() {
         super();
         // Set propriedade do titleText
         this.titleText.setBounds(40, 20, 270, 50);
@@ -34,7 +35,7 @@ public class NamePanel extends JPanel {
         this.titleText.setForeground(Color.WHITE);
         this.titleText.setEditable(false);
         this.titleText.setVisible(true);
-        
+
         // Set propriedade do nameInput
         this.nameInput.setBounds(50, 100, 250, 70);
         this.nameInput.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
@@ -67,11 +68,14 @@ public class NamePanel extends JPanel {
                     nameChosen = nameInput.getText();
                     // JOptionPane.showMessageDialog(null, nameChosen);
                     setVisible(false);
-                    ChosenAttPanel.getTitlesPanel().setVisible(true);
-                    ChosenAttPanel.getPanel().setVisible(true);
-                    ChosenAttPanel.getSavePanel().setVisible(true);
-                    ChosenAttPanel.getSaveBackGNDPanel().setVisible(true);
-                    ChosenAttPanel.updatePanel(NamePanel.getNameChosen(), ClassPanel.getClassChosen());
+
+                    singlePanel.setVisible(true);
+                    singlePanel.getCharInstance().setName(nameChosen);
+                    if (!nameChosen.equals("Entrada incompleta")) {
+                        singlePanel.nameInput.setForeground(Color.WHITE);
+                    } else
+                        singlePanel.nameInput.setForeground(Color.RED);
+                    singlePanel.updatePanel(singlePanel.getCharInstance());
                 }
             }
 

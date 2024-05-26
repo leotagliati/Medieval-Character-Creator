@@ -14,11 +14,12 @@ import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.Model.GameCharacter;
 import Scripts.Panels.CharacterCreation.AppearancePanel;
-import Scripts.Panels.CharacterCreation.ChosenAttPanel;
 import Scripts.Panels.CharacterCreation.ClassPanel;
 import Scripts.Panels.CharacterCreation.MainPanel;
 import Scripts.Panels.CharacterCreation.NamePanel;
+import Scripts.Panels.CharacterCreation.SavePanel;
 import Scripts.Panels.CharacterCreation.GarmentsPanel;
 
 public class CharacterCreation extends JPanel implements ActionListener {
@@ -29,13 +30,17 @@ public class CharacterCreation extends JPanel implements ActionListener {
     GarmentsPanel garmentsPanel = new GarmentsPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
+    SavePanel savePanel = SavePanel.getInstance();
+
+    GameCharacter char1 = new GameCharacter(namePanel.getNameInput().getText(),classPanel.getClassChosen(),appearancePanel.eyesType,appearancePanel.skinType,appearancePanel.physicType);
 
     public CharacterCreation() {
         super();
         this.setLayout(null);
         this.setBackground(Color.BLACK);
 
-        ChosenAttPanel.setupPanel();
+        // ChosenAttPanel.setupPanel();
+        savePanel.initPanel(char1);
 
         // Image Setter
         ImageCreate backgroundImage = new ImageCreate(425, 50, 500, 700);
@@ -98,10 +103,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
         this.add(classPanel);
         this.add(classPanel.getBackGNDPanel());
         this.add(appearancePanel);
-        this.add(ChosenAttPanel.getPanel());
-        this.add(ChosenAttPanel.getTitlesPanel());
-        this.add(ChosenAttPanel.getSavePanel());
-        this.add(ChosenAttPanel.getSaveBackGNDPanel());
+        this.add(savePanel);
 
     }
 
@@ -114,11 +116,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
             cardLayout.first(getParent());
         } else {
             AudioHandler.audioPlay("Music\\buttonClicked.wav");
-            ChosenAttPanel.getPanel().setVisible(false);
-            ChosenAttPanel.getTitlesPanel().setVisible(false);
-            ChosenAttPanel.getSavePanel().setVisible(false);
-            ChosenAttPanel.getSaveBackGNDPanel().setVisible(false);
-
+            savePanel.setVisible(false);
             if (e.getSource() == mainPanel.charNameButton) {
                 for (JPanel panel : subPanelsArrayList) {
                     if (panel == namePanel) {
