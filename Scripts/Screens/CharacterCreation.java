@@ -30,7 +30,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
     GarmentsPanel garmentsPanel = new GarmentsPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
-    SavePanel singlePanel = SavePanel.getInstance();
+    SavePanel savePanel = SavePanel.getInstance();
 
     GameCharacter char1 = new GameCharacter(namePanel.getNameInput().getText(),classPanel.getClassChosen(),appearancePanel.eyesType,appearancePanel.skinType,appearancePanel.physicType);
 
@@ -40,7 +40,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
         this.setBackground(Color.BLACK);
 
         // ChosenAttPanel.setupPanel();
-        singlePanel.initPanel(char1);
+        savePanel.initPanel(char1);
 
         // Image Setter
         ImageCreate backgroundImage = new ImageCreate(425, 50, 500, 700);
@@ -103,11 +103,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
         this.add(classPanel);
         this.add(classPanel.getBackGNDPanel());
         this.add(appearancePanel);
-        // this.add(ChosenAttPanel.getPanel());
-        // this.add(ChosenAttPanel.getTitlesPanel());
-        // this.add(ChosenAttPanel.getSavePanel());
-        // this.add(ChosenAttPanel.getSaveBackGNDPanel());
-        this.add(singlePanel);
+        this.add(savePanel);
 
     }
 
@@ -120,11 +116,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
             cardLayout.first(getParent());
         } else {
             AudioHandler.audioPlay("Music\\buttonClicked.wav");
-            // ChosenAttPanel.getPanel().setVisible(false);
-            // ChosenAttPanel.getTitlesPanel().setVisible(false);
-            // ChosenAttPanel.getSavePanel().setVisible(false);
-            // ChosenAttPanel.getSaveBackGNDPanel().setVisible(false);
-            singlePanel.setVisible(false);
+            savePanel.setVisible(false);
             if (e.getSource() == mainPanel.charNameButton) {
                 for (JPanel panel : subPanelsArrayList) {
                     if (panel == namePanel) {
