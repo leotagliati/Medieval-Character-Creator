@@ -119,6 +119,7 @@ public class MainMenu extends JPanel
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 CardLayout cardLayout = (CardLayout) getParent().getLayout();
                 cardLayout.show(getParent(), "Buscar Personagem");
+                SearchCharacter.labels();
             }
         });
 

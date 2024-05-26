@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import Scripts.Database.ConnFactory;
 import Scripts.ImagesConversion.Enums.EyeColorTypes;
 import Scripts.ImagesConversion.Enums.PhysicTypes;
@@ -23,13 +22,13 @@ public class CharacterRepository {
     public CharacterRepository() {
         this.conn = ConnFactory.getConn();
     }
-    public void addCharacter(GameCharacter character)
-    {
+
+    public void addCharacter(GameCharacter character) {
         String command = "INSERT INTO tb_character(name, class, eye_color, skin_color, physic_type) VALUES(?,?,?,?,?)";
+        Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
-        try
-        {
-            
+        try {
+
             stmt = conn.prepareStatement(command);
             stmt.setString(1, character.getName());
             stmt.setString(2, character.getSkillClass());
@@ -37,10 +36,25 @@ public class CharacterRepository {
             stmt.setInt(4, character.getSkinColor().ordinal());
             stmt.setInt(5, character.getPhysicType().ordinal());
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Erro ao incluir os dados");
+        } finally {
+            ConnFactory.closeConn(conn, stmt);
         }
-        catch(SQLException e)
-        {   
-             System.out.println("Erro ao incluir os dados");
+    }
+
+    public void deleteCharacter(GameCharacter character) {
+        String command = "DELETE FROM tb_character WHERE id = ?";
+        Connection conn = ConnFactory.getConn();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(command);
+            stmt.setInt(1, character.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir os dados");
+        } finally {
+            ConnFactory.closeConn(conn, stmt);
         }
     }
 
@@ -70,9 +84,9 @@ public class CharacterRepository {
                 character.setId(resultSet.getInt(1));
                 character.setName(resultSet.getString(2));
                 character.setSkillClass(resultSet.getString(3));
-                character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4)-1]);
-                character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5)-1]);
-                character.setPhysicType(PhysicTypes.values()[resultSet.getInt(6)-1]);
+                character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4) - 1]);
+                character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5) - 1]);
+                character.setPhysicType(PhysicTypes.values()[resultSet.getInt(6) - 1]);
 
                 values.add(character);
             }

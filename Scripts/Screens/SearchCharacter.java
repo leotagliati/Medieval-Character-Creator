@@ -18,30 +18,26 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class SearchCharacter extends JPanel {
-    ArrayList<GameCharacter> charArray = new ArrayList<>();
+    static ArrayList<GameCharacter> charArray = new ArrayList<>();
     ArrayList<JButton> buttonsArray = new ArrayList<>();
-    ArrayList<String> charNamesArray = new ArrayList<>();
+    static ArrayList<String> charNamesArray = new ArrayList<>();
     ArrayList<JTextField> charClassesArray = new ArrayList<>();
-    ArrayList<JLabel> nameLabelArray = new ArrayList<>();
+    static ArrayList<JLabel> nameLabelArray = new ArrayList<>();
 
     private JTextField titleText = new JTextField("Personagens Criados");
 
-    JPanel insidePanel = new JPanel();
+    static JPanel insidePanel = new JPanel();
 
     JScrollPane charDataPanel;
+
+    static int leo = 0;
 
     public SearchCharacter() {
         super();
         this.setLayout(null);
         this.setBackground(Color.black);
 
-        CharacterRepository repo = new CharacterRepository();
-        charArray = repo.GetAllCharcters();
-        for (GameCharacter character : charArray) {
-            charNamesArray.add(character.getName());
-        }
-
-        GridLayout buttonsLayout = new GridLayout(charNamesArray.size(), 1, 0, 20);
+        GridLayout buttonsLayout = new GridLayout(charNamesArray.size(), 1, 0, 0);
         insidePanel.setLayout(buttonsLayout);
         insidePanel.setOpaque(false);
         insidePanel.setBackground(Color.BLUE);
@@ -80,6 +76,18 @@ public class SearchCharacter extends JPanel {
         // charClassesArray.add(classText2);
 
         // Adiciona os nomes como JLabels ao painel
+
+        // SearchCharacter.updateLabels();
+
+        CharacterRepository repo = new CharacterRepository();
+        charArray = repo.GetAllCharcters();
+        for (GameCharacter character : charArray) {
+            charNamesArray.add(character.getName());
+        }
+        // for (JLabel jLabel : nameLabelArray) {
+        // insidePanel.remove(jLabel);
+        // }
+
         for (int i = 0; i < charNamesArray.size(); i++) {
             JLabel nameLabel = new JLabel(charNamesArray.get(i));
             nameLabel.setIcon(new ImageIcon("Images\\user.png"));
@@ -113,8 +121,8 @@ public class SearchCharacter extends JPanel {
                     }
                 }
             });
-        }
 
+        }
         for (String nameData : charNamesArray) {
             charDataPanel.add(new JTextField(nameData));
             for (JTextField classData : charClassesArray) {
@@ -144,6 +152,7 @@ public class SearchCharacter extends JPanel {
         // Volta para o menu inicial
 
         returnButton.addActionListener(new ActionListener() {
+
             public void actionPerformed(ActionEvent ae) {
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 CardLayout cardLayout = (CardLayout) getParent().getLayout();
@@ -157,12 +166,61 @@ public class SearchCharacter extends JPanel {
                     buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
             }
+
             @Override
-            public void mouseExited(MouseEvent e){
+            public void mouseExited(MouseEvent e) {
                 if (e.getSource() == returnButton) {
                     buttonImage.setIcon(new ImageIcon("Images\\button.png"));
                 }
             }
         });
+    }
+
+    public static void labels() {
+         CharacterRepository repo = new CharacterRepository();
+        charArray = repo.GetAllCharcters();
+        charNamesArray.clear();
+        for (GameCharacter character : charArray) {
+            charNamesArray.add(character.getName());
+        }
+        for (JLabel jLabel : nameLabelArray) {
+        insidePanel.remove(jLabel);
+        }
+
+        for (int i = 0; i < charNamesArray.size(); i++) {
+            JLabel nameLabel = new JLabel(charNamesArray.get(i));
+            nameLabel.setIcon(new ImageIcon("Images\\user.png"));
+            nameLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
+            nameLabel.setHorizontalAlignment(JLabel.LEFT);
+            nameLabel.setOpaque(true);
+            nameLabel.setForeground(Color.WHITE);
+            nameLabel.setBackground(Color.darkGray);
+            nameLabel.setBorder(BorderFactory.createEtchedBorder(1));
+            nameLabelArray.add(nameLabel);
+            insidePanel.add(nameLabel);
+
+        }
+
+        for (JLabel nameLabel : nameLabelArray) {
+            nameLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    // System.out.println(e.getSource());
+                    for (JLabel nameLabel : nameLabelArray) {
+                        nameLabel.setForeground(Color.WHITE);
+
+                        if (e.getSource() != nameLabel) {
+                            nameLabel.setBackground(Color.darkGray);
+
+                        } else {
+
+                            // Chamar a funcao de updateCharacter
+                            nameLabel.setBackground(new Color(215, 135, 49));
+                        }
+                    }
+                }
+            });
+
+        }
     }
 }
