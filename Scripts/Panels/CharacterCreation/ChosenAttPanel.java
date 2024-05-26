@@ -67,8 +67,8 @@ public class ChosenAttPanel {
                     saveButton.setText("Salvo!");
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
-                    repo.addCharacter(new GameCharacter(nameInput.getText(), classInput.getText(), eyesInput.getText(),
-                            skinInput.getText(), physicInput.getText()));
+                    // repo.addCharacter(new GameCharacter(nameInput.getText(), classInput.getText(), eyesInput.getText(),
+                    //         skinInput.getText(), physicInput.getText()));
                     // funcao de salvar no banco de dados
                 } else {
                     AudioHandler.audioPlay("Music\\charNotSaved.wav");

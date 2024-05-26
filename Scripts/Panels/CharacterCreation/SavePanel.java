@@ -23,8 +23,8 @@ import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Model.GameCharacter;
 import Scripts.Repository.CharacterRepository;
 
-public class SingletonPanel extends JPanel {
-    private static SingletonPanel instance;
+public class SavePanel extends JPanel {
+    private static SavePanel instance;
     private GameCharacter charInstance;
 
     public JLabel nameInput, classInput;
@@ -38,16 +38,14 @@ public class SingletonPanel extends JPanel {
     private JButton saveButton = new JButton("Salvar");
     
     private JPanel titlesPanel = new JPanel();
-    private JPanel savePanel = new JPanel();
-    private JPanel saveBackGNDPanel = new JPanel();
     
-    private SingletonPanel() {
+    private SavePanel() {
 
     }
     
-    public static SingletonPanel getInstance() {
+    public static SavePanel getInstance() {
         if (instance == null) {
-            instance = new SingletonPanel();
+            instance = new SavePanel();
         }
         return instance;
     }
@@ -60,7 +58,7 @@ public class SingletonPanel extends JPanel {
         // Set propriedade do objeto
         this.setBounds(425, 50, 500, 700);
         this.setBackground(Color.BLUE);
-        this.setOpaque(true);
+        this.setOpaque(false);
         this.setLayout(null);
         this.setVisible(true);
         
@@ -69,7 +67,7 @@ public class SingletonPanel extends JPanel {
         classTitle = new JLabel("Classe: ");
         
         // Inicialize os atributos
-        nameInput = new JLabel(character.getName());
+        nameInput = new JLabel(character.getName());        
         classInput = new JLabel(character.getSkillClass());
         eyesInput = character.getEyeColor();
         skinInput = character.getSkinColor();
@@ -78,6 +76,7 @@ public class SingletonPanel extends JPanel {
         // chestInput = character.charChest;
         // legsInput =character. charLegs;
         
+
         // Add os textos ao array
         textArray.add(nameTitle);
         textArray.add(classTitle);
@@ -112,11 +111,11 @@ public class SingletonPanel extends JPanel {
                     repo.addCharacter(new GameCharacter(nameInput.getText(), classInput.getText(), eyesInput,
                             skinInput, physicInput));
 
-                    System.out.println(charInstance.getName());
-                    System.out.println(charInstance.getSkillClass());
-                    System.out.println(charInstance.getEyeColor());
-                    System.out.println(charInstance.getSkinColor());
-                    System.out.println(charInstance.getPhysicType());
+                    // System.out.println(charInstance.getName());
+                    // System.out.println(charInstance.getSkillClass());
+                    // System.out.println(charInstance.getEyeColor());
+                    // System.out.println(charInstance.getSkinColor());
+                    // System.out.println(charInstance.getPhysicType());
                 } else {
                     AudioHandler.audioPlay("Music\\charNotSaved.wav");
                     saveButton.setText("Insira seu nome!");
@@ -160,6 +159,7 @@ public class SingletonPanel extends JPanel {
             }
             else textArray.get(i).setHorizontalAlignment(JLabel.CENTER);
         }
+        nameInput.setForeground(Color.RED);
 
         // Set propriedade do painel de fundo
         titlesPanel.setBounds(-50, 150, 500, 100);
@@ -182,6 +182,8 @@ public class SingletonPanel extends JPanel {
         nameInput.setText(character.getName());
         classInput.setText(character.getSkillClass());
         eyesInput = character.getEyeColor();
+        skinInput = character.getSkinColor();
+        physicInput = character.getPhysicType();
     }
     public GameCharacter getCharInstance() {
         return charInstance;

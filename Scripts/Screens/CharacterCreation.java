@@ -16,11 +16,10 @@ import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
 import Scripts.Model.GameCharacter;
 import Scripts.Panels.CharacterCreation.AppearancePanel;
-import Scripts.Panels.CharacterCreation.ChosenAttPanel;
 import Scripts.Panels.CharacterCreation.ClassPanel;
 import Scripts.Panels.CharacterCreation.MainPanel;
 import Scripts.Panels.CharacterCreation.NamePanel;
-import Scripts.Panels.CharacterCreation.SingletonPanel;
+import Scripts.Panels.CharacterCreation.SavePanel;
 import Scripts.Panels.CharacterCreation.GarmentsPanel;
 
 public class CharacterCreation extends JPanel implements ActionListener {
@@ -31,7 +30,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
     GarmentsPanel garmentsPanel = new GarmentsPanel();
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
-    SingletonPanel singlePanel = SingletonPanel.getInstance();
+    SavePanel singlePanel = SavePanel.getInstance();
 
     GameCharacter char1 = new GameCharacter(namePanel.getNameInput().getText(),classPanel.getClassChosen(),appearancePanel.eyesType,appearancePanel.skinType,appearancePanel.physicType);
 

@@ -3,7 +3,6 @@ package Scripts.Screens;
 import javax.swing.*;
 
 import Scripts.ImagesConversion.ImageCreate;
-import Scripts.Panels.CharacterCreation.ChosenAttPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

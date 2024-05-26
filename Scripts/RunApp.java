@@ -11,7 +11,7 @@ import javax.swing.*;
 
 import Scripts.Database.ConnFactory;
 import Scripts.Model.GameCharacter;
-import Scripts.Panels.CharacterCreation.SingletonPanel;
+import Scripts.Panels.CharacterCreation.SavePanel;
 import Scripts.Repository.CharacterRepository;
 
 public class RunApp

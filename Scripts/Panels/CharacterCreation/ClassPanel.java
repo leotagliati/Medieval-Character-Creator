@@ -18,7 +18,7 @@ import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
 
 public class ClassPanel extends JPanel {
-    SingletonPanel singlePanel = SingletonPanel.getInstance();
+    SavePanel singlePanel = SavePanel.getInstance();
 
     public JButton knightClassButton, heraldClassButton, sorcererClassButton, clericClassButton;
     private ArrayList<JButton> classButtons = new ArrayList<JButton>();

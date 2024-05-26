@@ -21,7 +21,7 @@ import Scripts.ImagesConversion.Enums.LegsTypes;
 import Scripts.Panels.CharacterCreation.Bodypart.BodyPart;
 
 public class GarmentsPanel extends JPanel {
-    SingletonPanel singlePanel = SingletonPanel.getInstance();
+    SavePanel singlePanel = SavePanel.getInstance();
 
     public BodyPart helmet = new BodyPart("Capacete", 3);
     public BodyPart chest = new BodyPart("Peitoral", 3);
