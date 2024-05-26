@@ -11,7 +11,6 @@ import javax.swing.*;
 
 import Scripts.Database.ConnFactory;
 import Scripts.Model.GameCharacter;
-import Scripts.Panels.CharacterCreation.SavePanel;
 import Scripts.Repository.CharacterRepository;
 
 public class RunApp {
@@ -29,12 +28,12 @@ public class RunApp {
         // character.setEyeColor("1");
         // character.setSkinColor("3");
         // character.setPhysicType("1");
-        CharacterRepository repo = new CharacterRepository();
-        for (int i = 1; i < 43; i++) {
-            GameCharacter character = new GameCharacter();
-            character.setId(i);
-            repo.deleteCharacter(character);
-        }
+        // CharacterRepository repo = new CharacterRepository();
+        // for (int i = 1; i < 43; i++) {
+        //     GameCharacter character = new GameCharacter();
+        //     character.setId(i);
+        //     repo.deleteCharacter(character);
+        // }
         // ArrayList<GameCharacter> values = repo.GetAllCharcters();
         // System.out.println(values);
     }

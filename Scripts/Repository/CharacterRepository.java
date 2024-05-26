@@ -32,9 +32,9 @@ public class CharacterRepository {
             stmt = conn.prepareStatement(command);
             stmt.setString(1, character.getName());
             stmt.setString(2, character.getSkillClass());
-            stmt.setInt(3, character.getEyeColor().ordinal());
-            stmt.setInt(4, character.getSkinColor().ordinal());
-            stmt.setInt(5, character.getPhysicType().ordinal());
+            stmt.setInt(3, character.getEyeColor().ordinal()+1);
+            stmt.setInt(4, character.getSkinColor().ordinal()+1);
+            stmt.setInt(5, character.getPhysicType().ordinal()+1);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao incluir os dados");
