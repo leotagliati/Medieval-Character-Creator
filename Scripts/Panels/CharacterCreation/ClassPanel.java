@@ -25,7 +25,7 @@ public class ClassPanel extends JPanel {
     private ArrayList<JLabel> buttonsImage = new ArrayList<JLabel>();
     private JPanel backGNDPanel;
 
-    private String classChosen = "Cavaleiro";
+    private static String classChosen = "Cavaleiro";
 
     public ClassPanel() {
         super();
@@ -134,7 +134,7 @@ public class ClassPanel extends JPanel {
         return classButtons;
     }
 
-    public String getClassChosen() {
+    public static String getClassChosen() {
         return classChosen;
     }
 

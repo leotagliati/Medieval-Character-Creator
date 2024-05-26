@@ -9,18 +9,17 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class BodyPart
+public class BodyPart extends JSlider
 {
     private JTextField bodyPartText;
-    private JSlider bodyPartSlider;
     private JTextField bodyPartSliderValue;
     private int visualOffset = 120;
     
     public BodyPart(String name, int sliderMaxValue)
     {
+        super(1,sliderMaxValue,2);
         this.bodyPartText = new JTextField(name);
-        this.bodyPartSlider = new JSlider(1, sliderMaxValue,2);
-        this.bodyPartSliderValue = new JTextField("" + this.bodyPartSlider.getValue());
+        this.bodyPartSliderValue = new JTextField("" + this.getValue());
     }
 
     public void setup(int sliderOrder)
@@ -33,18 +32,15 @@ public class BodyPart
         this.bodyPartText.setBorder(BorderFactory.createEmptyBorder());
         this.bodyPartText.setEditable(false);
 
-        this.bodyPartSlider.setBounds(50,70 + (sliderOrder * visualOffset),250,40);
-        this.bodyPartSlider.setSnapToTicks(true);
-        this.bodyPartSlider.setOpaque(false);
-        this.bodyPartSlider.setBorder(BorderFactory.createEmptyBorder());
-        this.bodyPartSlider.addChangeListener(new ChangeListener() {
+        this.setBounds(50,70 + (sliderOrder * visualOffset),250,40);
+        this.setSnapToTicks(true);
+        this.setOpaque(false);
+        this.setBorder(BorderFactory.createEmptyBorder());
+        this.addChangeListener(new ChangeListener() {
 
             @Override
             public void stateChanged(ChangeEvent e) {
-                if(e.getSource() == bodyPartSlider)
-                {
-                    bodyPartSliderValue.setText("" + bodyPartSlider.getValue());
-                }
+                bodyPartSliderValue.setText("" + getBodyPartSlider().getValue());
             }
         });
         
@@ -61,7 +57,7 @@ public class BodyPart
         return bodyPartText;
     }
     public JSlider getBodyPartSlider() {
-        return bodyPartSlider;
+        return this;
     }
     public JTextField getBodyPartSliderValue() {
         return bodyPartSliderValue;
