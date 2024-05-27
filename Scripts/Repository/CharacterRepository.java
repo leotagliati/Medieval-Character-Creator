@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Scripts.Database.ConnFactory;
+import Scripts.ImagesConversion.Enums.ChestTypes;
 import Scripts.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.ImagesConversion.Enums.HelmetTypes;
+import Scripts.ImagesConversion.Enums.LegsTypes;
 import Scripts.ImagesConversion.Enums.PhysicTypes;
 import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Model.GameCharacter;
@@ -24,7 +27,7 @@ public class CharacterRepository {
     }
 
     public void addCharacter(GameCharacter character) {
-        String command = "INSERT INTO tb_character(name, class, eye_color, skin_color, physic_type) VALUES(?,?,?,?,?)";
+        String command = "INSERT INTO tb_character(name, class, eye_color, skin_color, physic_type, helm_type, chest_type, legs_type) VALUES(?,?,?,?,?,?,?,?)";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
@@ -35,6 +38,9 @@ public class CharacterRepository {
             stmt.setInt(3, character.getEyeColor().ordinal()+1);
             stmt.setInt(4, character.getSkinColor().ordinal()+1);
             stmt.setInt(5, character.getPhysicType().ordinal()+1);
+            stmt.setInt(6, character.getHelmTypes().ordinal());
+            stmt.setInt(7, character.getChestTypes().ordinal());
+            stmt.setInt(8, character.getLegsTypes().ordinal());
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao incluir os dados");
@@ -87,6 +93,9 @@ public class CharacterRepository {
                 character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4) - 1]);
                 character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5) - 1]);
                 character.setPhysicType(PhysicTypes.values()[resultSet.getInt(6) - 1]);
+                character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(7) - 1]);
+                character.setChestTypes(ChestTypes.values()[resultSet.getInt(8) - 1]);
+                character.setLegsTypes(LegsTypes.values()[resultSet.getInt(9) - 1]);
 
                 values.add(character);
             }

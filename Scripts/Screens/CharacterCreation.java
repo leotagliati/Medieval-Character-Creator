@@ -33,10 +33,12 @@ public class CharacterCreation extends JPanel implements ActionListener {
     ClassPanel classPanel = new ClassPanel();
     AppearancePanel appearancePanel = new AppearancePanel();
     SavePanel savePanel = SavePanel.getInstance();
-    
+
     public static ShowPanel panel = new ShowPanel();
 
-    GameCharacter char1 = new GameCharacter(namePanel.getNameInput().getText(),ClassPanel.getClassChosen(),appearancePanel.eyesType,appearancePanel.skinType,appearancePanel.physicType);
+    GameCharacter char1 = new GameCharacter(namePanel.getNameInput().getText(), ClassPanel.getClassChosen(),
+            AppearancePanel.eyesType, AppearancePanel.skinType, AppearancePanel.physicType, GarmentsPanel.helmetType,
+            GarmentsPanel.chestType, GarmentsPanel.legsType);
 
     public CharacterCreation() {
         super();
