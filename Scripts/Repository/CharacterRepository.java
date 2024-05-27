@@ -128,6 +128,7 @@ public class CharacterRepository {
     private GameCharacter getValue(ResultSet resultSet) {
         GameCharacter character = new GameCharacter();
         try {
+            character.setId(resultSet.getInt(1));
             character.setName(resultSet.getString(2));
             character.setSkillClass(resultSet.getString(3));
             character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4) - 1]);

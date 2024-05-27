@@ -24,12 +24,13 @@ public class SearchCharacter extends JPanel {
     ArrayList<JTextField> charClassesArray = new ArrayList<>();
     static ArrayList<JLabel> nameLabelArray = new ArrayList<>();
 
-
     private JTextField titleText = new JTextField("Personagens Criados");
 
     static JPanel insidePanel = new JPanel();
 
     JScrollPane charDataPanel;
+
+    static GameCharacter charSelected;
 
     public static ShowPanel displayCharPanel = new ShowPanel();
 
@@ -37,6 +38,11 @@ public class SearchCharacter extends JPanel {
         super();
         this.setLayout(null);
         this.setBackground(Color.black);
+
+        ImageCreate backgroundImage = new ImageCreate(0, 0, 500, 700);
+        backgroundImage.setIconFile("Images\\hud1.png");
+        backgroundImage.imageSetter();
+        displayCharPanel.add(backgroundImage);
 
         GridLayout buttonsLayout = new GridLayout(charNamesArray.size(), 1, 0, 0);
         insidePanel.setLayout(buttonsLayout);
@@ -71,54 +77,92 @@ public class SearchCharacter extends JPanel {
         }
 
         JButton returnButton = new JButton("Voltar");
+        JButton deleteButton = new JButton("Deletar");
         returnButton.setBounds(130, 750, 300, 100);
-        returnButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
-        returnButton.setForeground(Color.WHITE);
-        returnButton.setOpaque(true);
-        returnButton.setContentAreaFilled(false);
-        returnButton.setBorderPainted(false);
-        returnButton.setFocusable(false);
+        deleteButton.setBounds(520, 750, 300, 100);
+
+        buttonsArray.add(returnButton);
+        buttonsArray.add(deleteButton);
+
+        for (JButton button : buttonsArray) {
+            button.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
+            button.setForeground(Color.WHITE);
+            button.setOpaque(true);
+            button.setContentAreaFilled(false);
+            button.setBorderPainted(false);
+            button.setFocusable(false);
+        }
 
         ImageCreate returnButtonImage = new ImageCreate(130, 750, 300, 100);
         returnButtonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
         returnButtonImage.setIconFile("Images\\button.png");
         returnButtonImage.imageSetter();
 
+        ImageCreate deleteButtonImage = new ImageCreate(520, 750, 300, 100);
+        deleteButtonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        deleteButtonImage.setIconFile("Images\\charNotSavedButton.png");
+        deleteButtonImage.imageSetter();
+
         this.add(displayCharPanel);
         this.add(titleText);
         this.add(returnButton);
         this.add(returnButtonImage);
+        this.add(deleteButton);
+        this.add(deleteButtonImage);
         this.add(charDataPanel);
 
         // Volta para o menu inicial
 
-        returnButton.addActionListener(new ActionListener() {
+        for (JButton button : buttonsArray) {
+            button.addActionListener(new ActionListener() {
 
-            public void actionPerformed(ActionEvent ae) {
-                AudioHandler.audioPlay("Music\\buttonClicked2.wav");
-                CardLayout cardLayout = (CardLayout) getParent().getLayout();
-                cardLayout.first(getParent());
-            }
-        });
-        returnButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                if (e.getSource() == returnButton) {
-                    returnButtonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() == returnButton) {
+                        AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                        CardLayout cardLayout = (CardLayout) getParent().getLayout();
+                        cardLayout.first(getParent());
+                    }
+                    if (e.getSource() == deleteButton) {
+                        AudioHandler.audioPlay("Music\\delButtonClicked.wav");
+                        CharacterRepository repo = new CharacterRepository();
+                        if (charSelected != null) {
+                            repo.deleteCharacter(charSelected);
+                            deleteButtonImage.setIconFile("Images\\charSavedButton.png");
+                            deleteButtonImage.imageSetter();
+                            deleteButton.setText("Deletado!");
+                        }
+                    }
                 }
-            }
+            });
+            button.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    if (e.getSource() == returnButton) {
+                        returnButtonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
 
-            @Override
-            public void mouseExited(MouseEvent e) {
-                if (e.getSource() == returnButton) {
-                    returnButtonImage.setIcon(new ImageIcon("Images\\button.png"));
+                    }
+                    if (e.getSource() == deleteButton) {
+                        deleteButtonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
+                    }
                 }
-            }
-        });
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    if (e.getSource() == returnButton) {
+                        returnButtonImage.setIcon(new ImageIcon("Images\\button.png"));
+                    }
+                    if (e.getSource() == deleteButton) {
+                        deleteButtonImage.setIcon(new ImageIcon("Images\\button.png"));
+                        deleteButton.setText("Deletar!");
+                    }
+                }
+            });
+        }
     }
 
-    public static void labels() {
-
+    public static void updateNamesPanel() {
+        charSelected = null;
         CharacterRepository repo = new CharacterRepository();
         charArray = repo.GetAllCharcters();
         charNamesArray.clear();
@@ -159,9 +203,10 @@ public class SearchCharacter extends JPanel {
 
                             // Chamar a funcao de updateCharacter
                             nameLabel.setBackground(new Color(215, 135, 49));
-                            int index = nameLabelArray.indexOf(nameLabel) + 1;
-                            GameCharacter charToFind = repo.searchCharacter(index);
-                            CharacterDisplay.findImages(charToFind, displayCharPanel);
+                            int pos = nameLabelArray.indexOf(nameLabel);
+                            int index = charArray.get(pos).getId();
+                            charSelected = repo.searchCharacter(index);
+                            CharacterDisplay.findImages(charSelected, displayCharPanel);
                         }
                     }
                 }
