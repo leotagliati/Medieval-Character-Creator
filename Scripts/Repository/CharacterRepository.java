@@ -35,9 +35,9 @@ public class CharacterRepository {
             stmt = conn.prepareStatement(command);
             stmt.setString(1, character.getName());
             stmt.setString(2, character.getSkillClass());
-            stmt.setInt(3, character.getEyeColor().ordinal()+1);
-            stmt.setInt(4, character.getSkinColor().ordinal()+1);
-            stmt.setInt(5, character.getPhysicType().ordinal()+1);
+            stmt.setInt(3, character.getEyeColor().ordinal() + 1);
+            stmt.setInt(4, character.getSkinColor().ordinal() + 1);
+            stmt.setInt(5, character.getPhysicType().ordinal() + 1);
             stmt.setInt(6, character.getHelmTypes().ordinal());
             stmt.setInt(7, character.getChestTypes().ordinal());
             stmt.setInt(8, character.getLegsTypes().ordinal());
@@ -62,6 +62,29 @@ public class CharacterRepository {
         } finally {
             ConnFactory.closeConn(conn, stmt);
         }
+    }
+
+    public GameCharacter searchCharacter(int id) {
+        String command = "Select * FROM tb_character WHERE id = ?";
+        Connection conn = ConnFactory.getConn();
+        PreparedStatement stmt = null;
+        
+        GameCharacter character = new GameCharacter();
+        try {
+            stmt = conn.prepareStatement(command);
+            stmt.setInt(1, id);
+            ResultSet result = stmt.executeQuery();
+
+            if(result.next())
+            {
+                character = this.getValue(result);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao pesquisar os dados" + e.toString());
+        } finally {
+            ConnFactory.closeConn(conn, stmt);
+        }
+        return character;
     }
 
     public ArrayList<GameCharacter> GetAllCharcters() {
@@ -104,5 +127,23 @@ public class CharacterRepository {
             throw new RuntimeException("Deu tudo errado");
         }
         return values;
+    }
+
+    private GameCharacter getValue(ResultSet resultSet) {
+        GameCharacter character = new GameCharacter();
+        try {
+            character.setName(resultSet.getString(2));
+            character.setSkillClass(resultSet.getString(3));
+            character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4) - 1]);
+            character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5) - 1]);
+            character.setPhysicType(PhysicTypes.values()[resultSet.getInt(6) - 1]);
+            character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(7) - 1]);
+            character.setChestTypes(ChestTypes.values()[resultSet.getInt(8) - 1]);
+            character.setLegsTypes(LegsTypes.values()[resultSet.getInt(9) - 1]);
+        } catch (Exception e) {
+            throw new RuntimeException("Deu tudo errado");
+        }
+        return character;
+
     }
 }
