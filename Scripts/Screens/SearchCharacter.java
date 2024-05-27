@@ -57,28 +57,11 @@ public class SearchCharacter extends JPanel {
         charDataPanel = new JScrollPane(insidePanel);
         this.charDataPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         this.charDataPanel.setViewportBorder(new LineBorder(new Color(0, 0, 0), 2));
-        this.charDataPanel.setBounds(50, 140, 500, 600);
+        this.charDataPanel.setBounds(50, 140, 900, 600);
         this.charDataPanel.setOpaque(false);
 
         // Adiciona o JScrollPane ao JPanel principal
         this.add(charDataPanel);
-
-        // ImageCreate UIimage = new ImageCreate(1080, 40, 500, 750);
-        // UIimage.setIconFile("Images\\hud1.png");
-        // UIimage.imageSetter();
-        // this.add(UIimage);
-
-        // ImageCreate charImage = new ImageCreate(1080, 0, 500, 750);
-        // charImage.setIconFile("Images\\charImage.png");
-        // charImage.imageSetter();
-        // this.add(charImage);
-
-        // charClassesArray.add(classText);
-        // charClassesArray.add(classText2);
-
-        // Adiciona os nomes como JLabels ao painel
-
-        // SearchCharacter.updateLabels();
 
         for (String nameData : charNamesArray) {
             charDataPanel.add(new JTextField(nameData));
@@ -96,15 +79,15 @@ public class SearchCharacter extends JPanel {
         returnButton.setBorderPainted(false);
         returnButton.setFocusable(false);
 
-        ImageCreate buttonImage = new ImageCreate(130, 750, 300, 100);
-        buttonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
-        buttonImage.setIconFile("Images\\button.png");
-        buttonImage.imageSetter();
+        ImageCreate returnButtonImage = new ImageCreate(130, 750, 300, 100);
+        returnButtonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        returnButtonImage.setIconFile("Images\\button.png");
+        returnButtonImage.imageSetter();
 
         this.add(displayCharPanel);
         this.add(titleText);
         this.add(returnButton);
-        this.add(buttonImage);
+        this.add(returnButtonImage);
         this.add(charDataPanel);
 
         // Volta para o menu inicial
@@ -121,14 +104,14 @@ public class SearchCharacter extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (e.getSource() == returnButton) {
-                    buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
+                    returnButtonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 if (e.getSource() == returnButton) {
-                    buttonImage.setIcon(new ImageIcon("Images\\button.png"));
+                    returnButtonImage.setIcon(new ImageIcon("Images\\button.png"));
                 }
             }
         });
@@ -177,11 +160,8 @@ public class SearchCharacter extends JPanel {
                             // Chamar a funcao de updateCharacter
                             nameLabel.setBackground(new Color(215, 135, 49));
                             int index = nameLabelArray.indexOf(nameLabel) + 1;
-                            // System.out.println(index);
                             GameCharacter charToFind = repo.searchCharacter(index);
                             CharacterDisplay.findImages(charToFind, displayCharPanel);
-                            // System.out.println(charToFind.getName());
-                            // System.out.println(charToFind.getSkillClass());
                         }
                     }
                 }
