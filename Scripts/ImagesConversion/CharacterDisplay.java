@@ -77,7 +77,7 @@ public class CharacterDisplay {
 
     public static void updateImages(JPanel panel) {
 
-        // clear panel
+        // Limpa painel
         panel.removeAll();
         setupImages(panel);
 
@@ -94,7 +94,6 @@ public class CharacterDisplay {
 
         String skinChosen = character.getSkinColor().toString();
         skinChosen = StringToPath.convertPng(skinChosen);
-        // System.err.println(skinChosen);
 
         ImageCreate charImage = new ImageCreate(0, 0, 500, 750);
         charImage.setIconFile(skinChosen);

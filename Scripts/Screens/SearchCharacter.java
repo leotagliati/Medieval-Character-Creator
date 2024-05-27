@@ -1,7 +1,6 @@
 package Scripts.Screens;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import Scripts.AudioHandler;
@@ -16,7 +15,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
 import java.util.ArrayList;
 
 public class SearchCharacter extends JPanel {
@@ -26,7 +24,6 @@ public class SearchCharacter extends JPanel {
     ArrayList<JTextField> charClassesArray = new ArrayList<>();
     static ArrayList<JLabel> nameLabelArray = new ArrayList<>();
 
-    private static int[] idLabelArray;
 
     private JTextField titleText = new JTextField("Personagens Criados");
 
@@ -141,7 +138,6 @@ public class SearchCharacter extends JPanel {
 
         CharacterRepository repo = new CharacterRepository();
         charArray = repo.GetAllCharcters();
-        idLabelArray = new int[charArray.size()];
         charNamesArray.clear();
         for (GameCharacter character : charArray) {
             charNamesArray.add(character.getName());

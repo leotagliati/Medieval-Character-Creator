@@ -32,11 +32,6 @@ public class GameCharacter {
         this.helmTypes = helmTypes;
         this.chestTypes = chestTypes;
         this.legsTypes = legsTypes;
-        // System.out.println(name);
-        // System.out.println(skillClass);
-        // System.out.println(eyeColor);
-        // System.out.println(skinColor);
-        // System.out.println(physicType);
     }
     
     public GameCharacter() {

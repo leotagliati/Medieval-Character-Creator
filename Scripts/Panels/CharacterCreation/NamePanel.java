@@ -8,7 +8,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -66,9 +65,8 @@ public class NamePanel extends JPanel {
 
                     nameInput.setEditable(false);
                     nameChosen = nameInput.getText();
-                    // JOptionPane.showMessageDialog(null, nameChosen);
                     setVisible(false);
-
+                    
                     singlePanel.setVisible(true);
                     singlePanel.getCharInstance().setName(nameChosen);
                     if (!nameChosen.equals("Entrada incompleta")) {

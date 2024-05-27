@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -36,9 +34,6 @@ public class GarmentsPanel extends JPanel {
 
     private JButton confirmButton = new JButton("Confirmar");
 
-    // private static String helmetID;
-    // private static String chestID;
-    // private static String legsID;
     public static HelmetTypes helmetType = HelmetTypes
             .values()[Integer.parseInt(helmet.getBodyPartSliderValue().getText()) - 1];
     public static ChestTypes chestType = ChestTypes.values()[Integer.parseInt(chest.getBodyPartSliderValue().getText())
@@ -78,6 +73,7 @@ public class GarmentsPanel extends JPanel {
 
             });
         }
+
         // Set propriedades do objeto
         this.setBounds(500, 150, 350, 500);
         this.setBackground(Color.ORANGE);
@@ -133,10 +129,6 @@ public class GarmentsPanel extends JPanel {
                     helmetType = HelmetTypes.values()[Integer.parseInt(helmet.getBodyPartSliderValue().getText()) - 1];
                     chestType = ChestTypes.values()[Integer.parseInt(chest.getBodyPartSliderValue().getText()) - 1];
                     legsType = LegsTypes.values()[Integer.parseInt(legs.getBodyPartSliderValue().getText()) - 1];
-
-                    // JOptionPane.showMessageDialog(null, helmetType);
-                    // JOptionPane.showMessageDialog(null, chestType);
-                    // JOptionPane.showMessageDialog(null, legsType);
 
                     setVisible(false);
 

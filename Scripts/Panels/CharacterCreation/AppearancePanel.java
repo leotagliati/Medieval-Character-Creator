@@ -9,7 +9,6 @@ import java.awt.event.MouseAdapter;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -136,9 +135,6 @@ public class AppearancePanel extends JPanel {
                     physicType = PhysicTypes.values()[Integer.parseInt(physic.getBodyPartSliderValue().getText()) - 1];
 
                     setVisible(false);
-                    // JOptionPane.showMessageDialog(null, eyesType.toString());
-                    // JOptionPane.showMessageDialog(null, skinType.toString());
-                    // JOptionPane.showMessageDialog(null, physicType.toString());
 
                     singlePanel.setVisible(true);
                     singlePanel.getCharInstance().setEyeColor(eyesType);

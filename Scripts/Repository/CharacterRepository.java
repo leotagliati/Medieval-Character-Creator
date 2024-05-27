@@ -15,9 +15,6 @@ import Scripts.ImagesConversion.Enums.PhysicTypes;
 import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Model.GameCharacter;
 
-/**
- * CharacterRepository
- */
 public class CharacterRepository {
 
     Connection conn;

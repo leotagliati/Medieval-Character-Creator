@@ -31,6 +31,7 @@ public class ClassPanel extends JPanel {
 
     public ClassPanel() {
         super();
+
         // Inicializa os Botoes
         this.knightClassButton = new JButton("Cavaleiro");
         this.heraldClassButton = new JButton("Arauto");
@@ -56,6 +57,7 @@ public class ClassPanel extends JPanel {
             backgroundImage.imageSetter();
             buttonsImage.add(backgroundImage);
         }
+        // Altera propriedades dos botoes
         for (JButton jButton : this.classButtons) {
             jButton.setFont(new Font("Adobe Garamond Pro", Font.ITALIC, 25));
             jButton.setForeground(Color.WHITE);
@@ -85,7 +87,7 @@ public class ClassPanel extends JPanel {
             });
 
         }
-
+        // Inicializa o painel de fundo
         this.backGNDPanel = new JPanel();
         this.backGNDPanel.setLayout(buttonsLayout);
         this.backGNDPanel.setBounds(500, 200, 350, 400);

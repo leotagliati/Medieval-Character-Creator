@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
@@ -105,21 +104,15 @@ public class SavePanel extends JPanel {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // System.out.println("name:" + nameInput.getText());
-                // System.out.println("class:" + classInput.getText());
                 if (!nameInput.getText().equals("Entrada incompleta")) {
                     AudioHandler.audioPlay("Music\\charSaved.wav");
                     saveButton.setText("Salvo!");
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
+                    
                     repo.addCharacter(new GameCharacter(nameInput.getText(), classInput.getText(), eyesInput,
                             skinInput, physicInput, helmInput, chestInput, legsInput));
 
-                    // System.out.println(charInstance.getName());
-                    // System.out.println(charInstance.getSkillClass());
-                    // System.out.println(charInstance.getEyeColor());
-                    // System.out.println(charInstance.getSkinColor());
-                    // System.out.println(charInstance.getPhysicType());
                 } else {
                     AudioHandler.audioPlay("Music\\charNotSaved.wav");
                     saveButton.setText("Insira seu nome!");
