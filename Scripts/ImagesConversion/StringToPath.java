@@ -1,12 +1,12 @@
 package Scripts.ImagesConversion;
 
 public class StringToPath{
-    public String convertPng(String s){
-        String result = "Images\\" + s + ".png";
+    public static String convertPng(String s){
+        String result = "Images\\" + s + "Image.png";
         return result;
     }
-    public String convertJpg(String s){
-        String result = "Images\\" + s + ".jpg";
+    public static String convertJpg(String s){
+        String result = "Images\\" + s + "Image.jpg";
         return result;
     }
     

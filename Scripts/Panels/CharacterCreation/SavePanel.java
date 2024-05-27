@@ -17,7 +17,10 @@ import javax.swing.JTextField;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.ImagesConversion.Enums.ChestTypes;
 import Scripts.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.ImagesConversion.Enums.HelmetTypes;
+import Scripts.ImagesConversion.Enums.LegsTypes;
 import Scripts.ImagesConversion.Enums.PhysicTypes;
 import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Model.GameCharacter;
@@ -28,67 +31,68 @@ public class SavePanel extends JPanel {
     private GameCharacter charInstance;
 
     public JLabel nameInput, classInput;
-    public String helmInput, chestInput, legsInput;
+    public HelmetTypes helmInput;
+    public ChestTypes chestInput;
+    public LegsTypes legsInput;
     public EyeColorTypes eyesInput;
     public SkinColorTypes skinInput;
     public PhysicTypes physicInput;
     private JLabel nameTitle, classTitle;
     private ArrayList<JLabel> textArray = new ArrayList<JLabel>();
-    
+
     private JButton saveButton = new JButton("Salvar");
-    
+
     private JPanel titlesPanel = new JPanel();
-    
+
     private SavePanel() {
 
     }
-    
+
     public static SavePanel getInstance() {
         if (instance == null) {
             instance = new SavePanel();
         }
         return instance;
     }
-    
+
     public void initPanel(GameCharacter character) {
         charInstance = character;
-        
+
         CharacterRepository repo = new CharacterRepository();
-        
+
         // Set propriedade do objeto
         this.setBounds(425, 50, 500, 700);
         this.setBackground(Color.BLUE);
         this.setOpaque(false);
         this.setLayout(null);
         this.setVisible(true);
-        
+
         // Inicializa os Textos
         nameTitle = new JLabel("Nome: ");
         classTitle = new JLabel("Classe: ");
-        
+
         // Inicialize os atributos
-        nameInput = new JLabel(character.getName());        
+        nameInput = new JLabel(character.getName());
         classInput = new JLabel(character.getSkillClass());
         eyesInput = character.getEyeColor();
         skinInput = character.getSkinColor();
         physicInput = character.getPhysicType();
-        // helmInput = character.charHelm;
-        // chestInput = character.charChest;
-        // legsInput =character. charLegs;
-        
+        helmInput = character.getHelmTypes();
+        chestInput = character.getChestTypes();
+        legsInput = character.getLegsTypes();
 
         // Add os textos ao array
         textArray.add(nameTitle);
         textArray.add(classTitle);
         textArray.add(nameInput);
         textArray.add(classInput);
-        
+
         // Cria o design do botao
         ImageCreate buttonImage = new ImageCreate(100, 500, 300, 100);
         buttonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
         buttonImage.setIconFile("Images\\button.png");
         buttonImage.imageSetter();
-        
+
         // Inicializa o botao SALVAR
         saveButton.setBounds(100, 500, 300, 100);
         saveButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 34));
@@ -109,7 +113,7 @@ public class SavePanel extends JPanel {
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
                     repo.addCharacter(new GameCharacter(nameInput.getText(), classInput.getText(), eyesInput,
-                            skinInput, physicInput));
+                            skinInput, physicInput, helmInput, chestInput, legsInput));
 
                     // System.out.println(charInstance.getName());
                     // System.out.println(charInstance.getSkillClass());
@@ -156,8 +160,8 @@ public class SavePanel extends JPanel {
             textArray.get(i).setBorder(null);
             if (i == 0 || i == 1) {
                 textArray.get(i).setHorizontalAlignment(JLabel.RIGHT);
-            }
-            else textArray.get(i).setHorizontalAlignment(JLabel.CENTER);
+            } else
+                textArray.get(i).setHorizontalAlignment(JLabel.CENTER);
         }
         nameInput.setForeground(Color.RED);
 
@@ -177,14 +181,15 @@ public class SavePanel extends JPanel {
         this.add(saveButton);
         this.add(buttonImage);
     }
-    public void updatePanel(GameCharacter character)
-    {
+
+    public void updatePanel(GameCharacter character) {
         nameInput.setText(character.getName());
         classInput.setText(character.getSkillClass());
         eyesInput = character.getEyeColor();
         skinInput = character.getSkinColor();
         physicInput = character.getPhysicType();
     }
+
     public GameCharacter getCharInstance() {
         return charInstance;
     }
