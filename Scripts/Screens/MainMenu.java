@@ -22,7 +22,6 @@ public class MainMenu extends JPanel
 
     JButton characterCreationButton = new JButton("Criar Personagem");
     JButton searchCharacterButton = new JButton("Buscar Personagem");
-    JButton deleteCharacterButton = new JButton("Deletar Personagem");
     JButton exitButton = new JButton("Sair");
     
     JPanel backGNDPanel;
@@ -52,7 +51,6 @@ public class MainMenu extends JPanel
         // Add os botoes no arrayList
         buttonsArray.add(characterCreationButton);
         buttonsArray.add(searchCharacterButton);
-        buttonsArray.add(deleteCharacterButton);
         buttonsArray.add(exitButton);
         
         // Inicializa as molduras dos botoes
@@ -120,16 +118,6 @@ public class MainMenu extends JPanel
                 CardLayout cardLayout = (CardLayout) getParent().getLayout();
                 cardLayout.show(getParent(), "Buscar Personagem");
                 SearchCharacter.updateNamesPanel();
-            }
-        });
-
-        deleteCharacterButton.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent ae)
-            {
-                AudioHandler.audioPlay("Music\\buttonClicked2.wav");
-                CardLayout cardLayout = (CardLayout) getParent().getLayout();
-                cardLayout.show(getParent(), "Deletar Personagem");
             }
         });
 

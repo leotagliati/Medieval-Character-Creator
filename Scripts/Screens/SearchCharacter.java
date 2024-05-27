@@ -21,17 +21,13 @@ public class SearchCharacter extends JPanel {
     static ArrayList<GameCharacter> charArray = new ArrayList<>();
     ArrayList<JButton> buttonsArray = new ArrayList<>();
     static ArrayList<String> charNamesArray = new ArrayList<>();
-    ArrayList<JTextField> charClassesArray = new ArrayList<>();
     static ArrayList<JLabel> nameLabelArray = new ArrayList<>();
-
-    private JTextField titleText = new JTextField("Personagens Criados");
-
-    static JPanel insidePanel = new JPanel();
-
+    ArrayList<JTextField> charClassesArray = new ArrayList<>();
     JScrollPane charDataPanel;
 
+    private JTextField titleText = new JTextField("Personagens Criados");
+    static JPanel insidePanel = new JPanel();
     static GameCharacter charSelected;
-
     public static ShowPanel displayCharPanel = new ShowPanel();
 
     public SearchCharacter() {
@@ -65,9 +61,6 @@ public class SearchCharacter extends JPanel {
         this.charDataPanel.setViewportBorder(new LineBorder(new Color(0, 0, 0), 2));
         this.charDataPanel.setBounds(50, 140, 900, 600);
         this.charDataPanel.setOpaque(false);
-
-        // Adiciona o JScrollPane ao JPanel principal
-        this.add(charDataPanel);
 
         for (String nameData : charNamesArray) {
             charDataPanel.add(new JTextField(nameData));
@@ -127,10 +120,13 @@ public class SearchCharacter extends JPanel {
                         AudioHandler.audioPlay("Music\\delButtonClicked.wav");
                         CharacterRepository repo = new CharacterRepository();
                         if (charSelected != null) {
+                            // SearchCharacter.this.removeAll();
                             repo.deleteCharacter(charSelected);
                             deleteButtonImage.setIconFile("Images\\charSavedButton.png");
                             deleteButtonImage.imageSetter();
                             deleteButton.setText("Deletado!");
+                            CardLayout cardLayout = (CardLayout) getParent().getLayout();
+                            cardLayout.first(getParent());
                         }
                     }
                 }
