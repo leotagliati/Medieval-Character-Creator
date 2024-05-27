@@ -36,7 +36,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
     public static ShowPanel panel = new ShowPanel();
 
     GameCharacter char1 = new GameCharacter(namePanel.getNameInput().getText(), ClassPanel.getClassChosen(),
-            AppearancePanel.eyesType, AppearancePanel.skinType, AppearancePanel.physicType, GarmentsPanel.helmetType,
+            AppearancePanel.eyesType, AppearancePanel.skinType, GarmentsPanel.helmetType,
             GarmentsPanel.chestType, GarmentsPanel.legsType);
 
     public CharacterCreation() {

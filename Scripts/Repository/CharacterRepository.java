@@ -24,7 +24,7 @@ public class CharacterRepository {
     }
 
     public void addCharacter(GameCharacter character) {
-        String command = "INSERT INTO tb_character(name, class, eye_color, skin_color, physic_type, helm_type, chest_type, legs_type) VALUES(?,?,?,?,?,?,?,?)";
+        String command = "INSERT INTO tb_character(name, class, eye_color, skin_color, helm_type, chest_type, legs_type) VALUES(?,?,?,?,?,?,?)";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
@@ -34,10 +34,9 @@ public class CharacterRepository {
             stmt.setString(2, character.getSkillClass());
             stmt.setInt(3, character.getEyeColor().ordinal() + 1);
             stmt.setInt(4, character.getSkinColor().ordinal() + 1);
-            stmt.setInt(5, character.getPhysicType().ordinal() + 1);
-            stmt.setInt(6, character.getHelmTypes().ordinal() + 1);
-            stmt.setInt(7, character.getChestTypes().ordinal() + 1);
-            stmt.setInt(8, character.getLegsTypes().ordinal() + 1);
+            stmt.setInt(5, character.getHelmTypes().ordinal() + 1);
+            stmt.setInt(6, character.getChestTypes().ordinal() + 1);
+            stmt.setInt(7, character.getLegsTypes().ordinal() + 1);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao incluir os dados");
@@ -111,10 +110,9 @@ public class CharacterRepository {
                 character.setSkillClass(resultSet.getString(3));
                 character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4) - 1]);
                 character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5) - 1]);
-                character.setPhysicType(PhysicTypes.values()[resultSet.getInt(6) - 1]);
-                character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(7) - 1]);
-                character.setChestTypes(ChestTypes.values()[resultSet.getInt(8) - 1]);
-                character.setLegsTypes(LegsTypes.values()[resultSet.getInt(9) - 1]);
+                character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(6) - 1]);
+                character.setChestTypes(ChestTypes.values()[resultSet.getInt(7) - 1]);
+                character.setLegsTypes(LegsTypes.values()[resultSet.getInt(8) - 1]);
 
                 values.add(character);
             }
@@ -133,10 +131,9 @@ public class CharacterRepository {
             character.setSkillClass(resultSet.getString(3));
             character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4) - 1]);
             character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5) - 1]);
-            character.setPhysicType(PhysicTypes.values()[resultSet.getInt(6) - 1]);
-            character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(7) - 1]);
-            character.setChestTypes(ChestTypes.values()[resultSet.getInt(8) - 1]);
-            character.setLegsTypes(LegsTypes.values()[resultSet.getInt(9) - 1]);
+            character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(6) - 1]);
+            character.setChestTypes(ChestTypes.values()[resultSet.getInt(7) - 1]);
+            character.setLegsTypes(LegsTypes.values()[resultSet.getInt(8) - 1]);
         } catch (Exception e) {
             throw new RuntimeException("Deu tudo errado");
         }

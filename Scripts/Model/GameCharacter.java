@@ -4,7 +4,6 @@ import Scripts.ImagesConversion.Enums.ChestTypes;
 import Scripts.ImagesConversion.Enums.EyeColorTypes;
 import Scripts.ImagesConversion.Enums.HelmetTypes;
 import Scripts.ImagesConversion.Enums.LegsTypes;
-import Scripts.ImagesConversion.Enums.PhysicTypes;
 import Scripts.ImagesConversion.Enums.SkinColorTypes;
 
 /**
@@ -17,18 +16,16 @@ public class GameCharacter {
     private String skillClass;
     private EyeColorTypes eyeColor;
     private SkinColorTypes skinColor;
-    private PhysicTypes physicType;
     private HelmetTypes helmTypes;
     private ChestTypes chestTypes;
     private LegsTypes legsTypes;
     
     
-    public GameCharacter(String name, String skillClass, EyeColorTypes eyeColor, SkinColorTypes skinColor, PhysicTypes physicType, HelmetTypes helmTypes,  ChestTypes chestTypes,LegsTypes legsTypes) {
+    public GameCharacter(String name, String skillClass, EyeColorTypes eyeColor, SkinColorTypes skinColor, HelmetTypes helmTypes,  ChestTypes chestTypes,LegsTypes legsTypes) {
         this.name = name;
         this.skillClass = skillClass;
         this.eyeColor = eyeColor;
         this.skinColor = skinColor;
-        this.physicType = physicType;
         this.helmTypes = helmTypes;
         this.chestTypes = chestTypes;
         this.legsTypes = legsTypes;
@@ -78,13 +75,6 @@ public class GameCharacter {
         this.skinColor = skinColor;
     }
     
-    public PhysicTypes getPhysicType() {
-        return physicType;
-    }
-    
-    public void setPhysicType(PhysicTypes physicType) {
-        this.physicType = physicType;
-    }
     public HelmetTypes getHelmTypes() {
         return helmTypes;
     }
