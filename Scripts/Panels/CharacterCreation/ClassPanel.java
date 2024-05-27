@@ -15,7 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
+import Scripts.ImagesConversion.CharacterDisplay;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.Screens.CharacterCreation;
 
 public class ClassPanel extends JPanel {
     SavePanel singlePanel = SavePanel.getInstance();
@@ -117,7 +119,7 @@ public class ClassPanel extends JPanel {
                             classChosen = jButton.getText();
                             setVisible(false);
                             backGNDPanel.setVisible(false);
-
+                            CharacterDisplay.updateImages(CharacterCreation.panel);
                             singlePanel.setVisible(true);
                             singlePanel.getCharInstance().setSkillClass(classChosen);
                             singlePanel.updatePanel(singlePanel.getCharInstance());
