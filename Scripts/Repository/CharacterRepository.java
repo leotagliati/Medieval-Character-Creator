@@ -38,9 +38,9 @@ public class CharacterRepository {
             stmt.setInt(3, character.getEyeColor().ordinal() + 1);
             stmt.setInt(4, character.getSkinColor().ordinal() + 1);
             stmt.setInt(5, character.getPhysicType().ordinal() + 1);
-            stmt.setInt(6, character.getHelmTypes().ordinal());
-            stmt.setInt(7, character.getChestTypes().ordinal());
-            stmt.setInt(8, character.getLegsTypes().ordinal());
+            stmt.setInt(6, character.getHelmTypes().ordinal() + 1);
+            stmt.setInt(7, character.getChestTypes().ordinal() + 1);
+            stmt.setInt(8, character.getLegsTypes().ordinal() + 1);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao incluir os dados");
@@ -68,15 +68,14 @@ public class CharacterRepository {
         String command = "Select * FROM tb_character WHERE id = ?";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
-        
+
         GameCharacter character = new GameCharacter();
         try {
             stmt = conn.prepareStatement(command);
             stmt.setInt(1, id);
             ResultSet result = stmt.executeQuery();
 
-            if(result.next())
-            {
+            if (result.next()) {
                 character = this.getValue(result);
             }
         } catch (Exception e) {

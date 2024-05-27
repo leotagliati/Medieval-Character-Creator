@@ -188,6 +188,9 @@ public class SavePanel extends JPanel {
         eyesInput = character.getEyeColor();
         skinInput = character.getSkinColor();
         physicInput = character.getPhysicType();
+        helmInput = character.getHelmTypes();
+        chestInput = character.getChestTypes();
+        legsInput = character.getLegsTypes();
     }
 
     public GameCharacter getCharInstance() {

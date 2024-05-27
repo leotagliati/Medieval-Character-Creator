@@ -11,7 +11,8 @@ public class ShowPanel extends JPanel{
         this.setBounds(1300, 50, 500, 700);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
-        this.setOpaque(false);
+        this.setOpaque(true);
+        // this.setOpaque(false);
         this.setVisible(true);
     }
 }

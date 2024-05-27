@@ -141,6 +141,10 @@ public class GarmentsPanel extends JPanel {
                     setVisible(false);
 
                     singlePanel.setVisible(true);
+                    singlePanel.getCharInstance().setHelmTypes(helmetType);
+                    singlePanel.getCharInstance().setChestTypes(chestType);
+                    singlePanel.getCharInstance().setLegsTypes(legsType);
+                    singlePanel.updatePanel(singlePanel.getCharInstance());
                 }
             }
 

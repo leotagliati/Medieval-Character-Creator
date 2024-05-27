@@ -5,7 +5,9 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import Scripts.AudioHandler;
+import Scripts.ImagesConversion.CharacterDisplay;
 import Scripts.ImagesConversion.ImageCreate;
+import Scripts.ImagesConversion.ShowPanel;
 import Scripts.Model.GameCharacter;
 import Scripts.Repository.CharacterRepository;
 
@@ -32,6 +34,7 @@ public class SearchCharacter extends JPanel {
 
     JScrollPane charDataPanel;
 
+    public static ShowPanel displayCharPanel = new ShowPanel();
 
     public SearchCharacter() {
         super();
@@ -63,10 +66,10 @@ public class SearchCharacter extends JPanel {
         // Adiciona o JScrollPane ao JPanel principal
         this.add(charDataPanel);
 
-        ImageCreate UIimage = new ImageCreate(1080, 40, 500, 750);
-        UIimage.setIconFile("Images\\hud1.png");
-        UIimage.imageSetter();
-        this.add(UIimage);
+        // ImageCreate UIimage = new ImageCreate(1080, 40, 500, 750);
+        // UIimage.setIconFile("Images\\hud1.png");
+        // UIimage.imageSetter();
+        // this.add(UIimage);
 
         // ImageCreate charImage = new ImageCreate(1080, 0, 500, 750);
         // charImage.setIconFile("Images\\charImage.png");
@@ -80,7 +83,6 @@ public class SearchCharacter extends JPanel {
 
         // SearchCharacter.updateLabels();
 
-        
         for (String nameData : charNamesArray) {
             charDataPanel.add(new JTextField(nameData));
             for (JTextField classData : charClassesArray) {
@@ -102,6 +104,7 @@ public class SearchCharacter extends JPanel {
         buttonImage.setIconFile("Images\\button.png");
         buttonImage.imageSetter();
 
+        this.add(displayCharPanel);
         this.add(titleText);
         this.add(returnButton);
         this.add(buttonImage);
@@ -177,11 +180,12 @@ public class SearchCharacter extends JPanel {
 
                             // Chamar a funcao de updateCharacter
                             nameLabel.setBackground(new Color(215, 135, 49));
-                            int index = nameLabelArray.indexOf(nameLabel)+1;
-                            System.out.println(index);
+                            int index = nameLabelArray.indexOf(nameLabel) + 1;
+                            // System.out.println(index);
                             GameCharacter charToFind = repo.searchCharacter(index);
-                            System.out.println(charToFind.getName());
-                            System.out.println(charToFind.getSkillClass());
+                            CharacterDisplay.findImages(charToFind, displayCharPanel);
+                            // System.out.println(charToFind.getName());
+                            // System.out.println(charToFind.getSkillClass());
                         }
                     }
                 }
