@@ -24,13 +24,14 @@ public class SearchCharacter extends JPanel {
     ArrayList<JTextField> charClassesArray = new ArrayList<>();
     static ArrayList<JLabel> nameLabelArray = new ArrayList<>();
 
+    private static int[] idLabelArray;
+
     private JTextField titleText = new JTextField("Personagens Criados");
 
     static JPanel insidePanel = new JPanel();
 
     JScrollPane charDataPanel;
 
-    static int leo = 0;
 
     public SearchCharacter() {
         super();
@@ -79,50 +80,7 @@ public class SearchCharacter extends JPanel {
 
         // SearchCharacter.updateLabels();
 
-        CharacterRepository repo = new CharacterRepository();
-        charArray = repo.GetAllCharcters();
-        for (GameCharacter character : charArray) {
-            charNamesArray.add(character.getName());
-        }
-        // for (JLabel jLabel : nameLabelArray) {
-        // insidePanel.remove(jLabel);
-        // }
-
-        for (int i = 0; i < charNamesArray.size(); i++) {
-            JLabel nameLabel = new JLabel(charNamesArray.get(i));
-            nameLabel.setIcon(new ImageIcon("Images\\user.png"));
-            nameLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
-            nameLabel.setHorizontalAlignment(JLabel.LEFT);
-            nameLabel.setOpaque(true);
-            nameLabel.setForeground(Color.WHITE);
-            nameLabel.setBackground(Color.darkGray);
-            nameLabel.setBorder(BorderFactory.createEtchedBorder(1));
-            nameLabelArray.add(nameLabel);
-            insidePanel.add(nameLabel);
-
-        }
-
-        for (JLabel nameLabel : nameLabelArray) {
-            nameLabel.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    // System.out.println(e.getSource());
-                    for (JLabel nameLabel : nameLabelArray) {
-                        nameLabel.setForeground(Color.WHITE);
-
-                        if (e.getSource() != nameLabel) {
-                            nameLabel.setBackground(Color.darkGray);
-
-                        } else {
-
-                            // Chamar a funcao de updateCharacter
-                            nameLabel.setBackground(new Color(215, 135, 49));
-                        }
-                    }
-                }
-            });
-
-        }
+        
         for (String nameData : charNamesArray) {
             charDataPanel.add(new JTextField(nameData));
             for (JTextField classData : charClassesArray) {
@@ -177,16 +135,19 @@ public class SearchCharacter extends JPanel {
     }
 
     public static void labels() {
-         CharacterRepository repo = new CharacterRepository();
+
+        CharacterRepository repo = new CharacterRepository();
         charArray = repo.GetAllCharcters();
+        idLabelArray = new int[charArray.size()];
         charNamesArray.clear();
         for (GameCharacter character : charArray) {
             charNamesArray.add(character.getName());
+
         }
         for (JLabel jLabel : nameLabelArray) {
-        insidePanel.remove(jLabel);
+            insidePanel.remove(jLabel);
         }
-
+        nameLabelArray.clear();
         for (int i = 0; i < charNamesArray.size(); i++) {
             JLabel nameLabel = new JLabel(charNamesArray.get(i));
             nameLabel.setIcon(new ImageIcon("Images\\user.png"));
@@ -216,6 +177,11 @@ public class SearchCharacter extends JPanel {
 
                             // Chamar a funcao de updateCharacter
                             nameLabel.setBackground(new Color(215, 135, 49));
+                            int index = nameLabelArray.indexOf(nameLabel)+1;
+                            System.out.println(index);
+                            GameCharacter charToFind = repo.searchCharacter(index);
+                            System.out.println(charToFind.getName());
+                            System.out.println(charToFind.getSkillClass());
                         }
                     }
                 }

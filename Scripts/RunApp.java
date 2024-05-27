@@ -29,12 +29,12 @@ public class RunApp {
         // character.setSkinColor("3");
         // character.setPhysicType("1");
         
-        CharacterRepository repo = new CharacterRepository();
-        GameCharacter character = repo.searchCharacter(61);
-        System.out.println(character.getName());
-        System.out.println(character.getSkillClass());
-        System.out.println(character.getChestTypes());
-        System.out.println(character.getEyeColor());
+        // CharacterRepository repo = new CharacterRepository();
+        // GameCharacter character = repo.searchCharacter(61);
+        // System.out.println(character.getName());
+        // System.out.println(character.getSkillClass());
+        // System.out.println(character.getChestTypes());
+        // System.out.println(character.getEyeColor());
         // for (int i = 1; i < 43; i++) {
         //     GameCharacter character = new GameCharacter();
         //     character.setId(i);
