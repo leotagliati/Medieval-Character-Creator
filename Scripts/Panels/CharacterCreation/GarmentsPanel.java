@@ -146,7 +146,7 @@ public class GarmentsPanel extends JPanel {
 
         });
 
-        this.add(buttonImage);
         this.add(confirmButton);
+        this.add(buttonImage);
     }
 }

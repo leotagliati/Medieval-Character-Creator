@@ -84,6 +84,16 @@ public class CharacterDisplay {
         panel.revalidate();
         panel.repaint();
     }
+    public static void clearImages(JPanel panel){
+        panel.removeAll();
+        ImageCreate backgroundImage = new ImageCreate(0, 0, 500, 700);
+        backgroundImage.setIconFile("Images\\hud1.png");
+        backgroundImage.imageSetter();
+        panel.add(backgroundImage);
+        
+        panel.revalidate();
+        panel.repaint();
+    }
     public static void findImages(GameCharacter character, JPanel panel)
     {
         panel.removeAll();

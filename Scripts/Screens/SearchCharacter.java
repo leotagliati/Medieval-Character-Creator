@@ -125,6 +125,7 @@ public class SearchCharacter extends JPanel {
                             deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
                             deleteButtonImage.imageSetter();
                             deleteButton.setText("Deletado!");
+                            CharacterDisplay.clearImages(displayCharPanel);
                             CardLayout cardLayout = (CardLayout) getParent().getLayout();
                             cardLayout.first(getParent());
                         }

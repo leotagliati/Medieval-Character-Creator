@@ -52,13 +52,13 @@ public class CharacterCreation extends JPanel implements ActionListener {
         backgroundImage.setIconFile("Images\\subpanelBackground.png");
         backgroundImage.imageSetter();
 
-        for (JButton jButton : mainPanel.getButtonsArray()) {
+        for (JButton jButton : MainPanel.getButtonsArray()) {
             jButton.addActionListener(this);
             jButton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (e.getSource() == jButton) {
-                        mainPanel.getButtonsDesignArray().get(mainPanel.getButtonsArray().indexOf(jButton))
+                        mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\buttonClicked.png"));
                     }
                 }
@@ -66,7 +66,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (e.getSource() == jButton) {
-                        mainPanel.getButtonsDesignArray().get(mainPanel.getButtonsArray().indexOf(jButton))
+                        mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\button.png"));
                     }
                 }
