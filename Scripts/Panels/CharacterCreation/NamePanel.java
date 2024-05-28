@@ -75,6 +75,10 @@ public class NamePanel extends JPanel {
                         singlePanel.nameInput.setForeground(Color.RED);
                     singlePanel.updatePanel(singlePanel.getCharInstance());
                 }
+                else
+                {
+                    AudioHandler.audioPlay("Music\\keyTyped.wav");
+                }
             }
 
         });

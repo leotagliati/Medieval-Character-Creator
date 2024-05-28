@@ -93,7 +93,7 @@ public class SearchCharacter extends JPanel {
 
         ImageCreate deleteButtonImage = new ImageCreate(520, 750, 300, 100);
         deleteButtonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
-        deleteButtonImage.setIconFile("Images\\charNotSavedButton.png");
+        deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
         deleteButtonImage.imageSetter();
 
         this.add(displayCharPanel);
@@ -117,12 +117,12 @@ public class SearchCharacter extends JPanel {
                         cardLayout.first(getParent());
                     }
                     if (e.getSource() == deleteButton) {
-                        AudioHandler.audioPlay("Music\\delButtonClicked.wav");
+                        AudioHandler.audioPlay("Music\\deleteConfirm.wav");
                         CharacterRepository repo = new CharacterRepository();
                         if (charSelected != null) {
                             // SearchCharacter.this.removeAll();
                             repo.deleteCharacter(charSelected);
-                            deleteButtonImage.setIconFile("Images\\charSavedButton.png");
+                            deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
                             deleteButtonImage.imageSetter();
                             deleteButton.setText("Deletado!");
                             CardLayout cardLayout = (CardLayout) getParent().getLayout();
@@ -139,7 +139,8 @@ public class SearchCharacter extends JPanel {
 
                     }
                     if (e.getSource() == deleteButton) {
-                        deleteButtonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
+                        deleteButtonImage.setIcon(new ImageIcon("Images\\deleteConfirmButton.png"));
+                        deleteButton.setText("DELETAR");
                     }
                 }
 
@@ -149,8 +150,8 @@ public class SearchCharacter extends JPanel {
                         returnButtonImage.setIcon(new ImageIcon("Images\\button.png"));
                     }
                     if (e.getSource() == deleteButton) {
-                        deleteButtonImage.setIcon(new ImageIcon("Images\\button.png"));
-                        deleteButton.setText("Deletar!");
+                        deleteButtonImage.setIcon(new ImageIcon("Images\\deleteStandardButton.png"));
+                        deleteButton.setText("Deletar");
                     }
                 }
             });
