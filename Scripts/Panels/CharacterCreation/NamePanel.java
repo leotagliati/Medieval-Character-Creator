@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -58,6 +59,9 @@ public class NamePanel extends JPanel {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                    for (JButton button : MainPanel.getButtonsArray()) {
+                        button.setEnabled(true);
+                    }
                     if (nameInput.getText().equals("")) {
                         nameInput.setText("Entrada incompleta");
                         nameInput.setForeground(Color.RED);

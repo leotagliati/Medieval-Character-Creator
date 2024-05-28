@@ -14,7 +14,7 @@ import Scripts.ImagesConversion.ImageCreate;
 public class MainPanel extends JPanel {
     public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton, returnButton;
     private ArrayList<JLabel> buttonsDesignArray = new ArrayList<JLabel>();
-    private ArrayList<JButton> buttonsArray = new ArrayList<JButton>();
+    private static ArrayList<JButton> buttonsArray = new ArrayList<JButton>();
     private JPanel backGNDPanel;
 
     public MainPanel()
@@ -78,7 +78,7 @@ public class MainPanel extends JPanel {
         }
     }
 
-    public ArrayList<JButton> getButtonsArray() {
+    public static ArrayList<JButton> getButtonsArray() {
         return buttonsArray;
     }
 

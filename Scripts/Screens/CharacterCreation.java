@@ -102,6 +102,9 @@ public class CharacterCreation extends JPanel implements ActionListener {
         } else {
             AudioHandler.audioPlay("Music\\buttonClicked.wav");
             savePanel.setVisible(false);
+            for (JButton button : MainPanel.getButtonsArray()) {
+                button.setEnabled(false);
+            }
             if (e.getSource() == mainPanel.charNameButton) {
                 for (JPanel panel : subPanelsArrayList) {
                     if (panel == namePanel) {

@@ -11,7 +11,6 @@ import Scripts.ImagesConversion.Enums.ChestTypes;
 import Scripts.ImagesConversion.Enums.EyeColorTypes;
 import Scripts.ImagesConversion.Enums.HelmetTypes;
 import Scripts.ImagesConversion.Enums.LegsTypes;
-import Scripts.ImagesConversion.Enums.PhysicTypes;
 import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Model.GameCharacter;
 
