@@ -46,7 +46,7 @@ public class CharacterDisplay {
         String classChosen = ClassPanel.getClassChosen();
         classChosen = StringToPath.convertPng(classChosen);
 
-        ImageCreate weaponImage = new ImageCreate(0, 0, 500, 775);
+        ImageCreate weaponImage = new ImageCreate(0, 0, 500, 750);
         weaponImage.setIconFile(classChosen);
         weaponImage.imageSetter();
         panel.add(weaponImage);
@@ -68,9 +68,9 @@ public class CharacterDisplay {
         // Ajustar a ordem dos componentes
         panel.setComponentZOrder(backgroundImage, panel.getComponentCount() - 1);
         panel.setComponentZOrder(charImage, panel.getComponentCount() - 2);
-        panel.setComponentZOrder(torsoImage, panel.getComponentCount() - 3);
-        panel.setComponentZOrder(helmImage, panel.getComponentCount() - 4);
-        panel.setComponentZOrder(legsImage, panel.getComponentCount() - 5);
+        panel.setComponentZOrder(legsImage, panel.getComponentCount() - 3);
+        panel.setComponentZOrder(torsoImage, panel.getComponentCount() - 4);
+        panel.setComponentZOrder(helmImage, panel.getComponentCount() - 5);
         panel.setComponentZOrder(eyesImage, panel.getComponentCount() - 6);
         panel.setComponentZOrder(weaponImage, panel.getComponentCount() - 7);
     }
@@ -119,7 +119,7 @@ public class CharacterDisplay {
         String classChosen = character.getSkillClass();
         classChosen = StringToPath.convertPng(classChosen);
 
-        ImageCreate weaponImage = new ImageCreate(0, 0, 500, 775);
+        ImageCreate weaponImage = new ImageCreate(0, 0, 500, 750);
         weaponImage.setIconFile(classChosen);
         weaponImage.imageSetter();
         panel.add(weaponImage);
@@ -143,9 +143,9 @@ public class CharacterDisplay {
         // Ajustar a ordem dos componentes
         panel.setComponentZOrder(backgroundImage, panel.getComponentCount() - 1);
         panel.setComponentZOrder(charImage, panel.getComponentCount() - 2);
-        panel.setComponentZOrder(torsoImage, panel.getComponentCount() - 3);
-        panel.setComponentZOrder(helmImage, panel.getComponentCount() - 4);
-        panel.setComponentZOrder(legsImage, panel.getComponentCount() - 5);
+        panel.setComponentZOrder(legsImage, panel.getComponentCount() - 3);
+        panel.setComponentZOrder(torsoImage, panel.getComponentCount() - 4);
+        panel.setComponentZOrder(helmImage, panel.getComponentCount() - 5);
         panel.setComponentZOrder(eyesImage, panel.getComponentCount() - 6);
         panel.setComponentZOrder(weaponImage, panel.getComponentCount() - 7);
 
