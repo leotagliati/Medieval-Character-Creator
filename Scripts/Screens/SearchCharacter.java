@@ -72,8 +72,8 @@ public class SearchCharacter extends JPanel {
 
         JButton returnButton = new JButton("Voltar");
         JButton deleteButton = new JButton("Deletar");
-        returnButton.setBounds(130, 750, 300, 100);
-        deleteButton.setBounds(520, 750, 300, 100);
+        returnButton.setBounds(130, 800, 300, 100);
+        deleteButton.setBounds(520, 800, 300, 100);
 
         buttonsArray.add(returnButton);
         buttonsArray.add(deleteButton);
@@ -87,12 +87,12 @@ public class SearchCharacter extends JPanel {
             button.setFocusable(false);
         }
 
-        ImageCreate returnButtonImage = new ImageCreate(130, 750, 300, 100);
+        ImageCreate returnButtonImage = new ImageCreate(130, 800, 300, 100);
         returnButtonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
         returnButtonImage.setIconFile("Images\\button.png");
         returnButtonImage.imageSetter();
 
-        ImageCreate deleteButtonImage = new ImageCreate(520, 750, 300, 100);
+        ImageCreate deleteButtonImage = new ImageCreate(520, 800, 300, 100);
         deleteButtonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
         deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
         deleteButtonImage.imageSetter();
