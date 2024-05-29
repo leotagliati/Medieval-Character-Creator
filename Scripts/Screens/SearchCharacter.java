@@ -7,6 +7,7 @@ import Scripts.AudioHandler;
 import Scripts.ImagesConversion.CharacterDisplay;
 import Scripts.ImagesConversion.ImageCreate;
 import Scripts.ImagesConversion.ShowPanel;
+import Scripts.ImagesConversion.StringToPath;
 import Scripts.Model.GameCharacter;
 import Scripts.Repository.CharacterRepository;
 
@@ -174,9 +175,10 @@ public class SearchCharacter extends JPanel {
         nameLabelArray.clear();
         for (int i = 0; i < charNamesArray.size(); i++) {
             JLabel nameLabel = new JLabel(charNamesArray.get(i));
-            nameLabel.setIcon(new ImageIcon("Images\\user.png"));
-            nameLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
+            nameLabel.setIcon(new ImageIcon(StringToPath.convertPng(charArray.get(i).getSkillClass() + "Icon")));
+            nameLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
             nameLabel.setHorizontalAlignment(JLabel.LEFT);
+            nameLabel.setIconTextGap(25);
             nameLabel.setOpaque(true);
             nameLabel.setForeground(Color.WHITE);
             nameLabel.setBackground(Color.darkGray);
