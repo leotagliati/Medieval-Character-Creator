@@ -118,10 +118,9 @@ public class SearchCharacter extends JPanel {
                         cardLayout.first(getParent());
                     }
                     if (e.getSource() == deleteButton) {
-                        AudioHandler.audioPlay("Music\\deleteConfirm.wav");
                         CharacterRepository repo = new CharacterRepository();
                         if (charSelected != null) {
-                            // SearchCharacter.this.removeAll();
+                            AudioHandler.audioPlay("Music\\deleteConfirm.wav");
                             repo.deleteCharacter(charSelected);
                             deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
                             deleteButtonImage.imageSetter();
@@ -130,6 +129,8 @@ public class SearchCharacter extends JPanel {
                             CardLayout cardLayout = (CardLayout) getParent().getLayout();
                             cardLayout.first(getParent());
                         }
+                        else AudioHandler.audioPlay("Music\\charNotSaved.wav");
+                     
                     }
                 }
             });
