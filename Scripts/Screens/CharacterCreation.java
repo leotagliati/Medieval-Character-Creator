@@ -57,18 +57,22 @@ public class CharacterCreation extends JPanel implements ActionListener {
             jButton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    if (e.getSource() == jButton) {
+                    if (e.getSource() == jButton && jButton.isEnabled()) {
                         mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\buttonClicked.png"));
                     }
+                    else mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
+                    .setIcon(new ImageIcon("Images\\button.png"));
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    if (e.getSource() == jButton) {
+                    if (e.getSource() == jButton && jButton.isEnabled()) {
                         mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\button.png"));
                     }
+                    else mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
+                    .setIcon(new ImageIcon("Images\\button.png"));
                 }
             });
         }
