@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -18,7 +19,9 @@ public class NamePanel extends JPanel {
 
     SavePanel singlePanel = SavePanel.getInstance();
 
-    private JTextField titleText = new JTextField("Insira seu nome");
+    private JLabel titleText = new JLabel("Insira seu nome");
+    private JLabel pressEnterText1 = new JLabel("Aperte a tecla");
+    private JLabel pressEnterText2 = new JLabel("para confirmar");
     private JTextField nameInput = new JTextField("Entrada incompleta");
 
     public static String nameChosen = "Entrada incompleta";
@@ -26,14 +29,33 @@ public class NamePanel extends JPanel {
     public NamePanel() {
         super();
         // Set propriedade do titleText
-        this.titleText.setBounds(40, 20, 270, 50);
+        this.titleText.setBounds(40, 30, 270, 50);
         this.titleText.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 40));
         this.titleText.setHorizontalAlignment(JTextField.CENTER);
         this.titleText.setOpaque(false);
         this.titleText.setBorder(null);
         this.titleText.setForeground(Color.WHITE);
-        this.titleText.setEditable(false);
         this.titleText.setVisible(true);
+
+        this.pressEnterText1.setBounds(50, 140, 400, 400);
+        this.pressEnterText1.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
+        this.pressEnterText1.setHorizontalAlignment(JLabel.LEFT);
+        this.pressEnterText1.setOpaque(false);
+        this.pressEnterText1.setBorder(null);
+        this.pressEnterText1.setForeground(Color.WHITE);
+        this.pressEnterText1.setVisible(true);
+
+        ImageCreate enterIconImage = new ImageCreate(80, 120, 400, 400);
+        enterIconImage.setIconFile("Images\\enterButton.png");
+        enterIconImage.imageSetter();
+
+        this.pressEnterText2.setBounds(50, 330, 400, 200);
+        this.pressEnterText2.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
+        this.pressEnterText2.setHorizontalAlignment(JLabel.LEFT);
+        this.pressEnterText2.setOpaque(false);
+        this.pressEnterText2.setBorder(null);
+        this.pressEnterText2.setForeground(Color.WHITE);
+        this.pressEnterText2.setVisible(true);
 
         // Set propriedade do nameInput
         this.nameInput.setBounds(50, 100, 250, 70);
@@ -58,6 +80,9 @@ public class NamePanel extends JPanel {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                    for (JButton button : MainPanel.getButtonsArray()) {
+                        button.setEnabled(true);
+                    }
                     if (nameInput.getText().equals("")) {
                         nameInput.setText("Entrada incompleta");
                         nameInput.setForeground(Color.RED);
@@ -93,6 +118,9 @@ public class NamePanel extends JPanel {
         this.setBounds(500, 150, 350, 500);
         this.setBackground(Color.ORANGE);
         this.setLayout(null);
+        this.add(this.pressEnterText1);
+        this.add(enterIconImage);
+        this.add(this.pressEnterText2);
         this.add(this.titleText);
         this.add(this.nameInput);
         this.add(backgroundImage);

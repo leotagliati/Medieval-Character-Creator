@@ -20,7 +20,6 @@ import Scripts.ImagesConversion.Enums.ChestTypes;
 import Scripts.ImagesConversion.Enums.EyeColorTypes;
 import Scripts.ImagesConversion.Enums.HelmetTypes;
 import Scripts.ImagesConversion.Enums.LegsTypes;
-import Scripts.ImagesConversion.Enums.PhysicTypes;
 import Scripts.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.Model.GameCharacter;
 import Scripts.Repository.CharacterRepository;
@@ -35,7 +34,6 @@ public class SavePanel extends JPanel {
     public LegsTypes legsInput;
     public EyeColorTypes eyesInput;
     public SkinColorTypes skinInput;
-    public PhysicTypes physicInput;
     private JLabel nameTitle, classTitle;
     private ArrayList<JLabel> textArray = new ArrayList<JLabel>();
 

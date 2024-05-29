@@ -52,23 +52,27 @@ public class CharacterCreation extends JPanel implements ActionListener {
         backgroundImage.setIconFile("Images\\subpanelBackground.png");
         backgroundImage.imageSetter();
 
-        for (JButton jButton : mainPanel.getButtonsArray()) {
+        for (JButton jButton : MainPanel.getButtonsArray()) {
             jButton.addActionListener(this);
             jButton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    if (e.getSource() == jButton) {
-                        mainPanel.getButtonsDesignArray().get(mainPanel.getButtonsArray().indexOf(jButton))
+                    if (e.getSource() == jButton && jButton.isEnabled()) {
+                        mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\buttonClicked.png"));
                     }
+                    else mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
+                    .setIcon(new ImageIcon("Images\\button.png"));
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    if (e.getSource() == jButton) {
-                        mainPanel.getButtonsDesignArray().get(mainPanel.getButtonsArray().indexOf(jButton))
+                    if (e.getSource() == jButton && jButton.isEnabled()) {
+                        mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\button.png"));
                     }
+                    else mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
+                    .setIcon(new ImageIcon("Images\\button.png"));
                 }
             });
         }
@@ -102,6 +106,9 @@ public class CharacterCreation extends JPanel implements ActionListener {
         } else {
             AudioHandler.audioPlay("Music\\buttonClicked.wav");
             savePanel.setVisible(false);
+            for (JButton button : MainPanel.getButtonsArray()) {
+                button.setEnabled(false);
+            }
             if (e.getSource() == mainPanel.charNameButton) {
                 for (JPanel panel : subPanelsArrayList) {
                     if (panel == namePanel) {

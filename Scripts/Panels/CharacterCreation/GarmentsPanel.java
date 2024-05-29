@@ -126,6 +126,10 @@ public class GarmentsPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 if (e.getSource() == confirmButton) {
+                    for (JButton button : MainPanel.getButtonsArray()) {
+                        button.setEnabled(true);
+                    }
+
                     helmetType = HelmetTypes.values()[Integer.parseInt(helmet.getBodyPartSliderValue().getText()) - 1];
                     chestType = ChestTypes.values()[Integer.parseInt(chest.getBodyPartSliderValue().getText()) - 1];
                     legsType = LegsTypes.values()[Integer.parseInt(legs.getBodyPartSliderValue().getText()) - 1];
@@ -142,7 +146,7 @@ public class GarmentsPanel extends JPanel {
 
         });
 
-        this.add(buttonImage);
         this.add(confirmButton);
+        this.add(buttonImage);
     }
 }

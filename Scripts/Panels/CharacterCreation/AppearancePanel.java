@@ -27,7 +27,7 @@ import Scripts.Screens.CharacterCreation;
 public class AppearancePanel extends JPanel {
     SavePanel singlePanel = SavePanel.getInstance();
 
-    private static BodyPart eyes = new BodyPart("Olhos", 3);
+    private static BodyPart eyes = new BodyPart("Olhos", 4);
     private static BodyPart skin = new BodyPart("Cor de pele", 4);
 
     public static EyeColorTypes eyesType = EyeColorTypes
@@ -117,6 +117,9 @@ public class AppearancePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 if (e.getSource() == confirmButton) {
+                    for (JButton button : MainPanel.getButtonsArray()) {
+                        button.setEnabled(true);
+                    }
                     eyesType = EyeColorTypes.values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText()) - 1];
                     skinType = SkinColorTypes.values()[Integer.parseInt(skin.getBodyPartSliderValue().getText()) - 1];
 
@@ -126,6 +129,7 @@ public class AppearancePanel extends JPanel {
                     singlePanel.getCharInstance().setEyeColor(eyesType);
                     singlePanel.getCharInstance().setSkinColor(skinType);
                     singlePanel.updatePanel(singlePanel.getCharInstance());
+
                 }
             }
 

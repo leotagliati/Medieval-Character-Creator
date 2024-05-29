@@ -14,7 +14,7 @@ import Scripts.ImagesConversion.ImageCreate;
 public class MainPanel extends JPanel {
     public JButton charNameButton, charVestureButton, charClassButton, charAppearenceButton, returnButton;
     private ArrayList<JLabel> buttonsDesignArray = new ArrayList<JLabel>();
-    private ArrayList<JButton> buttonsArray = new ArrayList<JButton>();
+    private static ArrayList<JButton> buttonsArray = new ArrayList<JButton>();
     private JPanel backGNDPanel;
 
     public MainPanel()
@@ -28,18 +28,18 @@ public class MainPanel extends JPanel {
         this.returnButton = new JButton("Voltar");
 
         // Add os botoes no arrayList
-        this.buttonsArray.add(charNameButton);
-        this.buttonsArray.add(charVestureButton);
-        this.buttonsArray.add(charClassButton);
-        this.buttonsArray.add(charAppearenceButton);
-        this.buttonsArray.add(returnButton);
+        MainPanel.buttonsArray.add(charNameButton);
+        MainPanel.buttonsArray.add(charVestureButton);
+        MainPanel.buttonsArray.add(charClassButton);
+        MainPanel.buttonsArray.add(charAppearenceButton);
+        MainPanel.buttonsArray.add(returnButton);
 
         GridLayout buttonsLayout = new GridLayout();
         buttonsLayout.setColumns(1);
-        buttonsLayout.setRows(this.buttonsArray.size());
+        buttonsLayout.setRows(MainPanel.buttonsArray.size());
         buttonsLayout.setVgap(30);
 
-        for (int i = 0; i < this.buttonsArray.size(); i++) {
+        for (int i = 0; i < MainPanel.buttonsArray.size(); i++) {
             ImageCreate backgroundImage = new ImageCreate(0, 0, 300, 100);
             backgroundImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
             backgroundImage.setIconFile("Images\\button.png");
@@ -48,7 +48,7 @@ public class MainPanel extends JPanel {
         }
 
         // Set propriedade dos botoes
-        for (JButton button : this.buttonsArray) {
+        for (JButton button : MainPanel.buttonsArray) {
             button.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 28));
             button.setForeground(Color.WHITE);
             button.setOpaque(true);
@@ -70,7 +70,7 @@ public class MainPanel extends JPanel {
         this.setOpaque(false);
         this.setBackground(Color.RED);
 
-        for (JButton button : this.buttonsArray) {
+        for (JButton button : MainPanel.buttonsArray) {
             this.add(button);
         }
         for (JLabel buttonImage : buttonsDesignArray) {
@@ -78,7 +78,7 @@ public class MainPanel extends JPanel {
         }
     }
 
-    public ArrayList<JButton> getButtonsArray() {
+    public static ArrayList<JButton> getButtonsArray() {
         return buttonsArray;
     }
 

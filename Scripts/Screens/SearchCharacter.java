@@ -7,6 +7,7 @@ import Scripts.AudioHandler;
 import Scripts.ImagesConversion.CharacterDisplay;
 import Scripts.ImagesConversion.ImageCreate;
 import Scripts.ImagesConversion.ShowPanel;
+import Scripts.ImagesConversion.StringToPath;
 import Scripts.Model.GameCharacter;
 import Scripts.Repository.CharacterRepository;
 
@@ -71,8 +72,8 @@ public class SearchCharacter extends JPanel {
 
         JButton returnButton = new JButton("Voltar");
         JButton deleteButton = new JButton("Deletar");
-        returnButton.setBounds(130, 750, 300, 100);
-        deleteButton.setBounds(520, 750, 300, 100);
+        returnButton.setBounds(130, 800, 300, 100);
+        deleteButton.setBounds(520, 800, 300, 100);
 
         buttonsArray.add(returnButton);
         buttonsArray.add(deleteButton);
@@ -86,12 +87,12 @@ public class SearchCharacter extends JPanel {
             button.setFocusable(false);
         }
 
-        ImageCreate returnButtonImage = new ImageCreate(130, 750, 300, 100);
+        ImageCreate returnButtonImage = new ImageCreate(130, 800, 300, 100);
         returnButtonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
         returnButtonImage.setIconFile("Images\\button.png");
         returnButtonImage.imageSetter();
 
-        ImageCreate deleteButtonImage = new ImageCreate(520, 750, 300, 100);
+        ImageCreate deleteButtonImage = new ImageCreate(520, 800, 300, 100);
         deleteButtonImage.setAlignment(JLabel.CENTER, JLabel.CENTER);
         deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
         deleteButtonImage.imageSetter();
@@ -117,17 +118,19 @@ public class SearchCharacter extends JPanel {
                         cardLayout.first(getParent());
                     }
                     if (e.getSource() == deleteButton) {
-                        AudioHandler.audioPlay("Music\\deleteConfirm.wav");
                         CharacterRepository repo = new CharacterRepository();
                         if (charSelected != null) {
-                            // SearchCharacter.this.removeAll();
+                            AudioHandler.audioPlay("Music\\deleteConfirm.wav");
                             repo.deleteCharacter(charSelected);
                             deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
                             deleteButtonImage.imageSetter();
                             deleteButton.setText("Deletado!");
+                            CharacterDisplay.clearImages(displayCharPanel);
                             CardLayout cardLayout = (CardLayout) getParent().getLayout();
                             cardLayout.first(getParent());
                         }
+                        else AudioHandler.audioPlay("Music\\charNotSaved.wav");
+                     
                     }
                 }
             });
@@ -173,9 +176,10 @@ public class SearchCharacter extends JPanel {
         nameLabelArray.clear();
         for (int i = 0; i < charNamesArray.size(); i++) {
             JLabel nameLabel = new JLabel(charNamesArray.get(i));
-            nameLabel.setIcon(new ImageIcon("Images\\user.png"));
-            nameLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 25));
+            nameLabel.setIcon(new ImageIcon(StringToPath.convertPng(charArray.get(i).getSkillClass() + "Icon")));
+            nameLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
             nameLabel.setHorizontalAlignment(JLabel.LEFT);
+            nameLabel.setIconTextGap(25);
             nameLabel.setOpaque(true);
             nameLabel.setForeground(Color.WHITE);
             nameLabel.setBackground(Color.darkGray);

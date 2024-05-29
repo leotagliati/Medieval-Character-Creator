@@ -125,6 +125,9 @@ public class ClassPanel extends JPanel {
                             singlePanel.setVisible(true);
                             singlePanel.getCharInstance().setSkillClass(classChosen);
                             singlePanel.updatePanel(singlePanel.getCharInstance());
+                            for (JButton button : MainPanel.getButtonsArray()) {
+                                button.setEnabled(true);
+                            }
                         }
                     }
                 }
