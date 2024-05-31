@@ -162,7 +162,6 @@ public class SearchCharacter extends JPanel {
     }
 
     public static void updateNamesPanel() {
-        System.out.println("aloo");
         charSelected = null;
         CharacterRepository repo = new CharacterRepository();
         charArray = repo.GetAllCharcters();
@@ -188,8 +187,8 @@ public class SearchCharacter extends JPanel {
             nameLabel.setIconTextGap(25);
             nameLabel.setOpaque(true);
             nameLabel.setForeground(Color.WHITE);
-            nameLabel.setBackground(Color.darkGray);
-            nameLabel.setBorder(BorderFactory.createEtchedBorder(1));
+            nameLabel.setBackground(new Color(52, 28, 39));
+            nameLabel.setBorder(BorderFactory.createLineBorder(new Color(37, 20, 28), 2));
             nameLabelArray.add(nameLabel);
             insidePanel.add(nameLabel);
 
@@ -204,7 +203,8 @@ public class SearchCharacter extends JPanel {
                         nameLabel.setForeground(Color.WHITE);
 
                         if (e.getSource() != nameLabel) {
-                            nameLabel.setBackground(Color.darkGray);
+                            nameLabel.setBackground(new Color(52, 28, 39));
+                        
 
                         } else {
 
