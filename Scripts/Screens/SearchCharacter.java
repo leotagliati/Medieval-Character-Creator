@@ -128,9 +128,9 @@ public class SearchCharacter extends JPanel {
                             CharacterDisplay.clearImages(displayCharPanel);
                             CardLayout cardLayout = (CardLayout) getParent().getLayout();
                             cardLayout.first(getParent());
-                        }
-                        else AudioHandler.audioPlay("Music\\charNotSaved.wav");
-                     
+                        } else
+                            AudioHandler.audioPlay("Music\\charNotSaved.wav");
+
                     }
                 }
             });
@@ -162,6 +162,7 @@ public class SearchCharacter extends JPanel {
     }
 
     public static void updateNamesPanel() {
+        System.out.println("aloo");
         charSelected = null;
         CharacterRepository repo = new CharacterRepository();
         charArray = repo.GetAllCharcters();
@@ -176,7 +177,12 @@ public class SearchCharacter extends JPanel {
         nameLabelArray.clear();
         for (int i = 0; i < charNamesArray.size(); i++) {
             JLabel nameLabel = new JLabel(charNamesArray.get(i));
-            nameLabel.setIcon(new ImageIcon(StringToPath.convertPng(charArray.get(i).getSkillClass() + "Icon")));
+            int helmetID = charArray.get(i).getHelmTypes().ordinal() + 1;
+            int chestID = charArray.get(i).getChestTypes().ordinal() + 1;
+            int skinID = charArray.get(i).getSkinColor().ordinal() + 1;
+            nameLabel.setIcon(new ImageIcon(StringToPath.convertIcon(
+                    (helmetID + "" + chestID + "" + skinID))));
+            // System.out.println(helmetID + "" + eyesID + "" + skinID);
             nameLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
             nameLabel.setHorizontalAlignment(JLabel.LEFT);
             nameLabel.setIconTextGap(25);

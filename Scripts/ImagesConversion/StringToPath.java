@@ -9,5 +9,9 @@ public class StringToPath{
         String result = "Images\\" + s + "Image.jpg";
         return result;
     }
+    public static String convertIcon(String s){
+        String result = "Images\\Icons\\"+s+"Icon.png";
+        return result;
+    }
     
 }
