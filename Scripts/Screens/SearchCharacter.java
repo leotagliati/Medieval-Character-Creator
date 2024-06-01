@@ -41,6 +41,8 @@ public class SearchCharacter extends JPanel {
         backgroundImage.imageSetter();
         displayCharPanel.add(backgroundImage);
 
+        
+
         GridLayout buttonsLayout = new GridLayout(charNamesArray.size(), 1, 0, 0);
         insidePanel.setLayout(buttonsLayout);
         insidePanel.setOpaque(false);
@@ -58,10 +60,14 @@ public class SearchCharacter extends JPanel {
 
         // Configura o JScrollPane e adiciona o painel dentro dele
         charDataPanel = new JScrollPane(insidePanel);
-        this.charDataPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        this.charDataPanel.setViewportBorder(new LineBorder(new Color(0, 0, 0), 2));
-        this.charDataPanel.setBounds(50, 140, 900, 600);
+        this.charDataPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        this.charDataPanel.setBounds(70, 143, 870, 610);
         this.charDataPanel.setOpaque(false);
+        this.charDataPanel.setBorder(null);
+
+        ImageCreate scrollPaneImage = new ImageCreate(-245, -350, 1500, 1600);
+        scrollPaneImage.setIconFile("Images\\ScrollPaneBorder.png");
+        scrollPaneImage.imageSetter();
 
         for (String nameData : charNamesArray) {
             charDataPanel.add(new JTextField(nameData));
@@ -104,6 +110,8 @@ public class SearchCharacter extends JPanel {
         this.add(deleteButton);
         this.add(deleteButtonImage);
         this.add(charDataPanel);
+        this.add(scrollPaneImage);
+
 
         // Volta para o menu inicial
 
