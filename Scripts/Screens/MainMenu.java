@@ -22,7 +22,7 @@ public class MainMenu extends JPanel
 
     JButton characterCreationButton = new JButton("Criar Personagem");
     JButton searchCharacterButton = new JButton("Buscar Personagem");
-    JButton exitButton = new JButton("Sair");
+    JButton exitButton = new JButton("Sair do Jogo");
     
     JPanel backGNDPanel;
     
@@ -39,7 +39,7 @@ public class MainMenu extends JPanel
         GridLayout buttonsLayout = new GridLayout();
         buttonsLayout.setColumns(1);
         buttonsLayout.setRows(this.buttonsArray.size());
-        buttonsLayout.setVgap(20);
+        buttonsLayout.setVgap(10);
         
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setBounds(1520,600,400,400);
