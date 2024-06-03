@@ -83,7 +83,7 @@ public class NamePanel extends JPanel {
                     for (JButton button : MainPanel.getButtonsArray()) {
                         button.setEnabled(true);
                     }
-                    if (nameInput.getText().equals("")) {
+                    if (nameInput.getText().equals("") || nameInput.getText().toLowerCase().equals("entrada incompleta")) {
                         nameInput.setText("Entrada incompleta");
                         nameInput.setForeground(Color.RED);
                     }

@@ -144,6 +144,7 @@ public class SearchCharacter extends JPanel {
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
+                    AudioHandler.audioPlay("Music\\buttonEntered.wav");
                     if (e.getSource() == returnButton) {
                         returnButtonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
 

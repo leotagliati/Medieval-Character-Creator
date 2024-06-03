@@ -124,6 +124,7 @@ public class SavePanel extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (e.getSource() == saveButton) {
+                    AudioHandler.audioPlay("Music\\buttonEntered.wav");
                     buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
             }

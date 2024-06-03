@@ -13,9 +13,7 @@ import java.util.ArrayList;
 
 import Scripts.AudioHandler;
 
-
-public class MainMenu extends JPanel
-{
+public class MainMenu extends JPanel {
     GridBagConstraints gbc = new GridBagConstraints();
     ArrayList<JButton> buttonsArray = new ArrayList<JButton>();
     ArrayList<JLabel> buttonsDesignArray = new ArrayList<JLabel>();
@@ -23,15 +21,14 @@ public class MainMenu extends JPanel
     JButton characterCreationButton = new JButton("Criar Personagem");
     JButton searchCharacterButton = new JButton("Buscar Personagem");
     JButton exitButton = new JButton("Sair do Jogo");
-    
+
     JPanel backGNDPanel;
-    
-    public MainMenu()
-    {
+
+    public MainMenu() {
         super();
         this.setLayout(null);
         this.setBackground(Color.GRAY);
-        
+
         ImageCreate backGNDScenario = new ImageCreate(0, 0, 1920, 1080);
         backGNDScenario.setIconFile("Images\\scenario.gif");
         backGNDScenario.imageSetter();
@@ -40,19 +37,19 @@ public class MainMenu extends JPanel
         buttonsLayout.setColumns(1);
         buttonsLayout.setRows(this.buttonsArray.size());
         buttonsLayout.setVgap(10);
-        
+
         JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setBounds(1520,600,400,400);
+        buttonsPanel.setBounds(1520, 600, 400, 400);
         buttonsPanel.setVisible(true);
         buttonsPanel.setOpaque(false);
         buttonsPanel.setBackground(Color.GREEN);
         buttonsPanel.setLayout(buttonsLayout);
-        
+
         // Add os botoes no arrayList
         buttonsArray.add(characterCreationButton);
         buttonsArray.add(searchCharacterButton);
         buttonsArray.add(exitButton);
-        
+
         // Inicializa as molduras dos botoes
         for (int i = 0; i < this.buttonsArray.size(); i++) {
             ImageCreate backgroundImage = new ImageCreate(0, 0, 300, 100);
@@ -72,14 +69,17 @@ public class MainMenu extends JPanel
             buttonsPanel.add(button);
             button.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseEntered(MouseEvent e)
-                {
-                    buttonsDesignArray.get(buttonsArray.indexOf(button)).setIcon(new ImageIcon("Images\\button3Clicked.png"));;
+                public void mouseEntered(MouseEvent e) {
+                    AudioHandler.audioPlay("Music\\buttonEntered.wav");
+                    buttonsDesignArray.get(buttonsArray.indexOf(button))
+                            .setIcon(new ImageIcon("Images\\button3Clicked.png"));
+                    ;
                 }
+
                 @Override
-                public void mouseExited(MouseEvent e)
-                {
-                    buttonsDesignArray.get(buttonsArray.indexOf(button)).setIcon(new ImageIcon("Images\\button3.png"));;
+                public void mouseExited(MouseEvent e) {
+                    buttonsDesignArray.get(buttonsArray.indexOf(button)).setIcon(new ImageIcon("Images\\button3.png"));
+                    ;
                 }
             });
         }
@@ -97,23 +97,19 @@ public class MainMenu extends JPanel
         this.add(buttonsPanel);
         this.add(backGNDPanel);
         this.add(backGNDScenario);
-        
+
         // ---------- Navegação pelas telas -----------
-        
-        characterCreationButton.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent ae)
-            {
+
+        characterCreationButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 CardLayout cardLayout = (CardLayout) getParent().getLayout();
                 cardLayout.show(getParent(), "Criar Personagem");
             }
         });
 
-        searchCharacterButton.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent ae)
-            {
+        searchCharacterButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 CardLayout cardLayout = (CardLayout) getParent().getLayout();
                 cardLayout.show(getParent(), "Buscar Personagem");
@@ -121,10 +117,8 @@ public class MainMenu extends JPanel
             }
         });
 
-        exitButton.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent ae)
-            {
+        exitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
                 AudioHandler.audioPlay("Music\\buttonClicked2.wav");
                 System.exit(0);
             }

@@ -69,6 +69,7 @@ public class ClassPanel extends JPanel {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (e.getSource() == jButton) {
+                        AudioHandler.audioPlay("Music\\buttonEntered.wav");
                         buttonsImage.get(classButtons.indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\underNameEntered.png"));
                         ;

@@ -58,6 +58,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (e.getSource() == jButton && jButton.isEnabled()) {
+                        AudioHandler.audioPlay("Music\\buttonEntered.wav");
                         mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\buttonClicked.png"));
                     }
