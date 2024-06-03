@@ -1,7 +1,6 @@
 package Scripts.Screens;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 
 import Scripts.AudioHandler;
 import Scripts.ImagesConversion.CharacterDisplay;

@@ -27,8 +27,8 @@ import Scripts.Screens.CharacterCreation;
 public class AppearancePanel extends JPanel {
     SavePanel singlePanel = SavePanel.getInstance();
 
-    private static BodyPart eyes = new BodyPart("Olhos", 4);
-    private static BodyPart skin = new BodyPart("Cor de pele", 4);
+    public static BodyPart eyes = new BodyPart("Olhos", 4);
+    public static BodyPart skin = new BodyPart("Cor de pele", 4);
 
     public static EyeColorTypes eyesType = EyeColorTypes
             .values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText()) - 1];;
