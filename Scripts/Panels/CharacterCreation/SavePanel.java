@@ -107,8 +107,7 @@ public class SavePanel extends JPanel {
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
                     
-                    repo.addCharacter(new GameCharacter(nameInput.getText(), classInput.getText(), eyesInput,
-                            skinInput, helmInput, chestInput, legsInput));
+                    repo.addCharacter(charInstance);
 
                 } else {
                     AudioHandler.audioPlay("Music\\charNotSaved.wav");
