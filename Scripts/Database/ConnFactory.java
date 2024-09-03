@@ -15,7 +15,7 @@ public  class ConnFactory
     public static Connection getConn()
     {   try
         {   Class.forName(DRIVER);
-            return DriverManager.getConnection(URL, USER, PASS);
+             return DriverManager.getConnection(URL, USER, PASS);
         }
         catch(ClassNotFoundException | SQLException e) 
         {   throw new RuntimeException(ERROBD + e);
