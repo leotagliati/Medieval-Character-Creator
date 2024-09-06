@@ -18,7 +18,7 @@ public class UserRepository {
     }
     public int getLoginID(String username)
     {
-        String command = "SELECT ID FROM tb_user WHERE USERNAME = '" + username +"'";
+        String command = "SELECT ID FROM tb_users WHERE USERNAME = '" + username +"'";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
 
@@ -38,7 +38,7 @@ public class UserRepository {
         return id;
     }
     public void addLogin() {
-        String command = "INSERT INTO tb_user(username,password) VALUES(?,?)";
+        String command = "INSERT INTO tb_users(username,password) VALUES(?,?)";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
@@ -56,7 +56,7 @@ public class UserRepository {
     }
 
     public boolean verifyLogin(String username, String password) {
-        String command = "SELECT * FROM tb_user WHERE username = '" + username + "' and password = '" + password + "'";
+        String command = "SELECT * FROM tb_users WHERE username = '" + username + "' and password = '" + password + "'";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
@@ -81,7 +81,7 @@ public class UserRepository {
     }
 
     public boolean verifyUsername(String username) {
-        String command = "SELECT * FROM tb_user WHERE username = '" + username + "'";
+        String command = "SELECT * FROM tb_users WHERE username = '" + username + "'";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
@@ -106,7 +106,7 @@ public class UserRepository {
     }
 
     public ArrayList<LoginModel> GetAllLogins() {
-        String command = "SELECT * FROM tb_user";
+        String command = "SELECT * FROM tb_users";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
 
