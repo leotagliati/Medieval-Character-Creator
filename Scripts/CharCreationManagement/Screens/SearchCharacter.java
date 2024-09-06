@@ -3,10 +3,10 @@ package Scripts.CharCreationManagement.Screens;
 import javax.swing.*;
 
 import Scripts.AudioHandler;
-import Scripts.CharCreationManagement.ImagesConversion.CharacterDisplay;
-import Scripts.CharCreationManagement.ImagesConversion.ImageCreate;
-import Scripts.CharCreationManagement.ImagesConversion.ShowPanel;
-import Scripts.CharCreationManagement.ImagesConversion.StringToPath;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.CharacterDisplay;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ShowPanel;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.StringToPath;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 import Scripts.CharCreationManagement.Repository.CharacterRepository;
 

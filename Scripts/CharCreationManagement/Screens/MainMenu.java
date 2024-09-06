@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import Scripts.AudioHandler;
-import Scripts.CharCreationManagement.ImagesConversion.ImageCreate;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 
 public class MainMenu extends JPanel {
     GridBagConstraints gbc = new GridBagConstraints();

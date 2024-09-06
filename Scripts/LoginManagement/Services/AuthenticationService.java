@@ -1,6 +1,6 @@
 package Scripts.LoginManagement.Services;
 
-import Scripts.LoginManagement.UserRepository;
+import Scripts.LoginManagement.Repositories.UserRepository;
 
 public class AuthenticationService {
     public UserRepository repository = new UserRepository();

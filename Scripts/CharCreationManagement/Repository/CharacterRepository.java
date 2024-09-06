@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Scripts.CharCreationManagement.Database.ConnFactory;
-import Scripts.CharCreationManagement.ImagesConversion.Enums.ChestTypes;
-import Scripts.CharCreationManagement.ImagesConversion.Enums.EyeColorTypes;
-import Scripts.CharCreationManagement.ImagesConversion.Enums.HelmetTypes;
-import Scripts.CharCreationManagement.ImagesConversion.Enums.LegsTypes;
-import Scripts.CharCreationManagement.ImagesConversion.Enums.SkinColorTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.ChestTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.HelmetTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.LegsTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 
 public class CharacterRepository {

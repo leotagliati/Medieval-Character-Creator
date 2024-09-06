@@ -12,16 +12,16 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import Scripts.AudioHandler;
-import Scripts.CharCreationManagement.ImagesConversion.CharacterDisplay;
-import Scripts.CharCreationManagement.ImagesConversion.ImageCreate;
-import Scripts.CharCreationManagement.ImagesConversion.ShowPanel;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.CharacterDisplay;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ShowPanel;
 import Scripts.CharCreationManagement.Model.GameCharacter;
-import Scripts.CharCreationManagement.Panels.AppearancePanel;
-import Scripts.CharCreationManagement.Panels.ClassPanel;
-import Scripts.CharCreationManagement.Panels.GarmentsPanel;
-import Scripts.CharCreationManagement.Panels.MainPanel;
-import Scripts.CharCreationManagement.Panels.NamePanel;
-import Scripts.CharCreationManagement.Panels.SavePanel;
+import Scripts.CharCreationManagement.Visual.AppearancePanel;
+import Scripts.CharCreationManagement.Visual.ClassPanel;
+import Scripts.CharCreationManagement.Visual.GarmentsPanel;
+import Scripts.CharCreationManagement.Visual.MainPanel;
+import Scripts.CharCreationManagement.Visual.NamePanel;
+import Scripts.CharCreationManagement.Visual.SavePanel;
 
 public class CharacterCreation extends JPanel implements ActionListener {
     ArrayList<JPanel> subPanelsArrayList = new ArrayList<JPanel>();

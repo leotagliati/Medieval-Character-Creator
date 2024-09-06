@@ -14,12 +14,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import Scripts.LoginManagement.Login.Buttons.SignInButton;
-import Scripts.LoginManagement.Login.Buttons.SignUpButton;
-import Scripts.LoginManagement.Login.TextsFields.InvalidLoginMessage;
-import Scripts.LoginManagement.Login.TextsFields.LoginExistsMessage;
-import Scripts.LoginManagement.Login.TextsFields.PasswordInput;
-import Scripts.LoginManagement.Login.TextsFields.UserNameInput;
+import Scripts.LoginManagement.Visual.Buttons.SignInButton;
+import Scripts.LoginManagement.Visual.Buttons.SignUpButton;
+import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
+import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
+import Scripts.LoginManagement.Visual.TextsFields.PasswordInput;
+import Scripts.LoginManagement.Visual.TextsFields.UserNameInput;
 
 public class TelaLogin extends JFrame {
     public static TelaLogin instance;
