@@ -47,6 +47,8 @@ public class SignUpButton extends JButton {
                     AuthenticationService authService = new AuthenticationService();
                     boolean result = authService.SignUp(TelaLogin.username, TelaLogin.password);
 
+                    TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
+
                     if (result == true) {
                         TelaLogin.getInstance().dispose();
 
