@@ -2,6 +2,7 @@ package Scripts.CharCreationManagement.Screens;
 
 import javax.swing.*;
 
+import Scripts.Audio;
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.CharacterDisplay;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
@@ -120,14 +121,14 @@ public class SearchCharacter extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (e.getSource() == returnButton) {
-                        AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                        AudioHandler.audioPlay(AudioHandler.buttonClicked);
                         CardLayout cardLayout = (CardLayout) getParent().getLayout();
                         cardLayout.first(getParent());
                     }
                     if (e.getSource() == deleteButton) {
                         CharacterRepository repo = new CharacterRepository();
                         if (charSelected != null) {
-                            AudioHandler.audioPlay("Music\\deleteConfirm.wav");
+                            AudioHandler.audioPlay(AudioHandler.buttonDelete);
                             repo.deleteCharacter(charSelected);
                             deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
                             deleteButtonImage.imageSetter();
@@ -136,7 +137,7 @@ public class SearchCharacter extends JPanel {
                             CardLayout cardLayout = (CardLayout) getParent().getLayout();
                             cardLayout.first(getParent());
                         } else
-                            AudioHandler.audioPlay("Music\\charNotSaved.wav");
+                            AudioHandler.audioPlay(AudioHandler.negateOperation);
 
                     }
                 }
@@ -144,7 +145,7 @@ public class SearchCharacter extends JPanel {
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    AudioHandler.audioPlay("Music\\buttonEntered.wav");
+                    AudioHandler.audioPlay(AudioHandler.buttonEntered);
                     if (e.getSource() == returnButton) {
                         returnButtonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
 

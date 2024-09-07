@@ -69,7 +69,7 @@ public class ClassPanel extends JPanel {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (e.getSource() == jButton) {
-                        AudioHandler.audioPlay("Music\\buttonEntered.wav");
+                        AudioHandler.audioPlay(AudioHandler.buttonEntered);
                         buttonsImage.get(classButtons.indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\underNameEntered.png"));
                         ;
@@ -116,7 +116,7 @@ public class ClassPanel extends JPanel {
             jButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                    AudioHandler.audioPlay(AudioHandler.buttonClicked);
                     for (JButton jButton : classButtons) {
                         if (e.getSource() == jButton) {
                             classChosen = jButton.getText();

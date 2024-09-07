@@ -53,7 +53,7 @@ public class SignUpButton extends JButton {
                         TelaLogin.getInstance().dispose();
 
                         CardManager app = new CardManager();
-                        AudioHandler.audioPlay("Music\\mainMenuOST.wav");
+                        AudioHandler.audioPlay(AudioHandler.charCreationTheme);
 
                         app.setExtendedState(JFrame.MAXIMIZED_BOTH);
                         app.setUndecorated(true);

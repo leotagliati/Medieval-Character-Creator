@@ -99,7 +99,7 @@ public class AppearancePanel extends JPanel {
         confirmButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                AudioHandler.audioPlay("Music\\buttonEntered.wav");
+                AudioHandler.audioPlay(AudioHandler.buttonEntered);
                 if (e.getSource() == confirmButton) {
                     buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
@@ -116,7 +116,7 @@ public class AppearancePanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                AudioHandler.audioPlay(AudioHandler.buttonConfirm);
                 if (e.getSource() == confirmButton) {
                     for (JButton button : MainPanel.getButtonsArray()) {
                         button.setEnabled(true);

@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Scripts.Audio;
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.ChestTypes;
@@ -102,7 +103,7 @@ public class SavePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!nameInput.getText().equals("Entrada incompleta")) {
-                    AudioHandler.audioPlay("Music\\charSaved.wav");
+                    AudioHandler.audioPlay(AudioHandler.acceptOperation);
                     saveButton.setText("Salvo!");
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
@@ -110,7 +111,7 @@ public class SavePanel extends JPanel {
                     repo.addCharacter(charInstance);
 
                 } else {
-                    AudioHandler.audioPlay("Music\\charNotSaved.wav");
+                    AudioHandler.audioPlay(AudioHandler.negateOperation);
                     saveButton.setText("Insira seu nome!");
                     buttonImage.setIconFile("Images\\charNotSavedButton.png");
                     buttonImage.imageSetter();
@@ -123,7 +124,7 @@ public class SavePanel extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (e.getSource() == saveButton) {
-                    AudioHandler.audioPlay("Music\\buttonEntered.wav");
+                    AudioHandler.audioPlay(AudioHandler.buttonEntered);
                     buttonImage.setIcon(new ImageIcon("Images\\buttonClicked.png"));
                 }
             }
