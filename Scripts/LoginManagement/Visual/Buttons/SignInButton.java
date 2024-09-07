@@ -23,7 +23,7 @@ public class SignInButton extends JButton {
         super();
 
         this.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 16));
-        this.setBounds(150, 200, 120, 40);
+        this.setBounds(250, 400, 120, 40);
         this.setForeground(Color.black);
         this.setFocusable(false);
         this.setOpaque(true);

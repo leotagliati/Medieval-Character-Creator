@@ -13,7 +13,7 @@ public class LoginExistsMessage extends JTextField {
     {
         super("Nome de usuário já utilizado!");
         this.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 20));
-        this.setBounds(20,230,250,100);
+        this.setBounds(120,430,250,100);
         this.setForeground(Color.red);
         this.setFocusable(false);
         this.setHorizontalAlignment(SwingConstants.CENTER);
