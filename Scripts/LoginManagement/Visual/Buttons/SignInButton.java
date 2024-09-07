@@ -7,9 +7,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
+import Scripts.Audio;
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.CardManager;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.LoginManagement.Repositories.UserRepository;
 import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
 import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
@@ -22,11 +25,12 @@ public class SignInButton extends JButton {
     public SignInButton() {
         super();
 
+        
+
         this.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 16));
         this.setBounds(250, 400, 120, 40);
-        this.setForeground(Color.black);
-        this.setFocusable(false);
-        this.setOpaque(true);
+        this.setForeground(Color.BLACK);
+        
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,7 +47,6 @@ public class SignInButton extends JButton {
                     }
                     // System.out.println(TelaLogin.username);
                     // System.out.println(TelaLogin.password);
-                    
 
                     AuthenticationService authService = new AuthenticationService();
                     boolean result = authService.SignIn(TelaLogin.username, TelaLogin.password);
@@ -54,13 +57,16 @@ public class SignInButton extends JButton {
                         TelaLogin.getInstance().dispose();
 
                         CardManager app = new CardManager();
-                        AudioHandler.audioPlay("Music\\mainMenuOST.wav");
+
+                        AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
+                        AudioHandler.audioStop(AudioHandler.loginMenuTheme);
+                        AudioHandler.audioPlay(AudioHandler.charCreationTheme);
 
                         app.setExtendedState(JFrame.MAXIMIZED_BOTH);
                         app.setUndecorated(true);
                         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         app.setVisible(true);
-                        
+
                         // TelaNotasUser telaNotas = new TelaNotasUser();
                         // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     } else if (result == false) {

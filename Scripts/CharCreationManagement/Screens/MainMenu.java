@@ -69,7 +69,7 @@ public class MainMenu extends JPanel {
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    AudioHandler.audioPlay("Music\\buttonEntered.wav");
+                    AudioHandler.audioPlay(AudioHandler.buttonEntered);
                     buttonsDesignArray.get(buttonsArray.indexOf(button))
                             .setIcon(new ImageIcon("Images\\button3Clicked.png"));
                     ;
@@ -101,7 +101,7 @@ public class MainMenu extends JPanel {
 
         characterCreationButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                AudioHandler.audioPlay(AudioHandler.buttonClicked);
                 CardLayout cardLayout = (CardLayout) getParent().getLayout();
                 cardLayout.show(getParent(), "Criar Personagem");
             }
@@ -109,7 +109,7 @@ public class MainMenu extends JPanel {
 
         searchCharacterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                AudioHandler.audioPlay(AudioHandler.buttonClicked);
                 CardLayout cardLayout = (CardLayout) getParent().getLayout();
                 cardLayout.show(getParent(), "Buscar Personagem");
                 SearchCharacter.updateNamesPanel();
@@ -118,7 +118,7 @@ public class MainMenu extends JPanel {
 
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                AudioHandler.audioPlay(AudioHandler.buttonClicked);
                 System.exit(0);
             }
         });

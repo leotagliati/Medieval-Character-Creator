@@ -7,28 +7,30 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Scripts.AudioHandler;
+
 public class TelaLanguage extends JFrame {
     private JButton englishButton;
     private JButton portugueseButton;
     private JPanel panel;
-    
+
     public TelaLanguage() {
         super("Language");
-        this.setBounds(0, 0,600, 600);
+        this.setBounds(0, 0, 600, 600);
         this.setLayout(null);
-        
+
         panel = new JPanel();
         panel.setBounds(0, 0, 600, 600);
-        panel.setLayout(new FlowLayout()); 
-        
+        panel.setLayout(new FlowLayout());
+
         englishButton = new JButton("English");
         englishButton.setBounds(150, 150, 150, 50);
         panel.add(englishButton);
-        
+
         portugueseButton = new JButton("Portuguese");
-        portugueseButton.setBounds(300, 150, 150,50);
+        portugueseButton.setBounds(300, 150, 150, 50);
         panel.add(portugueseButton);
-        
+
         this.add(panel);
         this.setVisible(true);
 
@@ -47,6 +49,8 @@ public class TelaLanguage extends JFrame {
         englishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                
                 TelaLogin telaLogin = TelaLogin.getInstance();
                 TelaLogin.n = 1; // Update static variable
                 telaLogin.loadLanguage(); // Reload ResourceBundle and update UI
@@ -57,9 +61,4 @@ public class TelaLanguage extends JFrame {
         });
     }
 
- 
-    
-
-    
-    
 }

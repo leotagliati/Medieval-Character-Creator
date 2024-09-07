@@ -1,6 +1,5 @@
 package Scripts.LoginManagement.Screens;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -15,6 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.LoginManagement.Visual.Buttons.SignInButton;
 import Scripts.LoginManagement.Visual.Buttons.SignUpButton;
@@ -43,14 +43,14 @@ public class TelaLogin extends JFrame {
     private SignInButton signInButton = new SignInButton();
     private SignUpButton signUpButton = new SignUpButton();
 
-
     public TelaLogin() {
         super("Telao");
         this.setBounds(0, 0, 600, 600);
         this.setLayout(new GridBagLayout());
-        
+        AudioHandler.audioPlay(AudioHandler.loginMenuAmbience);
+        AudioHandler.audioPlay(AudioHandler.loginMenuTheme);
         loadLanguage();
-        
+
         ImageCreate loginGIF = new ImageCreate(0, 0, 500, 500);
         loginGIF.setAlignment(JLabel.CENTER, JLabel.CENTER);
         loginGIF.setIconFile("Images\\menu.gif");
@@ -61,12 +61,8 @@ public class TelaLogin extends JFrame {
         areaLoginPanel.setPreferredSize(new Dimension(500, 500));
         areaLoginPanel.setBackground(Color.BLUE);
         areaLoginPanel.setLayout(null);
-        
 
-        
         // seta os propriedades da label azul LOGIN
-       
-
 
         loginLabel.setFont(new Font("Enchanted land", Font.BOLD, 55));
         loginLabel.setBounds(50, 150, 400, 100);
@@ -75,18 +71,13 @@ public class TelaLogin extends JFrame {
         loginLabel.setBackground(Color.GREEN);
         loginLabel.setOpaque(false);
 
-  
-
-
         usernameLabel.setBounds(100, 250, 100, 30);
         usernameLabel.setFont(new Font("Adobe Garamond Pro", Font.BOLD, 20));
         usernameLabel.setForeground(Color.WHITE);
 
-
         passwordLabel.setBounds(usernameLabel.getX(), 330, 100, 30);
         passwordLabel.setFont(new Font("Adobe Garamond Pro", Font.BOLD, 20));
         passwordLabel.setForeground(Color.WHITE);
-
 
         areaLoginPanel.add(loginLabel);
         areaLoginPanel.add(usernameLabel);
@@ -100,39 +91,34 @@ public class TelaLogin extends JFrame {
         // instancia os textos de input do login
         UserNameInput userNameInput = UserNameInput.getInstance();
 
-
         areaLoginPanel.add(userNameInput);
         PasswordInput passWordInput = PasswordInput.getInstance();
 
-
         areaLoginPanel.add(passWordInput);
 
-        
-        
         areaLoginPanel.add(signInButton);
 
         areaLoginPanel.add(signUpButton);
 
-
         areaLoginPanel.add(loginGIF);
-       
+
         this.add(areaLoginPanel);
         this.setVisible(true);
 
     }
-    public static TelaLogin getInstance()
-    {
-        if(instance == null)
-        {
+
+    public static TelaLogin getInstance() {
+        if (instance == null) {
             instance = new TelaLogin();
         }
         return instance;
     }
+
     public void loadLanguage() {
         // Reload the ResourceBundle based on the selected language
         switch (n) {
             case 0:
-                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_pt_BR",  new Locale("pt", "BR"));
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
                 break;
             case 1:
                 bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_en_US", Locale.US);
@@ -140,7 +126,7 @@ public class TelaLogin extends JFrame {
         }
         if (instance != null) {
             // Update the text for all UI components based on the new ResourceBundle
-            
+
             loginLabel.setText(bn.getString("loginLabel"));
             usernameLabel.setText(bn.getString("usernameLabel"));
             passwordLabel.setText(bn.getString("passwordLabel"));

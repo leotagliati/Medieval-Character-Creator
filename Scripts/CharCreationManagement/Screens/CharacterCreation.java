@@ -58,7 +58,9 @@ public class CharacterCreation extends JPanel implements ActionListener {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (e.getSource() == jButton && jButton.isEnabled()) {
-                        AudioHandler.audioPlay("Music\\buttonEntered.wav");
+
+                        AudioHandler.audioPlay(AudioHandler.buttonEntered);
+
                         mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\buttonClicked.png"));
                     }
@@ -101,11 +103,11 @@ public class CharacterCreation extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == mainPanel.returnButton) {
-            AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+            AudioHandler.audioPlay(AudioHandler.buttonConfirm);
             CardLayout cardLayout = (CardLayout) getParent().getLayout();
             cardLayout.first(getParent());
         } else {
-            AudioHandler.audioPlay("Music\\buttonClicked.wav");
+            AudioHandler.audioPlay(AudioHandler.buttonConfirm);
             savePanel.setVisible(false);
             for (JButton button : MainPanel.getButtonsArray()) {
                 button.setEnabled(false);

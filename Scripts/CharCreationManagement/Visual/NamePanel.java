@@ -79,7 +79,7 @@ public class NamePanel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    AudioHandler.audioPlay("Music\\buttonClicked2.wav");
+                    AudioHandler.audioPlay(AudioHandler.buttonClicked);
                     for (JButton button : MainPanel.getButtonsArray()) {
                         button.setEnabled(true);
                     }
@@ -102,7 +102,7 @@ public class NamePanel extends JPanel {
                 }
                 else
                 {
-                    AudioHandler.audioPlay("Music\\keyTyped.wav");
+                    AudioHandler.audioPlay(AudioHandler.keyTyped);
                 }
             }
 
