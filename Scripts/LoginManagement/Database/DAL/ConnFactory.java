@@ -6,7 +6,7 @@ import  java.sql.ResultSet;
 import  java.sql.SQLException;
 
 public  class ConnFactory
-{   private static final String URL  =   "jdbc:mysql://localhost:3306/usersdb";
+{   private static final String URL  =   "jdbc:mysql://localhost:3306/characterdb";
     private static final String USER =   "root";
     private static final String PASS =   "imtdb";
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";

@@ -12,6 +12,7 @@ import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.EyeColorType
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.HelmetTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.LegsTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
+import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 
 public class CharacterRepository {
@@ -23,19 +24,20 @@ public class CharacterRepository {
     }
 
     public void addCharacter(GameCharacter character) {
-        String command = "INSERT INTO tb_character(name, class, eye_color, skin_color, helm_type, chest_type, legs_type) VALUES(?,?,?,?,?,?,?)";
+        String command = "INSERT INTO tb_character(users_id,name, class, eye_color, skin_color, helm_type, chest_type, legs_type) VALUES(?,?,?,?,?,?,?,?)";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
 
             stmt = conn.prepareStatement(command);
-            stmt.setString(1, character.getName());
-            stmt.setString(2, character.getSkillClass());
-            stmt.setInt(3, character.getEyeColor().ordinal() + 1);
-            stmt.setInt(4, character.getSkinColor().ordinal() + 1);
-            stmt.setInt(5, character.getHelmTypes().ordinal() + 1);
-            stmt.setInt(6, character.getChestTypes().ordinal() + 1);
-            stmt.setInt(7, character.getLegsTypes().ordinal() + 1);
+            stmt.setInt(1, TelaLogin.userName_ID);
+            stmt.setString(2, character.getName());
+            stmt.setString(3, character.getSkillClass());
+            stmt.setInt(4, character.getEyeColor().ordinal() + 1);
+            stmt.setInt(5, character.getSkinColor().ordinal() + 1);
+            stmt.setInt(6, character.getHelmTypes().ordinal() + 1);
+            stmt.setInt(7, character.getChestTypes().ordinal() + 1);
+            stmt.setInt(8, character.getLegsTypes().ordinal() + 1);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao incluir os dados");
@@ -82,13 +84,14 @@ public class CharacterRepository {
     }
 
     public ArrayList<GameCharacter> GetAllCharcters() {
-        String command = "SELECT * FROM tb_character";
+        String command = "SELECT * FROM tb_character WHERE users_id = ?";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
 
         ArrayList<GameCharacter> characters = new ArrayList<GameCharacter>();
         try {
             stmt = conn.prepareStatement(command);
+            stmt.setInt(1, TelaLogin.userName_ID);
             ResultSet result = stmt.executeQuery();
             characters = this.getValues(result);
         } catch (SQLException e) {
@@ -105,13 +108,13 @@ public class CharacterRepository {
             while (resultSet.next()) {
                 GameCharacter character = new GameCharacter();
                 character.setId(resultSet.getInt(1));
-                character.setName(resultSet.getString(2));
-                character.setSkillClass(resultSet.getString(3));
-                character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4) - 1]);
-                character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5) - 1]);
-                character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(6) - 1]);
-                character.setChestTypes(ChestTypes.values()[resultSet.getInt(7) - 1]);
-                character.setLegsTypes(LegsTypes.values()[resultSet.getInt(8) - 1]);
+                character.setName(resultSet.getString(3));
+                character.setSkillClass(resultSet.getString(4));
+                character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(5) - 1]);
+                character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(6) - 1]);
+                character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(7) - 1]);
+                character.setChestTypes(ChestTypes.values()[resultSet.getInt(8) - 1]);
+                character.setLegsTypes(LegsTypes.values()[resultSet.getInt(9) - 1]);
 
                 values.add(character);
             }
@@ -126,13 +129,13 @@ public class CharacterRepository {
         GameCharacter character = new GameCharacter();
         try {
             character.setId(resultSet.getInt(1));
-            character.setName(resultSet.getString(2));
-            character.setSkillClass(resultSet.getString(3));
-            character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(4) - 1]);
-            character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(5) - 1]);
-            character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(6) - 1]);
-            character.setChestTypes(ChestTypes.values()[resultSet.getInt(7) - 1]);
-            character.setLegsTypes(LegsTypes.values()[resultSet.getInt(8) - 1]);
+            character.setName(resultSet.getString(3));
+            character.setSkillClass(resultSet.getString(4));
+            character.setEyeColor(EyeColorTypes.values()[resultSet.getInt(5) - 1]);
+            character.setSkinColor(SkinColorTypes.values()[resultSet.getInt(6) - 1]);
+            character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(7) - 1]);
+            character.setChestTypes(ChestTypes.values()[resultSet.getInt(8) - 1]);
+            character.setLegsTypes(LegsTypes.values()[resultSet.getInt(9) - 1]);
         } catch (Exception e) {
             throw new RuntimeException("Deu tudo errado");
         }
