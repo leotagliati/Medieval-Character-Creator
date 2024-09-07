@@ -15,7 +15,7 @@ public class UserNameInput extends JTextField {
         // seta os propriedades da texto de input do login
         super();
         this.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 20));
-        this.setBounds(20, 80, 250, 30);
+        this.setBounds(120, 280, 250, 30);
         this.setForeground(Color.gray);
         this.setOpaque(true);
         this.setEditable(false);

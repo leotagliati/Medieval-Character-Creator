@@ -9,11 +9,13 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.LoginManagement.Visual.Buttons.SignInButton;
 import Scripts.LoginManagement.Visual.Buttons.SignUpButton;
 import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
@@ -34,7 +36,7 @@ public class TelaLogin extends JFrame {
     public static String password = "";
     public static int userName_ID = -1;
 
-    private JLabel loginLabel = new JLabel("LOGIN");
+    private JLabel loginLabel = new JLabel("Chronicles of Erathor");
     private JLabel usernameLabel = new JLabel("Username");
     private JLabel passwordLabel = new JLabel("Password");
 
@@ -48,32 +50,43 @@ public class TelaLogin extends JFrame {
         this.setLayout(new GridBagLayout());
         
         loadLanguage();
+        
+        ImageCreate loginGIF = new ImageCreate(0, 0, 500, 500);
+        loginGIF.setAlignment(JLabel.CENTER, JLabel.CENTER);
+        loginGIF.setIconFile("Images\\menu.gif");
+        loginGIF.imageSetter();
+
         // seta os propriedades da painel verde
         JPanel areaLoginPanel = new JPanel();
-        areaLoginPanel.setPreferredSize(new Dimension(300, 400));
+        areaLoginPanel.setPreferredSize(new Dimension(500, 500));
         areaLoginPanel.setBackground(Color.BLUE);
         areaLoginPanel.setLayout(null);
+        
 
-
-    
+        
         // seta os propriedades da label azul LOGIN
        
 
 
-        loginLabel.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 30));
-        loginLabel.setBounds(50, 0, 200, 50);
+        loginLabel.setFont(new Font("Enchanted land", Font.BOLD, 55));
+        loginLabel.setBounds(50, 150, 400, 100);
+        loginLabel.setForeground(Color.white);
         loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
         loginLabel.setBackground(Color.GREEN);
-        loginLabel.setOpaque(true);
+        loginLabel.setOpaque(false);
 
   
 
 
-        usernameLabel.setBounds(0, 50, 100, 30);
+        usernameLabel.setBounds(100, 250, 100, 30);
+        usernameLabel.setFont(new Font("Adobe Garamond Pro", Font.BOLD, 20));
+        usernameLabel.setForeground(Color.WHITE);
 
 
+        passwordLabel.setBounds(usernameLabel.getX(), 330, 100, 30);
+        passwordLabel.setFont(new Font("Adobe Garamond Pro", Font.BOLD, 20));
+        passwordLabel.setForeground(Color.WHITE);
 
-        passwordLabel.setBounds(usernameLabel.getX(), 130, 100, 30);
 
         areaLoginPanel.add(loginLabel);
         areaLoginPanel.add(usernameLabel);
@@ -101,6 +114,7 @@ public class TelaLogin extends JFrame {
         areaLoginPanel.add(signUpButton);
 
 
+        areaLoginPanel.add(loginGIF);
        
         this.add(areaLoginPanel);
         this.setVisible(true);
@@ -118,10 +132,10 @@ public class TelaLogin extends JFrame {
         // Reload the ResourceBundle based on the selected language
         switch (n) {
             case 0:
-                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_en_US",  new Locale("pt", "BR"));
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_pt_BR",  new Locale("pt", "BR"));
                 break;
             case 1:
-                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_pt_br", Locale.US);
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_en_US", Locale.US);
                 break;
         }
         if (instance != null) {

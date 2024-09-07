@@ -17,7 +17,7 @@ public class PasswordInput extends JPasswordField {
         // seta os propriedades da texto de input da senha
         super();
         this.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 20));
-        this.setBounds(20, 160, 250, 30);
+        this.setBounds(120, 360, 250, 30);
         this.setForeground(Color.gray);
         this.setOpaque(true);
         this.setEditable(false);
