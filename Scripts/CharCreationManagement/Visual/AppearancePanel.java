@@ -20,6 +20,7 @@ import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.CharacterDisplay;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
 import Scripts.CharCreationManagement.Visual.Bodypart.BodyPart;
 import Scripts.CharCreationManagement.Screens.CharacterCreation;
@@ -27,22 +28,26 @@ import Scripts.CharCreationManagement.Screens.CharacterCreation;
 public class AppearancePanel extends JPanel {
     SavePanel singlePanel = SavePanel.getInstance();
 
+    public static BodyPart gender = new BodyPart("Genero", 2);
     public static BodyPart eyes = new BodyPart("Olhos", 4);
     public static BodyPart skin = new BodyPart("Cor de pele", 4);
 
-    public static EyeColorTypes eyesType = EyeColorTypes
-            .values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText()) - 1];;
+    public static GenderTypes genderType = GenderTypes.values()[Integer.parseInt(gender.getBodyPartSliderValue().getText()) - 1];
+    public static EyeColorTypes eyesType = EyeColorTypes.values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText()) - 1];
     public static SkinColorTypes skinType = SkinColorTypes
             .values()[Integer.parseInt(skin.getBodyPartSliderValue().getText()) - 1];;
     ArrayList<BodyPart> bodyPartsArray = new ArrayList<>();
+
 
     private JButton confirmButton = new JButton("Confirmar");
 
     public AppearancePanel() {
         super();
-        eyes.setup(0);
-        skin.setup(1);
+        gender.setup(0);
+        eyes.setup(1);
+        skin.setup(2);
 
+        bodyPartsArray.add(gender);
         bodyPartsArray.add(eyes);
         bodyPartsArray.add(skin);
 
@@ -51,6 +56,10 @@ public class AppearancePanel extends JPanel {
 
                 @Override
                 public void stateChanged(ChangeEvent e) {
+                    if (e.getSource() == gender) {
+                        genderType = GenderTypes.values()[Integer.parseInt(gender.getBodyPartSliderValue().getText())
+                                - 1];
+                    }
                     if (e.getSource() == eyes) {
                         eyesType = EyeColorTypes.values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText())
                                 - 1];
@@ -72,6 +81,10 @@ public class AppearancePanel extends JPanel {
         this.setBackground(Color.RED);
         this.setOpaque(false);
         this.setVisible(false);
+
+        this.add(AppearancePanel.gender.getBodyPartText());
+        this.add(AppearancePanel.gender.getBodyPartSlider());
+        this.add(AppearancePanel.gender.getBodyPartSliderValue());
 
         this.add(AppearancePanel.eyes.getBodyPartText());
         this.add(AppearancePanel.eyes.getBodyPartSlider());
@@ -121,12 +134,14 @@ public class AppearancePanel extends JPanel {
                     for (JButton button : MainPanel.getButtonsArray()) {
                         button.setEnabled(true);
                     }
+                    genderType = GenderTypes.values()[Integer.parseInt(gender.getBodyPartSliderValue().getText()) - 1];
                     eyesType = EyeColorTypes.values()[Integer.parseInt(eyes.getBodyPartSliderValue().getText()) - 1];
                     skinType = SkinColorTypes.values()[Integer.parseInt(skin.getBodyPartSliderValue().getText()) - 1];
 
                     setVisible(false);
 
                     singlePanel.setVisible(true);
+                    singlePanel.getCharInstance().setGender(genderType);
                     singlePanel.getCharInstance().setEyeColor(eyesType);
                     singlePanel.getCharInstance().setSkinColor(skinType);
                     singlePanel.updatePanel(singlePanel.getCharInstance());

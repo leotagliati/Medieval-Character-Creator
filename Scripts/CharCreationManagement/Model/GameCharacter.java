@@ -2,6 +2,7 @@ package Scripts.CharCreationManagement.Model;
 
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.ChestTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.HelmetTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.LegsTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
@@ -14,6 +15,8 @@ public class GameCharacter {
     private int id;
     private String name;
     private String skillClass;
+    private GenderTypes gender;
+    
     private EyeColorTypes eyeColor;
     private SkinColorTypes skinColor;
     private HelmetTypes helmTypes;
@@ -21,9 +24,10 @@ public class GameCharacter {
     private LegsTypes legsTypes;
     
     
-    public GameCharacter(String name, String skillClass, EyeColorTypes eyeColor, SkinColorTypes skinColor, HelmetTypes helmTypes,  ChestTypes chestTypes,LegsTypes legsTypes) {
+    public GameCharacter(String name, String skillClass, GenderTypes gender, EyeColorTypes eyeColor, SkinColorTypes skinColor, HelmetTypes helmTypes,  ChestTypes chestTypes,LegsTypes legsTypes) {
         this.name = name;
         this.skillClass = skillClass;
+        this.gender = gender;
         this.eyeColor = eyeColor;
         this.skinColor = skinColor;
         this.helmTypes = helmTypes;
@@ -57,6 +61,13 @@ public class GameCharacter {
     
     public void setSkillClass(String skillClass) {
         this.skillClass = skillClass;
+    }
+    public GenderTypes getGender() {
+        return gender;
+    }
+
+    public void setGender(GenderTypes gender) {
+        this.gender = gender;
     }
     
     public EyeColorTypes getEyeColor() {

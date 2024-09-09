@@ -17,9 +17,11 @@ public class CharacterDisplay {
         backgroundImage.imageSetter();
         panel.add(backgroundImage);
 
+        String genderChosen = AppearancePanel.genderType.toString();
+
         // Adicionando charImage em segundo
         String skinChosen = AppearancePanel.skinType.toString();
-        skinChosen = StringToPath.convertPng(skinChosen);
+        skinChosen = StringToPath.convertPng(skinChosen + genderChosen);
 
         ImageCreate charImage = new ImageCreate(0, 0, 500, 750);
         charImage.setIconFile(skinChosen);
@@ -27,7 +29,7 @@ public class CharacterDisplay {
         panel.add(charImage);
 
         String eyesChosen = AppearancePanel.eyesType.toString();
-        eyesChosen = StringToPath.convertPng(eyesChosen);
+        eyesChosen = StringToPath.convertPng(eyesChosen + genderChosen);
 
         ImageCreate eyesImage = new ImageCreate(0, 0, 500, 750);
         eyesImage.setIconFile(eyesChosen);
@@ -36,7 +38,7 @@ public class CharacterDisplay {
 
         // Adicionando as outras imagens depois
         String helmChosen = GarmentsPanel.helmetType.toString();
-        helmChosen = StringToPath.convertPng(helmChosen);
+        helmChosen = StringToPath.convertPng(helmChosen + genderChosen);
 
         ImageCreate helmImage = new ImageCreate(0, 0, 500, 750);
         helmImage.setIconFile(helmChosen);
@@ -44,7 +46,7 @@ public class CharacterDisplay {
         panel.add(helmImage);
 
         String classChosen = ClassPanel.getClassChosen();
-        classChosen = StringToPath.convertPng(classChosen);
+        classChosen = StringToPath.convertPng(classChosen + genderChosen);
 
         ImageCreate weaponImage = new ImageCreate(0, 0, 500, 750);
         weaponImage.setIconFile(classChosen);
@@ -52,14 +54,14 @@ public class CharacterDisplay {
         panel.add(weaponImage);
 
         String chestChosen = GarmentsPanel.chestType.toString();
-        chestChosen = StringToPath.convertPng(chestChosen);
+        chestChosen = StringToPath.convertPng(chestChosen + genderChosen);
         ImageCreate torsoImage = new ImageCreate(0, 0, 500, 750);
         torsoImage.setIconFile(chestChosen);
         torsoImage.imageSetter();
         panel.add(torsoImage);
 
         String legsChosen = GarmentsPanel.legsType.toString();
-        legsChosen = StringToPath.convertPng(legsChosen);
+        legsChosen = StringToPath.convertPng(legsChosen + genderChosen);
         ImageCreate legsImage = new ImageCreate(0, 0, 500, 750);
         legsImage.setIconFile(legsChosen);
         legsImage.imageSetter();
@@ -84,18 +86,19 @@ public class CharacterDisplay {
         panel.revalidate();
         panel.repaint();
     }
-    public static void clearImages(JPanel panel){
+
+    public static void clearImages(JPanel panel) {
         panel.removeAll();
         ImageCreate backgroundImage = new ImageCreate(0, 0, 500, 700);
         backgroundImage.setIconFile("Images\\hud1.png");
         backgroundImage.imageSetter();
         panel.add(backgroundImage);
-        
+
         panel.revalidate();
         panel.repaint();
     }
-    public static void findImages(GameCharacter character, JPanel panel)
-    {
+
+    public static void findImages(GameCharacter character, JPanel panel) {
         panel.removeAll();
         ImageCreate backgroundImage = new ImageCreate(0, 0, 500, 700);
         backgroundImage.setIconFile("Images\\hud1.png");
