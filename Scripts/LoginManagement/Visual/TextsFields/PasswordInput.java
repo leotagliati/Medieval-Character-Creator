@@ -54,4 +54,8 @@ public class PasswordInput extends JPasswordField {
         }
         return instance;
     }
+    public static void resetInstance()
+    {
+        instance = new PasswordInput();
+    }
 }

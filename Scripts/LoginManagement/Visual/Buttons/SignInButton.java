@@ -54,13 +54,13 @@ public class SignInButton extends JButton {
                     TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
 
                     if (result == true) {
-                        TelaLogin.getInstance().dispose();
-
-                        CardManager app = new CardManager();
 
                         AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
                         AudioHandler.audioStop(AudioHandler.loginMenuTheme);
-                        AudioHandler.audioPlay(AudioHandler.charCreationTheme);
+                        TelaLogin.getInstance().dispose();
+
+                        CardManager.resetInstance();
+                        CardManager app = CardManager.getInstance();
 
                         app.setExtendedState(JFrame.MAXIMIZED_BOTH);
                         app.setUndecorated(true);

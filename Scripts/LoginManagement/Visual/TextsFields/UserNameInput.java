@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 public class UserNameInput extends JTextField {
     public static UserNameInput instance;
 
-    public UserNameInput() {
+    private UserNameInput() {
         // seta os propriedades da texto de input do login
         super();
         this.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 20));
@@ -52,6 +52,10 @@ public class UserNameInput extends JTextField {
             instance = new UserNameInput();
         }
         return instance;
+    }
+    public static void resetInstance()
+    {
+        instance = new UserNameInput();
     }
 
 }
