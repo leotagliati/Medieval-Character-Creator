@@ -43,7 +43,7 @@ public class TelaLogin extends JFrame {
     private SignInButton signInButton = new SignInButton();
     private SignUpButton signUpButton = new SignUpButton();
 
-    public TelaLogin() {
+    private TelaLogin() {
         super("Telao");
         this.setBounds(0, 0, 600, 600);
         this.setLayout(new GridBagLayout());
@@ -89,9 +89,11 @@ public class TelaLogin extends JFrame {
         areaLoginPanel.add(loginExistsMessage);
 
         // instancia os textos de input do login
+        UserNameInput.resetInstance();
         UserNameInput userNameInput = UserNameInput.getInstance();
-
         areaLoginPanel.add(userNameInput);
+
+        PasswordInput.resetInstance();
         PasswordInput passWordInput = PasswordInput.getInstance();
 
         areaLoginPanel.add(passWordInput);
@@ -113,7 +115,10 @@ public class TelaLogin extends JFrame {
         }
         return instance;
     }
-
+    public static void resetInstance()
+    {
+        instance = new TelaLogin();
+    }
     public void loadLanguage() {
         // Reload the ResourceBundle based on the selected language
         switch (n) {

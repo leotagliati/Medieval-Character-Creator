@@ -10,8 +10,19 @@ import Scripts.CharCreationManagement.Screens.SearchCharacter;
 import java.awt.*;
 
 public class CardManager extends JFrame {
-    public CardManager() {
+    static CardManager instance;
+
+    public static CardManager getInstance() {
+        if (instance == null) {
+            instance = new CardManager();
+        }
+        return instance;
+    }
+
+    private CardManager() {
         super("App");
+        
+        AudioHandler.audioPlay(AudioHandler.charCreationTheme);
 
         // Carrega todas as telas
         JPanel mainMenu = new MainMenu();
