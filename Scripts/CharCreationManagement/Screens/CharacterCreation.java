@@ -36,6 +36,7 @@ public class CharacterCreation extends JPanel implements ActionListener {
     public static ShowPanel panel = new ShowPanel();
 
     GameCharacter char1 = new GameCharacter(namePanel.getNameInput().getText(), ClassPanel.getClassChosen(),
+            AppearancePanel.genderType,
             AppearancePanel.eyesType, AppearancePanel.skinType, GarmentsPanel.helmetType,
             GarmentsPanel.chestType, GarmentsPanel.legsType);
 
@@ -63,9 +64,9 @@ public class CharacterCreation extends JPanel implements ActionListener {
 
                         mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\buttonClicked.png"));
-                    }
-                    else mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
-                    .setIcon(new ImageIcon("Images\\button.png"));
+                    } else
+                        mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
+                                .setIcon(new ImageIcon("Images\\button.png"));
                 }
 
                 @Override
@@ -73,9 +74,9 @@ public class CharacterCreation extends JPanel implements ActionListener {
                     if (e.getSource() == jButton && jButton.isEnabled()) {
                         mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
                                 .setIcon(new ImageIcon("Images\\button.png"));
-                    }
-                    else mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
-                    .setIcon(new ImageIcon("Images\\button.png"));
+                    } else
+                        mainPanel.getButtonsDesignArray().get(MainPanel.getButtonsArray().indexOf(jButton))
+                                .setIcon(new ImageIcon("Images\\button.png"));
                 }
             });
         }

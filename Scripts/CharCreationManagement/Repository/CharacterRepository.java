@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Scripts.CharCreationManagement.Database.ConnFactory;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.ChestTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.HelmetTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.LegsTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
@@ -24,7 +25,7 @@ public class CharacterRepository {
     }
 
     public void addCharacter(GameCharacter character) {
-        String command = "INSERT INTO tb_character(users_id,name, class, eye_color, skin_color, helm_type, chest_type, legs_type) VALUES(?,?,?,?,?,?,?,?)";
+        String command = "INSERT INTO tb_character(users_id,name, class, eye_color, skin_color, helm_type, chest_type, legs_type, gender) VALUES(?,?,?,?,?,?,?,?,?)";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
@@ -38,6 +39,7 @@ public class CharacterRepository {
             stmt.setInt(6, character.getHelmTypes().ordinal() + 1);
             stmt.setInt(7, character.getChestTypes().ordinal() + 1);
             stmt.setInt(8, character.getLegsTypes().ordinal() + 1);
+            stmt.setInt(9, character.getGender().ordinal() + 1);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao incluir os dados");
@@ -115,6 +117,7 @@ public class CharacterRepository {
                 character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(7) - 1]);
                 character.setChestTypes(ChestTypes.values()[resultSet.getInt(8) - 1]);
                 character.setLegsTypes(LegsTypes.values()[resultSet.getInt(9) - 1]);
+                character.setGender(GenderTypes.values()[resultSet.getInt(10) - 1]);
 
                 values.add(character);
             }
@@ -136,6 +139,7 @@ public class CharacterRepository {
             character.setHelmTypes(HelmetTypes.values()[resultSet.getInt(7) - 1]);
             character.setChestTypes(ChestTypes.values()[resultSet.getInt(8) - 1]);
             character.setLegsTypes(LegsTypes.values()[resultSet.getInt(9) - 1]);
+            character.setGender(GenderTypes.values()[resultSet.getInt(10) - 1]);
         } catch (Exception e) {
             throw new RuntimeException("Deu tudo errado");
         }

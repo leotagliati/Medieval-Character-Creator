@@ -19,6 +19,7 @@ import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.ChestTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.HelmetTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.LegsTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
@@ -35,6 +36,7 @@ public class SavePanel extends JPanel {
     public LegsTypes legsInput;
     public EyeColorTypes eyesInput;
     public SkinColorTypes skinInput;
+    public GenderTypes genderInput;
     private JLabel nameTitle, classTitle;
     private ArrayList<JLabel> textArray = new ArrayList<JLabel>();
 
@@ -72,6 +74,7 @@ public class SavePanel extends JPanel {
         // Inicialize os atributos
         nameInput = new JLabel(character.getName());
         classInput = new JLabel(character.getSkillClass());
+        genderInput = character.getGender();
         eyesInput = character.getEyeColor();
         skinInput = character.getSkinColor();
         helmInput = character.getHelmTypes();
@@ -176,6 +179,7 @@ public class SavePanel extends JPanel {
     public void updatePanel(GameCharacter character) {
         nameInput.setText(character.getName());
         classInput.setText(character.getSkillClass());
+        genderInput = character.getGender();
         eyesInput = character.getEyeColor();
         skinInput = character.getSkinColor();
         helmInput = character.getHelmTypes();
