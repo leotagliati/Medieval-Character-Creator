@@ -105,8 +105,10 @@ public class CharacterDisplay {
         backgroundImage.imageSetter();
         panel.add(backgroundImage);
 
+        String genderChosen = character.getGender().toString();
+
         String skinChosen = character.getSkinColor().toString();
-        skinChosen = StringToPath.convertPng(skinChosen);
+        skinChosen = StringToPath.convertPng(skinChosen + genderChosen);
 
         ImageCreate charImage = new ImageCreate(0, 0, 500, 750);
         charImage.setIconFile(skinChosen);
@@ -114,7 +116,7 @@ public class CharacterDisplay {
         panel.add(charImage);
 
         String eyesChosen = character.getEyeColor().toString();
-        eyesChosen = StringToPath.convertPng(eyesChosen);
+        eyesChosen = StringToPath.convertPng(eyesChosen + genderChosen);
 
         ImageCreate eyesImage = new ImageCreate(0, 0, 500, 750);
         eyesImage.setIconFile(eyesChosen);
@@ -122,7 +124,7 @@ public class CharacterDisplay {
         panel.add(eyesImage);
 
         String helmChosen = character.getHelmTypes().toString();
-        helmChosen = StringToPath.convertPng(helmChosen);
+        helmChosen = StringToPath.convertPng(helmChosen + genderChosen);
 
         ImageCreate helmImage = new ImageCreate(0, 0, 500, 750);
         helmImage.setIconFile(helmChosen);
@@ -130,7 +132,7 @@ public class CharacterDisplay {
         panel.add(helmImage);
 
         String classChosen = character.getSkillClass();
-        classChosen = StringToPath.convertPng(classChosen);
+        classChosen = StringToPath.convertPng(classChosen + genderChosen);
 
         ImageCreate weaponImage = new ImageCreate(0, 0, 500, 750);
         weaponImage.setIconFile(classChosen);
@@ -138,7 +140,7 @@ public class CharacterDisplay {
         panel.add(weaponImage);
 
         String chestChosen = character.getChestTypes().toString();
-        chestChosen = StringToPath.convertPng(chestChosen);
+        chestChosen = StringToPath.convertPng(chestChosen + genderChosen);
 
         ImageCreate torsoImage = new ImageCreate(0, 0, 500, 750);
         torsoImage.setIconFile(chestChosen);
@@ -146,7 +148,7 @@ public class CharacterDisplay {
         panel.add(torsoImage);
 
         String legsChosen = character.getLegsTypes().toString();
-        legsChosen = StringToPath.convertPng(legsChosen);
+        legsChosen = StringToPath.convertPng(legsChosen + genderChosen);
 
         ImageCreate legsImage = new ImageCreate(0, 0, 500, 750);
         legsImage.setIconFile(legsChosen);
