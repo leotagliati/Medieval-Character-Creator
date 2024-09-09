@@ -59,7 +59,6 @@ public class SignInButton extends JButton {
                         AudioHandler.audioStop(AudioHandler.loginMenuTheme);
                         TelaLogin.getInstance().dispose();
 
-                        CardManager.resetInstance();
                         CardManager app = CardManager.getInstance();
 
                         app.setExtendedState(JFrame.MAXIMIZED_BOTH);
