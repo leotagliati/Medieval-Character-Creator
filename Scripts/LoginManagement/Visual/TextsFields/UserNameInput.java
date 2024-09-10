@@ -8,6 +8,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 
+import Scripts.AudioHandler;
+import Scripts.CharCreationManagement.Visual.MainPanel;
+
 public class UserNameInput extends JTextField {
     public static UserNameInput instance;
 
@@ -23,7 +26,8 @@ public class UserNameInput extends JTextField {
             @Override
             public void mouseClicked(MouseEvent c) {
                 UserNameInput.this.setEditable(true);
-                if (UserNameInput.this.getText().equals("Type your username")|| UserNameInput.this.getText().equals("Digite seu usuário")) {
+                if (UserNameInput.this.getText().equals("Type your username")
+                        || UserNameInput.this.getText().equals("Digite seu usuário")) {
                     UserNameInput.this.setText("");
                 }
                 UserNameInput.this.setForeground(Color.BLACK);
@@ -33,10 +37,13 @@ public class UserNameInput extends JTextField {
 
             }
         });
-
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+
+                if (e.getKeyCode() != KeyEvent.VK_BACK_SPACE && e.getKeyCode() != KeyEvent.VK_ENTER) {
+                    AudioHandler.audioPlay(AudioHandler.keyTyped);
+                }
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (UserNameInput.this.getText().equals("")) {
                         UserNameInput.this.setText("Type your username");
@@ -47,14 +54,15 @@ public class UserNameInput extends JTextField {
             }
         });
     }
+
     public static UserNameInput getInstance() {
         if (instance == null) {
             instance = new UserNameInput();
         }
         return instance;
     }
-    public static void resetInstance()
-    {
+
+    public static void resetInstance() {
         instance = new UserNameInput();
     }
 

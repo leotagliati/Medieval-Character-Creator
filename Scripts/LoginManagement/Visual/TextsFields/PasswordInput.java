@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPasswordField;
 
+import Scripts.AudioHandler;
 
 public class PasswordInput extends JPasswordField {
     public static PasswordInput instance;
@@ -37,6 +38,9 @@ public class PasswordInput extends JPasswordField {
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() != KeyEvent.VK_BACK_SPACE && e.getKeyCode() != KeyEvent.VK_ENTER) {
+                    AudioHandler.audioPlay(AudioHandler.keyTyped);
+                }
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     PasswordInput.this.setEditable(false);
                     PasswordInput.this.setFocusable(false);
@@ -54,8 +58,8 @@ public class PasswordInput extends JPasswordField {
         }
         return instance;
     }
-    public static void resetInstance()
-    {
+
+    public static void resetInstance() {
         instance = new PasswordInput();
     }
 }
