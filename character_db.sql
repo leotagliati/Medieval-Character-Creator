@@ -18,20 +18,40 @@ CREATE SCHEMA IF NOT EXISTS `characterdb` DEFAULT CHARACTER SET utf8mb4 COLLATE 
 USE `characterdb` ;
 
 -- -----------------------------------------------------
+-- Table `characterdb`.`tb_users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `characterdb`.`tb_users` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `USERNAME` VARCHAR(45) NOT NULL,
+  `PASSWORD` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 17
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
 -- Table `characterdb`.`tb_character`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `characterdb`.`tb_character` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL DEFAULT NULL,
-  `class` VARCHAR(45) NULL DEFAULT NULL,
-  `eye_color` INT(11) NULL DEFAULT NULL,
-  `skin_color` INT(11) NULL DEFAULT NULL,
-  `helm_type` INT(11) NULL DEFAULT NULL,
-  `chest_type` INT(11) NULL DEFAULT NULL,
-  `legs_type` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
+  `users_id` INT(11) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `class` VARCHAR(45) NOT NULL,
+  `eye_color` INT(11) NOT NULL,
+  `skin_color` INT(11) NOT NULL,
+  `helm_type` INT(11) NOT NULL,
+  `chest_type` INT(11) NOT NULL,
+  `legs_type` INT(11) NOT NULL,
+  `gender` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_ID_idx` (`users_id` ASC) VISIBLE,
+  CONSTRAINT `FK_ID`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `characterdb`.`tb_users` (`ID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 21
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
