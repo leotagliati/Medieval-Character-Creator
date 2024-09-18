@@ -22,3 +22,15 @@ Before you install Character Creator, make sure you have the following software 
    git clone https://github.com/leotagliati/Projeto-Semestral-LP1.git
    cd character-creator
    
+2. **Database Setup**:
+   * Open MySQL Workbench and create a new connection for the project.
+   * Run the provided SQL script "character_db.sql" to setup the database and its respectives tables.
+
+### Usage
+
+1. Launch the application.
+2. Sign up your account.
+3. Customize your character by selecting attributes such as appearance, class, and garments.
+4. When its done, save it!
+5. On the Search Character panel, you can visualize your characters or delete them. 
+   
