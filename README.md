@@ -19,7 +19,7 @@ Before you install Character Creator, make sure you have the following software 
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/leotagliati/Projeto-Semestral-LP1.git
+   git clone https://github.com/leotagliati/Medieval-Character-Creator.git
    cd character-creator
    
 2. **Database Setup**:
