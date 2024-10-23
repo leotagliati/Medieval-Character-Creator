@@ -11,32 +11,31 @@ public class Client {
     private Scanner sc;
     private PrintWriter output;
 
-    public Client()
-    {
+    public Client() {
         this.sc = new Scanner(System.in);
     }
 
-    public void start() throws UnknownHostException, IOException
-    {
+    public void start() throws UnknownHostException, IOException {
         clientSocket = new Socket(Server.ADDRESS, Server.PORT);
-        output = new PrintWriter(clientSocket.getOutputStream(),true);
+        output = new PrintWriter(clientSocket.getOutputStream(), true);
         System.out.println("Cliente " + Server.ADDRESS + ":" + Server.PORT + " conectado ao servidor");
-        messageLoop();
+        // *******COMO IMPLEMENTAR ISSO?**********
+        waitForRequestLoop();
 
     }
 
-    private void messageLoop() {
+    private void waitForRequestLoop() {
         String msg;
-        System.out.println("Esperando uma digitacao de uma mensagem!");
+        System.out.println("Esperando uma requisicao do client!");
         do {
             System.out.println("Digite uma mensagem ou sair!");
             msg = sc.nextLine();
             output.println(msg);
-            
+
         } while (!msg.equalsIgnoreCase("sair"));
     }
-    public static void main(String[] args) {
-        System.out.println("********CONSOLE DO CLIENTE RAPA********");
+
+    public void initClient() {
         try {
             Client client = new Client();
             client.start();
@@ -44,6 +43,5 @@ public class Client {
             System.out.println("Erro ao inicializar o cliente!");
         }
         System.out.println("Cliente finalizado!");
-
     }
 }

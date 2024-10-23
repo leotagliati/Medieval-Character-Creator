@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
+import Scripts.Ex07.Client;
 import Scripts.LoginManagement.Visual.Buttons.SignInButton;
 import Scripts.LoginManagement.Visual.Buttons.SignUpButton;
 import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
@@ -47,6 +48,10 @@ public class TelaLogin extends JFrame {
         super("Telao");
         this.setBounds(0, 0, 600, 600);
         this.setLayout(new GridBagLayout());
+
+        Client client = new Client();
+        client.initClient();
+
         AudioHandler.audioPlay(AudioHandler.loginMenuAmbience);
         AudioHandler.audioPlay(AudioHandler.loginMenuTheme);
         loadLanguage();
