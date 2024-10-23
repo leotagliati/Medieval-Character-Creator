@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class AudioHandler {
     public static Audio loginMenuTheme = new Audio("LoginOST",
-            "D:\\Git Repositories\\Projeto-Semestral-LP1\\Music\\MedievalOST.wav", true);
+            "Music\\MedievalOST.wav", true);
     public static Audio loginMenuAmbience = new Audio("LoginAmbience",
-            "D:\\Git Repositories\\Projeto-Semestral-LP1\\Music\\RainAmbience.wav", true);
+            "Music\\RainAmbience.wav", true);
     public static Audio charCreationTheme = new Audio("CharCreationOST",
-            "D:\\Git Repositories\\Projeto-Semestral-LP1\\Music\\charCreationOST.wav", true);
+            "Music\\charCreationOST.wav", true);
 
     public static Audio buttonEntered = new Audio("ButtonEntered", "Music\\buttonEntered.wav", false);
     public static Audio buttonClicked = new Audio("ButtonClicked", "Music\\buttonClicked.wav", false);
