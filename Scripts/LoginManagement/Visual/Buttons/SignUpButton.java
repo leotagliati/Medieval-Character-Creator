@@ -22,6 +22,7 @@ public class SignUpButton extends JButton {
     private static Socket socket;
     private static ObjectOutputStream out;
     private static ObjectInputStream in;
+
     public SignUpButton() {
         super();
 
@@ -54,8 +55,8 @@ public class SignUpButton extends JButton {
                         in = new ObjectInputStream(socket.getInputStream());
 
                         // Enviar protocolo de login
-                        String[] loginData = { "REGISTER", TelaLogin.username, TelaLogin.password };
-                        out.writeObject(loginData); // Enviar dados de login e protocolo
+                        String[] protocol = { "REGISTER", TelaLogin.username, TelaLogin.password };
+                        out.writeObject(protocol); // Enviar dados de login e protocolo
 
                         // Receber resposta do servidor
                         String response = (String) in.readObject();
@@ -64,6 +65,25 @@ public class SignUpButton extends JButton {
                         if (response.equals("Cadrasto bem-sucedido!")) {
                             // TelaLogin.userName_ID =
                             // authService.repository.getLoginID(TelaLogin.username);
+
+                            try {
+                                socket = new Socket("127.0.0.1", 3304); // Conectar ao servidor
+                                out = new ObjectOutputStream(socket.getOutputStream());
+                                in = new ObjectInputStream(socket.getInputStream());
+
+                                // Enviar protocolo de login
+                                protocol = new String[] { "GIVE_USER_ID" };
+                                out.writeObject(protocol); // Enviar dados de login e protocolo
+
+                                // Receber resposta do servidor
+                                response = (String) in.readObject();
+                                TelaLogin.userName_ID = Integer.parseInt(response.toString());
+                                System.out.println("Resposta do servidor ao protocolo " + protocol[0] + ": "+response);
+                            } catch (Exception ex) {
+                                System.out.println("Erro ao iniciar protocolo" + protocol[0]);
+                                ex.printStackTrace();
+                            }
+
                             AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
                             AudioHandler.audioStop(AudioHandler.loginMenuTheme);
                             TelaLogin.getInstance().dispose();

@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -14,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Scripts.Audio;
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.ChestTypes;
@@ -23,6 +25,7 @@ import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.HelmetTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.LegsTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
+import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 import Scripts.CharCreationManagement.Repository.CharacterRepository;
 
@@ -44,6 +47,10 @@ public class SavePanel extends JPanel {
 
     private JPanel titlesPanel = new JPanel();
 
+    private static Socket socket;
+    private static ObjectOutputStream out;
+    private static ObjectInputStream in;
+
     private SavePanel() {
 
     }
@@ -57,8 +64,6 @@ public class SavePanel extends JPanel {
 
     public void initPanel(GameCharacter character) {
         charInstance = character;
-
-        CharacterRepository repo = new CharacterRepository();
 
         // Set propriedade do objeto
         this.setBounds(425, 50, 500, 700);
@@ -110,8 +115,39 @@ public class SavePanel extends JPanel {
                     saveButton.setText("Salvo!");
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
-                    
-                    repo.addCharacter(charInstance);
+
+                    // ************ IMPLEMENTACAO DA REQUISICAO POR PROTOCOLO *************
+                    try {
+                        socket = new Socket("127.0.0.1", 3304); // Conectar ao servidor
+                        out = new ObjectOutputStream(socket.getOutputStream());
+                        in = new ObjectInputStream(socket.getInputStream());
+
+                        // Enviar protocolo de login
+                        String[] loginData = { "ADDCHAR",
+                                charInstance.getName(),
+                                charInstance.getSkillClass(),
+                                "" + charInstance.getGender(),
+                                "" + charInstance.getEyeColor(),
+                                "" + charInstance.getSkinColor(),
+                                "" + charInstance.getHelmTypes(),
+                                "" + charInstance.getChestTypes(),
+                                "" + charInstance.getLegsTypes(),
+                                "" + TelaLogin.userName_ID };
+                        out.writeObject(loginData); // Enviar dados de login e protocolo
+
+                        // Receber resposta do servidor
+                        String response = (String) in.readObject();
+                        System.out.println(response);
+
+                        if (response.equals("Inclusao bem-sucedida!")) {
+
+                        } else if (response.equals("Inclusao falhou.")) {
+
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    // repo.addCharacter(charInstance);
 
                 } else {
                     AudioHandler.audioPlay(AudioHandler.negateOperation);
