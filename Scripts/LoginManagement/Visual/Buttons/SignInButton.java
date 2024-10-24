@@ -13,6 +13,7 @@ import Scripts.Audio;
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.CardManager;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
+import Scripts.Ex07.CharacterServer;
 import Scripts.LoginManagement.Repositories.UserRepository;
 import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
 import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
@@ -20,17 +21,21 @@ import Scripts.LoginManagement.Visual.TextsFields.PasswordInput;
 import Scripts.LoginManagement.Visual.TextsFields.UserNameInput;
 import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.LoginManagement.Services.AuthenticationService;
+import java.io.*;
+import java.net.Socket;
 
 public class SignInButton extends JButton {
+    private static Socket socket;
+    private static ObjectOutputStream out;
+    private static ObjectInputStream in;
+
     public SignInButton() {
         super();
-
-        
 
         this.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 16));
         this.setBounds(250, 400, 120, 40);
         this.setForeground(Color.BLACK);
-        
+
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,35 +53,42 @@ public class SignInButton extends JButton {
                     // System.out.println(TelaLogin.username);
                     // System.out.println(TelaLogin.password);
 
-                    AuthenticationService authService = new AuthenticationService();
-                    boolean result = authService.SignIn(TelaLogin.username, TelaLogin.password);
+                    try {
+                        socket = new Socket("127.0.0.1", 3304); // Conectar ao servidor
+                        out = new ObjectOutputStream(socket.getOutputStream());
+                        in = new ObjectInputStream(socket.getInputStream());
 
-                    TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
+                        // Enviar protocolo de login
+                        String[] loginData = { "LOGIN", TelaLogin.username, TelaLogin.password };
+                        out.writeObject(loginData); // Enviar dados de login e protocolo
 
-                    if (result == true) {
+                        // Receber resposta do servidor
+                        String response = (String) in.readObject();
+                        System.out.println(response);
 
-                        AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
-                        AudioHandler.audioStop(AudioHandler.loginMenuTheme);
-                        TelaLogin.getInstance().dispose();
+                        if (response.equals("Login bem-sucedido!")) {
+                            // TelaLogin.userName_ID =
+                            // authService.repository.getLoginID(TelaLogin.username);
+                            AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
+                            AudioHandler.audioStop(AudioHandler.loginMenuTheme);
+                            TelaLogin.getInstance().dispose();
 
-                        CardManager app = CardManager.getInstance();
+                            CardManager app = CardManager.getInstance();
 
-                        app.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        app.setUndecorated(true);
-                        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        app.setVisible(true);
-
-                        // TelaNotasUser telaNotas = new TelaNotasUser();
-                        // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    } else if (result == false) {
-                        InvalidLoginMessage.getInstance().setVisible(true);
-
+                            app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            app.setUndecorated(true);
+                            app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            app.setVisible(true);
+                        } else if (response.equals("Usuário ou senha incorretos.")) {
+                            InvalidLoginMessage.getInstance().setVisible(true);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
-                } else {
-                    InvalidLoginMessage.getInstance().setVisible(true);
-                }
-            }
 
+                }
+
+            }
         });
     }
 }

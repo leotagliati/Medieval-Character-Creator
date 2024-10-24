@@ -15,9 +15,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.io.*;
+import java.net.Socket;
 
 public class SignUpButton extends JButton {
-
+    private static Socket socket;
+    private static ObjectOutputStream out;
+    private static ObjectInputStream in;
     public SignUpButton() {
         super();
 
@@ -44,28 +48,37 @@ public class SignUpButton extends JButton {
                     // System.out.println(TelaLogin.username);
                     // System.out.println(TelaLogin.password);
 
-                    AuthenticationService authService = new AuthenticationService();
-                    boolean result = authService.SignUp(TelaLogin.username, TelaLogin.password);
+                    try {
+                        socket = new Socket("127.0.0.1", 3304); // Conectar ao servidor
+                        out = new ObjectOutputStream(socket.getOutputStream());
+                        in = new ObjectInputStream(socket.getInputStream());
 
-                    TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
+                        // Enviar protocolo de login
+                        String[] loginData = { "REGISTER", TelaLogin.username, TelaLogin.password };
+                        out.writeObject(loginData); // Enviar dados de login e protocolo
 
-                    if (result == true) {
-                        AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
-                        AudioHandler.audioStop(AudioHandler.loginMenuTheme);
-                        TelaLogin.getInstance().dispose();
+                        // Receber resposta do servidor
+                        String response = (String) in.readObject();
+                        System.out.println(response);
 
-                        CardManager app = CardManager.getInstance();
+                        if (response.equals("Cadrasto bem-sucedido!")) {
+                            // TelaLogin.userName_ID =
+                            // authService.repository.getLoginID(TelaLogin.username);
+                            AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
+                            AudioHandler.audioStop(AudioHandler.loginMenuTheme);
+                            TelaLogin.getInstance().dispose();
 
-                        app.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        app.setUndecorated(true);
-                        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        app.setVisible(true);
-                        
-                        // TelaNotasUser telaNotas = new TelaNotasUser();
-                        // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    } else if (result == false) {
-                        LoginExistsMessage.getInstance().setVisible(true);
+                            CardManager app = CardManager.getInstance();
 
+                            app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            app.setUndecorated(true);
+                            app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            app.setVisible(true);
+                        } else if (response.equals("Usuário já utilizado.")) {
+                            InvalidLoginMessage.getInstance().setVisible(true);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
                 } else {
                     InvalidLoginMessage.getInstance().setVisible(true);
