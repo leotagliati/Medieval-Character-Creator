@@ -4,8 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -15,8 +19,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Scripts.AudioHandler;
+import Scripts.CharCreationManagement.CardManager;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.Ex07.Client;
+import Scripts.LoginManagement.Services.AuthenticationService;
 import Scripts.LoginManagement.Visual.Buttons.SignInButton;
 import Scripts.LoginManagement.Visual.Buttons.SignUpButton;
 import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
@@ -41,15 +47,23 @@ public class TelaLogin extends JFrame {
     private JLabel usernameLabel = new JLabel("Username");
     private JLabel passwordLabel = new JLabel("Password");
 
-    private SignInButton signInButton = new SignInButton();
+    // private SignInButton signInButton = new SignInButton();
+    
+        
     private SignUpButton signUpButton = new SignUpButton();
+    
+    private Client client;
+
+    public Client getClient() {
+        return client;
+    }
 
     private TelaLogin() {
         super("Telao");
         this.setBounds(0, 0, 600, 600);
         this.setLayout(new GridBagLayout());
 
-        Client client = new Client();
+        client = new Client();
         client.initClient();
 
         AudioHandler.audioPlay(AudioHandler.loginMenuAmbience);
@@ -66,7 +80,59 @@ public class TelaLogin extends JFrame {
         areaLoginPanel.setPreferredSize(new Dimension(500, 500));
         areaLoginPanel.setBackground(Color.BLUE);
         areaLoginPanel.setLayout(null);
-
+        JButton signInButton = new JButton("SignUp");
+    
+        signInButton.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 16));
+        signInButton.setBounds(250, 400, 120, 40);
+        signInButton.setForeground(Color.BLACK);
+            
+            signInButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    InvalidLoginMessage.getInstance().setVisible(false);
+                    LoginExistsMessage.getInstance().setVisible(false);
+    
+                    if (UserNameInput.getInstance().getText().length() > 0
+                            && PasswordInput.getInstance().getPassword().length > 0) {
+                        TelaLogin.username = UserNameInput.getInstance().getText();
+    
+                        TelaLogin.password = "";
+                        for (char c : PasswordInput.getInstance().getPassword()) {
+                            TelaLogin.password += c;
+                        }
+                        // System.out.println(TelaLogin.username);
+                        // System.out.println(TelaLogin.password);
+    
+                        client.waitForRequestLoop("FINDLOGINUSER," + TelaLogin.username);
+                        AuthenticationService authService = new AuthenticationService();
+                        boolean result = authService.SignIn(TelaLogin.username, TelaLogin.password);
+    
+                        // TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
+    
+                        if (result == true) {
+    
+                            AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
+                            AudioHandler.audioStop(AudioHandler.loginMenuTheme);
+                            TelaLogin.getInstance().dispose();
+    
+                            CardManager app = CardManager.getInstance();
+    
+                            app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            app.setUndecorated(true);
+                            app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            app.setVisible(true);
+    
+                            // TelaNotasUser telaNotas = new TelaNotasUser();
+                            // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        } else if (result == false) {
+                            InvalidLoginMessage.getInstance().setVisible(true);
+    
+                        }
+                    } else {
+                        InvalidLoginMessage.getInstance().setVisible(true);
+                    }
+                }
+            });
         // seta os propriedades da label azul LOGIN
 
         loginLabel.setFont(new Font("Enchanted land", Font.BOLD, 55));
@@ -140,11 +206,12 @@ public class TelaLogin extends JFrame {
             loginLabel.setText(bn.getString("loginLabel"));
             usernameLabel.setText(bn.getString("usernameLabel"));
             passwordLabel.setText(bn.getString("passwordLabel"));
-            signInButton.setText(bn.getString("signIn"));
+            // signInButton.setText(bn.getString("signIn"));
             signUpButton.setText(bn.getString("signUp"));
             UserNameInput.getInstance().setText(bn.getString("usernameInput"));
             // Update other components as needed
         }
     }
+    
 
 }

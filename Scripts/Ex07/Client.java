@@ -20,19 +20,17 @@ public class Client {
         output = new PrintWriter(clientSocket.getOutputStream(), true);
         System.out.println("Cliente " + Server.ADDRESS + ":" + Server.PORT + " conectado ao servidor");
         // *******COMO IMPLEMENTAR ISSO?**********
-        waitForRequestLoop();
+        // waitForRequestLoop();
 
     }
 
-    private void waitForRequestLoop() {
-        String msg;
-        System.out.println("Esperando uma requisicao do client!");
-        do {
-            System.out.println("Digite uma mensagem ou sair!");
-            msg = sc.nextLine();
+    public void waitForRequestLoop(String receivedMessage) {
+        String msg = receivedMessage;
+        String[] msgSplitted = msg.split(",");
+        String command = msgSplitted[0];
+        System.out.println("Comando: " + command);
             output.println(msg);
 
-        } while (!msg.equalsIgnoreCase("sair"));
     }
 
     public void initClient() {
@@ -40,7 +38,7 @@ public class Client {
             Client client = new Client();
             client.start();
         } catch (IOException e) {
-            System.out.println("Erro ao inicializar o cliente!");
+            System.out.println("Erro ao inicializar o cliente!" + e);
         }
         System.out.println("Cliente finalizado!");
     }
