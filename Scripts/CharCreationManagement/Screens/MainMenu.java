@@ -120,17 +120,18 @@ public class MainMenu extends JPanel {
 
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                AudioHandler.audioPlay(AudioHandler.buttonClicked);
+                System.exit(0);
+                // AudioHandler.audioPlay(AudioHandler.buttonClicked);
                 
-                AudioHandler.audioStop(AudioHandler.charCreationTheme);
+                // AudioHandler.audioStop(AudioHandler.charCreationTheme);
 
-                TelaLogin.resetInstance();
-                TelaLogin telaLogin = TelaLogin.getInstance();
-                TelaLogin.n = 1; // Update static variable
-                telaLogin.loadLanguage(); // Reload ResourceBundle and update UI
-                telaLogin.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                telaLogin.setVisible(true); // Show the updated login screen
-                CardManager.getInstance().dispose();
+                // TelaLogin.resetInstance();
+                // TelaLogin telaLogin = TelaLogin.getInstance();
+                // TelaLogin.n = 1; // Update static variable
+                // telaLogin.loadLanguage(); // Reload ResourceBundle and update UI
+                // telaLogin.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                // telaLogin.setVisible(true); // Show the updated login screen
+                // CardManager.getInstance().dispose();
 
             }
         });
