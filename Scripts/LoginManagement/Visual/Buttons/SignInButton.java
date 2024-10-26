@@ -53,10 +53,18 @@ public class SignInButton extends JButton {
                     try {
                         Client client = new Client("127.0.0.1", 3304);
 
-                        String dataToSend = "LOGIN " + TelaLogin.username + " " + TelaLogin.password;
+                        String dataToSend = "LOGIN," + TelaLogin.username + "," + TelaLogin.password;
 
                         String response = client.sendMessage(dataToSend);
                         System.out.println("SERVER: " + response);
+                        if(response.equals("true"))
+                        {
+                            System.out.println("Pode Logar!");
+                        }
+                        else
+                        {
+                            System.out.println("Nao Pode Logar!");
+                        }
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }

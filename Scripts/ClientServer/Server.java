@@ -19,7 +19,11 @@ public class Server {
                     String msgFromClient;
                     while ((msgFromClient = bufferedReader.readLine()) != null) {
                         System.out.println("Client: " + msgFromClient);
-                        bufferedWriter.write("Msg "+ msgFromClient + " RECEIVED");
+                        
+                        ProtocolService protocolService = new ProtocolService(msgFromClient);
+                        String msgToSendBack = protocolService.processProtocol();
+
+                        bufferedWriter.write(msgToSendBack);
                         bufferedWriter.newLine();
                         bufferedWriter.flush();
 
