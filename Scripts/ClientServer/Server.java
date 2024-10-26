@@ -20,17 +20,17 @@ public class Server {
                     while ((msgFromClient = bufferedReader.readLine()) != null) {
                         System.out.println("Client: " + msgFromClient);
                         
-                        ProtocolService protocolService = new ProtocolService(msgFromClient);
-                        String msgToSendBack = protocolService.processProtocol();
-
-                        bufferedWriter.write(msgToSendBack);
-                        bufferedWriter.newLine();
-                        bufferedWriter.flush();
-
                         if (msgFromClient.equalsIgnoreCase("quit")) {
                             System.out.println("Client disconnected.");
                             break;
                         }
+                        ProtocolService protocolService = new ProtocolService(msgFromClient);
+                        String msgToSendBack = protocolService.processProtocol();
+                        
+                        bufferedWriter.write(msgToSendBack);
+                        bufferedWriter.newLine();
+                        bufferedWriter.flush();
+
                     }
 
                 } catch (IOException e) {

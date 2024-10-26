@@ -12,9 +12,10 @@ public class ProtocolService {
     public String processProtocol() {
         String resultString = "";
         boolean result = false;
-        this.protocolMessage.toUpperCase();
+        // this.protocolMessage.toUpperCase();
         String[] messageData = this.protocolMessage.split(",");
         AuthenticationService authenticationService = new AuthenticationService();
+        messageData[0].toUpperCase();
 
         switch (messageData[0]) {
             case "LOGIN":
