@@ -8,34 +8,12 @@ public class Server {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(3304)) {
             System.out.println("Server started and waiting for clients...");
-            
+
             while (true) {
-                try (Socket socket = serverSocket.accept();
-                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
-                     
-                    System.out.println("Client connected!");
-
-                    String msgFromClient;
-                    while ((msgFromClient = bufferedReader.readLine()) != null) {
-                        System.out.println("Client: " + msgFromClient);
-                        
-                        if (msgFromClient.equalsIgnoreCase("quit")) {
-                            System.out.println("Client disconnected.");
-                            break;
-                        }
-                        ProtocolService protocolService = new ProtocolService(msgFromClient);
-                        String msgToSendBack = protocolService.processProtocol();
-                        
-                        bufferedWriter.write(msgToSendBack);
-                        bufferedWriter.newLine();
-                        bufferedWriter.flush();
-
-                    }
-
-                } catch (IOException e) {
-                    System.out.println("Connection error: " + e.getMessage());
-                }
+                Socket socket = serverSocket.accept();
+                // Inicia uma nova thread para cada cliente que se conecta
+                Thread clientThread = new Thread(new ClientHandler(socket));
+                clientThread.start();
             }
         } catch (IOException e) {
             System.out.println("Server failed to start: " + e.getMessage());
