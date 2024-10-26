@@ -25,7 +25,7 @@ public class Client {
 
             // Ler e retornar a resposta do servidor
             String response = bufferedReader.readLine();
-            // System.out.println("Server: " + response);
+            System.out.println("Server response to " + message + " : " + response);
 
             // Fecha a conexão se a mensagem for "quit"
             if ("quit".equalsIgnoreCase(message)) {
@@ -43,9 +43,12 @@ public class Client {
     // Método para fechar a conexão
     private void closeConnection() {
         try {
-            if (socket != null) socket.close();
-            if (bufferedReader != null) bufferedReader.close();
-            if (bufferedWriter != null) bufferedWriter.close();
+            if (socket != null)
+                socket.close();
+            if (bufferedReader != null)
+                bufferedReader.close();
+            if (bufferedWriter != null)
+                bufferedWriter.close();
         } catch (IOException e) {
             System.out.println("Error closing resources: " + e.getMessage());
         }

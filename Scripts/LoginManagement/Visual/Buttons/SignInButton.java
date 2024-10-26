@@ -27,12 +27,10 @@ public class SignInButton extends JButton {
     public SignInButton() {
         super();
 
-        
-
         this.setFont(new Font("Adobe Garamond Pro", Font.PLAIN, 16));
         this.setBounds(250, 400, 120, 40);
         this.setForeground(Color.BLACK);
-        
+
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,14 +54,25 @@ public class SignInButton extends JButton {
                         String dataToSend = "LOGIN," + TelaLogin.username + "," + TelaLogin.password;
 
                         String response = client.sendMessage(dataToSend);
-                        System.out.println("SERVER: " + response);
-                        if(response.equals("true"))
-                        {
+
+                        if (response.equals("true")) {
                             System.out.println("Pode Logar!");
-                        }
-                        else
-                        {
-                            System.out.println("Nao Pode Logar!");
+                            int id = -1;
+                            dataToSend = "GIVE_USER_ID," + TelaLogin.username;
+                            id = Integer.parseInt(client.sendMessage(dataToSend));
+
+                            if(id >= 0)
+                            {
+                                System.out.println("ID encontrado!");
+                            }
+                            else
+                            {
+                                System.out.println("ID nao encontrado!");
+                            }
+
+                        } else {
+                            InvalidLoginMessage.getInstance().setVisible(true);
+
                         }
                     } catch (IOException e1) {
                         e1.printStackTrace();
@@ -71,25 +80,26 @@ public class SignInButton extends JButton {
                     // AuthenticationService authService = new AuthenticationService();
                     // boolean result = authService.SignIn(TelaLogin.username, TelaLogin.password);
 
-                    // TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
+                    // TelaLogin.userName_ID =
+                    // authService.repository.getLoginID(TelaLogin.username);
 
                     // if (result == true) {
 
-                    //     AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
-                    //     AudioHandler.audioStop(AudioHandler.loginMenuTheme);
-                    //     TelaLogin.getInstance().dispose();
+                    // AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
+                    // AudioHandler.audioStop(AudioHandler.loginMenuTheme);
+                    // TelaLogin.getInstance().dispose();
 
-                    //     CardManager app = CardManager.getInstance();
+                    // CardManager app = CardManager.getInstance();
 
-                    //     app.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    //     app.setUndecorated(true);
-                    //     app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    //     app.setVisible(true);
+                    // app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    // app.setUndecorated(true);
+                    // app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    // app.setVisible(true);
 
-                    //     // TelaNotasUser telaNotas = new TelaNotasUser();
-                    //     // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    // // TelaNotasUser telaNotas = new TelaNotasUser();
+                    // // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     // } else if (result == false) {
-                    //     InvalidLoginMessage.getInstance().setVisible(true);
+                    // InvalidLoginMessage.getInstance().setVisible(true);
 
                     // }
                 } else {
