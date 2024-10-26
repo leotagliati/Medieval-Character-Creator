@@ -11,6 +11,8 @@ import Scripts.CharCreationManagement.Visual.ImagesConversion.StringToPath;
 import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 import Scripts.CharCreationManagement.Repository.CharacterRepository;
+import Scripts.LogManager.LogSystemService;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -41,8 +43,6 @@ public class SearchCharacter extends JPanel {
         backgroundImage.setIconFile("Images\\hud1.png");
         backgroundImage.imageSetter();
         displayCharPanel.add(backgroundImage);
-
-        
 
         GridLayout buttonsLayout = new GridLayout(charNamesArray.size(), 1, 0, 0);
         insidePanel.setLayout(buttonsLayout);
@@ -113,7 +113,6 @@ public class SearchCharacter extends JPanel {
         this.add(charDataPanel);
         this.add(scrollPaneImage);
 
-
         // Volta para o menu inicial
 
         for (JButton button : buttonsArray) {
@@ -132,8 +131,8 @@ public class SearchCharacter extends JPanel {
                             AudioHandler.audioPlay(AudioHandler.buttonDelete);
                             repo.deleteCharacter(charSelected);
 
-                            // String dataToSend = "DELETE_CHAR," + ;
-                            // TelaLogin.getInstance().getClient().sendMessage(dataToSend);
+                            String logMessage = "Character '" + charSelected.getName() + "' deletado do sistema;";
+                            LogSystemService.generateLog("LogCharacters.txt", logMessage);
 
                             deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
                             deleteButtonImage.imageSetter();
@@ -218,7 +217,6 @@ public class SearchCharacter extends JPanel {
 
                         if (e.getSource() != nameLabel) {
                             nameLabel.setBackground(new Color(52, 28, 39));
-                        
 
                         } else {
 

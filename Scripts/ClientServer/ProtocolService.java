@@ -1,5 +1,6 @@
 package Scripts.ClientServer;
 
+import Scripts.LogManager.LogSystemService;
 import Scripts.LoginManagement.Services.AuthenticationService;
 
 public class ProtocolService {
@@ -12,7 +13,7 @@ public class ProtocolService {
     public String processProtocol() {
         String resultString = "";
         boolean result = false;
-        // this.protocolMessage.toUpperCase();
+        String logMessage = "";
         String[] messageData = this.protocolMessage.split(",");
         AuthenticationService authenticationService = new AuthenticationService();
         messageData[0].toUpperCase();
@@ -24,6 +25,9 @@ public class ProtocolService {
                 result = authenticationService.SignIn(usernameToLogin, passwordToLogin);
                 if (result) {
                     resultString = "true";
+                    logMessage = "Usuario '" + usernameToLogin + "' logou no sistema;";
+                    LogSystemService.generateLog("LogUser.txt", logMessage);
+
                 } else {
                     resultString = "false";
                 }
@@ -34,6 +38,8 @@ public class ProtocolService {
                 result = authenticationService.SignUp(usernameToRegister, passwordToRegister);
                 if (result) {
                     resultString = "true";
+                    logMessage = "Usuario '" + usernameToRegister + "' registrado no sistema;";
+                    LogSystemService.generateLog("LogUser.txt", logMessage);
                 } else {
                     resultString = "false";
                 }

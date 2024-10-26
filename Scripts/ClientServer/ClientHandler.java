@@ -36,6 +36,7 @@ class ClientHandler implements Runnable {
             }
         } catch (IOException e) {
             System.out.println("Connection error: " + e.getMessage());
+            
         } finally {
             try {
                 socket.close();
