@@ -12,6 +12,7 @@ public class Server {
             while (true) {
                 Socket socket = serverSocket.accept();
                 // Inicia uma nova thread para cada cliente que se conecta
+                // **** DEVE FUNCIONAR O MULTITHREAD ASSIM ****
                 Thread clientThread = new Thread(new ClientHandler(socket));
                 clientThread.start();
             }
