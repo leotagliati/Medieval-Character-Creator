@@ -49,24 +49,31 @@ public class SignInButton extends JButton {
                     // System.out.println(TelaLogin.password);
 
                     try {
-                        Client client = new Client("127.0.0.1", 3304);
+                        TelaLogin.getInstance().setClient(new Client("127.0.0.1", 3304));
 
                         String dataToSend = "LOGIN," + TelaLogin.username + "," + TelaLogin.password;
 
-                        String response = client.sendMessage(dataToSend);
+                        String response = TelaLogin.getInstance().getClient().sendMessage(dataToSend);
 
                         if (response.equals("true")) {
                             System.out.println("Pode Logar!");
                             int id = -1;
                             dataToSend = "GIVE_USER_ID," + TelaLogin.username;
-                            id = Integer.parseInt(client.sendMessage(dataToSend));
+                            id = Integer.parseInt(TelaLogin.getInstance().getClient().sendMessage(dataToSend));
 
-                            if(id >= 0)
-                            {
+                            if (id >= 0) {
                                 System.out.println("ID encontrado!");
-                            }
-                            else
-                            {
+                                AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
+                                AudioHandler.audioStop(AudioHandler.loginMenuTheme);
+                                TelaLogin.getInstance().dispose();
+
+                                CardManager app = CardManager.getInstance();
+
+                                app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                                app.setUndecorated(true);
+                                app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                app.setVisible(true);
+                            } else {
                                 System.out.println("ID nao encontrado!");
                             }
 
