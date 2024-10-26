@@ -26,6 +26,8 @@ import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTyp
 import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 import Scripts.CharCreationManagement.Repository.CharacterRepository;
+import Scripts.LogManager.LogSystemService;
+
 
 public class SavePanel extends JPanel {
     private static SavePanel instance;
@@ -113,6 +115,9 @@ public class SavePanel extends JPanel {
                     buttonImage.imageSetter();
                     
                     repo.addCharacter(charInstance, TelaLogin.userName_ID);
+
+                    String logMessage = "Character '" + charInstance.getName() + "' adcionado ao sistema;";
+                    LogSystemService.generateLog("LogCharacters.txt", logMessage);
 
                 } else {
                     AudioHandler.audioPlay(AudioHandler.negateOperation);
