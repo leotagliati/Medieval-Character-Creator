@@ -59,6 +59,7 @@ public class SignUpButton extends JButton {
                             id = Integer.parseInt(TelaLogin.getInstance().getClient().sendMessage(dataToSend));
 
                             if (id >= 0) {
+                                TelaLogin.userName_ID = id;
                                 System.out.println("ID encontrado!");
                                 AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
                                 AudioHandler.audioStop(AudioHandler.loginMenuTheme);

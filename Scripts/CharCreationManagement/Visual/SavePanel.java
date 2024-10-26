@@ -23,6 +23,7 @@ import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.HelmetTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.LegsTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
+import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 import Scripts.CharCreationManagement.Repository.CharacterRepository;
 
@@ -111,7 +112,7 @@ public class SavePanel extends JPanel {
                     buttonImage.setIconFile("Images\\charSavedButton.png");
                     buttonImage.imageSetter();
                     
-                    repo.addCharacter(charInstance);
+                    repo.addCharacter(charInstance, TelaLogin.userName_ID);
 
                 } else {
                     AudioHandler.audioPlay(AudioHandler.negateOperation);

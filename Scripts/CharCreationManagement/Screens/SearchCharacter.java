@@ -8,6 +8,7 @@ import Scripts.CharCreationManagement.Visual.ImagesConversion.CharacterDisplay;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ShowPanel;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.StringToPath;
+import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 import Scripts.CharCreationManagement.Repository.CharacterRepository;
 
@@ -130,6 +131,10 @@ public class SearchCharacter extends JPanel {
                         if (charSelected != null) {
                             AudioHandler.audioPlay(AudioHandler.buttonDelete);
                             repo.deleteCharacter(charSelected);
+
+                            // String dataToSend = "DELETE_CHAR," + ;
+                            // TelaLogin.getInstance().getClient().sendMessage(dataToSend);
+
                             deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
                             deleteButtonImage.imageSetter();
                             deleteButton.setText("Deletado!");
@@ -173,7 +178,7 @@ public class SearchCharacter extends JPanel {
     public static void updateNamesPanel() {
         charSelected = null;
         CharacterRepository repo = new CharacterRepository();
-        charArray = repo.GetAllCharcters();
+        charArray = repo.GetAllCharcters(TelaLogin.userName_ID);
         charNamesArray.clear();
         for (GameCharacter character : charArray) {
             charNamesArray.add(character.getName());
