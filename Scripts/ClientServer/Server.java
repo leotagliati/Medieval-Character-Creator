@@ -1,51 +1,40 @@
+// Server.java
 package Scripts.ClientServer;
 
 import java.io.*;
 import java.net.*;
 
 public class Server {
-    public static void main(String[] args) throws IOException {
-        Socket socket = null;
-        InputStreamReader inputStreamReader = null;
-        OutputStreamWriter outputStreamWriter = null;
+    public static void main(String[] args) {
+        try (ServerSocket serverSocket = new ServerSocket(3304)) {
+            System.out.println("Server started and waiting for clients...");
+            
+            while (true) {
+                try (Socket socket = serverSocket.accept();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
+                     
+                    System.out.println("Client connected!");
 
-        BufferedReader bufferedReader = null;
-        BufferedWriter bufferedWriter = null;
-        ServerSocket serverSocket = null;
+                    String msgFromClient;
+                    while ((msgFromClient = bufferedReader.readLine()) != null) {
+                        System.out.println("Client: " + msgFromClient);
+                        bufferedWriter.write("Msg "+ msgFromClient + " RECEIVED");
+                        bufferedWriter.newLine();
+                        bufferedWriter.flush();
 
-        serverSocket = new ServerSocket(3304);
-        while (true) {
-            try {
-                socket = serverSocket.accept();
-                inputStreamReader = new InputStreamReader(socket.getInputStream());
-                outputStreamWriter = new OutputStreamWriter(socket.getOutputStream());
-
-                bufferedReader = new BufferedReader(inputStreamReader);
-                bufferedWriter = new BufferedWriter(outputStreamWriter);
-
-                while (true) {
-                    String msgFromClient = bufferedReader.readLine();
-
-                    System.out.println("Client: " + msgFromClient);
-
-                    bufferedWriter.write("Msg RECEIVED");
-                    bufferedWriter.newLine();
-                    bufferedWriter.flush();
-
-                    if(msgFromClient.equalsIgnoreCase("quit"))
-                    {
-                        break;
+                        if (msgFromClient.equalsIgnoreCase("quit")) {
+                            System.out.println("Client disconnected.");
+                            break;
+                        }
                     }
-                }
-                socket.close();
-                inputStreamReader.close();
-                outputStreamWriter.close();
-                bufferedReader.close();
-                bufferedWriter.close();
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (IOException e) {
+                    System.out.println("Connection error: " + e.getMessage());
+                }
             }
+        } catch (IOException e) {
+            System.out.println("Server failed to start: " + e.getMessage());
         }
     }
 }

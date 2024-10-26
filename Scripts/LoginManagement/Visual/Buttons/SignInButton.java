@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import Scripts.Audio;
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.CardManager;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
+import Scripts.ClientServer.Client;
 import Scripts.LoginManagement.Repositories.UserRepository;
 import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
 import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
@@ -48,30 +50,40 @@ public class SignInButton extends JButton {
                     // System.out.println(TelaLogin.username);
                     // System.out.println(TelaLogin.password);
 
-                    AuthenticationService authService = new AuthenticationService();
-                    boolean result = authService.SignIn(TelaLogin.username, TelaLogin.password);
+                    try {
+                        Client client = new Client("127.0.0.1", 3304);
 
-                    TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
+                        String dataToSend = "LOGIN " + TelaLogin.username + " " + TelaLogin.password;
 
-                    if (result == true) {
-
-                        AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
-                        AudioHandler.audioStop(AudioHandler.loginMenuTheme);
-                        TelaLogin.getInstance().dispose();
-
-                        CardManager app = CardManager.getInstance();
-
-                        app.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        app.setUndecorated(true);
-                        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        app.setVisible(true);
-
-                        // TelaNotasUser telaNotas = new TelaNotasUser();
-                        // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    } else if (result == false) {
-                        InvalidLoginMessage.getInstance().setVisible(true);
-
+                        String response = client.sendMessage(dataToSend);
+                        System.out.println("SERVER: " + response);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
                     }
+                    // AuthenticationService authService = new AuthenticationService();
+                    // boolean result = authService.SignIn(TelaLogin.username, TelaLogin.password);
+
+                    // TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
+
+                    // if (result == true) {
+
+                    //     AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
+                    //     AudioHandler.audioStop(AudioHandler.loginMenuTheme);
+                    //     TelaLogin.getInstance().dispose();
+
+                    //     CardManager app = CardManager.getInstance();
+
+                    //     app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    //     app.setUndecorated(true);
+                    //     app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    //     app.setVisible(true);
+
+                    //     // TelaNotasUser telaNotas = new TelaNotasUser();
+                    //     // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    // } else if (result == false) {
+                    //     InvalidLoginMessage.getInstance().setVisible(true);
+
+                    // }
                 } else {
                     InvalidLoginMessage.getInstance().setVisible(true);
                 }
