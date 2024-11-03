@@ -125,7 +125,7 @@ public class TelaLogin extends JFrame {
     }
 
     public void loadLanguage() {
-        // Reload the ResourceBundle based on the selected language
+        // Carrega o ResourceBundle com base no idioma selecionado
         switch (n) {
             case 0:
                 bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
@@ -133,22 +133,32 @@ public class TelaLogin extends JFrame {
             case 1:
                 bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_en_US", Locale.US);
                 break;
+            case 2:
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_de_DE", Locale.GERMANY);
+                break;
+            case 3:
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_fr_FR", Locale.FRANCE);
+                break;
+            case 4:
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_es_ES", new Locale("es", "ES"));
+                break;
         }
+    
         if (instance != null) {
-            // Update the text for all UI components based on the new ResourceBundle
-
+            // Atualiza o texto para todos os componentes da interface com base no novo ResourceBundle
             loginLabel.setText(bn.getString("loginLabel"));
             usernameLabel.setText(bn.getString("usernameLabel"));
             passwordLabel.setText(bn.getString("passwordLabel"));
             signInButton.setText(bn.getString("signIn"));
             signUpButton.setText(bn.getString("signUp"));
             UserNameInput.getInstance().setText(bn.getString("usernameInput"));
-            // Update other components as needed
+    
             // Revalida e repinta a interface para refletir as mudanças
-        this.revalidate();
-        this.repaint();
+            this.revalidate();
+            this.repaint();
         }
     }
+    
 
     public Client getClient() {
         return client;

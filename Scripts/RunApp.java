@@ -1,10 +1,12 @@
 package Scripts;
-import Scripts.LoginManagement.Screens.TelaLanguage;
+import Scripts.LoginManagement.Screens.TelaLogin;
 
 public class RunApp {
     public static void main(String[] args) {
-        TelaLanguage telaLanguage = new TelaLanguage();
-        telaLanguage.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        
+        TelaLogin telaLogin = TelaLogin.getInstance();
+        TelaLogin.n = 1; 
+        telaLogin.loadLanguage(); 
+        telaLogin.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        telaLogin.setVisible(true);
     }
 }
