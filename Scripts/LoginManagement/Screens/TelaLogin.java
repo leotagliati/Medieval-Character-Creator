@@ -1,19 +1,5 @@
 package Scripts.LoginManagement.Screens;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.ClientServer.Client;
@@ -24,6 +10,18 @@ import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
 import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
 import Scripts.LoginManagement.Visual.TextsFields.PasswordInput;
 import Scripts.LoginManagement.Visual.TextsFields.UserNameInput;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class TelaLogin extends JFrame {
     public static TelaLogin instance;
@@ -146,6 +144,9 @@ public class TelaLogin extends JFrame {
             signUpButton.setText(bn.getString("signUp"));
             UserNameInput.getInstance().setText(bn.getString("usernameInput"));
             // Update other components as needed
+            // Revalida e repinta a interface para refletir as mudanças
+        this.revalidate();
+        this.repaint();
         }
     }
 
