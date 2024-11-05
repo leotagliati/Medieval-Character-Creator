@@ -17,6 +17,8 @@ public class AudioHandler {
             "Music\\RainAmbience.wav", true);
     public static Audio charCreationTheme = new Audio("CharCreationOST",
             "Music\\charCreationOST.wav", true);
+    public static Audio gothicMenuTheme = new Audio("GothicAmbience",
+            "Music\\gothicOST.wav", true);
 
     public static Audio buttonEntered = new Audio("ButtonEntered", "Music\\buttonEntered.wav", false);
     public static Audio buttonClicked = new Audio("ButtonClicked", "Music\\buttonClicked.wav", false);
@@ -43,6 +45,10 @@ public class AudioHandler {
     }
 
     public static void audioStop(Audio audioSource) {
+        if(audioSource.getClip() == null)
+        {
+            return;
+        }
         audioSource.getClip().stop();
     }
 
