@@ -21,7 +21,7 @@ public class CardManager extends JFrame {
 
     private CardManager() {
         super("App");
-        
+        this.setSize(1650,920);
         AudioHandler.audioPlay(AudioHandler.charCreationTheme);
 
         // Carrega todas as telas

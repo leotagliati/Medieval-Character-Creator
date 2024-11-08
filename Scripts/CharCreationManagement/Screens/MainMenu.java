@@ -30,7 +30,7 @@ public class MainMenu extends JPanel {
         this.setLayout(null);
         this.setBackground(Color.GRAY);
 
-        ImageCreate backGNDScenario = new ImageCreate(0, 0, 1920, 1080);
+        ImageCreate backGNDScenario = new ImageCreate(0, 0, 1650,920);
         backGNDScenario.setIconFile("Images\\scenario.gif");
         backGNDScenario.imageSetter();
 
@@ -40,7 +40,7 @@ public class MainMenu extends JPanel {
         buttonsLayout.setVgap(10);
 
         JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setBounds(1520, 600, 400, 400);
+        buttonsPanel.setBounds(1220, 500, 400, 400);
         buttonsPanel.setVisible(true);
         buttonsPanel.setOpaque(false);
         buttonsPanel.setBackground(Color.GREEN);
@@ -87,7 +87,7 @@ public class MainMenu extends JPanel {
 
         this.backGNDPanel = new JPanel();
         this.backGNDPanel.setLayout(buttonsLayout);
-        this.backGNDPanel.setBounds(1520, 600, 400, 400);
+        this.backGNDPanel.setBounds(1220, 500, 400, 400);
         this.backGNDPanel.setOpaque(false);
         this.backGNDPanel.setBackground(Color.GREEN);
 

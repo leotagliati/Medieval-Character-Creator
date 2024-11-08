@@ -70,7 +70,7 @@ public class SignInButton extends JButton {
 
                                 CardManager app = CardManager.getInstance();
 
-                                app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                                // app.setExtendedState(JFrame.MAXIMIZED_BOTH);
                                 app.setUndecorated(true);
                                 app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                 app.setVisible(true);
