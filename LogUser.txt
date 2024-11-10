@@ -15,3 +15,9 @@ Usuario 'leo' logou no sistema;
 
 Data de entrada: 26/10/2024 15:40:00
 Usuario 'diego' registrado no sistema;
+
+Data de entrada: 09/11/2024 23:38:39
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 09/11/2024 23:40:00
+Usuario 'leo' logou no sistema;

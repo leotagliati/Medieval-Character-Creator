@@ -67,8 +67,8 @@ public class SignUpButton extends JButton {
 
                                 CardManager app = CardManager.getInstance();
 
-                                app.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                                app.setUndecorated(true);
+                                // app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                                // app.setUndecorated(true);
                                 app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                 app.setVisible(true);
                             } else {
@@ -82,30 +82,7 @@ public class SignUpButton extends JButton {
                     } catch (Exception e2) {
                         e2.printStackTrace();
                     }
-                    // AuthenticationService authService = new AuthenticationService();
-                    // boolean result = authService.SignUp(TelaLogin.username, TelaLogin.password);
-
-                    // TelaLogin.userName_ID =
-                    // authService.repository.getLoginID(TelaLogin.username);
-
-                    // if (result == true) {
-                    // AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
-                    // AudioHandler.audioStop(AudioHandler.loginMenuTheme);
-                    // TelaLogin.getInstance().dispose();
-
-                    // CardManager app = CardManager.getInstance();
-
-                    // app.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    // app.setUndecorated(true);
-                    // app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    // app.setVisible(true);
-
-                    // // TelaNotasUser telaNotas = new TelaNotasUser();
-                    // // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    // } else if (result == false) {
-                    // LoginExistsMessage.getInstance().setVisible(true);
-
-                    // }
+                    
                 } else {
                     InvalidLoginMessage.getInstance().setVisible(true);
                 }
