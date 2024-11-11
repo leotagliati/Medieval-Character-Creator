@@ -7,7 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -180,6 +185,7 @@ public class SavePanel extends JPanel {
         this.add(titlesPanel);
         this.add(saveButton);
         this.add(buttonImage);
+        loadLanguage(readLanguageFromFile());
     }
 
     public void updatePanel(GameCharacter character) {
@@ -195,5 +201,51 @@ public class SavePanel extends JPanel {
 
     public GameCharacter getCharInstance() {
         return charInstance;
+    }
+    public void loadLanguage(int n) {
+        ResourceBundle bn;
+        
+        // Carrega o ResourceBundle 
+        switch (n) {
+            case 0:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
+                break;
+            case 1:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US);
+                break;
+            case 2:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_de_DE", Locale.GERMANY);
+                break;
+            case 3:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_fr_FR", Locale.FRANCE);
+                break;
+            case 4:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_es_ES", new Locale("es", "ES"));
+                break;
+            default:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US); // Idioma padrão
+        }
+    
+        // Atualiza os textos
+        if (bn != null) {
+            nameTitle.setText(bn.getString("nameTitle"));
+            classTitle.setText(bn.getString("classTitle"));
+            saveButton.setText(bn.getString("saveButton"));
+        }
+    
+        // Atualize o painel e os componentes 
+        this.repaint();
+        this.revalidate();
+    }
+     public int readLanguageFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Scripts/LoginManagement/Visual/MenuBar/LanguageNumber.txt"))) {
+            String line = reader.readLine();
+            return Integer.parseInt(line);
+        } catch (IOException | NumberFormatException ex) {
+            System.err.println("Erro ao ler o arquivo de idioma: " + ex.getMessage());
+            ex.printStackTrace();
+            return -1; // Retorna -1 caso haja algum erro ao ler ou converter o número
+ 
+            }       
     }
 }

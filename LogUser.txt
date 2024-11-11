@@ -72,3 +72,21 @@ Usuario 'Entreqeqw' registrado no sistema;
 
 Data de entrada: 11/11/2024 13:30:59
 Usuario 'Ingresar3213123o' registrado no sistema;
+
+Data de entrada: 11/11/2024 13:39:48
+Usuario 'Enfdasfasfsaf' registrado no sistema;
+
+Data de entrada: 11/11/2024 13:40:07
+Usuario 'In1231232rio' registrado no sistema;
+
+Data de entrada: 11/11/2024 13:42:09
+Usuario 'Entre5432432' registrado no sistema;
+
+Data de entrada: 11/11/2024 13:47:04
+Usuario 'En321331321' registrado no sistema;
+
+Data de entrada: 11/11/2024 13:47:29
+Usuario 'Ingresa2312321' registrado no sistema;
+
+Data de entrada: 11/11/2024 13:48:12
+Usuario 'Entrez2332423' registrado no sistema;
