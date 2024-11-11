@@ -1,5 +1,15 @@
 package Scripts.LoginManagement.Screens;
 
+import Scripts.AudioHandler;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
+import Scripts.ClientServer.Client;
+import Scripts.LoginManagement.Visual.Buttons.SignInButton;
+import Scripts.LoginManagement.Visual.Buttons.SignUpButton;
+import Scripts.LoginManagement.Visual.MenuBar.MenuBar;
+import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
+import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
+import Scripts.LoginManagement.Visual.TextsFields.PasswordInput;
+import Scripts.LoginManagement.Visual.TextsFields.UserNameInput;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,7 +22,6 @@ import java.util.ResourceBundle;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -142,6 +151,9 @@ public class TelaLogin extends JFrame {
 
         areaLoginPanel.add(loginGIF);
 
+        MenuBar menuBar = new MenuBar();
+        this.setJMenuBar(menuBar);
+
         this.add(areaLoginPanel);
         this.setVisible(true);
 
@@ -159,7 +171,7 @@ public class TelaLogin extends JFrame {
     }
 
     public void loadLanguage() {
-        // Reload the ResourceBundle based on the selected language
+        // Carrega o ResourceBundle com base no idioma selecionado
         switch (n) {
             case 0:
                 bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
@@ -167,19 +179,32 @@ public class TelaLogin extends JFrame {
             case 1:
                 bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_en_US", Locale.US);
                 break;
+            case 2:
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_de_DE", Locale.GERMANY);
+                break;
+            case 3:
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_fr_FR", Locale.FRANCE);
+                break;
+            case 4:
+                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_es_ES", new Locale("es", "ES"));
+                break;
         }
+    
         if (instance != null) {
-            // Update the text for all UI components based on the new ResourceBundle
-
+            // Atualiza o texto para todos os componentes da interface com base no novo ResourceBundle
             loginLabel.setText(bn.getString("loginLabel"));
             usernameLabel.setText(bn.getString("usernameLabel"));
             passwordLabel.setText(bn.getString("passwordLabel"));
             signInButton.setText(bn.getString("signIn"));
             signUpButton.setText(bn.getString("signUp"));
             UserNameInput.getInstance().setText(bn.getString("usernameInput"));
-            // Update other components as needed
+    
+            // Revalida e repinta a interface para refletir as mudanças
+            this.revalidate();
+            this.repaint();
         }
     }
+    
 
     public Client getClient() {
         return client;

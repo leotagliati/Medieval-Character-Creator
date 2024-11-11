@@ -1,14 +1,9 @@
 package Scripts;
 
 import java.io.File;
-import java.io.IOException;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import java.util.ArrayList;
 
 public class AudioHandler {
     public static Audio loginMenuTheme = new Audio("LoginOST",

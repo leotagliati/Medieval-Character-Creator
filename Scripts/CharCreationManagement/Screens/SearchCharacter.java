@@ -20,6 +20,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SearchCharacter extends JPanel {
     static ArrayList<GameCharacter> charArray = new ArrayList<>();
@@ -33,6 +35,10 @@ public class SearchCharacter extends JPanel {
     static JPanel insidePanel = new JPanel();
     static GameCharacter charSelected;
     public static ShowPanel displayCharPanel = new ShowPanel();
+
+    static int i = 1;
+
+    static SearchCharacter instance;
 
     public SearchCharacter() {
         super();
@@ -172,6 +178,7 @@ public class SearchCharacter extends JPanel {
                 }
             });
         }
+        loadLanguage(i);
     }
 
     public static void updateNamesPanel() {
@@ -232,5 +239,59 @@ public class SearchCharacter extends JPanel {
             });
 
         }
+        
+        }
+            
+        public void loadLanguage(int n) {
+        ResourceBundle bn;
+        
+        // Carrega o ResourceBundle com base no idioma selecionado
+        switch (n) {
+            case 0:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
+                break;
+            case 1:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US);
+                break;
+            case 2:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_de_DE", Locale.GERMANY);
+                break;
+            case 3:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_fr_FR", Locale.FRANCE);
+                break;
+            case 4:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_es_ES", new Locale("es", "ES"));
+                break;
+            default:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US); // Idioma padrão
+        }
+
+        // Atualiza os textos dos componentes de acordo com o idioma selecionado
+        if (bn != null) {
+            titleText.setText(bn.getString("charactersCreatedTitle"));
+            buttonsArray.get(0).setText(bn.getString("returnButton"));
+            buttonsArray.get(1).setText(bn.getString("deleteButton"));
+
+            // Atualize o texto no botão de deletar caso ele já tenha sido alterado
+            if (charSelected != null) {
+                buttonsArray.get(1).setText(bn.getString("deleted"));
+            }
+        }
+
+        // Atualize o painel e os componentes para refletir as mudanças de idioma
+        this.repaint();
+        this.revalidate();
     }
+    public static void setI(int j){
+        i = j;
+    }
+
+    public static int getI(){
+        return i;
+    }   
+    public static SearchCharacter getInstance(){
+        return instance;
+    }
+
+
 }
