@@ -38,15 +38,15 @@ public class UserRepository {
         }
         return id;
     }
-    public void addLogin(String username, String passwordHash) {
+    public void addLogin() {
         String command = "INSERT INTO tb_users(username,password) VALUES(?,?)";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
 
             stmt = conn.prepareStatement(command);
-            stmt.setString(1, username);
-            stmt.setString(2, passwordHash);
+            stmt.setString(1, TelaLogin.username);
+            stmt.setString(2, TelaLogin.password);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

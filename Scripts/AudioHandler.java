@@ -1,17 +1,22 @@
 package Scripts;
 
 import java.io.File;
+import java.io.IOException;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import java.util.ArrayList;
 
 public class AudioHandler {
     public static Audio loginMenuTheme = new Audio("LoginOST",
-            "Music\\MedievalOST.wav", true);
+            "D:\\Git Repositories\\Projeto-Semestral-LP1\\Music\\MedievalOST.wav", true);
     public static Audio loginMenuAmbience = new Audio("LoginAmbience",
-            "Music\\RainAmbience.wav", true);
+            "D:\\Git Repositories\\Projeto-Semestral-LP1\\Music\\RainAmbience.wav", true);
     public static Audio charCreationTheme = new Audio("CharCreationOST",
-            "Music\\charCreationOST.wav", true);
+            "D:\\Git Repositories\\Projeto-Semestral-LP1\\Music\\charCreationOST.wav", true);
 
     public static Audio buttonEntered = new Audio("ButtonEntered", "Music\\buttonEntered.wav", false);
     public static Audio buttonClicked = new Audio("ButtonClicked", "Music\\buttonClicked.wav", false);
