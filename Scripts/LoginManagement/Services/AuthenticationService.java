@@ -14,8 +14,7 @@ public class AuthenticationService {
         if (repository.verifyUsername(username) == false) {
 
             System.out.println("Adding your User...");
-            TelaLogin.password = hashingMethod(password);
-            repository.addLogin();
+            repository.addLogin(username,hashingMethod(password));
 
             System.out.println("Logging...");
             return true;
