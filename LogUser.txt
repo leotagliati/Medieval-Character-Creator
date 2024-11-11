@@ -21,3 +21,30 @@ Usuario 'leo' logou no sistema;
 
 Data de entrada: 09/11/2024 23:40:00
 Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:15:49
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:16:59
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:17:23
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:17:44
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:18:56
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:19:47
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:20:09
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:20:21
+Usuario 'leo' logou no sistema;
+
+Data de entrada: 11/11/2024 11:21:21
+Usuario 'leo' logou no sistema;
