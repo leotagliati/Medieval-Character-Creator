@@ -1,29 +1,31 @@
 package Scripts.CharCreationManagement.Visual;
 
+import Scripts.AudioHandler;
+import Scripts.CharCreationManagement.Screens.CharacterCreation;
+import Scripts.CharCreationManagement.Visual.Bodypart.BodyPart;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.CharacterDisplay;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.EyeColorTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
-import Scripts.AudioHandler;
-import Scripts.CharCreationManagement.Visual.ImagesConversion.CharacterDisplay;
-import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
-import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.EyeColorTypes;
-import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
-import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
-import Scripts.CharCreationManagement.Visual.Bodypart.BodyPart;
-import Scripts.CharCreationManagement.Screens.CharacterCreation;
 
 public class AppearancePanel extends JPanel {
     SavePanel singlePanel = SavePanel.getInstance();
@@ -153,6 +155,54 @@ public class AppearancePanel extends JPanel {
 
         this.add(confirmButton);
         this.add(buttonImage);
+        loadLanguage(readLanguageFromFile());
+    }
+    public void loadLanguage(int n) {
+        ResourceBundle bn;
+        
+        // Carrega o ResourceBundle com base no idioma selecionado
+        switch (n) {
+            case 0:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
+                break;
+            case 1:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US);
+                break;
+            case 2:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_de_DE", Locale.GERMANY);
+                break;
+            case 3:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_fr_FR", Locale.FRANCE);
+                break;
+            case 4:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_es_ES", new Locale("es", "ES"));
+                break;
+            default:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US); // Idioma padrão
+        }
+    
+        // Atualiza os textos dos componentes de acordo com o idioma selecionado
+        if (bn != null) {
+            gender.getBodyPartText().setText(bn.getString("gender"));
+            eyes.getBodyPartText().setText(bn.getString("eyeColor"));
+            skin.getBodyPartText().setText(bn.getString("skinColor"));
+            confirmButton.setText(bn.getString("confirm"));
+        }
+    
+        // Atualize o painel e os componentes para refletir as mudanças de idioma
+        this.repaint();
+        this.revalidate();
+    }
 
+    public int readLanguageFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Scripts/LoginManagement/Visual/MenuBar/LanguageNumber.txt"))) {
+            String line = reader.readLine();
+            return Integer.parseInt(line);
+        } catch (IOException | NumberFormatException ex) {
+            System.err.println("Erro ao ler o arquivo de idioma: " + ex.getMessage());
+            ex.printStackTrace();
+            return -1; // Retorna -1 caso haja algum erro ao ler ou converter o número
+ 
+            }       
     }
 }
