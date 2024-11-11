@@ -24,14 +24,14 @@ public class CharacterRepository {
         this.conn = ConnFactory.getConn();
     }
 
-    public void addCharacter(GameCharacter character, int users_ID) {
+    public void addCharacter(GameCharacter character) {
         String command = "INSERT INTO tb_character(users_id,name, class, eye_color, skin_color, helm_type, chest_type, legs_type, gender) VALUES(?,?,?,?,?,?,?,?,?)";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
         try {
 
             stmt = conn.prepareStatement(command);
-            stmt.setInt(1, users_ID);
+            stmt.setInt(1, TelaLogin.userName_ID);
             stmt.setString(2, character.getName());
             stmt.setString(3, character.getSkillClass());
             stmt.setInt(4, character.getEyeColor().ordinal() + 1);
@@ -85,7 +85,7 @@ public class CharacterRepository {
         return character;
     }
 
-    public ArrayList<GameCharacter> GetAllCharcters(int users_ID) {
+    public ArrayList<GameCharacter> GetAllCharcters() {
         String command = "SELECT * FROM tb_character WHERE users_id = ?";
         Connection conn = ConnFactory.getConn();
         PreparedStatement stmt = null;
@@ -93,7 +93,7 @@ public class CharacterRepository {
         ArrayList<GameCharacter> characters = new ArrayList<GameCharacter>();
         try {
             stmt = conn.prepareStatement(command);
-            stmt.setInt(1, users_ID);
+            stmt.setInt(1, TelaLogin.userName_ID);
             ResultSet result = stmt.executeQuery();
             characters = this.getValues(result);
         } catch (SQLException e) {

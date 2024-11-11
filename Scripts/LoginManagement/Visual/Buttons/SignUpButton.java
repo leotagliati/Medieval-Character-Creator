@@ -2,7 +2,6 @@ package Scripts.LoginManagement.Visual.Buttons;
 
 import Scripts.AudioHandler;
 import Scripts.CharCreationManagement.CardManager;
-import Scripts.ClientServer.Client;
 import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
 import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
 import Scripts.LoginManagement.Visual.TextsFields.PasswordInput;
@@ -18,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class SignUpButton extends JButton {
+
     public SignUpButton() {
         super();
 
@@ -41,71 +41,32 @@ public class SignUpButton extends JButton {
                     for (char c : PasswordInput.getInstance().getPassword()) {
                         TelaLogin.password += c;
                     }
-
                     // System.out.println(TelaLogin.username);
                     // System.out.println(TelaLogin.password);
 
-                    try {
-                        TelaLogin.getInstance().setClient(new Client("127.0.0.1", 3304));
+                    AuthenticationService authService = new AuthenticationService();
+                    boolean result = authService.SignUp(TelaLogin.username, TelaLogin.password);
 
-                        String dataToSend = "REGISTER," + TelaLogin.username + "," + TelaLogin.password;
+                    TelaLogin.userName_ID = authService.repository.getLoginID(TelaLogin.username);
 
-                        String response = TelaLogin.getInstance().getClient().sendMessage(dataToSend);
+                    if (result == true) {
+                        AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
+                        AudioHandler.audioStop(AudioHandler.loginMenuTheme);
+                        TelaLogin.getInstance().dispose();
 
-                        if (response.equals("true")) {
-                            System.out.println("Pode Logar!");
-                            int id = -1;
-                            dataToSend = "GIVE_USER_ID," + TelaLogin.username;
-                            id = Integer.parseInt(TelaLogin.getInstance().getClient().sendMessage(dataToSend));
+                        CardManager app = CardManager.getInstance();
 
-                            if (id >= 0) {
-                                TelaLogin.userName_ID = id;
-                                System.out.println("ID encontrado!");
-                                AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
-                                AudioHandler.audioStop(AudioHandler.loginMenuTheme);
-                                TelaLogin.getInstance().dispose();
+                        app.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                        app.setUndecorated(true);
+                        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        app.setVisible(true);
+                        
+                        // TelaNotasUser telaNotas = new TelaNotasUser();
+                        // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    } else if (result == false) {
+                        LoginExistsMessage.getInstance().setVisible(true);
 
-                                CardManager app = CardManager.getInstance();
-
-                                app.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                                app.setUndecorated(true);
-                                app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                app.setVisible(true);
-                            } else {
-                                System.out.println("ID nao encontrado!");
-                            }
-
-                        } else {
-                            InvalidLoginMessage.getInstance().setVisible(true);
-
-                        }
-                    } catch (Exception e2) {
-                        e2.printStackTrace();
                     }
-                    // AuthenticationService authService = new AuthenticationService();
-                    // boolean result = authService.SignUp(TelaLogin.username, TelaLogin.password);
-
-                    // TelaLogin.userName_ID =
-                    // authService.repository.getLoginID(TelaLogin.username);
-
-                    // if (result == true) {
-                    // AudioHandler.audioStop(AudioHandler.loginMenuAmbience);
-                    // AudioHandler.audioStop(AudioHandler.loginMenuTheme);
-                    // TelaLogin.getInstance().dispose();
-
-                    // CardManager app = CardManager.getInstance();
-
-                    // app.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    // app.setUndecorated(true);
-                    // app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    // app.setVisible(true);
-
-                    // // TelaNotasUser telaNotas = new TelaNotasUser();
-                    // // telaNotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    // } else if (result == false) {
-                    // LoginExistsMessage.getInstance().setVisible(true);
-
-                    // }
                 } else {
                     InvalidLoginMessage.getInstance().setVisible(true);
                 }

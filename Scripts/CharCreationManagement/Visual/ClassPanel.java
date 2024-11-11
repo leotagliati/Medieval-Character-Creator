@@ -28,19 +28,15 @@ public class ClassPanel extends JPanel {
     private JPanel backGNDPanel;
 
     private static String classChosen = "Cavaleiro";
-    private static String knightClassChosen = "Cavaleiro";
-    private static String heraldClassChosen = "Arauto";
-    private static String sorcererClassChosen = "Feiticeiro";
-    private static String clericClassChosen = "Clérigo";
 
     public ClassPanel() {
         super();
 
         // Inicializa os Botoes
-        this.knightClassButton = new JButton(knightClassChosen);
-        this.heraldClassButton = new JButton(heraldClassChosen);
-        this.sorcererClassButton = new JButton(sorcererClassChosen);
-        this.clericClassButton = new JButton(clericClassChosen);
+        this.knightClassButton = new JButton("Cavaleiro");
+        this.heraldClassButton = new JButton("Arauto");
+        this.sorcererClassButton = new JButton("Feiticeiro");
+        this.clericClassButton = new JButton("Clérigo");
 
         // Add os botoes no arrayList
         this.classButtons.add(knightClassButton);

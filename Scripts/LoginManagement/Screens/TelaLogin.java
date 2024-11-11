@@ -1,15 +1,5 @@
 package Scripts.LoginManagement.Screens;
 
-import Scripts.AudioHandler;
-import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
-import Scripts.ClientServer.Client;
-import Scripts.LoginManagement.Visual.Buttons.SignInButton;
-import Scripts.LoginManagement.Visual.Buttons.SignUpButton;
-import Scripts.LoginManagement.Visual.MenuBar.MenuBar;
-import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
-import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
-import Scripts.LoginManagement.Visual.TextsFields.PasswordInput;
-import Scripts.LoginManagement.Visual.TextsFields.UserNameInput;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,14 +8,23 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Scripts.AudioHandler;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
+import Scripts.LoginManagement.Visual.Buttons.SignInButton;
+import Scripts.LoginManagement.Visual.Buttons.SignUpButton;
+import Scripts.LoginManagement.Visual.TextsFields.InvalidLoginMessage;
+import Scripts.LoginManagement.Visual.TextsFields.LoginExistsMessage;
+import Scripts.LoginManagement.Visual.TextsFields.PasswordInput;
+import Scripts.LoginManagement.Visual.TextsFields.UserNameInput;
+
 public class TelaLogin extends JFrame {
     public static TelaLogin instance;
-    private Client client;
 
     public static ResourceBundle bn = null;
     public static int n = 0;
@@ -105,9 +104,6 @@ public class TelaLogin extends JFrame {
 
         areaLoginPanel.add(loginGIF);
 
-        MenuBar menuBar = new MenuBar();
-        this.setJMenuBar(menuBar);
-
         this.add(areaLoginPanel);
         this.setVisible(true);
 
@@ -119,13 +115,12 @@ public class TelaLogin extends JFrame {
         }
         return instance;
     }
-
-    public static void resetInstance() {
+    public static void resetInstance()
+    {
         instance = new TelaLogin();
     }
-
     public void loadLanguage() {
-        // Carrega o ResourceBundle com base no idioma selecionado
+        // Reload the ResourceBundle based on the selected language
         switch (n) {
             case 0:
                 bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
@@ -133,39 +128,18 @@ public class TelaLogin extends JFrame {
             case 1:
                 bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_en_US", Locale.US);
                 break;
-            case 2:
-                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_de_DE", Locale.GERMANY);
-                break;
-            case 3:
-                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_fr_FR", Locale.FRANCE);
-                break;
-            case 4:
-                bn = ResourceBundle.getBundle("Scripts.LoginManagement.Screens.b_es_ES", new Locale("es", "ES"));
-                break;
         }
-    
         if (instance != null) {
-            // Atualiza o texto para todos os componentes da interface com base no novo ResourceBundle
+            // Update the text for all UI components based on the new ResourceBundle
+
             loginLabel.setText(bn.getString("loginLabel"));
             usernameLabel.setText(bn.getString("usernameLabel"));
             passwordLabel.setText(bn.getString("passwordLabel"));
             signInButton.setText(bn.getString("signIn"));
             signUpButton.setText(bn.getString("signUp"));
             UserNameInput.getInstance().setText(bn.getString("usernameInput"));
-    
-            // Revalida e repinta a interface para refletir as mudanças
-            this.revalidate();
-            this.repaint();
+            // Update other components as needed
         }
-    }
-    
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
 }
