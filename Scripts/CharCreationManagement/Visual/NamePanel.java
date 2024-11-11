@@ -1,19 +1,22 @@
 package Scripts.CharCreationManagement.Visual;
 
+import Scripts.AudioHandler;
+import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import Scripts.AudioHandler;
-import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 
 public class NamePanel extends JPanel {
 
@@ -126,6 +129,7 @@ public class NamePanel extends JPanel {
         this.add(backgroundImage);
         this.setOpaque(false);
         this.setVisible(false);
+        loadLanguage(readLanguageFromFile());
     }
 
     public JTextField getNameInput() {
@@ -138,6 +142,53 @@ public class NamePanel extends JPanel {
 
     public static String getNameChosen() {
         return nameChosen;
+    }
+      public void loadLanguage(int n) {
+        ResourceBundle bn;
+        
+        // Carrega o ResourceBundle 
+        switch (n) {
+            case 0:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
+                break;
+            case 1:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US);
+                break;
+            case 2:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_de_DE", Locale.GERMANY);
+                break;
+            case 3:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_fr_FR", Locale.FRANCE);
+                break;
+            case 4:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_es_ES", new Locale("es", "ES"));
+                break;
+            default:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US); // Idioma padrão
+        }
+    
+        // Atualiza os textos
+        if (bn != null) {
+            titleText.setText(bn.getString("titleText"));
+            pressEnterText1.setText(bn.getString("pressEnterText1"));
+            pressEnterText2.setText(bn.getString("pressEnterText2"));
+            nameInput.setText(bn.getString("nameInput"));
+        }
+    
+        // Atualize o painel e os componentes 
+        this.repaint();
+        this.revalidate();
+    }
+     public int readLanguageFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Scripts/LoginManagement/Visual/MenuBar/LanguageNumber.txt"))) {
+            String line = reader.readLine();
+            return Integer.parseInt(line);
+        } catch (IOException | NumberFormatException ex) {
+            System.err.println("Erro ao ler o arquivo de idioma: " + ex.getMessage());
+            ex.printStackTrace();
+            return -1; // Retorna -1 caso haja algum erro ao ler ou converter o número
+ 
+            }       
     }
 
 }
