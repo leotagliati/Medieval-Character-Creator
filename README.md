@@ -24,6 +24,7 @@ Before you install Character Creator, make sure you have the following software 
    
 2. **Database Setup**:
    * Open MySQL Workbench and create a new connection for the project.
+   * The vault's password must be ïmtdb" or you need to change in the script ConnFactory.java
    * Run the provided SQL script "character_db.sql" to setup the database and its respectives tables.
 
 ### Usage
