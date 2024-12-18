@@ -1,3 +1,5 @@
+![Texto alternativo](Images\fotinhas.PNG)
+
 ## Introduction
 
 **Character Creator** is a tool designed to help you generate and customize unique characters for various purposes, including games, stories, or role-playing scenarios. This project allows users to create detailed character profiles by selecting attributes such as appearance, class, and garments.
