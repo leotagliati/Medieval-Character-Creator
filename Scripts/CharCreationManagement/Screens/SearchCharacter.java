@@ -8,8 +8,11 @@ import Scripts.CharCreationManagement.Visual.ImagesConversion.CharacterDisplay;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ImageCreate;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.ShowPanel;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.StringToPath;
+import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 import Scripts.CharCreationManagement.Repository.CharacterRepository;
+import Scripts.LogManager.LogSystemService;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +20,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SearchCharacter extends JPanel {
     static ArrayList<GameCharacter> charArray = new ArrayList<>();
@@ -31,6 +36,10 @@ public class SearchCharacter extends JPanel {
     static GameCharacter charSelected;
     public static ShowPanel displayCharPanel = new ShowPanel();
 
+    static int i = 1;
+
+    static SearchCharacter instance;
+
     public SearchCharacter() {
         super();
         this.setLayout(null);
@@ -40,8 +49,6 @@ public class SearchCharacter extends JPanel {
         backgroundImage.setIconFile("Images\\hud1.png");
         backgroundImage.imageSetter();
         displayCharPanel.add(backgroundImage);
-
-        
 
         GridLayout buttonsLayout = new GridLayout(charNamesArray.size(), 1, 0, 0);
         insidePanel.setLayout(buttonsLayout);
@@ -112,7 +119,6 @@ public class SearchCharacter extends JPanel {
         this.add(charDataPanel);
         this.add(scrollPaneImage);
 
-
         // Volta para o menu inicial
 
         for (JButton button : buttonsArray) {
@@ -130,6 +136,10 @@ public class SearchCharacter extends JPanel {
                         if (charSelected != null) {
                             AudioHandler.audioPlay(AudioHandler.buttonDelete);
                             repo.deleteCharacter(charSelected);
+
+                            String logMessage = "Character '" + charSelected.getName() + "' deletado do sistema;";
+                            LogSystemService.generateLog("LogCharacters.txt", logMessage);
+
                             deleteButtonImage.setIconFile("Images\\deleteStandardButton.png");
                             deleteButtonImage.imageSetter();
                             deleteButton.setText("Deletado!");
@@ -168,12 +178,13 @@ public class SearchCharacter extends JPanel {
                 }
             });
         }
+        loadLanguage(i);
     }
 
     public static void updateNamesPanel() {
         charSelected = null;
         CharacterRepository repo = new CharacterRepository();
-        charArray = repo.GetAllCharcters();
+        charArray = repo.GetAllCharcters(TelaLogin.userName_ID);
         charNamesArray.clear();
         for (GameCharacter character : charArray) {
             charNamesArray.add(character.getName());
@@ -213,7 +224,6 @@ public class SearchCharacter extends JPanel {
 
                         if (e.getSource() != nameLabel) {
                             nameLabel.setBackground(new Color(52, 28, 39));
-                        
 
                         } else {
 
@@ -229,5 +239,59 @@ public class SearchCharacter extends JPanel {
             });
 
         }
+        
+        }
+            
+        public void loadLanguage(int n) {
+        ResourceBundle bn;
+        
+        // Carrega o ResourceBundle com base no idioma selecionado
+        switch (n) {
+            case 0:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
+                break;
+            case 1:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US);
+                break;
+            case 2:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_de_DE", Locale.GERMANY);
+                break;
+            case 3:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_fr_FR", Locale.FRANCE);
+                break;
+            case 4:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_es_ES", new Locale("es", "ES"));
+                break;
+            default:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US); // Idioma padrão
+        }
+
+        // Atualiza os textos dos componentes de acordo com o idioma selecionado
+        if (bn != null) {
+            titleText.setText(bn.getString("charactersCreatedTitle"));
+            buttonsArray.get(0).setText(bn.getString("returnButton"));
+            buttonsArray.get(1).setText(bn.getString("deleteButton"));
+
+            // Atualize o texto no botão de deletar caso ele já tenha sido alterado
+            if (charSelected != null) {
+                buttonsArray.get(1).setText(bn.getString("deleted"));
+            }
+        }
+
+        // Atualize o painel e os componentes para refletir as mudanças de idioma
+        this.repaint();
+        this.revalidate();
     }
+    public static void setI(int j){
+        i = j;
+    }
+
+    public static int getI(){
+        return i;
+    }   
+    public static SearchCharacter getInstance(){
+        return instance;
+    }
+
+
 }

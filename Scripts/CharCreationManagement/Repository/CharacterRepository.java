@@ -13,6 +13,7 @@ import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.GenderTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.HelmetTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.LegsTypes;
 import Scripts.CharCreationManagement.Visual.ImagesConversion.Enums.SkinColorTypes;
+import Scripts.LogManager.LogSystemService;
 import Scripts.LoginManagement.Screens.TelaLogin;
 import Scripts.CharCreationManagement.Model.GameCharacter;
 

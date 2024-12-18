@@ -3,7 +3,12 @@ package Scripts.CharCreationManagement.Visual;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -76,6 +81,7 @@ public class MainPanel extends JPanel {
         for (JLabel buttonImage : buttonsDesignArray) {
             backGNDPanel.add(buttonImage);
         }
+        loadLanguage(readLanguageFromFile());
     }
 
     public static ArrayList<JButton> getButtonsArray() {
@@ -89,4 +95,53 @@ public class MainPanel extends JPanel {
     public ArrayList<JLabel> getButtonsDesignArray() {
         return buttonsDesignArray;
     }
+      public void loadLanguage(int n) {
+        ResourceBundle bn;
+        
+        // Carrega o ResourceBundle com base no idioma selecionado
+        switch (n) {
+            case 0:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_pt_BR", new Locale("pt", "BR"));
+                break;
+            case 1:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US);
+                break;
+            case 2:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_de_DE", Locale.GERMANY);
+                break;
+            case 3:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_fr_FR", Locale.FRANCE);
+                break;
+            case 4:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_es_ES", new Locale("es", "ES"));
+                break;
+            default:
+                bn = ResourceBundle.getBundle("Scripts.CharCreationManagement.Screens.b_en_US", Locale.US); // Idioma padrão
+        }
+    
+        // Atualiza os textos dos componentes de acordo com o idioma selecionado
+        if (bn != null) {
+            charNameButton.setText(bn.getString("charNameButton"));
+            charVestureButton.setText(bn.getString("charVestureButton"));
+            charClassButton.setText(bn.getString("charClassButton"));
+            charAppearenceButton.setText(bn.getString("charAppearenceButton"));
+            returnButton.setText(bn.getString("returnButton"));
+        }
+    
+        // Atualize o painel e os componentes para refletir as mudanças de idioma
+        this.repaint();
+        this.revalidate();
+    }
+     public int readLanguageFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Scripts/LoginManagement/Visual/MenuBar/LanguageNumber.txt"))) {
+            String line = reader.readLine();
+            return Integer.parseInt(line);
+        } catch (IOException | NumberFormatException ex) {
+            System.err.println("Erro ao ler o arquivo de idioma: " + ex.getMessage());
+            ex.printStackTrace();
+            return -1; // Retorna -1 caso haja algum erro ao ler ou converter o número
+ 
+            }       
+    }
+
 }
