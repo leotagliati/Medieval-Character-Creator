@@ -1,4 +1,4 @@
-![Texto alternativo](Images\fotinhas.PNG)
+![Texto alternativo](Images/fotinhas.PNG)
 
 ## Introduction
 
