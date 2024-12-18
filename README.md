@@ -1,4 +1,5 @@
 ![Texto alternativo](Images/fotinhas.PNG)
+![Texto alternativo](Images/fotinhas2.PNG)
 
 ## Introduction
 
@@ -17,6 +18,8 @@ Before you install Character Creator, make sure you have the following software 
 - **Java**: The application requires Java to run.
   - You can download and install the latest version of Java from the [Oracle website](https://www.oracle.com/java/technologies/javase-downloads.html) or [OpenJDK](https://openjdk.java.net/).
 
+![Texto alternativo](Images/fotinhas3.PNG)
+
 ### Installation Steps
 
 1. **Clone the Repository**:
@@ -28,6 +31,9 @@ Before you install Character Creator, make sure you have the following software 
    * Open MySQL Workbench and create a new connection for the project.
    * The vault's password must be ïmtdb" or you need to change in the script ConnFactory.java
    * Run the provided SQL script "character_db.sql" to setup the database and its respectives tables.
+
+![Texto alternativo](Images/fotinhas4.PNG)
+
 
 ### Usage
 
